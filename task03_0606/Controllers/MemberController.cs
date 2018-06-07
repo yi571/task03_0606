@@ -21,5 +21,13 @@ namespace task03_0606.Controllers
         public ActionResult Login() {
             return View();
         }
+
+        public ActionResult Register() {
+            return View();
+        }
+
+        public ActionResult ForgotPassword() {
+            return View();
+        }
     }
 }

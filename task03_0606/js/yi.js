@@ -1,0 +1,3 @@
+﻿$('#twzipcode').twzipcode({
+    'detect': true
+});

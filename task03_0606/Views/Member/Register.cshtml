@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/_Member_LayoutPage1.cshtml";
+}
+
+<h2>註冊帳號</h2>
+
+<div class="container custom-container-width">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">註冊帳號</div>
+        <div class="card-body">
+            <form method="post" action="">
+                <div class="form-group">
+                    <div class="form-row">
+
+                        <div class="col-md-6">
+                            <label for="LastName">尊姓</label>
+                            <input class="form-control" id="LastName" type="text" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="FirstName">大名</label>
+                            <input class="form-control" id="FirstName" type="text" aria-describedby="nameHelp" placeholder="請輸入名稱...">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email1">電子信箱</label>
+                    <input class="form-control" id="Email1" type="email" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="Password1">密碼</label>
+                            <input class="form-control" id="Password1" type="password" placeholder="請輸入密碼...">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ConfirmPassword">確認密碼</label>
+                            <input class="form-control" id="ConfirmPassword" type="password" placeholder="確認密碼...">
+                        </div>
+                    </div>
+                </div>
+
+            
+                <label for="Address">地址</label>
+
+                <div class="form-group" id="twzipcode">
+                    <div class="form-row">
+                        <div class="col-md" data-role="county" data-style="form-control" data-value="110"></div>
+                        <div class="col-md" data-role="district" data-style="form-control" data-value="臺北市"></div>
+                        <div class="col-md" data-role="zipcode" data-style="form-control" data-value="信義區"></div>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="Address" type="text" placeholder="">
+                </div>
+
+                @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
+                <button type="submit" class="btn btn-primary btn-block">註冊</button>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="/Member/Login">登入</a>
+                <a class="d-block small" href="/Member/ForgotPassword">忘記密碼?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery.twzipcode.min.js"></script>
+<script src="/js/yi.js"></script>
