@@ -15,11 +15,29 @@ namespace task03_0606.Controllers
         }
 
         public ActionResult Member() {
-            return View();
+            //if (String.IsNullOrEmpty((string)Session["logState"])) {
+            //    Session["lastPage"] = "/Member/Member";
+            //    return RedirectToAction("Login", "Member");
+            //}
+                return View();
         }
 
         public ActionResult Login() {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string email, string pwd) {
+            Session["logState"] = "login";
+            if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+                Session["lastPage"] = "/Member/Member";
+            }
+            return Redirect((string)Session["lastPage"]);
+        }
+
+        public ActionResult Logout() {
+            Session["logState"] = "";
+            return RedirectToAction("Member", "Member");
         }
 
         public ActionResult Register() {
@@ -29,5 +47,7 @@ namespace task03_0606.Controllers
         public ActionResult ForgotPassword() {
             return View();
         }
+
+        
     }
 }
