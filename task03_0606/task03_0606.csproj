@@ -209,6 +209,9 @@
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Member\Logout.cshtml" />
+    <Content Include="Views\Member\OrderTable.cshtml" />
+    <Content Include="Views\Member\EditPersonalData.cshtml" />
+    <Content Include="Views\_Normal_Member_Home_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

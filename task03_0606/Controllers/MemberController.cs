@@ -28,7 +28,16 @@ namespace task03_0606.Controllers
 
         [HttpPost]
         public ActionResult Login(string email, string pwd) {  //傳入email和password
-            Session["logState"] = "login";    //將登入狀態設為登入
+            if(pwd == "1") {
+                Session["identity"] = "superUser";
+            }
+            if (pwd == "2") {
+                Session["identity"] = "storeUser";
+            }
+            if (pwd == "3") {
+                Session["identity"] = "normalUser";
+            }
+            Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
             if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                 Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
             }
@@ -48,6 +57,17 @@ namespace task03_0606.Controllers
             return View();
         }
 
-        
+        public ActionResult OrderTable() {
+            return View();
+        }
+
+        public ActionResult EditPersonalData() {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+                return View();
+        }
+
+
     }
 }
