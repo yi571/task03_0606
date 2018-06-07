@@ -90,9 +90,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aproducts.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-reboot.css" />
@@ -102,6 +104,7 @@
     <Content Include="css\yi.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="js\Aindex.js" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />
@@ -109,6 +112,30 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
+    <Content Include="photo\dressert\dessert.jpg" />
+    <Content Include="photo\drink\apple_resized.jpg" />
+    <Content Include="photo\drink\blackcoffee_resized.jpg" />
+    <Content Include="photo\drink\cocacola_resized.jpg" />
+    <Content Include="photo\drink\coffee_resized.jpg" />
+    <Content Include="photo\drink\d10.jpg" />
+    <Content Include="photo\drink\greentea_resized.jpg" />
+    <Content Include="photo\drink\lemon_resized.jpg" />
+    <Content Include="photo\drink\Orange_resized.jpg" />
+    <Content Include="photo\drink\redtea_resized.jpg" />
+    <Content Include="photo\fastfood\fast-food.jpg" />
+    <Content Include="photo\indexphoto\d10_resized.jpg" />
+    <Content Include="photo\indexphoto\dessert_resized.jpg" />
+    <Content Include="photo\indexphoto\fast-food_resized %281%29.jpg" />
+    <Content Include="photo\indexphoto\n1_resized.jpg" />
+    <Content Include="photo\indexphoto\r5_resized %281%29.jpg" />
+    <Content Include="photo\noodle\n1.jpg" />
+    <Content Include="photo\rice\r1.jpg" />
+    <Content Include="photo\rice\r2.jpg" />
+    <Content Include="photo\rice\r3.jpg" />
+    <Content Include="photo\rice\r4.jpg" />
+    <Content Include="photo\rice\r5.jpg" />
+    <Content Include="photo\Soup\s8.jpg" />
+    <Content Include="Productdefault.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -120,6 +147,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,6 +174,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Restaurent.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\Aproducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +187,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="picture\" />
+    <Folder Include="scss\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <PropertyGroup>
