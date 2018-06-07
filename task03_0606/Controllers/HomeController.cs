@@ -18,5 +18,10 @@ namespace task03_0606.Controllers
         {
             return View();
         }
+
+        public ActionResult Order()
+        {
+            return View();
+        }
     }
 }
