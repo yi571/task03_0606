@@ -223,13 +223,13 @@
                 <li class="nav-item">
 
                     @{ 
-                        string strUrl = "";
+                        string strUrl = ""; 
                         string faStr = "out";
                         string logStr = "登出";
                         string toggleStr = "modal";
                         string targetStr = "#exampleModal";
-                        if (String.IsNullOrEmpty((string)Session["logState"])) {
-                            strUrl = "/Member/Login";
+                        if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
+                            strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
                             faStr = "in";
                             logStr = "登入";
                             toggleStr = "";
