@@ -15,11 +15,11 @@ namespace task03_0606.Controllers
         }
 
         public ActionResult Member() {
-            //if (String.IsNullOrEmpty((string)Session["logState"])) {
-            //    Session["lastPage"] = "/Member/Member";
-            //    return RedirectToAction("Login", "Member");
-            //}
-                return View();
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Member/Member";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+            return View();
         }
 
         public ActionResult Login() {
@@ -27,17 +27,17 @@ namespace task03_0606.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string email, string pwd) {
-            Session["logState"] = "login";
+        public ActionResult Login(string email, string pwd) {  //傳入email和password
+            Session["logState"] = "login";    //將登入狀態設為登入
             if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                Session["lastPage"] = "/Member/Member";
+                Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
             }
-            return Redirect((string)Session["lastPage"]);
+            return Redirect((string)Session["lastPage"]);  //重導回最後頁面
         }
 
         public ActionResult Logout() {
-            Session["logState"] = "";
-            return RedirectToAction("Member", "Member");
+            Session["logState"] = "";   //登出則將logState設為空字串
+            return RedirectToAction("Member", "Member");  //此處應重導回首頁
         }
 
         public ActionResult Register() {
