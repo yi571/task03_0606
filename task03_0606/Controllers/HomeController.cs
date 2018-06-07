@@ -8,8 +8,13 @@ namespace task03_0606.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: Home
+        public ActionResult Restaurent()
         {
             return View();
         }
