@@ -109,6 +109,9 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
+    <Content Include="picture\1602181123510000001.jpg" />
+    <Content Include="picture\1608031409360000001.jpg" />
+    <Content Include="picture\1805211154480000001.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -157,7 +160,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="picture\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <PropertyGroup>
