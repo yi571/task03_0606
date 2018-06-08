@@ -29,9 +29,9 @@ namespace task03_0606.Controllers
         {
             var query = from o in db.OrderLists
                         select o;
-            List<OrderList> orderlist = query.ToList();
+            List<OrderList> orders = query.ToList();
             
-            return View(orderlist);
+            return View(orders);
         }
     }
 }
