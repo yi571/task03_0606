@@ -14,7 +14,25 @@ namespace task03_0606.Controllers
             return View();
         }
 
-        public ActionResult Aproducts()
+        public ActionResult Drinkproducts()
+        {
+            return View();
+        }
+
+        public ActionResult Dessertproducts()
+        {
+            return View();
+        }
+        public ActionResult Noodleproducts()
+        {
+            return View();
+        }
+        public ActionResult Riceproducts()
+        {
+            return View();
+        }
+
+        public ActionResult Fastfoodproducts()
         {
             return View();
         }
