@@ -58,6 +58,16 @@ namespace task03_0606.Controllers
         }
 
         public ActionResult OrderTable() {
+            if ((string)Session["identity"] != "superUser" || (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            return View();
+        }
+
+        public ActionResult MemberTable() {
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
             return View();
         }
 

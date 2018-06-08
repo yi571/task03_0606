@@ -165,7 +165,7 @@
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\ForgotPassword.cshtml" />
-    <Content Include="Views\_Member_Home_LayoutPage1.cshtml" />
+    <Content Include="Views\_Member_SuperUser_LayoutPage1.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -212,6 +212,8 @@
     <Content Include="Views\Member\OrderTable.cshtml" />
     <Content Include="Views\Member\EditPersonalData.cshtml" />
     <Content Include="Views\_Normal_Member_Home_LayoutPage1.cshtml" />
+    <Content Include="Views\Member\MemberTable.cshtml" />
+    <Content Include="Views\_Member_Home_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
