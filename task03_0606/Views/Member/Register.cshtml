@@ -16,37 +16,37 @@
 
                         <div class="col-md-6">
                             <label for="LastName">姓氏</label>
-                            <input class="form-control" id="LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
+                            <input class="form-control" id="LastName" name="LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
                         </div>
                         <div class="col-md-6">
                             <label for="FirstName">名稱</label>
-                            <input class="form-control" id="FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
+                            <input class="form-control" id="FirstName" name="FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="uid">身分證字號</label>
-                    <input class="form-control" id="uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
+                    <input class="form-control" id="uid" name="uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
                 </div>
                 <div class="form-group">
                     <label for="Email1">電子信箱</label>
-                    <input class="form-control" id="Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
+                    <input class="form-control" id="Email1" name="Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
                             <label for="Password1">密碼</label>
-                            <input class="form-control" id="Password1" type="password" required="required" placeholder="請輸入密碼...">
+                            <input class="form-control" id="Password1" name="Password1" type="password" required="required" placeholder="請輸入密碼...">
                         </div>
                         <div class="col-md-6">
                             <label for="ConfirmPassword" id="ConfPwdLabel">確認密碼</label>
-                            <input class="form-control" id="ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
+                            <input class="form-control" id="ConfirmPassword" name="ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cellPhone">手機號碼</label>
-                    <input class="form-control" id="cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
+                    <input class="form-control" id="cellPhone" name="cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
                 </div>
 
 
@@ -62,7 +62,7 @@
 
                 </div>
                 <div class="form-group">
-                    <input class="form-control" id="Address" type="text" required="required" placeholder="">
+                    <input class="form-control" id="Address" name="Address" type="text" required="required" placeholder="">
                 </div>
 
                 @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using task03_0606.Models;
 
 namespace task03_0606.Controllers
 {
     public class MemberController : Controller
     {
+        // 新增一個資料庫實體
+        private task03UserDBEntities db = new task03UserDBEntities();
+
+
         // GET: Member
         public ActionResult Index()
         {
@@ -52,6 +57,26 @@ namespace task03_0606.Controllers
         public ActionResult Register() {
             return View();
         }
+        [HttpPost]
+        public ActionResult Register(string LastName, string FirstName, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string county, string district, string zipcode, string Address) {
+            member member = new member() {
+                lastName = LastName,
+                firstName = FirstName,
+                uid = uid,
+                email = Email1,
+                pwd = Password1,
+                phoneNum = cellPhone,
+                city = county,
+                country = district,
+                zip = zipcode,
+                address = Address,
+                userRank = "normalUser"
+            };
+            db.members.Add(member);
+            db.SaveChanges();
+            
+            return RedirectToAction("Member", "Member");
+        }
 
         public ActionResult ForgotPassword() {
             return View();
@@ -68,7 +93,7 @@ namespace task03_0606.Controllers
             if ((string)Session["identity"] != "superUser") {
                 return RedirectToAction("Member", "Member");
             };
-            return View();
+            return View(db.members.ToList());
         }
 
         public ActionResult EditPersonalData() {
