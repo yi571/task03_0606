@@ -4,59 +4,143 @@
 }
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-        <a href="#">訂單列表</a>
-    </li>
-    @*<li class="breadcrumb-item active">My Dashboard</li>*@
+    <li class="breadcrumb-item active">訂單明細</li>
 </ol>
 
 <div class="row">
+    <p id="123 ">555555</p>
+    <div class="col-xl-12 col-sm-12 mb-12 ">
+        <div class="card-header">
+            <table class="table" >
+                <tr id="orderDetail">
+                    <th>訂單單號：201806060001</th>
+                    <th>座位：15</th>
+                    <th>接單時間：11:59 PM</th>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive-sm">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>產品編號</th>
+                        <th>產品名稱</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
+                        <th>訂單備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00001</td>
+                        <td>可樂(中)</td>
+                        <td>2</td>
+                        <td>30</td>
+                        <td>60</td>
+                        <td>去冰</td>
+                    </tr>
+                    <tr>
+                        <td>00005</td>
+                        <td>薯條(中)</td>
+                        <td>1</td>
+                        <td>50</td>
+                        <td>50</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>00008</td>
+                        <td>漢堡</td>
+                        <td>1</td>
+                        <td>50</td>
+                        <td>50</td>
+                        <td></td>
+                    </tr>
+               
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>總計</th>
+                        <th> </th>
+                        <th>3</th>
+                        <th> </th>
+                        <th>160</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+    </div>
+
+
 
     <div class="col-xl-12 col-sm-12 mb-12">
-            <div class="card-header">
-                <i class="fa fa-table"></i> 訂單明細
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>訂單單號</th>
-                                <th>座位</th>
-                                <th>接單時間</th>
-                                <th>銷單</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                                <td>delete</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                                <td></td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-header">
+            <i class="fa fa-table"></i> 訂單清單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
         </div>
-</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>訂單單號</th>
+                            <th>座位</th>
+                            <th>接單時間</th>
+                            <th>備註</th>
+                            
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <tr class="orderListItem">
+                            <td>201806060001</td>
+                            <td>15</td>
+                            <td>2018-06-06 11:59 PM</td>
+                            <td></td>
+                        </tr>
+                        <tr class="orderListItem">
+                            <td>201806060005</td>
+                            <td>20</td>
+                            <td>2018-06-06 12:59 PM</td>
+                            <td></td>
+                        </tr>
+                        <tr class="orderListItem">
+                            <td>201806060020</td>
+                            <td>20</td>
+                            <td>2018-06-06 6:30 PM</td>
+                            <td></td>
+                        </tr>
+                        <tr class="orderListItem">
+                            <td>201806060009</td>
+                            <td>20</td>
+                            <td>2018-06-07 12:59 PM</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+   
+    //$("#dataTable").click(function () {
+    //    alert(
+    //        $("#dataTable").find("tr.orderListItem")[0].innerText
+    //        ); 
+    //});
+
+    $("#dataTable").find("tr.orderListItem").click(function () {
+        //alert(this.innerText);
+        alert(this.cells[0].innerText);
+        alert(
+            //$("#orderDetail").innerText
+            $("#123").innerText
+            );
+        //$("#orderDetail").find("tr").cells[0] = this.cells[0];
+
+    });
+
+</script>

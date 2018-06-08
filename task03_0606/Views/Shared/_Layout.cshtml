@@ -16,6 +16,11 @@
     <!-- Custom styles for this template-->
     <link href="~/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -59,7 +64,7 @@
 
                 @*商家專用-新訂單*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新訂單">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="~/Home/Order">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">新訂單</span>
                     </a>
@@ -67,7 +72,7 @@
 
                 @*商家專用-歷史訂單*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="~/Home/HistoryOrder">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">歷史訂單</span>
                     </a>
@@ -75,7 +80,7 @@
 
                 @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="~/Home/Respone">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">意見反應</span>
                     </a>
@@ -105,20 +110,20 @@
 
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
-                            <a href="#"><strong>訂單1</strong> </a>
+                            <a href="/Home/Order?orderID=1"><strong>訂單1</strong> </a>
                             <span class="small float-right text-muted">新增時間 11:21 AM</span>
                             <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
                         </div>
 
-                        @*<div class="dropdown-divider"></div>
-                            <div class="dropdown-item" href="#">
-                                <strong>David Miller</strong>
-                                <span class="small float-right text-muted">11:21 AM</span>
-                                <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                            </div>*@
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">
+                            <a href="/Home/Order?orderID=2"><strong>訂單2</strong> </a>
+                            <span class="small float-right text-muted">新增時間 11:21 AM</span>
+                            <div class="dropdown-message small"> 桌號: 2 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
+                        </div>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item small" href="~/Home/Order">詳細訂單明細</a>
+                        <a class="dropdown-item small" href="~/Home/OrderList?UserID=1">詳細訂單明細</a>
                     </div>
                 </li>
 
@@ -136,27 +141,33 @@
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
                             <span class="text-danger">
-                                <a href="#">
+                                <a href="~/#/Products?productID=1">
                                     <strong> 產品1 </strong>
                                 </a>
-                                <button class="btn btn-sm btn-danger pull-right" aria-label="Delete">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </button>
+                                <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete"> 
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
                             </span>
-                            <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                            <div class="dropdown-message small">
+                            This is an automated server response message. All systems are online.
+                            </div>
                         </div>
 
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
+                        <div class="dropdown-item">
                             <span class="text-danger">
-                                <strong>
-                                    <i class="fa fa-long-arrow-down fa-fw"></i>Status Update
-                                </strong>
+                                <a href="~/#/Products?productID=2">
+                                    <strong> 產品2 </strong>
+                                </a>
+                                <a href="~/#/Delete?productID=2" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
                             </span>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                        </a>
+                            <div class="dropdown-message small">
+                                This is an automated server response message. All systems are online.
+                            </div>
+                        </div>
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">
@@ -173,8 +184,8 @@
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-item small">
                             <span>
-                                <a href="#">詳細購物明細</a>
-                                <a href="#" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-dollar"></i>結帳</a>
+                                <a href="~/#/ShoppingList?userID=1">詳細購物明細</a>
+                                <a href="~/#/Payment" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-dollar"></i>結帳</a>
                             </span>
                         </div>
                     </div>
@@ -237,11 +248,7 @@
     </div>
 </body>
 </html>
-<!-- Bootstrap core JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 <!-- Page level plugin JavaScript-->
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
