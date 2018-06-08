@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="uid">身分證字號</label>
-                    <input class="form-control" id="uid" type="text" maxlength="10" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號...">
+                    <input class="form-control" id="uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
                 </div>
                 <div class="form-group">
                     <label for="Email1">電子信箱</label>
@@ -39,10 +39,14 @@
                             <input class="form-control" id="Password1" type="password" required="required" placeholder="請輸入密碼...">
                         </div>
                         <div class="col-md-6">
-                            <label for="ConfirmPassword">確認密碼</label>
+                            <label for="ConfirmPassword" id="ConfPwdLabel">確認密碼</label>
                             <input class="form-control" id="ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="cellPhone">手機號碼</label>
+                    <input class="form-control" id="cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
                 </div>
 
 
