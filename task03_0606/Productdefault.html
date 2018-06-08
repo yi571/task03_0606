@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,74 +10,90 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>美食廣場</title>
     <!-- Bootstrap core CSS-->
-    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="~/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+    <link href="/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-    <link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet/scss" type="text/css" href="~/scss/_Astyle.scss">
+    <link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet/scss" type="text/css" href="/scss/_Astyle.scss">
     <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
-    <script src="~/js/Aindex.js"></script>
-    
+    <script src="/js/Aindex.js"></script>
+
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="~/Home/index">美食廣場</a>
+        <a class="navbar-brand" href="/Home/index">美食廣場</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            @*側邊導覽*@
+
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @*商家專用-餐廳列表*@
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
-                    <a class="nav-link" href="~/Home/Restaurent">
+                    <a class="nav-link" href="/Home/Restaurent">
                         <i class="fa fa-fw fa-cutlery"></i>
                         <span class="nav-link-text">餐廳列表</span>
                     </a>
                 </li>
-                @*美食分類*@
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-cutlery"></i>
                         <span class="nav-link-text">美食分類</span>
                     </a>
-                   
+                    <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                        <li>
+                            <a href="login.html"> <i class="fa fa-glass"></i> 湯品/飲料</a>
+                        </li>
+                        <li>
+                            <a href="blank.html">甜點類</a>
+                        </li>
+                        <li>
+                            <a href="register.html">速食餐點</a>
+                        </li>
+                        <li>
+                            <a href="forgot-password.html">米飯類</a>
+                        </li>
+                        <li>
+                            <a href="blank.html">麵食類</a>
+                        </li>
+                    </ul>
                 </li>
 
-                @*商家專用-新訂單*@
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新訂單">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="/Home/index">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">新訂單</span>
                     </a>
                 </li>
 
-                @*商家專用-歷史訂單*@
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="/Home/index">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">歷史訂單</span>
                     </a>
                 </li>
 
-                @*網站意見反應*@
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="/Home/index">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">意見反應</span>
                     </a>
                 </li>
 
             </ul>
-            @*側邊導覽頁收合標籤*@
+
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
@@ -84,9 +101,9 @@
                     </a>
                 </li>
             </ul>
-            @*上方導覽*@
+
             <ul class="navbar-nav ml-auto">
-                @*商家專用-新單訊息*@
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-bell"></i>
@@ -95,7 +112,7 @@
                             <span class="badge badge-pill badge-primary">12 New</span>
                         </span>
                         <span class="indicator text-primary d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle">10</i>  @*新增筆數*@
+                            <i class="fa fa-fw fa-circle">10</i>
                         </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="messagesDropdown">
@@ -108,20 +125,15 @@
                             <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
                         </div>
 
-                        @*<div class="dropdown-divider"></div>
-                        <div class="dropdown-item" href="#">
-                            <strong>David Miller</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                        </div>*@
+
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item small" href="#">View all messages</a>
                     </div>
-                </li>  
+                </li>
 
-                @*顧客專用-購物車訊息*@
-                <li class="nav-item dropdown"> 
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-shopping-cart"></i>
                         <span class="d-lg-none">
@@ -129,7 +141,7 @@
                             <span class="badge badge-pill badge-warning">6 New</span>
                         </span>
                         <span class="indicator text-warning d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle">20</i> @*購物筆數*@
+                            <i class="fa fa-fw fa-circle">20</i>
                         </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="alertsDropdown">
@@ -175,9 +187,9 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item small" href="#">View all alerts</a>
                     </div>
-                </li> 
+                </li>
 
-                @*搜尋列*@
+
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
@@ -190,10 +202,10 @@
                         </div>
                     </form>
                 </li>
-                @*網站登入/登出*@
+
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                        @*<i class="fa fa-fw fa-sign-out"></i>會員登出*@
+
                         <i class="fa fa-fw fa-sign-in"></i>會員登入
                         <i class="fa fa-fw fa-question"></i>忘記密碼
                     </a>
@@ -206,23 +218,98 @@
             <!-- Breadcrumbs-->
 
 
-            @RenderBody()
-        
+
+
+
+            <h2>美食分類</h2>
+
+            <div class="container">
+
+
+
+                <div class="card-group">
+                    <div class="card" style="width:200px">
+                        <img class="card-img-top" src="/photo/indexphoto/d10_resized.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">飲品/湯品</h5>
+                            <p class="card-text">多種不同風味飲品&湯品，讓您細細品嘗。</p>
+                            <div>
+                                <a href="/Views/Products/Aproducts.cshtml" class="btn btn-primary">進入挑選</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                        <img class="card-img-top" src="/photo/indexphoto/dessert_resized.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">美味甜點</h5>
+                            <p class="card-text">五星級甜點師傅，用心製作真材實料的頂級美味。</p>
+                            <div>
+                                <a href="#" class="btn btn-primary">進入挑選</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                        <img class="card-img-top" src="/photo/indexphoto/n1_resized.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">麵食類</h5>
+                            <p class="card-text">無論是義大利麵，拉麵，還是傳統麵，麵條絕對香Q有勁！</p>
+                            <div>
+                                <a href="#" class="btn btn-primary">進入挑選</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                        <img class="card-img-top" src="/photo/indexphoto/r5_resized (1).jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">米飯類</h5>
+                            <p class="card-text">本商場有丼飯、壽司、蛋包飯，可供您多變的選擇！</p>
+                            <div>
+                                <a href="#" class="btn btn-primary">進入挑選</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                        <img class="card-img-top" src="/photo/indexphoto/fast-food_resized (1).jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">速食類</h5>
+                            <p class="card-text">無論是炸雞、還是薯條，絕對讓你讚不絕口！</p>
+                            <div>
+                                <a href="#" class="btn btn-primary">進入挑選</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
         </div>
     </div>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"9ed453b8acf146148433f6c937af4c72"}
+    </script>
+    <script type="text/javascript" src="http://localhost:56661/a3818a00f39f402eaf55dc5b4b0c74e3/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
 </body>
 </html>
 <!-- Bootstrap core JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
-<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>

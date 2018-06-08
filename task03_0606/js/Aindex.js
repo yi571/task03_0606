@@ -1,7 +1,7 @@
-﻿$(function () {
+$(function () {
     "use strict";
 
-    var init = "";
+    var init = "No items yet!";
     var counter = 0;
 
     // Initial Cart
@@ -27,7 +27,7 @@
           );
     }
 
-     //Add To Basket Animation
+    // Add To Basket Animation
     $("button").on("click", function () {
         addToBasket();
         $(this)
