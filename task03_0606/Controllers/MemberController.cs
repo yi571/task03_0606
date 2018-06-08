@@ -33,20 +33,51 @@ namespace task03_0606.Controllers
 
         [HttpPost]
         public ActionResult Login(string email, string pwd) {  //傳入email和password
-            if(pwd == "1") {
-                Session["identity"] = "superUser";
+            //if(pwd == "1") {
+            //    Session["identity"] = "superUser";
+            //}
+            //if (pwd == "2") {
+            //    Session["identity"] = "storeUser";
+            //}
+            //if (pwd == "3") {
+            //    Session["identity"] = "normalUser";
+            //}
+            //var query = from checkUser in db.members
+            //            where 
+            //var checkUser = db.members.ToList();
+            var query = from o in db.members
+                        where o.email == email & o.pwd == pwd
+                        select o;
+
+            if () {
+                Session["identity"] = query.Single().userRank;
+                Session["logState"] = "login";
+                if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+                    Session["lastPage"] = "/Member/Member";
+                }
+                return Redirect(Session["lastPage"].ToString());
             }
-            if (pwd == "2") {
-                Session["identity"] = "storeUser";
+            if (query.Single() == null) {
+                return Content("null");
             }
-            if (pwd == "3") {
-                Session["identity"] = "normalUser";
-            }
-            Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
-            if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
-            }
-            return Redirect((string)Session["lastPage"]);  //重導回最後頁面
+            return View();
+
+
+            //if (checkUser.All(e => e.email == email) && checkUser.All(e => e.pwd == pwd)) {
+            //    Session["logState"] = "login";
+            //    if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+            //        Session["lastPage"] = "/Member/Member";
+            //    }
+            //    return Redirect(Session["lastPage"].ToString());
+            //}
+
+            //return Content((checkUser.All(e => e.email == email)).ToString());
+
+            //Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
+            //if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+            //    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+            //}
+            //return Redirect((string)Session["lastPage"]);  //重導回最後頁面
         }
 
         public ActionResult Logout() {
