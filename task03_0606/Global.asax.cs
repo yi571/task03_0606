@@ -14,5 +14,11 @@ namespace task03_0606
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void Session_Start() {
+            Session["memberType"] = "Business"; // "Customer" , "Admin" ,"Guest"
+            Session["userID"]     = "1";
+        }
+
     }
 }

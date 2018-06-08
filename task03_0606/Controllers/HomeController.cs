@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using task03_0606.Models;
 
 namespace task03_0606.Controllers
 {
     public class HomeController : Controller
     {
+        FoodCourtEntities db = new FoodCourtEntities();
+
         public ActionResult Index()
         {
+            if (Session["memberType"].ToString() == "Business") {
+                return View("Order");
+            }
             return View();
         }
 
@@ -21,7 +27,11 @@ namespace task03_0606.Controllers
 
         public ActionResult Order()
         {
-            return View();
+            var query = from o in db.OrderLists
+                        select o;
+            List<OrderList> orderlist = query.ToList();
+            
+            return View(orderlist);
         }
     }
 }
