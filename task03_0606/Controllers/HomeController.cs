@@ -41,8 +41,8 @@ namespace task03_0606.Controllers
             List<OrderDetail> orderDetailsList = query.ToList();
 
             ViewData.Model = orderDetailsList;
-            return Content(orderDetailsList.ToString());
-            //return View();
+            //return Content(orderDetail_orderID);
+            return View();
         }
     }
 }
