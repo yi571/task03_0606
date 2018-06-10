@@ -54,14 +54,33 @@ namespace task03_0606.Controllers
         }
 
         public ActionResult Register() {
-            //var query = from o in db.streetNames
-            //            group o by o.city;
-            //ViewData.Model = query.ToList();
+            var queryCity = from o in db.streetNames
+                        group o by o.city into g
+                        select g.Key;
+            var query = from o in db.streetNames
+                        where o.city == "台中市"
+                        group o by o.district into g
+                        select g.Key;
+            ViewBag.city = queryCity.ToList();
+            ViewBag.district = query.ToList();
 
-            var query = db.streetNames.GroupBy(g => g.city).Select(o => new { o.Key }).ToList();
-            ViewData.Model = query;
+            //var query = db.streetNames.GroupBy(g => g.city).Select(o => o.Key).ToList();
+            //ViewData.Model = query;
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Register(string city) {
+        //    var query = from o in db.streetNames
+        //                group o by o.district into g
+        //                select g.Key;
+
+        //    ViewData.Model = query.ToList();
+
+        //    //var query = db.streetNames.GroupBy(g => g.city).Select(o => o.Key).ToList();
+        //    //ViewData.Model = query;
+        //    return View();
+        //}
 
         public ActionResult ForgotPassword() {
             return View();
