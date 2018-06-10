@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/_Member_LayoutPage1.cshtml";
@@ -57,21 +58,26 @@
                             <label for="inputCity">城市</label>
                             <select id="city" name="city" class="form-control">
                                 <option selected>選擇城市</option>
-                                <option>台中</option>
+                                
+                                @foreach (var item in this.Model) {
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
+                                }
+
+
                             </select>
                         </div>
                         <div class="col-md">
                             <label for="inputDistrict">行政區</label>
                             <select id="district" name="district" class="form-control">
                                 <option selected>選擇行政區</option>
-                                <option>北區</option>
+                                
                             </select>
                         </div>
                         <div class="col-md">
                             <label for="inputRoad">路名</label>
                             <select id="road" name="road" class="form-control">
                                 <option selected>選擇路名</option>
-                                <option>公益路</option>
+                                
                             </select>
                         </div>
                     </div>

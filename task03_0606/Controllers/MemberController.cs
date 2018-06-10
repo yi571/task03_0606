@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using task03_0606.Models;
+
 
 namespace task03_0606.Controllers
 {
     public class MemberController : Controller
     {
+        task03LabEntities db = new task03LabEntities();
+
         // GET: Member
         public ActionResult Index()
         {
@@ -50,6 +54,12 @@ namespace task03_0606.Controllers
         }
 
         public ActionResult Register() {
+            //var query = from o in db.streetNames
+            //            group o by o.city;
+            //ViewData.Model = query.ToList();
+
+            var query = db.streetNames.GroupBy(g => g.city).Select(o => new { o.Key }).ToList();
+            ViewData.Model = query;
             return View();
         }
 
