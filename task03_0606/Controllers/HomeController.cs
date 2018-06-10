@@ -33,5 +33,16 @@ namespace task03_0606.Controllers
             
             return View(orders);
         }
+        [HttpPost]
+        public ActionResult Order(int orderDetail_orderID) {
+            var query = from od in db.OrderDetails
+                        where od.OrderId == orderDetail_orderID
+                        select od;
+            List<OrderDetail> orderDetailsList = query.ToList();
+
+            ViewData.Model = orderDetailsList;
+            return Content(orderDetailsList.ToString());
+            //return View();
+        }
     }
 }

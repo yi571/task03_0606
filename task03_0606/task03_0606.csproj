@@ -178,6 +178,7 @@
     <Compile Include="Models\OrderList.cs">
       <DependentUpon>FoodCourtModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\orderViewModel.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodCourtModel.tt</DependentUpon>
     </Compile>
