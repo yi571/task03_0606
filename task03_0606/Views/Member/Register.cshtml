@@ -51,19 +51,50 @@
 
 
                 <label for="Address">地址</label>
-
-                <div class="form-group" id="twzipcode">
-                    <div class="form-row">
-                        <div class="col-md" data-role="county" data-style="form-control" data-value="110"></div>
-                        <div class="col-md" data-role="district" data-style="form-control" data-value="臺北市"></div>
-                        <div class="col-md" data-role="zipcode" data-style="form-control" data-value="信義區"></div>
-                    </div>
-
-
-                </div>
                 <div class="form-group">
-                    <input class="form-control" id="Address" type="text" required="required" placeholder="">
+                    <div class="form-row">
+                        <div class="col-md">
+                            <label for="inputCity">城市</label>
+                            <select id="city" name="city" class="form-control">
+                                <option selected>選擇城市</option>
+                                <option>台中</option>
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <label for="inputDistrict">行政區</label>
+                            <select id="district" name="district" class="form-control">
+                                <option selected>選擇行政區</option>
+                                <option>北區</option>
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <label for="inputRoad">路名</label>
+                            <select id="road" name="road" class="form-control">
+                                <option selected>選擇路名</option>
+                                <option>公益路</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md">
+                            <label for="inputLane">巷</label>
+                            <input class="form-control" id="lane" name="lane" type="text" placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputAlley">弄</label>
+                            <input class="form-control" id="alley" name="alley" type="text" placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputAddressNum">號</label>
+                            <input class="form-control" id="addressNum" name="addressNum" type="text" required placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputF">樓</label>
+                            <input class="form-control" id="addressF" name="addressF" type="text" placeholder="...">
+                        </div>
+                    </div>
                 </div>
+
 
                 @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
                 <button type="submit" class="btn btn-primary btn-block">註冊</button>
