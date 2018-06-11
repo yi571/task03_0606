@@ -17,37 +17,41 @@
 
                         <div class="col-md-6">
                             <label for="LastName">姓氏</label>
-                            <input class="form-control" id="LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
+                            <input class="form-control" id="LastName" name="LastName" value="@ViewBag.LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
                         </div>
                         <div class="col-md-6">
                             <label for="FirstName">名稱</label>
-                            <input class="form-control" id="FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
+                            <input class="form-control" id="FirstName" name="FirstName" value="@ViewBag.FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="uid">身分證字號</label>
-                    <input class="form-control" id="uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
+                    <input class="form-control" id="uid" name="uid" value="@ViewBag.uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
                 </div>
                 <div class="form-group">
-                    <label for="Email1">電子信箱</label>
-                    <input class="form-control" id="Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
+                    @if (ViewBag.emailCheck == "信箱已註冊") {
+                    <label for="Email1" id="EmailID">電子信箱 <i class='fa fa-times' style='color: red; '></i> 此信箱已註冊</label>
+                    } else {
+                        <label for="Email1" id="EmailID">電子信箱</label>
+                    }
+                    <input class="form-control" id="Email1" name="Email1" value="@ViewBag.Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
                             <label for="Password1">密碼</label>
-                            <input class="form-control" id="Password1" type="password" required="required" placeholder="請輸入密碼...">
+                            <input class="form-control" id="Password1" name="Password1" value="@ViewBag.Password1" type="password" required="required" placeholder="請輸入密碼...">
                         </div>
                         <div class="col-md-6">
                             <label for="ConfirmPassword" id="ConfPwdLabel">確認密碼</label>
-                            <input class="form-control" id="ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
+                            <input class="form-control" id="ConfirmPassword" name="ConfirmPassword" value="@ViewBag.ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cellPhone">手機號碼</label>
-                    <input class="form-control" id="cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
+                    <input class="form-control" id="cellPhone" name="cellPhone" value="@ViewBag.cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
                 </div>
 
 
@@ -105,26 +109,26 @@
                     <div class="form-row">
                         <div class="col-md">
                             <label for="inputLane">巷</label>
-                            <input class="form-control" id="lane" name="lane" type="text" placeholder="...">
+                            <input class="form-control" id="lane" name="lane" value="@ViewBag.lane" value="@ViewBag.FirstName" type="text" placeholder="...">
                         </div>
                         <div class="col-md">
                             <label for="inputAlley">弄</label>
-                            <input class="form-control" id="alley" name="alley" type="text" placeholder="...">
+                            <input class="form-control" id="alley" name="alley" value="@ViewBag.alley" type="text" placeholder="...">
                         </div>
                         <div class="col-md">
                             <label for="inputAddressNum">號</label>
-                            <input class="form-control" id="addressNum" name="addressNum" type="text" required placeholder="...">
+                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="4" pattern="\d" placeholder="...">
                         </div>
                         <div class="col-md">
                             <label for="inputF">樓</label>
-                            <input class="form-control" id="addressF" name="addressF" type="text" placeholder="...">
+                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="\d" placeholder="...">
                         </div>
                     </div>
                 </div>
 
 
                 @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
-                <button type="submit" class="btn btn-primary btn-block">註冊</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">註冊</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="/Member/Login">登入</a>
@@ -144,5 +148,25 @@
         regForm.submit();
     })
 
-    
+    $("#Email1").blur(function () {
+        regForm.submit();
+    })
+
+
+
+
+    //if ($("#Password1").val() == $("#ConfirmPassword").val() && $("#Password1").val() != null && $("#Password1").val() != "") {
+    //    $("#submitBtn").click(function () {
+    //        regForm.submit();
+    //    })
+    //} else {
+    //    if ($("#Password1").val() != $("#ConfirmPassword").val()) {
+    //        $("#ConfPwdLabel").html('確認密碼 <i class="fa fa-times" style="color: red;"></i> 密碼不相符');
+    //        //$("#ConfirmPassword").tooltip("show");
+    //    }
+    //}
+
+
+
+
 </script>
