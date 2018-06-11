@@ -15,10 +15,12 @@ namespace task03_0606.Models
     public partial class OrderDetail
     {
         public int OrderId { get; set; }
+        public Nullable<int> MemberID { get; set; }
         public int ProductID { get; set; }
         public Nullable<int> OrderCount { get; set; }
         public string Note { get; set; }
     
+        public virtual Member Member { get; set; }
         public virtual OrderList OrderList { get; set; }
         public virtual Product Product { get; set; }
     }

@@ -25,24 +25,42 @@ namespace task03_0606.Controllers
             return View();
         }
 
-        public ActionResult Order()
+        public ActionResult OrderBusiness()
         {
             var query = from o in db.OrderLists
+                        where o.FinshTime == null
                         select o;
             List<OrderList> orders = query.ToList();
             
             return View(orders);
         }
+        
         [HttpPost]
-        public ActionResult Order(int orderDetail_orderID) {
-            var query = from od in db.OrderDetails
-                        where od.OrderId == orderDetail_orderID
-                        select od;
-            List<OrderDetail> orderDetailsList = query.ToList();
+        public ActionResult OrderBusiness(string orderDetail_time_input, string orderDetail_customerPhone_input, int orderDetail_orderID_input, int orderDetail_seatID_input)
+        {
 
-            ViewData.Model = orderDetailsList;
-            //return Content(orderDetail_orderID);
-            return View();
+
+            OrderList orderItem = db.OrderLists.Find(orderDetail_orderID_input);
+
+            orderItem.OrderTime = orderDetail_time_input;
+            orderItem.CustomerPhone = orderDetail_customerPhone_input;
+            orderItem.SeatID = orderDetail_seatID_input;
+            orderItem.FinshTime = DateTime.Now.ToString();
+            //return Content(DateTime.Now.ToString());
+            db.SaveChanges();
+            return RedirectToAction("OrderBusiness");
+        }
+
+
+        public ActionResult OrderCustomer()
+        {
+           // Session["userID"] = "0912345677"
+            var query = from o in db.OrderLists
+                        //where o.CustomerPhone == Session["userID"].ToString()
+                        select o;
+            List<OrderList> orders = query.ToList();
+
+            return View(orders);
         }
     }
 }

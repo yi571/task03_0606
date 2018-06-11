@@ -21,12 +21,11 @@ namespace task03_0606.Models
         }
     
         public int OrderId { get; set; }
-        public Nullable<int> MemberID { get; set; }
+        public string CustomerPhone { get; set; }
         public string OrderTime { get; set; }
         public int SeatID { get; set; }
         public string FinshTime { get; set; }
     
-        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

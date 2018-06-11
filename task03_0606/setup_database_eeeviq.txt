@@ -11,7 +11,9 @@ MemberName nvarchar(10)
 go
 
 insert into Member(MemberName) values ('麥當勞')
+insert into Member(MemberName) values ('三田製麵所')
 go
+
 
 create table Product (
 ProductID int identity primary key ,
@@ -21,29 +23,34 @@ UnitPrice int
 )
 go
 
-insert into Product(ProductName,MemberID,UnitPrice) values ('可樂(中)',1,30)
-insert into Product(ProductName,MemberID,UnitPrice) values ('薯條',1,40)
-insert into Product(ProductName,MemberID,UnitPrice) values ('漢堡',1,60)
-insert into Product(ProductName,MemberID,UnitPrice) values ('漢堡2',1,65)
+insert into Product(ProductName,MemberID,UnitPrice) values ('可樂(中)',1,30) 1
+insert into Product(ProductName,MemberID,UnitPrice) values ('薯條',1,40) 2
+insert into Product(ProductName,MemberID,UnitPrice) values ('漢堡',1,60) 3
+insert into Product(ProductName,MemberID,UnitPrice) values ('漢堡2',1,65) 4
+
+insert into Product(ProductName,MemberID,UnitPrice) values ('烏龍麵',2,130) 5
+insert into Product(ProductName,MemberID,UnitPrice) values ('拉麵',2,140) 6
+insert into Product(ProductName,MemberID,UnitPrice) values ('煎餃',2,90) 7
 go
 
 create table OrderList (
 OrderId int identity primary key ,
-MemberID int foreign key references Member(MemberID),
+CustomerPhone varchar(10),
 OrderTime varchar(20),
 SeatID int not null,
 FinshTime varchar(20),
 )
 go
 
-insert into OrderList(MemberID,OrderTime,SeatID) values (1,'2018-06-08 12:55',1)
-insert into OrderList(MemberID,OrderTime,SeatID) values (1,'2018-06-08 15:55',2)
-insert into OrderList(MemberID,OrderTime,SeatID) values (1,'2018-06-08 16:20',5)
-insert into OrderList(MemberID,OrderTime,SeatID) values (1,'2018-06-08 17:30',1)
+insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345678','2018-06-08 12:55',1)
+insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345677','2018-06-08 15:55',2)
+insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345666','2018-06-08 16:20',5)
+insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345655','2018-06-08 17:30',1)
 go
 
 create table OrderDetail (
 OrderId int foreign key references OrderList(OrderId),
+MemberID int foreign key references Member(MemberID),
 ProductID int foreign key references Product(ProductID),
 OrderCount int,
 Note nvarchar(20),
@@ -51,20 +58,27 @@ CONSTRAINT PK_Person PRIMARY KEY (OrderId,ProductID),
 )
 go
 
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (1,1,2)
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (1,2,1)
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (1,4,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (1,1,1,2)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (1,1,2,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (1,1,4,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (1,2,5,1)
 
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (2,2,2)
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (2,3,1)
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (2,1,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (2,1,2,2)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (2,1,3,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (2,1,1,1)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (2,2,6,1)
 
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (3,4,2)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (3,1,4,2)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (3,2,7,2)
 
-insert into OrderDetail (OrderId,ProductID,OrderCount) values (4,2,2)
-insert into OrderDetail (OrderId,ProductID,OrderCount,Note) values (4,1,1,'少冰')
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (4,1,2,2)
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount,Note) values (4,1,1,1,'少冰')
 go
 
+
+select *
+from OrderDetail
+LEFT JOIN OrderList ON OrderDetail.OrderId = OrderList.OrderId
 
 
 drop table OrderDetail

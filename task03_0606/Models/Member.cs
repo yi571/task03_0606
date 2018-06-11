@@ -17,7 +17,7 @@ namespace task03_0606.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Member()
         {
-            this.OrderLists = new HashSet<OrderList>();
+            this.OrderDetails = new HashSet<OrderDetail>();
             this.Products = new HashSet<Product>();
         }
     
@@ -25,7 +25,7 @@ namespace task03_0606.Models
         public string MemberName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderList> OrderLists { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
