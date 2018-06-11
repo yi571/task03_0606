@@ -31,7 +31,27 @@ namespace task03_0606.Controllers
                         where o.FinshTime == null
                         select o;
             List<OrderList> orders = query.ToList();
-            
+
+            //        var query = from o in db.OrderLists
+            //                    join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
+            //                    from c in ps.DefaultIfEmpty()
+            //                    where o.FinshTime == null
+            //                    select new orderViewModel {
+            //                       OrderId = c.OrderId,
+            //                       OrderTime = o.OrderTime,
+            //                       SeatID = o.SeatID,
+            //                       CustomerPhone = o.CustomerPhone,
+            //                       FinshTime = o.FinshTime,
+            //                       MemberID = c.MemberID,
+            //                       OrderCount = c.OrderCount, 
+            //                       Note =c.Note,
+            //                       ProductID = c.ProductID,
+            //                       //ProductName =c.p
+            //                       //UnitPrice = c.
+            //};
+            //        List<orderViewModel> orders = query.ToList();
+
+
             return View(orders);
         }
         
@@ -51,13 +71,40 @@ namespace task03_0606.Controllers
             return RedirectToAction("OrderBusiness");
         }
 
+        public ActionResult OrderBusiness_detail(int OrderId)
+        {
+            var query = from o in db.OrderLists
+                        join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
+                        from c in ps.DefaultIfEmpty()
+                        where o.FinshTime == null && o.OrderId== OrderId
+                        select new orderViewModel
+                        {
+                            OrderId = c.OrderId,
+                            OrderTime = o.OrderTime,
+                            SeatID = o.SeatID,
+                            CustomerPhone = o.CustomerPhone,
+                            FinshTime = o.FinshTime,
+                            MemberID = c.MemberID,
+                            OrderCount = c.OrderCount,
+                            Note = c.Note,
+                            ProductID = c.ProductID,
+                            ProductName =c.Product.ProductName,
+                            UnitPrice = c.Product.UnitPrice,
+                        };
+            List<orderViewModel> orders = query.ToList();
+
+
+            return View(orders);
+        }
+
 
         public ActionResult OrderCustomer()
         {
-           // Session["userID"] = "0912345677"
-            var query = from o in db.OrderLists
-                        //where o.CustomerPhone == Session["userID"].ToString()
-                        select o;
+            // Session["userID"] = "0912345677"
+            string userID = Session["userID"].ToString();
+             var query = from o in db.OrderLists
+                        where o.CustomerPhone == userID
+                         select o;
             List<OrderList> orders = query.ToList();
 
             return View(orders);

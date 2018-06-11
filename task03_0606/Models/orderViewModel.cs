@@ -10,13 +10,14 @@ namespace task03_0606.Models
         public int OrderId { get; set; }
         public string OrderTime { get; set; }
         public int SeatID { get; set; }
+        public string CustomerPhone { get; set; }
         public string FinshTime { get; set; }
-        public int MemberID { get; set; }
-        public int OrderCount { get; set; }
+        public int? MemberID { get; set; }
+        public int? OrderCount { get; set; }
         public string Note { get; set; }
         public int ProductID { get; set; }
-        public int ProductName { get; set; }
-        public int UnitPrice { get; set; }
-       
+        public string ProductName { get; set; }
+        public int? UnitPrice { get; set; }
+
     }
 }
