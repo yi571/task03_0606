@@ -45,10 +45,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,6 +102,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
@@ -101,6 +112,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\yi.css" />
+    <Content Include="db.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\Aindex.js" />
@@ -111,6 +123,16 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
+    <Content Include="Models\FoodProductsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+      <LastGenOutput>FoodProductsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FoodProductsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+      <LastGenOutput>FoodProductsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="photo\dessert\B1.jpg" />
     <Content Include="photo\dessert\B10.jpg" />
     <Content Include="photo\dessert\B11.jpg" />
@@ -139,6 +161,7 @@
     <Content Include="photo\fastfood\E10.jpg" />
     <Content Include="photo\fastfood\E11.jpg" />
     <Content Include="photo\fastfood\E12.jpg" />
+    <Content Include="photo\fastfood\E13.jpg" />
     <Content Include="photo\fastfood\E2.jpg" />
     <Content Include="photo\fastfood\E3.jpg" />
     <Content Include="photo\fastfood\E4.jpg" />
@@ -178,6 +201,13 @@
     <Content Include="photo\rice\D9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\FoodProductsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodProductsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FoodProductsModel.edmx.diagram">
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -190,6 +220,27 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Class2.cs" />
+    <Compile Include="Models\Class5.cs" />
+    <Compile Include="Models\FoodProductsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodProductsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodProductsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\myfoodproduct.cs">
+      <DependentUpon>FoodProductsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -230,9 +281,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="picture\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

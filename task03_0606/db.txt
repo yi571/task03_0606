@@ -1,0 +1,113 @@
+﻿create database FoodProducts
+
+create table myfoodproducts
+( productId int NOT NULL,
+  PRIMARY KEY (productId),
+  title varchar(45) NOT NULL,
+  price int not null,
+  picture varchar(250) NOT NULL,
+  introduce varchar(250) not null,
+  addcount int
+)
+INSERT INTO myfoodproducts VALUES(1,'漂浮冰咖啡','180','A1.jpg','將單品熱咖啡倒入鋼杯中，將鋼杯放入裝有冰塊和水的容器中，等待咖啡變涼~最後在杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+
+INSERT INTO myfoodproducts VALUES(2,'巧克力牛奶','120','A2.jpg','巧克力牛奶，是一種可可味道的牛奶飲料，冷熱飲用皆宜~','0')
+INSERT INTO myfoodproducts VALUES(3,'現榨蘋果汁','80','A3.jpg','蘋果可以提供能量,因為它含有糖~新鮮的蘋果汁味道好,嬰幼和孩子們都很喜歡~是一種完美飲品。','0')
+INSERT INTO myfoodproducts VALUES(4,'純正黑咖啡','150','A4.jpg','文青最愛，黑咖啡的純郁，最適合喚醒疲勞者緩緩甦醒的心靈。','0')
+INSERT INTO myfoodproducts VALUES(5,'可樂','40','A5.jpg','一種黑褐色、帶有甜味、含咖啡因的碳酸飲料，但不含酒精，永不退燒的商品。','0')
+INSERT INTO myfoodproducts VALUES(6,'焦糖瑪奇朵','150','A6.jpg',' 焦糖瑪琪雅朵是一種加入焦糖的瑪琪雅朵咖啡。在香濃熱牛奶上加入濃縮咖啡、香草，最後淋上純正焦糖而製成的飲品，特點是在一杯飲品裡可以喝到三種不同的口味。','0')
+INSERT INTO myfoodproducts VALUES(7,'高山烏龍茶','80','A7.jpg','高山烏龍茶以海拔1,000公尺以上茶園所產製的茶葉所以稱「高山茶」~','0')
+INSERT INTO myfoodproducts VALUES(8,'金桔檸檬','100','A8.jpg','金桔檸檬茶是非常去火的好茶，酸酸甜甜的味道讓很多人對它愛不釋手~','0')
+INSERT INTO myfoodproducts VALUES(9,'新鮮柳橙汁','80','A9.jpg','從柳橙的果肉榨出的果汁~其酸酸甜甜的味道，十分可口~此款柳橙汁含有果肉顆粒，又是另一種風味哦~','0')
+INSERT INTO myfoodproducts VALUES(10,'日月潭紅茶','120','A10.jpg','日月潭附近高度、濕度、土質類似種出的阿薩姆紅茶品質、口感極佳~','0')
+INSERT INTO myfoodproducts VALUES(11,'珍珠奶茶','80','A11.jpg','台灣的茶飲界的巨星~將「粉圓」加入香醇的奶茶中，口感特殊，所以受到廣大的歡迎與回響~','0')
+INSERT INTO myfoodproducts VALUES(12,'日式味增湯','60','A12.jpg','味噌湯是一種湯料理，即麵豉湯，是日本具代表性的傳統食品，常見於日本人的早餐。','0')
+
+INSERT INTO myfoodproducts VALUES(13,'原味葡式蛋撻','45','B1.jpg','是一種以蛋漿做成餡料的西式餡餅~蛋塔是把餅皮放進小圓盆狀的餅模中，倒入由砂糖、鮮奶及雞蛋混合而成之蛋漿，然後放入烤爐；烤出成品外層為鬆脆之塔皮，內層則為香甜的黃色凝固蛋漿。','0')
+INSERT INTO myfoodproducts VALUES(14,'藍莓三色蛋糕','150','B2.jpg','香草、草莓、藍莓三色組合而成，甜而不膩的繽紛蛋糕~','0')
+INSERT INTO myfoodproducts VALUES(15,'巧克力蛋糕','80','B3.jpg','一種以巧克力製成的蛋糕，是常見的甜品之一。','0')
+INSERT INTO myfoodproducts VALUES(16,'牛奶慕斯蛋糕','80','B4.jpg','牛奶慕斯，餅乾碎做底，加入鮮奶油和水果，香濃順滑，多層口感，綿密蕩漾，獨一無二，是一個值得每個人品味的蛋糕。','0')
+INSERT INTO myfoodproducts VALUES(17,'卡士達泡芙','45','B5.jpg','一種源自法國的球形糕點。裡面包裹的材料是通過注射或者將麵包頂部撕破後加進去的。','0')
+INSERT INTO myfoodproducts VALUES(18,'焦糖花生乳酪蛋糕','150','B6.jpg','香濃滑順的自製焦糖,柔滑細緻的花生乳酪,香酥新鮮的熟核桃碎,以及乳酪蛋糕一定要有的黑餅乾底,這些美好的象徵組合在一起~','0')
+INSERT INTO myfoodproducts VALUES(19,'香酥可麗餅','80','B7.jpg','又稱凱普餅，有時意譯為法國薄餅或法國蛋餅，是一種很薄且面積大的薄烤餅、以小麥製作且風行全歐洲和世界許多角落的美食，由一種可麗餅烤盤或平底鍋煎製兩面而成，可用作甜點的盤底，也可以自成一道佳餚美饌。','0')
+INSERT INTO myfoodproducts VALUES(20,'焦糖奶酪布丁','100','B8.jpg','布丁杯烤好後灑入杏仁碎片，表層脆香，中層軟綿，底層香濃，絕對讓你回味無窮！','0')
+INSERT INTO myfoodproducts VALUES(21,'冰火菠蘿油','50','B9.jpg','手工製作現烤的菠蘿麵包搭配香濃奶油，讓你吃完一個，還想再吃一個！','0')
+INSERT INTO myfoodproducts VALUES(22,'義式奶油捲餅','80','B10.jpg','義式捲餅，把義大利紅酒餅皮切成圓形的，在拿去炸，最後在裡面放入滿滿的奶油~','0')
+INSERT INTO myfoodproducts VALUES(23,'冰淇淋','60','B11.jpg','一種冷凍的甜品，通常以牛奶或奶油等乳製品為原料，並加入水果或其他成分和香料混合製成。','0')
+INSERT INTO myfoodproducts VALUES(24,'日式鬆餅','120','B12.jpg','大大一張，甜甜的~軟綿綿的~油油的~厚薄適中~還在等甚麼呢?','0')
+
+
+
+
+
+INSERT INTO myfoodproducts VALUES(25,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+INSERT INTO myfoodproducts VALUES(13,'漂浮冰咖啡','180','A1.jpg','杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
+
+
+
+
+
+
+
+
+
+
+INSERT INTO myfoodproducts VALUES(1,'卡啦炸雞','75','E1.jpg','炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。','0')
+INSERT INTO myfoodproducts VALUES(2,'香脆薯條','60','E2.jpg','馬鈴薯切成條狀後油炸而成的食品，一根接著一根~好吃的讓你停步下手！','0')
+INSERT INTO myfoodproducts VALUES(3,'炸天婦羅','120','E3.jpg','質地較堅硬的蔬菜都很適合油炸，例如青椒、茄子、洋蔥、菇類、四季豆、蘆筍、南瓜、牛蒡和地瓜等~酥脆的口感就連挑食的小孩也會忍不住多吃幾口~','0')
+INSERT INTO myfoodproducts VALUES(4,'炸洋蔥圈','50','E4.jpg','將洋蔥切成一圈圈，加上些麵糊再炸熟~香脆可口~','0')
+INSERT INTO myfoodproducts VALUES(5,'酥炸魷魚腳','100','E5.jpg','高溫快速油炸~重複兩次就能鎖住鮮味~又酥又juicy喔~','0')
+INSERT INTO myfoodproducts VALUES(6,'黃金銀絲卷','80','E6.jpg',' 這款千層小麵包，一直都很受歡迎，外表酥脆，內裡柔軟，好吃到停不下來呀~','0')
+INSERT INTO myfoodproducts VALUES(7,'酥炸香菇','80','E7.jpg','香香酥酥的.當配菜也不錯吃.剛炸起來更好吃~','0')
+INSERT INTO myfoodproducts VALUES(8,'黃金鱈魚條','120','E8.jpg','鱈魚香嫩且微微帶鹹又爽口，再稍加變化，同樣可以嚐到鱈魚原有的香嫩清甜，且更不油膩！','0')
+INSERT INTO myfoodproducts VALUES(9,'香炸鹽酥雞','100','E9.jpg','雞肉切成小塊，先以醬料醃漬入味，再裹上油炸粉或調味過後的麵粉漿，再油炸~香味十足呀~','0')
+INSERT INTO myfoodproducts VALUES(10,'牛肉大炸丸','100','E10.jpg','一顆大大地肉丸，裡頭有滿滿的松版牛肉和洋蔥。','0')
+INSERT INTO myfoodproducts VALUES(11,'美味炸蝦捲','80','E11.jpg','以新鮮蝦仁為主做成的蝦捲深受消費者的喜愛~
+','0')
+INSERT INTO myfoodproducts VALUES(12,'豆腐炸雞丁','120','E12.jpg','這是一道你不能錯過的庶民美食~豆腐的香氣加上嫩質雞丁~絕配~
+','0')
+INSERT INTO myfoodproducts VALUES(13,'酥炸玉米筍','80','E13.jpg','玉米在吐絲授粉前的幼嫩果穗，因外形細長，上尖下粗,微微的清甜，油炸之後更顯玉米的香味','0')
+

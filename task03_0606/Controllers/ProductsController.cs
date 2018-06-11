@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using task03_0606.Models;
 
 namespace task03_0606.Controllers
 {
     public class ProductsController : Controller
     {
+
+        FoodProductsEntities db = new FoodProductsEntities();
         // GET: Products
         public ActionResult Index()
         {
@@ -16,25 +19,91 @@ namespace task03_0606.Controllers
 
         public ActionResult Drinkproducts()
         {
-            return View();
+
+            var query = from o in db.myfoodproducts
+                        select new Class5
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce = o.introduce,
+                            addcount = (int)o.addcount
+
+                        };
+            List<Class5> prolist = query.ToList();
+            return View(prolist);
+
         }
 
         public ActionResult Dessertproducts()
         {
-            return View();
+            var query = from o in db.myfoodproducts
+                        select new Class5
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce = o.introduce,
+                            addcount = (int)o.addcount
+
+                        };
+            List<Class5> prolist = query.ToList();
+            return View(prolist);
         }
         public ActionResult Noodleproducts()
         {
-            return View();
+            var query = from o in db.myfoodproducts
+                        select new Class5
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce = o.introduce,
+                            addcount = (int)o.addcount
+
+                        };
+            List<Class5> prolist = query.ToList();
+            return View(prolist);
         }
         public ActionResult Riceproducts()
         {
-            return View();
+            var query = from o in db.myfoodproducts
+                        select new Class5
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce = o.introduce,
+                            addcount = (int)o.addcount
+
+                        };
+            List<Class5> prolist = query.ToList();
+            return View(prolist);
         }
 
         public ActionResult Fastfoodproducts()
+
+           
         {
-            return View();
+            var query = from o in db.myfoodproducts
+                        select new Class5
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce=o.introduce,
+                            addcount=(int)o.addcount
+                         
+                        };
+            List<Class5> prolist = query.ToList();
+            return View(prolist);
+    }
+        
+         
         }
     }
-}
