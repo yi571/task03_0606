@@ -13,9 +13,9 @@ namespace task03_0606.Controllers
 
         public ActionResult Index()
         {
-            if (Session["memberType"].ToString() == "Business") {
-                return View("Order");
-            }
+            //if (Session["memberType"].ToString() == "Business") {
+            //    return View("OrderBusiness");
+            //}
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace task03_0606.Controllers
 
             return View(orders);
         }
-        
+
         [HttpPost]
         public ActionResult OrderBusiness(string orderDetail_time_input, string orderDetail_customerPhone_input, int orderDetail_orderID_input, int orderDetail_seatID_input)
         {
@@ -70,9 +70,11 @@ namespace task03_0606.Controllers
             db.SaveChanges();
             return RedirectToAction("OrderBusiness");
         }
-
+        [HttpPost]
         public ActionResult OrderBusiness_detail(int OrderId)
         {
+            
+
             var query = from o in db.OrderLists
                         join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
                         from c in ps.DefaultIfEmpty()
@@ -94,7 +96,9 @@ namespace task03_0606.Controllers
             List<orderViewModel> orders = query.ToList();
 
 
-            return View(orders);
+            return Json(orders, JsonRequestBehavior.AllowGet);
+
+            
         }
 
 
