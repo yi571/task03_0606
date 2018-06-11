@@ -11,7 +11,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">註冊帳號</div>
         <div class="card-body">
-            <form method="post" action="">
+            <form method="post" action="" id="regForm">
                 <div class="form-group">
                     <div class="form-row">
 
@@ -59,9 +59,14 @@
                             <select id="city" name="city" class="form-control">
                                 <option selected>選擇城市</option>
 
-                                @foreach (var item in ViewBag.city) {
-                                    <option value="@item">@item</option>
-                                }
+                                @{ foreach (var item in ViewBag.city) {
+                                        if (item == ViewBag.cityValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+
+                                    } }
 
 
                             </select>
@@ -70,8 +75,14 @@
                             <label for="inputDistrict">行政區</label>
                             <select id="district" name="district" class="form-control">
                                 <option selected>選擇行政區</option>
-                                @foreach (var item in ViewBag.district) {
-                                    <option value="@item">@item</option>
+                                @if (ViewBag.district != null) {
+                                    foreach (var item in ViewBag.district) {
+                                        if (item == ViewBag.districtValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
                                 }
                             </select>
                         </div>
@@ -79,7 +90,15 @@
                             <label for="inputRoad">路名</label>
                             <select id="road" name="road" class="form-control">
                                 <option selected>選擇路名</option>
-
+                                @if (ViewBag.road != null) {
+                                    foreach (var item in ViewBag.road) {
+                                        if (item == ViewBag.roadValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
+                                }
                             </select>
                         </div>
                     </div>
@@ -116,3 +135,14 @@
 </div>
 <script src="/js/jquery.twzipcode.min.js"></script>
 <script src="/js/yi.js"></script>
+<script>
+    $("#city").on("change", function () {
+        regForm.submit();
+    })
+
+    $("#district").on("change", function () {
+        regForm.submit();
+    })
+
+    
+</script>

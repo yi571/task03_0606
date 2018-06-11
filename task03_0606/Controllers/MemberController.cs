@@ -6,15 +6,12 @@ using System.Web.Mvc;
 using task03_0606.Models;
 
 
-namespace task03_0606.Controllers
-{
-    public class MemberController : Controller
-    {
+namespace task03_0606.Controllers {
+    public class MemberController : Controller {
         task03LabEntities db = new task03LabEntities();
 
         // GET: Member
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
 
@@ -32,7 +29,7 @@ namespace task03_0606.Controllers
 
         [HttpPost]
         public ActionResult Login(string email, string pwd) {  //傳入email和password
-            if(pwd == "1") {
+            if (pwd == "1") {
                 Session["identity"] = "superUser";
             }
             if (pwd == "2") {
@@ -55,19 +52,44 @@ namespace task03_0606.Controllers
 
         public ActionResult Register() {
             var queryCity = from o in db.streetNames
-                        group o by o.city into g
-                        select g.Key;
-            var query = from o in db.streetNames
-                        where o.city == "台中市"
-                        group o by o.district into g
-                        select g.Key;
+                            group o by o.city into g
+                            select g.Key;
+
             ViewBag.city = queryCity.ToList();
-            ViewBag.district = query.ToList();
+
 
             //var query = db.streetNames.GroupBy(g => g.city).Select(o => o.Key).ToList();
             //ViewData.Model = query;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Register(string city, string district, string road) {  //行政區選單控制
+
+            var query = from o in db.streetNames
+                        where o.city == city
+                        group o by o.district into g
+                        select g.Key;
+            var queryCity = from o in db.streetNames
+                            group o by o.city into g
+                            select g.Key;
+            var queryRoad = from o in db.streetNames
+                            where (o.city == city & o.district == district)
+                            group o by o.road into g
+                            select g.Key;
+
+            ViewBag.city = queryCity.ToList();
+            ViewBag.cityValue = city;
+            ViewBag.district = query.ToList();
+            ViewBag.districtValue = district;
+            ViewBag.road = queryRoad.ToList();
+            ViewBag.roadValue = road;
+
+            //var query = db.streetNames.GroupBy(g => g.city).Select(o => o.Key).ToList();
+            //ViewData.Model = query;
+            return View();
+        }
+
 
         //[HttpPost]
         //public ActionResult Register(string city) {
@@ -104,7 +126,7 @@ namespace task03_0606.Controllers
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
-                return View();
+            return View();
         }
 
 
