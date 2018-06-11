@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="task03LabModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="task03LabModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="streetName">
           <Key>
             <PropertyRef Name="uid" />
           </Key>
           <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="zip" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="postalCode" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="city" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="district" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="road" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -53,22 +53,10 @@
             <End Role="userInfo" EntitySet="userInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="task03LabModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="streetName">
-          <Key>
-            <PropertyRef Name="uid" />
-          </Key>
-          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="zip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="district" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="road" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="userInfoes" Relationship="Self.FK_userInfo_streetName" FromRole="streetName" ToRole="userInfo" />
-        </EntityType>
         <EntityType Name="userInfo">
           <Key>
             <PropertyRef Name="id" />
@@ -86,11 +74,30 @@
           <Property Name="addressNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="addressF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="userRank" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="streetName" Relationship="Self.FK_userInfo_streetName" FromRole="userInfo" ToRole="streetName" />
+          <NavigationProperty Name="streetName" Relationship="task03LabModel.FK_userInfo_streetName" FromRole="userInfo" ToRole="streetName" />
+        </EntityType>
+        <EntityContainer Name="task03LabEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="userInfoes" EntityType="Self.userInfo" />
+          <EntitySet Name="streetNames" EntityType="task03LabModel.streetName" />
+          <AssociationSet Name="FK_userInfo_streetName" Association="task03LabModel.FK_userInfo_streetName">
+            <End Role="streetName" EntitySet="streetNames" />
+            <End Role="userInfo" EntitySet="userInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="streetName">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="postalCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="road" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userInfoes" Relationship="task03LabModel.FK_userInfo_streetName" FromRole="streetName" ToRole="userInfo" />
         </EntityType>
         <Association Name="FK_userInfo_streetName">
-          <End Role="streetName" Type="Self.streetName" Multiplicity="1" />
-          <End Role="userInfo" Type="Self.userInfo" Multiplicity="*" />
+          <End Type="task03LabModel.streetName" Role="streetName" Multiplicity="1" />
+          <End Type="task03LabModel.userInfo" Role="userInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="streetName">
               <PropertyRef Name="uid" />
@@ -100,31 +107,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="task03LabEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="streetNames" EntityType="Self.streetName" />
-          <EntitySet Name="userInfoes" EntityType="Self.userInfo" />
-          <AssociationSet Name="FK_userInfo_streetName" Association="Self.FK_userInfo_streetName">
-            <End Role="streetName" EntitySet="streetNames" />
-            <End Role="userInfo" EntitySet="userInfoes" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="task03LabModelStoreContainer" CdmEntityContainer="task03LabEntities">
-          <EntitySetMapping Name="streetNames">
-            <EntityTypeMapping TypeName="task03LabModel.streetName">
-              <MappingFragment StoreEntitySet="streetName">
-                <ScalarProperty Name="uid" ColumnName="uid" />
-                <ScalarProperty Name="zip" ColumnName="zip" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="district" ColumnName="district" />
-                <ScalarProperty Name="road" ColumnName="road" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="userInfoes">
             <EntityTypeMapping TypeName="task03LabModel.userInfo">
               <MappingFragment StoreEntitySet="userInfo">
@@ -141,6 +129,17 @@
                 <ScalarProperty Name="addressNum" ColumnName="addressNum" />
                 <ScalarProperty Name="addressF" ColumnName="addressF" />
                 <ScalarProperty Name="userRank" ColumnName="userRank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="streetNames">
+            <EntityTypeMapping TypeName="task03LabModel.streetName">
+              <MappingFragment StoreEntitySet="streetName">
+                <ScalarProperty Name="road" ColumnName="road" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

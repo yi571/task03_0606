@@ -25,7 +25,7 @@ namespace task03_0606.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<streetName> streetNames { get; set; }
         public virtual DbSet<userInfo> userInfoes { get; set; }
+        public virtual DbSet<streetName> streetNames { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace task03_0606.Models
         }
     
         public int uid { get; set; }
-        public string zip { get; set; }
+        public string postalCode { get; set; }
         public string city { get; set; }
         public string district { get; set; }
         public string road { get; set; }
