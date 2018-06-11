@@ -14,14 +14,23 @@ namespace task03_0606.Controllers
         // GET: Products
         public ActionResult Index()
         {
+
+
+
+
+
             return View();
         }
 
+
+
         public ActionResult Drinkproducts()
         {
-
             var query = from o in db.myfoodproducts
-                        select new Class5
+                //where o.productId < 200 | o.productId > 1
+                        where o.productId <= 200
+                        where o.productId >= 1
+                        select new Class1
                         {
                             productId = o.productId,
                             title = o.title,
@@ -31,7 +40,7 @@ namespace task03_0606.Controllers
                             addcount = (int)o.addcount
 
                         };
-            List<Class5> prolist = query.ToList();
+            List<Class1> prolist = query.ToList();
             return View(prolist);
 
         }
@@ -39,7 +48,9 @@ namespace task03_0606.Controllers
         public ActionResult Dessertproducts()
         {
             var query = from o in db.myfoodproducts
-                        select new Class5
+                        where o.productId <= 400
+                        where o.productId >= 201
+                        select new Class1
                         {
                             productId = o.productId,
                             title = o.title,
@@ -49,13 +60,15 @@ namespace task03_0606.Controllers
                             addcount = (int)o.addcount
 
                         };
-            List<Class5> prolist = query.ToList();
+            List<Class1> prolist = query.ToList();
             return View(prolist);
         }
         public ActionResult Noodleproducts()
         {
             var query = from o in db.myfoodproducts
-                        select new Class5
+                        where o.productId <= 600
+                        where o.productId >= 401
+                        select new Class1
                         {
                             productId = o.productId,
                             title = o.title,
@@ -65,13 +78,15 @@ namespace task03_0606.Controllers
                             addcount = (int)o.addcount
 
                         };
-            List<Class5> prolist = query.ToList();
+            List<Class1> prolist = query.ToList();
             return View(prolist);
         }
         public ActionResult Riceproducts()
         {
             var query = from o in db.myfoodproducts
-                        select new Class5
+                        where o.productId <= 800
+                        where o.productId >= 601
+                        select new Class1
                         {
                             productId = o.productId,
                             title = o.title,
@@ -81,7 +96,7 @@ namespace task03_0606.Controllers
                             addcount = (int)o.addcount
 
                         };
-            List<Class5> prolist = query.ToList();
+            List<Class1> prolist = query.ToList();
             return View(prolist);
         }
 
@@ -90,7 +105,9 @@ namespace task03_0606.Controllers
            
         {
             var query = from o in db.myfoodproducts
-                        select new Class5
+                        where o.productId <= 1000
+                        where o.productId >= 801
+                        select new Class1
                         {
                             productId = o.productId,
                             title = o.title,
@@ -100,7 +117,7 @@ namespace task03_0606.Controllers
                             addcount=(int)o.addcount
                          
                         };
-            List<Class5> prolist = query.ToList();
+            List<Class1> prolist = query.ToList();
             return View(prolist);
     }
         

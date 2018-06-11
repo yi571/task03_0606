@@ -1,504 +1,60 @@
-﻿
+﻿@model List<task03_0606.Models.Class1>
 @{
     ViewBag.Title = "Riceproducts";
 }
 
 <h2>米飯類</h2>
 
-<header>
-    <ul>
-        <i class='fa fa-shopping-cart'>
-            <span class='counter'></span>
-        </i>
-    </ul>
-</header>
+@*<header>
+        <ul>
+            <i class='fa fa-shopping-cart'>
+                <span class='counter'></span>
+            </i>
+        </ul>
+    </header>*@
 <div class='row'>
+    @foreach (task03_0606.Models.Class1 db1 in Model)
+    {
 
-    <div class='product--blue'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/rice/D1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">勝丼</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+        <div class='product--pink'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='~/photo/rice/@db1.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productId" />
 
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D1.jpg' width='500' /><br />
-                        現點現做炸豬排，淋上蛋液與醬汁，讓人十分飽足的美味。
-                    </div>
-                    <div class="modal-footer">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.@db1.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db1.productId">@db1.title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>勝丼</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
+                        <div class="modal-body">
+                            <img src='~/photo/rice/@db1.picture' width='500' /><br />
+                            @db1.introduce
+                        </div>
+                        <div class="modal-footer">
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品1結束*@
-    <div class='product--orange'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/rice/D2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter1" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle1">牛肉丼飯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D2.jpg' width='500' /><br />
-                        主廚人氣料理！選用澳洲進口胸腹肉，軟嫩肉質、厚度恰好，與屏東洋蔥一起共煮，釋放出特有香甜，味蕾深深被擄獲。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class='product_inner'>
+            <div class='product_inner'>
+                <p>@db1.title</p>
+                <p>Price $@db1.price</p>
+                <button>Add to basket</button>
+            </div>
 
-            <p>牛肉丼飯</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品2結束*@
-    <div class='product--red'>
-
-        <!-- Button trigger modal -->
-        <img src='~/photo/rice/D3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter2" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle2">野菜丼</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D3.jpg' width='500' /><br />
-                        選用產地直送杏鮑菇、香菇等食材，大配特製醬汁熬煮，口味獨特清新。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
             </div>
         </div>
-        <div class='product_inner'>
-
-            <p>野菜丼</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品3結束*@
-    <div class='product--green'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/rice/D4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter3" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle3">親子丼</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D4.jpg' width='500' /><br />
-                        將現做雞腿肉塊與新鮮洋蔥、金黃蛋液搭配特調丼汁混合合成，滑嫩香甜。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>親子丼</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品4結束*@
-
-    <div class='product--yellow'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter4" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle4">日式豬排丼</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D5.jpg' width='500' /><br />
-                        大塊滿足讓人感動的脆勁，淋上特製醬，夾起一塊接一塊，
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>日式豬排丼</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品5結束*@
-    <div class='product--pink'>
-
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter5" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle5" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle5">鰻魚丼</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D6.jpg' width='500' /><br />
-                        鰻魚飯的鰻魚肥嫩且具彈性，隱約帶有點燒烤後的苦味，但完全不影響風味，搭配恰到好處的醬汁，更是襯托出鰻魚的鮮美。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>鰻魚丼</p>
-            <p>Price $200</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品6結束*@
-    <div class='product--blue'>
-
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter6" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle6" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle6">蛋皮海苔醋壽司</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D7.jpg' width='500' /><br />
-                        薄可透光的美味蛋皮以及海苔是壽司的絕佳搭配~ 
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>蛋皮海苔醋壽司</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品7結束*@
-    <div class='product--orange'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter7" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle7" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle7">生魚片壽司</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D8.jpg' width='500' /><br />
-                        精緻綜合生魚片、豪華握壽司！承襲日本大廚技藝，數十年溫純美味！
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>生魚片壽司</p>
-            <p>Price $250</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-
-    @*-----------------------------產品8結束*@
-    <div class='product--red'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter8" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter8" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle8" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle8">歐姆蛋包飯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D9.jpg' width='500' /><br />
-                        蛋包飯長的可愛又好吃, 一直都是很受歡迎的料理之一!炒飯時番茄醬一定要加夠多, 蛋跟番茄醬還有奶油的味道本來就很搭配, 也是正宗蛋包飯原始的味道唷!
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>歐姆蛋包飯</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品9結束*@
-    <div class='product--green'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter9" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle9" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle9">西班牙海鮮飯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D10.jpg' width='500' /><br />
-                        海鮮飯食材相當多樣，包括淡菜、、洋葱、蕃茄、紅椒、蒜，再加上蝦、鯛魚片、蟹肉、花枝、等，和義大利米一起烹煮~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>西班牙海鮮飯</p>
-            <p>Price $250</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品10結束*@
-
-
-    <div class='product--yellow'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter10" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter10" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle10" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle10">咖哩豬排飯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D11.jpg' width='500' /><br />
-                        咖哩口感香滑濃稠、味道較甜~其配上白飯而成的日式咖哩飯非常受歡迎~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-            <p>咖哩豬排飯</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品11結束*@
-    <div class='product--pink'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/rice/D12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter11" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter11" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle11" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle11">照燒雞腿飯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/rice/D12.jpg' width='500' /><br />
-                        外皮微酥帶有炭烤香氣、濃郁醬香縈繞又不失雞肉本身的原汁香嫩，重點是甜度真的一點也不高，說來可是會讓人扒光飯的好滋味啊！
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>照燒雞腿飯</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
+    }
 
 </div>

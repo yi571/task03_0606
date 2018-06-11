@@ -1,4 +1,4 @@
-﻿
+﻿@model List<task03_0606.Models.Class1>
 @{
     ViewBag.Title = "Noodleproducts";
 }
@@ -11,494 +11,49 @@
             </i>
         </ul>
     </header>*@
-
 <div class='row'>
+    @foreach (task03_0606.Models.Class1 db1 in Model)
+    {
 
-    <div class='product--blue'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">招牌牛肉麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+        <div class='product--yellow'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='~/photo/noodle/@db1.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productId" />
 
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C1.jpg' width='500' /><br />
-                        牛肉麵吃起來的口感，很軟嫩，好吃，有著牛肉的香氣~
-                    </div>
-                    <div class="modal-footer">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.@db1.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db1.productId">@db1.title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>招牌牛肉麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
+                        <div class="modal-body">
+                            <img src='~/photo/noodle/@db1.picture' width='500' /><br />
+                            @db1.introduce
+                        </div>
+                        <div class="modal-footer">
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品1結束*@
-    <div class='product--orange'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter1" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle1">絲瓜水餃</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C2.jpg' width='500' /><br />
-                        絲瓜包成水餃,非常新鮮美味!經過水煮後,絲瓜的鮮甜全部留在餃皮中,配上新鮮蝦肉更是美味喔~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class='product_inner'>
+            <div class='product_inner'>
+                <p>@db1.title</p>
+                <p>Price $@db1.price</p>
+                <button>Add to basket</button>
+            </div>
 
-            <p>絲瓜水餃</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品2結束*@
-    <div class='product--red'>
-
-        <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter2" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle2">酸辣麵疙瘩</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C3.jpg' width='500' /><br />
-                        麵疙瘩Q彈咬勁十足，都讓人意猶未盡，並且順口又有口感，加上湯中有不少配料，一碗下肚可真是滿足~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
             </div>
         </div>
-        <div class='product_inner'>
-
-            <p>酸辣麵疙瘩</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品3結束*@
-    <div class='product--green'>
-        <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter3" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle3">番茄蔬菜麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C4.jpg' width='500' /><br />
-                        爆香蔥段及洋蔥絲，放入綜合高湯煮滾，再加入蕃茄片，轉小火續煮至出味，加鹽調味，再放入柳松菇、青菜~一碗香濃四溢的家常麵出爐~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>番茄蔬菜麵</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品4結束*@
-
-    <div class='product--yellow'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter4" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle4">奶油培根義大利麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C5.jpg' width='500' /><br />
-                        濃郁乳香的醬汁全部緊密裹住帶有彈性的麵條，鹹香氣恰到好處的培根~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>奶油培根義大利麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品5結束*@
-    <div class='product--pink'>
-
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter5" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle5" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle5">青醬義大利麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C6.jpg' width='500'><br />
-                        充足的高湯被麵體吸收，加上濃郁卻不過於強烈的青醬香氣流竄其間。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>青醬義大利麵</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品6結束*@
-    <div class='product--blue'>
-
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter6" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle6" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle6">香蒜海鮮義大利麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C7.jpg' width='500'><br />
-                        這道海鮮義大利麵完完全全就是吃食材的原味，煮出來的麵卻充滿了大的鮮味，海鮮更是鮮甜、juicy，實在好吃的不得了！
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>香蒜海鮮義大利麵</p>
-            <p>Price $210</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品7結束*@
-    <div class='product--orange'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter7" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle7" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle7">義大利肉醬麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C8.jpg' width='500' /><br />
-                        有好濃好香的蕃茄醬汁，還有滿滿的碎絞肉，真的是很大方的一盤麵喔！
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-        <div class='product_inner'>
-
-            <p>義大利肉醬麵</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-
-    @*-----------------------------產品8結束*@
-    <div class='product--red'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter8" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter8" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle8" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle8">蔬食義大利麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C9.jpg' width='500' /><br />
-                        綜合蘑菇佐瑞可達起司這樣的濃厚蔬食組合。這些蔬食義大利麵不只是蔬食者的主食，也適合各個季節的麵食~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>蔬食義大利麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-
-    @*-----------------------------產品9結束*@
-    <div class='product--green'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter9" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle9" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle9">奶油培根筆管麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C10.jpg' width='500' /><br />
-                        奶油滑順蛋黃濃郁，搭配培根蒜末及洋蔥末，蘆筍跟秋葵，跟筆管麵這麼一拌，舞出絕妙好滋味~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>奶油培根筆管麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品10結束*@
-
-
-    <div class='product--yellow'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter10" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter10" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle10" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle10">野菇雞肉筆管麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C11.jpg' width='500' /><br />
-                        深受孩子們喜愛的義大利麵食料理，加入雞胸肉及菇類營養的食材，再加入九層塔來提味增加味蕾的香氣~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-            <p>野菇雞肉筆管麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    @*-----------------------------產品11結束*@
-    <div class='product--pink'>
-        @*---copy 開始*@ <!-- Button trigger modal -->
-        <img src='~/photo/noodle/C12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter11" />
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter11" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle11" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle11">鮮蝦奶油通心麵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='~/photo/noodle/C12.jpg' width='500' /><br />
-                        熱鍋放入奶油融化，再加上些許洋蔥絲炒至金黃色後，再加入蝦子溫火煮至沸騰~最後再與通心麵炒均勻~
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*---copy到此*@
-
-        <div class='product_inner'>
-
-            <p>鮮蝦奶油通心麵</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
+    }
 
 </div>
