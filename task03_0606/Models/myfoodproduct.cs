@@ -20,5 +20,6 @@ namespace task03_0606.Models
         public string picture { get; set; }
         public string introduce { get; set; }
         public Nullable<int> addcount { get; set; }
+        public string imageURL { get; set; }
     }
 }

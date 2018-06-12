@@ -240,6 +240,7 @@
     <Compile Include="Models\myfoodproduct.cs">
       <DependentUpon>FoodProductsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\newproduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +271,9 @@
     <Content Include="Views\Products\Noodleproducts.cshtml" />
     <Content Include="Views\Products\Riceproducts.cshtml" />
     <Content Include="Views\Products\Fastfoodproducts.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\ManagerIndex.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

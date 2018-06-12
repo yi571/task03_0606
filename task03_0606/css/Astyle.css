@@ -160,3 +160,16 @@ header i:nth-of-type(2) {
   color: rgba(43, 45, 66, 0.7);
   font-size: 1.5em;
 }
+
+/*----------table css*/
+.table-wrapper {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+}
+
+table{width:800px; margin:auto; border-collapse:collapse; table-layout:fixed;}
+
+td{border:2px solid #1C67C1; padding:10px; width:33.333%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}

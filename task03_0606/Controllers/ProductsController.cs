@@ -14,13 +14,63 @@ namespace task03_0606.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            
+            return View();
+        }
+
+        public ActionResult ManagerIndex()
+        {
+            var query = from o in db.myfoodproducts
+                        select new newproduct{
+                            productId=o.productId,
+                           title=o.title,
+                           price=o.price,
+                           picture=o.picture,
+                           introduce=o.introduce      
+                        };
+            List<newproduct> prolist = query.ToList();
+
+            
+            return View(prolist);
+        }
+
+ 
+        public ActionResult Create(int productId)
+        {
+            var query = from o in db.myfoodproducts
+                        where o.productId == productId
+                        select o;
+            myfoodproduct mfp = query.Single();
+
+            return View(mfp);
+        }
+        [HttpPost]
+        public ActionResult Create(myfoodproduct newproduct)
+        {
+            myfoodproduct mfp = db.myfoodproducts.Find(newproduct.productId);
+            mfp.productId = newproduct.productId;
+            mfp.title = newproduct.title;
+            mfp.price = newproduct.price;
+            mfp.picture = newproduct.picture;
+            mfp.introduce = newproduct.introduce;
+            db.SaveChanges();
+            
+
+            return RedirectToAction("ManagerIndex");
+        }
 
 
 
 
+
+
+        public ActionResult Edit()
+        {
 
             return View();
         }
+
+
 
 
 
