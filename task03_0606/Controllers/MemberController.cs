@@ -44,12 +44,11 @@ namespace task03_0606.Controllers {
             var queryLogin = from o in db.userInfoes
                              where (o.email == email && o.pwd == pwd)
                              select new { o.id, o.lastName, o.firstName, o.userRank };
-            var userDataLogin = queryLogin.ToArray();
             if (queryLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
-                Session["identity"] = userDataLogin[0].userRank.ToString();
-                Session["userInfoId"] = userDataLogin[0].id;
-                Session["UserAllName"] = userDataLogin[0].lastName.ToString() + userDataLogin[0].firstName.ToString();
+                Session["identity"] = queryLogin.ToArray()[0].userRank.ToString();
+                Session["userInfoId"] = queryLogin.ToArray()[0].id;
+                Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                     Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
@@ -238,9 +237,10 @@ namespace task03_0606.Controllers {
             };
             var queryUserList = from o in db.userInfoes
                             join p in db.streetNames on o.userAddressPart1 equals p.uid
-                            select new CUserList { Id = o.id, LastName = o.lastName, FirstName = o.firstName, UserId = o.userId, Email = o.email, PhoneNum = o.phoneNum, Pwd = o.pwd, City = p.city, District = p.district, Road = p.road, Lane = o.lane, Alley = o.alley, AddressNum = o.addressNum, AddressF = o.addressF };
+                            select new CUserList { Id = o.id, LastName = o.lastName, FirstName = o.firstName, UserId = o.userId, Email = o.email, PhoneNum = o.phoneNum, Pwd = o.pwd, City = p.city, District = p.district, Road = p.road, Lane = o.lane, Alley = o.alley, AddressNum = o.addressNum, AddressF = o.addressF, UserRank = o.userRank };
             ViewBag.userList = queryUserList.ToList();
             List<CUserList> userLists = queryUserList.ToList();
+            
 
 
             return View();
