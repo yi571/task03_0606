@@ -114,11 +114,11 @@
                         </div>
                         <div class="col-md">
                             <label for="inputAddressNum">號</label>
-                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="4" pattern="\d" placeholder="...">
+                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="5" pattern="^[0-9]*$" placeholder="...">
                         </div>
                         <div class="col-md">
                             <label for="inputF">樓</label>
-                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="\d" placeholder="...">
+                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="^[0-9]*$" placeholder="...">
                         </div>
                     </div>
                 </div>

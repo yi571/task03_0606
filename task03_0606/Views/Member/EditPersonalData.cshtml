@@ -11,7 +11,7 @@
 <h2>編輯個人資料</h2>
 <div class="container custom-container-width">
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header">註冊帳號</div>
+        <div class="card-header">修改個人資料</div>
         <div class="card-body">
             <form method="post" action="" id="regForm">
                 <div class="form-group">
@@ -116,23 +116,20 @@
                         </div>
                         <div class="col-md">
                             <label for="inputAddressNum">號</label>
-                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="4" pattern="\d" placeholder="...">
+                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="5" pattern="^[0-9]*$" placeholder="...">
                         </div>
                         <div class="col-md">
                             <label for="inputF">樓</label>
-                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="\d" placeholder="...">
+                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="^[0-9]*$" placeholder="...">
                         </div>
                     </div>
                 </div>
 
 
                 @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
-                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">註冊</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">送出</button>
             </form>
-            <div class="text-center">
-                <a class="d-block small mt-3" href="/Member/Login">登入</a>
-                <a class="d-block small" href="/Member/ForgotPassword">忘記密碼?</a>
-            </div>
+            
         </div>
     </div>
 </div>

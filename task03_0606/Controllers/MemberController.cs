@@ -48,7 +48,7 @@ namespace task03_0606.Controllers {
                 Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                     Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
-                    Session["identity"] = userDataLogin[0].userRank;
+                    Session["identity"] = userDataLogin[0].userRank.ToString();
                     Session["userInfoId"] = userDataLogin[0].id;
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
@@ -263,13 +263,15 @@ namespace task03_0606.Controllers {
 
             ViewBag.city = queryCity.ToList(); //傳城市list
 
+            string cityStr = userInfoEdit[0].city;
+            string districtStr = userInfoEdit[0].district;
             var query = from o in db.streetNames //行政區
-                        where o.city == userInfoEdit[0].city.ToString()
+                        where o.city == cityStr
                         group o by o.district into g
                         select g.Key;
 
             var queryRoad = from o in db.streetNames //路
-                            where (o.city == userInfoEdit[0].city & o.district == userInfoEdit[0].district)
+                            where (o.city == cityStr & o.district == districtStr)
                             group o by o.road into g
                             select g.Key;
 
@@ -292,11 +294,165 @@ namespace task03_0606.Controllers {
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
-            //var queryEdit = from o in db.userInfoes
-            //                where o.id == Convert.ToInt16(Session["userInfoId"])
-            //                select
+            var query = from o in db.streetNames //行政區
+                        where o.city == city
+                        group o by o.district into g
+                        select g.Key;
+            var queryCity = from o in db.streetNames //城市
+                            group o by o.city into g
+                            select g.Key;
+            var queryRoad = from o in db.streetNames //路
+                            where (o.city == city & o.district == district)
+                            group o by o.road into g
+                            select g.Key;
+
+            ViewBag.city = queryCity.ToList();  //傳城市list
+            ViewBag.cityValue = city;           //傳城市值
+            ViewBag.district = query.ToList();  //傳行政區list
+            ViewBag.districtValue = district;   //傳行政區值
+            ViewBag.road = queryRoad.ToList();  //傳路list
+            ViewBag.roadValue = road;           //傳路值
 
 
+            //post時，回傳已填入值
+            int checkNum = 0;  //用於檢查必填欄位是否填寫
+            if (!string.IsNullOrEmpty(LastName)) { //傳姓氏值
+                ViewBag.LastName = LastName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(FirstName)) { //傳名稱值
+                ViewBag.FirstName = FirstName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(uid)) { //傳名稱值
+                ViewBag.uid = uid;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(Email1)) { //傳Email1值
+                ViewBag.Email1 = Email1;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(cellPhone)) { //傳cellPhone值
+                ViewBag.cellPhone = cellPhone;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(lane)) { //傳lane值
+                ViewBag.lane = lane;
+            }
+
+            if (!string.IsNullOrEmpty(alley)) { //傳alley值
+                ViewBag.alley = alley;
+            }
+
+            if (!string.IsNullOrEmpty(addressNum)) { //傳addressNum值
+                ViewBag.addressNum = addressNum;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(addressF)) { //傳addressF值
+                ViewBag.addressF = addressF;
+            }
+
+            if (!string.IsNullOrEmpty(Password1)) { //傳Password1值
+                ViewBag.Password1 = Password1;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(ConfirmPassword)) { //傳ConfirmPassword值
+                ViewBag.ConfirmPassword = ConfirmPassword;
+            }
+
+            if (Password1 != ConfirmPassword) {
+                return RedirectToAction("Register", "Member");
+            }
+
+
+            //查詢出AddressPart1
+            var queryCheckAddressPart1 = from o in db.streetNames
+                                         where (o.city == city & o.district == district & o.road == road)
+                                         select o.uid;
+
+            //檢查信箱是否註冊----------------------------------
+            var queryCheckEmail = from o in db.userInfoes
+                                  where o.email == Email1
+                                  select o;
+            var queryEmailNotChange = from o in db.userInfoes
+                                      where (o.email == Email1 & o.pwd == Password1)
+                                      select o;
+            ViewBag.emailCheck = "";
+            string checkEmailStr = "";
+            try {
+                checkEmailStr = queryEmailNotChange.First().email.ToString();
+            } catch {
+
+            };
+            
+
+            if (Email1.ToString() != checkEmailStr) {
+                if (queryCheckEmail.Count() > 0) {
+                    ViewBag.emailCheck = "信箱已註冊";
+                    ViewBag.html = "<i class='fa fa-times' style='color: red; '></i> 此信箱已註冊";
+                    return View();
+                }
+                return View();
+            }
+
+
+
+            if (ViewBag.emailCheck == "信箱已註冊") {
+                return View();
+            } else {
+                if (Password1 == ConfirmPassword && checkNum == 7) {
+                    userInfo addMember = new userInfo() {
+                        lastName = LastName,
+                        firstName = FirstName,
+                        userId = uid,
+                        email = Email1,
+                        pwd = Password1,
+                        phoneNum = cellPhone,
+                        userAddressPart1 = queryCheckAddressPart1.ToArray()[0x0],
+                        lane = lane,
+                        alley = alley,
+                        addressNum = addressNum,
+                        addressF = addressF,
+                        userRank = "normalUser"
+                    };
+                    int idNum = Convert.ToInt32(Session["userInfoId"]);
+                    var queryUserIfo = (from o in db.userInfoes
+                                        where o.id == idNum
+                                        select o).First();
+
+                    queryUserIfo.lastName = LastName;
+                    queryUserIfo.lastName = LastName;
+                    queryUserIfo.firstName = FirstName;
+                    queryUserIfo.userId = uid;
+                    queryUserIfo.email = Email1;
+                    queryUserIfo.pwd = Password1;
+                    queryUserIfo.phoneNum = cellPhone;
+                    queryUserIfo.userAddressPart1 = queryCheckAddressPart1.ToArray()[0x0];
+                    queryUserIfo.lane = lane;
+                    queryUserIfo.alley = alley;
+                    queryUserIfo.addressNum = addressNum;
+                    queryUserIfo.addressF = addressF;
+
+                    try {
+                        db.SaveChanges();
+                    } catch {
+                        
+                    };
+                    //return Content(checkEmailStr);
+                    return View();
+                }
+            }
+            //--------------------------------------
+
+
+            //return Content(checkEmailStr);
             return View();
         }
 
