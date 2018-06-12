@@ -32,22 +32,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="/Member/Member">
+                        <i class="fa fa-fw fa-home"></i>
+                        <span class="nav-link-text">Hello! @Session["UserAllName"]</span>
+                    </a>
+                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="/Member/Member">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">儀錶板</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="/Member/EditPersonalData">
                         <i class="fa fa-fw fa-pencil"></i>
                         <span class="nav-link-text">修改會員資料</span>
                     </a>
                 </li>
-                
-                
-                
+
+
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-link"></i>

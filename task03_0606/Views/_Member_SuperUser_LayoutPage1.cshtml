@@ -34,6 +34,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="/Member/Member">
+                        <i class="fa fa-fw fa-home"></i>
+                        <span class="nav-link-text">Hello! @Session["UserAllName"]</span>
+                    </a>
+                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="/Member/Member">
                         <i class="fa fa-fw fa-dashboard"></i>
@@ -41,12 +47,7 @@
                     </a>
                 </li>
                 @{ }
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fa fa-fw fa-area-chart"></i>
-                        <span class="nav-link-text">統計圖</span>
-                    </a>
-                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="/Member/OrderTable">
                         <i class="fa fa-fw fa-table"></i>
