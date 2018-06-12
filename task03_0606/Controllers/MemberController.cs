@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
+using System.Linq.Expressions;
 
 
 namespace task03_0606.Controllers {
@@ -29,20 +30,32 @@ namespace task03_0606.Controllers {
 
         [HttpPost]
         public ActionResult Login(string email, string pwd) {  //傳入email和password
-            if (pwd == "1") {
-                Session["identity"] = "superUser";
+            //if (pwd == "1") {
+            //    Session["identity"] = "superUser";
+            //}
+            //if (pwd == "2") {
+            //    Session["identity"] = "storeUser";
+            //}
+            //if (pwd == "3") {
+            //    Session["identity"] = "normalUser";
+            //}
+
+            var queryLogin = from o in db.userInfoes
+                             where (o.email == email && o.pwd == pwd)
+                             select new { o.id, o.lastName, o.firstName, o.userRank };
+            var userDataLogin = queryLogin.ToArray();
+            if (queryLogin.Count() > 0) {
+                Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
+                if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    Session["identity"] = userDataLogin[0].userRank;
+                    Session["userInfoId"] = userDataLogin[0].id;
+                }
+                return Redirect((string)Session["lastPage"]);  //重導回最後頁面
+            } else {
+                ViewBag.loginError = "<div class='alert alert-danger' role='alert'><h2>帳號或密碼錯誤</h2></div>";
+                return View();
             }
-            if (pwd == "2") {
-                Session["identity"] = "storeUser";
-            }
-            if (pwd == "3") {
-                Session["identity"] = "normalUser";
-            }
-            Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
-            if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
-            }
-            return Redirect((string)Session["lastPage"]);  //重導回最後頁面
         }
 
         public ActionResult Logout() {
@@ -71,7 +84,7 @@ namespace task03_0606.Controllers {
                         group o by o.district into g
                         select g.Key;
             var queryCity = from o in db.streetNames //城市
-                            group o by o.city into g 
+                            group o by o.city into g
                             select g.Key;
             var queryRoad = from o in db.streetNames //路
                             where (o.city == city & o.district == district)
@@ -139,10 +152,10 @@ namespace task03_0606.Controllers {
                 ViewBag.ConfirmPassword = ConfirmPassword;
             }
 
-            if(Password1 != ConfirmPassword) {
+            if (Password1 != ConfirmPassword) {
                 return RedirectToAction("Register", "Member");
             }
-            
+
             //string emailCheck = queryCheckEmail.ToArray()[0];
 
             //查詢出AddressPart1
@@ -155,14 +168,20 @@ namespace task03_0606.Controllers {
                                   where o.email == Email1
                                   select Email1;
             ViewBag.emailCheck = "";
-            string catchEx = "";
-            
-            try {
-                queryCheckEmail.Single();
+
+
+            if (queryCheckEmail.Count() > 0) {
                 ViewBag.emailCheck = "信箱已註冊";
-            } catch (Exception ex) {
-                catchEx = ex.ToString();
-            };
+                ViewBag.html = "<i class='fa fa-times' style='color: red; '></i> 此信箱已註冊";
+            }
+
+            //string catchEx = "";
+            //try {
+            //    queryCheckEmail.Single();
+            //    ViewBag.emailCheck = "信箱已註冊";
+            //} catch (Exception ex) {
+            //    catchEx = ex.ToString();
+            //};
 
 
             if (ViewBag.emailCheck == "信箱已註冊") {
@@ -189,7 +208,7 @@ namespace task03_0606.Controllers {
                 }
             }
             //--------------------------------------
-            
+
 
 
 
@@ -221,9 +240,65 @@ namespace task03_0606.Controllers {
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
+            int idNum = Convert.ToInt32(Session["userInfoId"]);
+            var queryEdit = from o in db.userInfoes
+                            join p in db.streetNames on o.userAddressPart1 equals p.uid
+                            where o.id == idNum
+                            select new { o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, p.city, p.district, p.road, o.lane, o.alley, o.addressNum, o.addressF };
+            var userInfoEdit = queryEdit.ToArray();
+
+            ViewBag.LastName = userInfoEdit[0].lastName;
+            ViewBag.FirstName = userInfoEdit[0].firstName;
+            ViewBag.uid = userInfoEdit[0].userId;
+            ViewBag.Email1 = userInfoEdit[0].email;
+            ViewBag.cellPhone = userInfoEdit[0].phoneNum;
+            ViewBag.Password1 = userInfoEdit[0].pwd;
+            ViewBag.ConfirmPassword = userInfoEdit[0].pwd;
+
+
+            //地址選單
+            var queryCity = from o in db.streetNames //城市
+                            group o by o.city into g
+                            select g.Key;
+
+            ViewBag.city = queryCity.ToList(); //傳城市list
+
+            var query = from o in db.streetNames //行政區
+                        where o.city == userInfoEdit[0].city.ToString()
+                        group o by o.district into g
+                        select g.Key;
+
+            var queryRoad = from o in db.streetNames //路
+                            where (o.city == userInfoEdit[0].city & o.district == userInfoEdit[0].district)
+                            group o by o.road into g
+                            select g.Key;
+
+            ViewBag.city = queryCity.ToList();  //傳城市list
+            ViewBag.cityValue = userInfoEdit[0].city;           //傳城市值
+            ViewBag.district = query.ToList();  //傳行政區list
+            ViewBag.districtValue = userInfoEdit[0].district;   //傳行政區值
+            ViewBag.road = queryRoad.ToList();  //傳路list
+            ViewBag.roadValue = userInfoEdit[0].road;           //傳路值
+            ViewBag.lane = userInfoEdit[0].lane;
+            ViewBag.alley = userInfoEdit[0].alley;
+            ViewBag.addressNum = userInfoEdit[0].addressNum;
+            ViewBag.addressF = userInfoEdit[0].addressF;
+
+            //return Content(userInfoEdit[0].city.ToString());
             return View();
         }
+        [HttpPost]
+        public ActionResult EditPersonalData(string LastName, string FirstName, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            //var queryEdit = from o in db.userInfoes
+            //                where o.id == Convert.ToInt16(Session["userInfoId"])
+            //                select
 
+
+            return View();
+        }
 
     }
 }

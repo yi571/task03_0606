@@ -11,65 +11,123 @@
 <h2>編輯個人資料</h2>
 <div class="container custom-container-width">
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header">修改個人資料</div>
+        <div class="card-header">註冊帳號</div>
         <div class="card-body">
-            <form method="post" action="">
+            <form method="post" action="" id="regForm">
                 <div class="form-group">
                     <div class="form-row">
 
                         <div class="col-md-6">
                             <label for="LastName">姓氏</label>
-                            <input class="form-control" id="LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
+                            <input class="form-control" id="LastName" name="LastName" value="@ViewBag.LastName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
                         </div>
                         <div class="col-md-6">
                             <label for="FirstName">名稱</label>
-                            <input class="form-control" id="FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
+                            <input class="form-control" id="FirstName" name="FirstName" value="@ViewBag.FirstName" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="uid">身分證字號</label>
-                    <input class="form-control" id="uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
+                    <input class="form-control" id="uid" name="uid" value="@ViewBag.uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
                 </div>
                 <div class="form-group">
-                    <label for="Email1">電子信箱</label>
-                    <input class="form-control" id="Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
+
+                    <label for="Email1" id="EmailID">電子信箱 @Html.Raw(ViewBag.html)</label>
+                    <input class="form-control" id="Email1" name="Email1" value="@ViewBag.Email1" type="email" required="required" aria-describedby="emailHelp" placeholder="請輸入電子信箱...">
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
                             <label for="Password1">密碼</label>
-                            <input class="form-control" id="Password1" type="password" required="required" placeholder="請輸入密碼...">
+                            <input class="form-control" id="Password1" name="Password1" value="@ViewBag.Password1" type="password" required="required" placeholder="請輸入密碼...">
                         </div>
                         <div class="col-md-6">
                             <label for="ConfirmPassword" id="ConfPwdLabel">確認密碼</label>
-                            <input class="form-control" id="ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
+                            <input class="form-control" id="ConfirmPassword" name="ConfirmPassword" value="@ViewBag.ConfirmPassword" type="password" required="required" placeholder="確認密碼...">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cellPhone">手機號碼</label>
-                    <input class="form-control" id="cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
+                    <input class="form-control" id="cellPhone" name="cellPhone" value="@ViewBag.cellPhone" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
                 </div>
 
 
                 <label for="Address">地址</label>
-
-                <div class="form-group" id="twzipcode">
-                    <div class="form-row">
-                        <div class="col-md" data-role="county" data-style="form-control" data-value="110"></div>
-                        <div class="col-md" data-role="district" data-style="form-control" data-value="臺北市"></div>
-                        <div class="col-md" data-role="zipcode" data-style="form-control" data-value="信義區"></div>
-                    </div>
-
-
-                </div>
                 <div class="form-group">
-                    <input class="form-control" id="Address" type="text" required="required" placeholder="">
+                    <div class="form-row">
+                        <div class="col-md">
+                            <label for="inputCity">城市</label>
+                            <select id="city" name="city" class="form-control">
+                                <option selected>選擇城市</option>
+
+                                @{ foreach (var item in ViewBag.city) {
+                                        if (item == ViewBag.cityValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+
+                                    } }
+
+
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <label for="inputDistrict">行政區</label>
+                            <select id="district" name="district" class="form-control">
+                                <option selected>選擇行政區</option>
+                                @if (ViewBag.district != null) {
+                                    foreach (var item in ViewBag.district) {
+                                        if (item == ViewBag.districtValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <label for="inputRoad">路名</label>
+                            <select id="road" name="road" class="form-control">
+                                <option selected>選擇路名</option>
+                                @if (ViewBag.road != null) {
+                                    foreach (var item in ViewBag.road) {
+                                        if (item == ViewBag.roadValue) {
+                                            <option value="@item" selected>@item</option>
+                                        } else {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md">
+                            <label for="inputLane">巷</label>
+                            <input class="form-control" id="lane" name="lane" value="@ViewBag.lane" type="text" placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputAlley">弄</label>
+                            <input class="form-control" id="alley" name="alley" value="@ViewBag.alley" type="text" placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputAddressNum">號</label>
+                            <input class="form-control" id="addressNum" name="addressNum" value="@ViewBag.addressNum" type="text" required maxlength="4" pattern="\d" placeholder="...">
+                        </div>
+                        <div class="col-md">
+                            <label for="inputF">樓</label>
+                            <input class="form-control" id="addressF" name="addressF" value="@ViewBag.addressF" type="text" maxlength="3" pattern="\d" placeholder="...">
+                        </div>
+                    </div>
                 </div>
+
 
                 @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
-                <button type="submit" class="btn btn-primary btn-block">註冊</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">註冊</button>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="/Member/Login">登入</a>
@@ -98,24 +156,18 @@
     </div>
 </div>
 
-<script src="/js/jquery.twzipcode.min.js"></script>
+
 <script src="/js/yi.js"></script>
 <script>
-    $(document).ready(function () {
-        //$("#ConfirmPassword").blur(function () {
-        //    alert("OK")
-        //})
+    $("#city").on("change", function () {
+        regForm.submit();
+    })
 
-        $("#ConfirmPassword").blur(function () {
-            if ($("#Password1").val() != $("#ConfirmPassword").val()) {
-                $("#ConfPwdLabel").html('確認密碼 <i class="fa fa-times" style="color: red;"></i> 密碼不相符');
-                //$("#ConfirmPassword").tooltip("show");
-            }
-            if ($("#Password1").val() == $("#ConfirmPassword").val()) {
-                $("#ConfPwdLabel").html('確認密碼 <i class="fa fa-check" style="color: green;"></i>');
-                //$("#ConfirmPassword").tooltip("hide");
-            }
+    $("#district").on("change", function () {
+        regForm.submit();
+    })
 
-        })
+    $("#Email1").blur(function () {
+        regForm.submit();
     })
 </script>

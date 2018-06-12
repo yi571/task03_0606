@@ -8,6 +8,7 @@
 <div class="container custom-container-width">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">登入</div>
+        @Html.Raw(ViewBag.loginError)
         <div class="card-body">
             <form method="post" action="">
                 <div class="form-group">
@@ -34,5 +35,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 
