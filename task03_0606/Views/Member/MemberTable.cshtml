@@ -43,20 +43,27 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                           
+
                             @foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
                                 <tr>
                                     <td>@item.LastName@item.FirstName</td>
                                     <td>@item.PhoneNum</td>
                                     <td>@item.Email</td>
                                     <td>@item.City@item.District@item.Road</td>
-                                    <td><a href="#">詳細資料</a></td>
+                                    <td>
+                                        <form method="post" action="">
+                                            <input class="form-control" id="userId" name="userId" value="@item.Id" hidden>
+                                            <button type="submit" id="submitBtn" class="btn btn-primary btn-block">詳細資料</button>
+                                        </form>
+                                        
+                                    </td>
+                                    
                                     <td></td>
                                 </tr>
                             }
 
 
-                            
+
 
                         </tbody>
                     </table>
