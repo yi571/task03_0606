@@ -1,4 +1,4 @@
-﻿
+﻿@model List<task03_0606.Models.CUserList>
 @{
     ViewBag.Title = "MemberTable";
     Layout = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
@@ -43,43 +43,20 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @{ var userList = (ViewBag.userList).ToList();}
-                            @foreach (var item in userList) {
+                           
+                            @foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
                                 <tr>
-                                    <td>@item.lastName</td>
-                                    <td>0912345678</td>
-                                    <td>123@123</td>
-                                    <td>台中市北區OO路</td>
+                                    <td>@item.LastName@item.FirstName</td>
+                                    <td>@item.PhoneNum</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.City@item.District@item.Road</td>
                                     <td><a href="#">詳細資料</a></td>
                                     <td></td>
                                 </tr>
                             }
 
 
-                            <tr>
-                                <td>張三</td>
-                                <td>0912345678</td>
-                                <td>123@123</td>
-                                <td>台中市北區OO路</td>
-                                <td><a href="#">詳細資料</a></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>李四</td>
-                                <td>0912345678</td>
-                                <td>123@123</td>
-                                <td>台中市西區OO路</td>
-                                <td><a href="#">詳細資料</a></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>王五</td>
-                                <td>0912345678</td>
-                                <td>123@123</td>
-                                <td>台中市沙鹿區OO路</td>
-                                <td><a href="#">詳細資料</a></td>
-                                <td></td>
-                            </tr>
+                            
 
                         </tbody>
                     </table>

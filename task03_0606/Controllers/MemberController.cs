@@ -238,9 +238,9 @@ namespace task03_0606.Controllers {
             };
             var queryUserList = from o in db.userInfoes
                             join p in db.streetNames on o.userAddressPart1 equals p.uid
-                            select new { o.id, o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, p.city, p.district, p.road, o.lane, o.alley, o.addressNum, o.addressF };
-            ViewBag.userList = queryUserList;
-            
+                            select new CUserList { Id = o.id, LastName = o.lastName, FirstName = o.firstName, UserId = o.userId, Email = o.email, PhoneNum = o.phoneNum, Pwd = o.pwd, City = p.city, District = p.district, Road = p.road, Lane = o.lane, Alley = o.alley, AddressNum = o.addressNum, AddressF = o.addressF };
+            ViewBag.userList = queryUserList.ToList();
+            List<CUserList> userLists = queryUserList.ToList();
 
 
             return View();
