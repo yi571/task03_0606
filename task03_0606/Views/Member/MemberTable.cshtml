@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>姓名</th>
@@ -43,6 +43,19 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @{ var userList = (ViewBag.userList).ToList();}
+                            @foreach (var item in userList) {
+                                <tr>
+                                    <td>@item.lastName</td>
+                                    <td>0912345678</td>
+                                    <td>123@123</td>
+                                    <td>台中市北區OO路</td>
+                                    <td><a href="#">詳細資料</a></td>
+                                    <td></td>
+                                </tr>
+                            }
+
+
                             <tr>
                                 <td>張三</td>
                                 <td>0912345678</td>

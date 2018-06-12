@@ -236,6 +236,13 @@ namespace task03_0606.Controllers {
             if ((string)Session["identity"] != "superUser") {
                 return RedirectToAction("Member", "Member");
             };
+            var queryUserList = from o in db.userInfoes
+                            join p in db.streetNames on o.userAddressPart1 equals p.uid
+                            select new { o.id, o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, p.city, p.district, p.road, o.lane, o.alley, o.addressNum, o.addressF };
+            ViewBag.userList = queryUserList;
+            
+
+
             return View();
         }
 
@@ -458,6 +465,7 @@ namespace task03_0606.Controllers {
             //return Content(checkEmailStr);
             return View();
         }
+
 
     }
 }

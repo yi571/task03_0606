@@ -164,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CCity.cs" />
+    <Compile Include="Models\CUserList.cs" />
     <Compile Include="Models\streetName.cs">
       <DependentUpon>task03LabModel.tt</DependentUpon>
     </Compile>
