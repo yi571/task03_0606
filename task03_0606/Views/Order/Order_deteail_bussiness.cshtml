@@ -1,0 +1,101 @@
+﻿@model List<task03_0606.Models.orderDetailViewModel>
+
+@{
+    ViewBag.Title = "Order_deteail_bussiness";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">訂單明細</li>
+</ol>
+
+<div class="col-xl-12 col-sm-12 mb-12">
+    <div class="card-header">
+        <i class="fa fa-table"></i>未出餐清單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>接單時間</th>
+                        <th>客戶電話</th>
+                        <th>訂單單號</th>
+                        <th>座位</th>
+                        <th style="display:none">產品編號</th>
+                        <th >產品編號</th>
+                        <th>產品名稱</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
+                        <th>備註</th>
+                        <th>結單時間</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    
+                   
+                    @foreach (task03_0606.Models.orderDetailViewModel order in Model)
+                        
+                    {
+                        <tr class="orderListItem">
+                            <td> @order.OrderTime </td>
+                            <td> @order.CustomerPhone </td>
+                            <td> @order.OrderId</td>
+                            <td> @order.SeatID</td>
+                            <td style="display:none"> @order.ProductID</td>
+                            <td > @order.ProductID</td>
+                            <td> @order.ProductName</td>
+                            <td> @order.OrderCount</td>
+                            <td> @order.UnitPrice</td>
+                            <td> @(@order.UnitPrice*@order.OrderCount)</td>
+                            <td> @order.Note</td>
+                            <td> @order.FinshTime </td>
+                            <td> <button id="orderOk" type="button" class="btn btn-primary">出餐</button> </td>
+                        </tr>
+                        
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+ <script>
+     
+     //訂單出餐
+   
+
+     $("#dataTable").find("tr.orderListItem").find("button").click(function () {
+         //alert(this.closest("tr").cells[4].innerText);
+         var productId = this.closest("tr").cells[4].innerText;
+         var orderId = this.closest("tr").cells[2].innerText;
+
+         alert("訂單編號:" + orderId + "  " + "產品編號" + productId)
+        
+         $.ajax({
+             method: "post",
+             dataType: "json",
+             url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
+             data: {
+                 productId_ok: parseInt(productId),
+                 orderId_ok: parseInt(orderId),
+             }
+     })
+            //.done(function (data) {
+            //    console.log(data);
+            //    alert("確定出餐");
+            //    $('#exampleModalCenter').modal('hide');
+
+            //})
+         
+     });
+
+
+    
+
+            </script>
+

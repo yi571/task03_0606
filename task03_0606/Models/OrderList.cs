@@ -24,7 +24,6 @@ namespace task03_0606.Models
         public string CustomerPhone { get; set; }
         public string OrderTime { get; set; }
         public int SeatID { get; set; }
-        public string FinshTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

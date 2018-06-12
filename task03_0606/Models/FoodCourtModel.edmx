@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FoodCourtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FoodCourtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Member">
           <Key>
             <PropertyRef Name="MemberID" />
@@ -22,6 +22,7 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="OrderCount" Type="int" />
           <Property Name="Note" Type="nvarchar" MaxLength="20" />
+          <Property Name="FinshTime" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="OrderList">
           <Key>
@@ -31,7 +32,6 @@
           <Property Name="CustomerPhone" Type="varchar" MaxLength="10" />
           <Property Name="OrderTime" Type="varchar" MaxLength="20" />
           <Property Name="SeatID" Type="int" Nullable="false" />
-          <Property Name="FinshTime" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -42,7 +42,7 @@
           <Property Name="MemberID" Type="int" />
           <Property Name="UnitPrice" Type="int" />
         </EntityType>
-        <Association Name="FK__OrderDeta__Membe__66603565">
+        <Association Name="FK__OrderDeta__Membe__208CD6FA">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -54,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__656C112C">
+        <Association Name="FK__OrderDeta__Order__1F98B2C1">
           <End Role="OrderList" Type="Self.OrderList" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -66,7 +66,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Produ__6754599E">
+        <Association Name="FK__OrderDeta__Produ__2180FB33">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,15 +95,15 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderList" EntityType="Self.OrderList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__OrderDeta__Membe__66603565" Association="Self.FK__OrderDeta__Membe__66603565">
+          <AssociationSet Name="FK__OrderDeta__Membe__208CD6FA" Association="Self.FK__OrderDeta__Membe__208CD6FA">
             <End Role="Member" EntitySet="Member" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__656C112C" Association="Self.FK__OrderDeta__Order__656C112C">
+          <AssociationSet Name="FK__OrderDeta__Order__1F98B2C1" Association="Self.FK__OrderDeta__Order__1F98B2C1">
             <End Role="OrderList" EntitySet="OrderList" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__6754599E" Association="Self.FK__OrderDeta__Produ__6754599E">
+          <AssociationSet Name="FK__OrderDeta__Produ__2180FB33" Association="Self.FK__OrderDeta__Produ__2180FB33">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
@@ -112,7 +112,8 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FoodCourtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -122,7 +123,7 @@
           </Key>
           <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MemberName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Membe__5FB337D6" FromRole="Member" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Membe__208CD6FA" FromRole="Member" ToRole="OrderDetail" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product__MemberI__398D8EEE" FromRole="Member" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -135,9 +136,10 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="OrderCount" Type="Int32" />
           <Property Name="Note" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Member" Relationship="Self.FK__OrderDeta__Membe__5FB337D6" FromRole="OrderDetail" ToRole="Member" />
-          <NavigationProperty Name="OrderList" Relationship="Self.FK__OrderDeta__Order__5EBF139D" FromRole="OrderDetail" ToRole="OrderList" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__Produ__60A75C0F" FromRole="OrderDetail" ToRole="Product" />
+          <Property Name="FinshTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__OrderDeta__Membe__208CD6FA" FromRole="OrderDetail" ToRole="Member" />
+          <NavigationProperty Name="OrderList" Relationship="Self.FK__OrderDeta__Order__1F98B2C1" FromRole="OrderDetail" ToRole="OrderList" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__Produ__2180FB33" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderList">
           <Key>
@@ -147,8 +149,7 @@
           <Property Name="CustomerPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="OrderTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SeatID" Type="Int32" Nullable="false" />
-          <Property Name="FinshTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__5EBF139D" FromRole="OrderList" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__1F98B2C1" FromRole="OrderList" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -159,9 +160,9 @@
           <Property Name="MemberID" Type="Int32" />
           <Property Name="UnitPrice" Type="Int32" />
           <NavigationProperty Name="Member" Relationship="Self.FK__Product__MemberI__398D8EEE" FromRole="Product" ToRole="Member" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Produ__60A75C0F" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Produ__2180FB33" FromRole="Product" ToRole="OrderDetail" />
         </EntityType>
-        <Association Name="FK__OrderDeta__Membe__5FB337D6">
+        <Association Name="FK__OrderDeta__Membe__208CD6FA">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__5EBF139D">
+        <Association Name="FK__OrderDeta__Order__1F98B2C1">
           <End Role="OrderList" Type="Self.OrderList" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Produ__60A75C0F">
+        <Association Name="FK__OrderDeta__Produ__2180FB33">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,7 +215,7 @@
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="OrderLists" EntityType="Self.OrderList" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <AssociationSet Name="FK__OrderDeta__Membe__5FB337D6" Association="Self.FK__OrderDeta__Membe__5FB337D6">
+          <AssociationSet Name="FK__OrderDeta__Membe__208CD6FA" Association="Self.FK__OrderDeta__Membe__208CD6FA">
             <End Role="Member" EntitySet="Members" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -222,11 +223,11 @@
             <End Role="Member" EntitySet="Members" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__5EBF139D" Association="Self.FK__OrderDeta__Order__5EBF139D">
+          <AssociationSet Name="FK__OrderDeta__Order__1F98B2C1" Association="Self.FK__OrderDeta__Order__1F98B2C1">
             <End Role="OrderList" EntitySet="OrderLists" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__60A75C0F" Association="Self.FK__OrderDeta__Produ__60A75C0F">
+          <AssociationSet Name="FK__OrderDeta__Produ__2180FB33" Association="Self.FK__OrderDeta__Produ__2180FB33">
             <End Role="Product" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -253,6 +254,7 @@
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="FinshTime" ColumnName="FinshTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -263,7 +265,6 @@
                 <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
                 <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
                 <ScalarProperty Name="SeatID" ColumnName="SeatID" />
-                <ScalarProperty Name="FinshTime" ColumnName="FinshTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

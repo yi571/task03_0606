@@ -63,22 +63,32 @@
                             </li>
                         </ul>
                     </li>
-                };
-                @if (Session["memberType"].ToString() == "Business")
-                {
-                    @*商家專用-新訂單*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新訂單">
-                        <a class="nav-link" href="~/Home/OrderBusiness">
+
+                    @*顧客專用-訂單列表*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
+                        <a class="nav-link" href="~/Order/Order_list_costomer">
                             <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">新訂單</span>
+                            <span class="nav-link-text">訂單列表</span>
                         </a>
                     </li>
 
-                    @*商家專用-歷史訂單*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
-                        <a class="nav-link" href="~/Home/HistoryOrder?userID=1">
+
+                };
+                @if (Session["memberType"].ToString() == "Business")
+                {
+                    @*商家專用-未出餐訂單-訂單別*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
+                        <a class="nav-link" href="~/Order/Order_list_bussiness">
                             <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">歷史訂單</span>
+                            <span class="nav-link-text">未出餐訂單-訂單別</span>
+                        </a>
+                    </li>
+
+                    @*商家專用-未出餐訂單-明細別*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-明細別">
+                        <a class="nav-link" href="~/Order/Order_deteail_bussiness">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">未出餐訂單-明細別</span>
                         </a>
                     </li>
                     @*商家專用-產品列表*@
@@ -137,7 +147,7 @@
                             </div>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item small" href="~/Home/OrderList?userID=1">詳細訂單明細</a>
+                            <a class="dropdown-item small" href="~/Order/Order_list_bussiness">詳細訂單明細</a>
                         </div>
                     </li>
                 }
@@ -271,12 +281,14 @@
 </html>
 
 <!-- Page level plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+@*<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>*@
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
 <script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+@*<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>*@
+
+
 

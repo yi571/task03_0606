@@ -19,6 +19,7 @@ namespace task03_0606.Models
         public int ProductID { get; set; }
         public Nullable<int> OrderCount { get; set; }
         public string Note { get; set; }
+        public string FinshTime { get; set; }
     
         public virtual Member Member { get; set; }
         public virtual OrderList OrderList { get; set; }

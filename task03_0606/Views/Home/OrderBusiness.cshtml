@@ -1,5 +1,4 @@
 ﻿@model List<task03_0606.Models.OrderList>
-@*@model List<task03_0606.Models.orderViewModel>*@
 
 @{
     ViewBag.Title = "OrderBusiness";
@@ -135,7 +134,7 @@
                     </thead>
 
                     <tbody>
-                        @*@foreach (task03_0606.Models.orderViewModel order in Model)*@
+                      
                         @foreach (task03_0606.Models.OrderList order in Model)
 
                         {
@@ -182,38 +181,39 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modal-lg">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <form method="post" action="" id="orderDetailForm">
+               
+                    <table>
+                        <tr>
+                            <th>
+                                訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
+                            </th>
+                            <th>
+                                客戶電話：
+                                <label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
+                            </th>
+                            <th>
+                                座位：
+                                <label id="orderDetail_seatID" name="orderDetail_seatID"></label>
+                            </th>
+                            <th>
+                                訂餐時間：
+                                <label id="orderDetail_time" name="orderDetail_time"></label>
+                            </th>
+                        </tr>
+                    </table>
 
-                    訂單編號：
-                    <label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-
-                    客戶電話：
-                    <label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
-
-                    座位：
-                    <label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-
-                    訂餐時間：
-                    <label id="orderDetail_time" name="orderDetail_time"></label>
-
-
-                </form>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body max-height">
                 <div class="table-responsive-sm">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <td></td>
-                            </tr>
                             <tr>
                                 <th>廠商</th>
                                 <th>產品編號</th>
@@ -235,28 +235,9 @@
                                 <td>去冰</td>
                             </tr>
 
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>薯條(中)</td>
-                                <td>1</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>漢堡</td>
-                                <td>1</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td></td>
-                            </tr>
 
                         </tbody>
-                        <thead>
+                        <thead  id="detailSum">
                             <tr>
                                 <th>總計</th>
                                 <th> </th>
@@ -274,12 +255,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="orderOK"type="button" class="btn btn-primary">出餐</button>
             </div>
         </div>
     </div>
 </div>
-
 
 
 
@@ -297,6 +277,8 @@
         $("#orderDetail_orderID").text(this.cells[2].innerText);
         $("#orderDetail_seatID").text(this.cells[3].innerText);
 
+        $('#exampleModalCenter').modal('show');
+
 
         $.ajax({
             method: "POST",
@@ -306,27 +288,44 @@
             data: { OrderId: parseInt(this.cells[2].innerText) }
         })
             .done(function (dataList) {
-                console.log(dataList)
+                //console.log(dataList)
                 $("#detailList").empty();
+               
+                var countSum = 0;
+                var amountSum = 0;
                 $.each(dataList, function (index, data) {
-                    $("#detailList").append('<tr>< td >' + index + '</td ><td>' + data.MemberID + '</td ><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note +'</td></tr >');
-
-                })
-
+                    $("#detailList").append('<tr>< td >' + index + '</td ><td>' + data.MemberID + '</td ><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note + '</td></tr >');
+                    countSum += data.OrderCount;
+                    amountSum += data.OrderCount * data.UnitPrice;
+                });
+                $("#detailSum").empty();
+                $("#detailSum").append('<tr>< td >總計</td ><td></td ><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td></tr >');
             });
-
-        $("#orderDetail_time_input").val(this.cells[0].innerText);
-        $("#orderDetail_customerPhone_input").val(this.cells[1].innerText);
-        $("#orderDetail_orderID_input").val(this.cells[2].innerText);
-        $("#orderDetail_seatID_input").val(this.cells[3].innerText);
-
-        $("#orderDetail_orderID_input2").val(this.cells[2].innerText);
-        //$("#orderDetailForm").submit();
-        $('#exampleModalCenter').modal('show');
-
-
     });
 
+   
+
+    $("#orderOK").click(function () {
+        $.ajax({
+            method: "post",
+            dataType: "json",
+            url: "@Url.Action("OrderBusiness", "Home")",
+            data: { orderDetail_time_input : $("#orderDetail_time").text(),
+                    orderDetail_customerPhone_input : $("#orderDetail_customerPhone").text(),
+                    orderDetail_orderID_input : $("#orderDetail_orderID").text(),
+                    orderDetail_seatID_input: $("#orderDetail_seatID").text(),
+            }
+        })
+            .done(function (data) {
+            console.log(data);
+            alert("確定出餐");
+            $('#exampleModalCenter').modal('hide');
+
+               
+           
+        })
+    })
+    
 
 
 </script>

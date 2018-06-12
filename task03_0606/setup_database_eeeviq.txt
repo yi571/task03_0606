@@ -38,7 +38,6 @@ OrderId int identity primary key ,
 CustomerPhone varchar(10),
 OrderTime varchar(20),
 SeatID int not null,
-FinshTime varchar(20),
 )
 go
 
@@ -46,6 +45,7 @@ insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345678','2018
 insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345677','2018-06-08 15:55',2)
 insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345666','2018-06-08 16:20',5)
 insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345655','2018-06-08 17:30',1)
+insert into OrderList(CustomerPhone,OrderTime,SeatID) values ('0912345655','2018-06-09 17:30',4)
 go
 
 create table OrderDetail (
@@ -54,6 +54,7 @@ MemberID int foreign key references Member(MemberID),
 ProductID int foreign key references Product(ProductID),
 OrderCount int,
 Note nvarchar(20),
+FinshTime varchar(30),
 CONSTRAINT PK_Person PRIMARY KEY (OrderId,ProductID),
 )
 go
@@ -73,6 +74,8 @@ insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (3,2,7,2)
 
 insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (4,1,2,2)
 insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount,Note) values (4,1,1,1,'少冰')
+
+insert into OrderDetail (OrderId,MemberID,ProductID,OrderCount) values (5,1,2,2)
 go
 
 

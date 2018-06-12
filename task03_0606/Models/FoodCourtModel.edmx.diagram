@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="81b2d4a6cf864c5c93a8d9e0cb6f161e" Name="Diagram1">
-        <EntityTypeShape EntityType="FoodCourtModel.Member" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtModel.OrderDetail" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtModel.OrderList" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtModel.Product" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Membe__5FB337D6" ManuallyRouted="false" />
+      <Diagram DiagramId="c6cccd9da83c4ad1b3cacf4fe8ab68c6" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodCourtModel.Member" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtModel.OrderDetail" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtModel.OrderList" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtModel.Product" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Membe__208CD6FA" ManuallyRouted="false" />
         <AssociationConnector Association="FoodCourtModel.FK__Product__MemberI__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Order__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Produ__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Order__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtModel.FK__OrderDeta__Produ__2180FB33" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
