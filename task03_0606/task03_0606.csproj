@@ -240,7 +240,6 @@
     <Compile Include="Models\myfoodproduct.cs">
       <DependentUpon>FoodProductsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\newproduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
