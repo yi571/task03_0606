@@ -42,28 +42,8 @@
                         </tfoot>
                         <tbody>
 
-<<<<<<< HEAD
-                            @foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
-                                <tr>
-                                    <td>@item.LastName@item.FirstName</td>
-                                    <td>@item.PhoneNum</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.City@item.District@item.Road</td>
-                                    <td>
-                                        <form method="post" action="">
-                                            <input class="form-control" id="userId" name="userId" value="@item.Id" hidden>
-                                            <button type="submit" id="submitBtn" class="btn btn-primary btn-block">詳細資料</button>
-                                        </form>
-                                        
-                                    </td>
-                                    
-                                    <td></td>
-                                </tr>
-                            }
 
 
-
-=======
                             @{foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
                                     string[] strArray = new string[3];
                                     string[] strUserRank = new string[3] { "網站管理員", "商家管理員", "顧客" };
@@ -81,7 +61,6 @@
 
 
 
->>>>>>> 90e65ed5c028a5544969e6b8a1ae9a5e18c9da15
 
                         </tbody>
                     </table>
