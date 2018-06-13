@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
 
+
 namespace task03_0606.Controllers
 {
+    
     public class ProductsController : Controller
     {
 
@@ -39,9 +41,9 @@ namespace task03_0606.Controllers
             return View();
         }
 
-
-        [HttpPost]
-        public ActionResult Create(string productsId, string title, string price,string picture,string introduce)
+       
+    [HttpPost]
+        public ActionResult Create(string productsId, string title, string price,string introduce)
         {
 
             myfoodproduct mfd = new myfoodproduct()
@@ -49,11 +51,12 @@ namespace task03_0606.Controllers
                 productId = Convert.ToInt32(productsId),
                 title = title,
                 price = Convert.ToInt32(price),
-                picture ="",
+                picture ="A13.jpg",
                 introduce = introduce,
                 addcount = 12,
                 imageURL = ""
             };
+
             //var query = from o in db.myfoodproducts
             //            select o;
             //myfoodproduct mfp = query.Single();

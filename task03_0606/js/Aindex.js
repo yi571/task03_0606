@@ -298,24 +298,23 @@ $(document).ready(function () {
 });
 
 
-//-------------------
-document
-    .querySelector('#imgPicker')
-    .addEventListener('change', function () {
-        //当没选中图片时，清除预览
-        if (this.files.length === 0) {
-            document.querySelector('#preview').src = '';
-            return;
+//-------------------Create 預覽圖片
+function showMyImage(fileInput) {
+    var files = fileInput.files;
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var imageType = /image.*/;
+        if (!file.type.match(imageType)) {
+            continue;
         }
-
-        //实例化一个FileReader
+        var img = document.getElementById("thumbnil");
+        img.file = file;
         var reader = new FileReader();
-
-        reader.onload = function (e) {
-            //当reader加载时，把图片的内容赋值给
-            document.querySelector('#preview').src = e.target.result;
-        };
-
-        //读取选中的图片，并转换成dataURL格式
-        reader.readAsDataURL(this.files[0]);
-    }, false);
+        reader.onload = (function (aImg) {
+            return function (e) {
+                aImg.src = e.target.result;
+            };
+        })(img);
+        reader.readAsDataURL(file);
+    }
+}

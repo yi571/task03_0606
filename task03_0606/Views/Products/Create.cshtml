@@ -4,7 +4,9 @@
 }
 
 <h2>新增產品</h2>
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 
     @Html.AntiForgeryToken()
@@ -29,10 +31,12 @@
             <input class="form-control" id="introduce" name="introduce"type="text" placeholder="Enter introduce">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlFile1">圖片預上傳，請點選下方按鈕</label>
+            @*<label for="exampleFormControlFile1">圖片預上傳，請點選下方按鈕</label>
             <input id="imgPicker" type="file" class="form-control-file"  name="exampleFormControlFile1"/>
-            <img id="preview" width="200" height="200"/>
- 
+            <img id="preview" width="200" height="200"/>*@
+            <input type="file" accept="image/*" onchange="showMyImage(this)" />
+            <br />
+            <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
 
         </div>
 
@@ -42,6 +46,4 @@
 
         </form>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
