@@ -53,7 +53,7 @@
                             <td> @(@order.UnitPrice*@order.OrderCount)</td>
                             <td> @order.Note</td>
                             <td> @order.FinshTime </td>
-                            <td> <button id="orderOk" type="button" class="btn btn-primary">出餐</button> </td>
+                            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
                         </tr>
                         
                     }
@@ -65,17 +65,21 @@
 </div>
 
  <script>
-     
-     //訂單出餐
-   
 
-     $("#dataTable").find("tr.orderListItem").find("button").click(function () {
+     //訂單出餐
+     function foodDelivery(ProductID,OrderId) {
+
+         alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
+     }
+
+
+     @*$("#dataTable").find("tr.orderListItem").find("button").click(function () {
          //alert(this.closest("tr").cells[4].innerText);
-         var productId = this.closest("tr").cells[4].innerText;
-         var orderId = this.closest("tr").cells[2].innerText;
+         var productId = this.closest("tr").cells[4];
+         var orderId = this.closest("tr").cells[2];
 
          alert("訂單編號:" + orderId + "  " + "產品編號" + productId)
-        
+
          $.ajax({
              method: "post",
              dataType: "json",
@@ -91,11 +95,11 @@
             //    $('#exampleModalCenter').modal('hide');
 
             //})
-         
-     });
+
+     });*@
 
 
-    
+
 
             </script>
 
