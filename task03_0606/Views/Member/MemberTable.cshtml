@@ -28,7 +28,6 @@
                                 <th>手機號碼</th>
                                 <th>Email</th>
                                 <th>住址</th>
-                                <th>詳細資料</th>
                                 <th>備註</th>
                             </tr>
                         </thead>
@@ -38,12 +37,12 @@
                                 <th>手機號碼</th>
                                 <th>Email</th>
                                 <th>住址</th>
-                                <th>詳細資料</th>
                                 <th>備註</th>
                             </tr>
                         </tfoot>
                         <tbody>
 
+<<<<<<< HEAD
                             @foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
                                 <tr>
                                     <td>@item.LastName@item.FirstName</td>
@@ -64,6 +63,25 @@
 
 
 
+=======
+                            @{foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
+                                    string[] strArray = new string[3];
+                                    string[] strUserRank = new string[3] { "網站管理員", "商家管理員", "顧客" };
+                                    if (!string.IsNullOrEmpty(item.Lane)) { strArray[0] = "巷"; };
+                                    if (!string.IsNullOrEmpty(item.Alley)) { strArray[1] = "弄"; };
+                                    if (!string.IsNullOrEmpty(item.AddressF)) { strArray[2] = "樓"; };
+                                    <tr>
+                                        <td>@item.LastName@item.FirstName</td>
+                                        <td>@item.PhoneNum</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.City@item.District@item.Road@item.Lane @strArray[0] @item.Alley @strArray[1] @item.AddressNum 號 @item.AddressF @strArray[2]</td>
+                                        <td>@item.UserRank</td>
+                                    </tr>
+                                } }
+
+
+
+>>>>>>> 90e65ed5c028a5544969e6b8a1ae9a5e18c9da15
 
                         </tbody>
                     </table>

@@ -20,6 +20,7 @@ namespace task03_0606.Models {
         public string Alley { get; set; }
         public string AddressNum { get; set; }
         public string AddressF { get; set; }
+        public string UserRank { get; set; }
     }
 }
 
