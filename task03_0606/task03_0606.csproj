@@ -104,6 +104,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="create1.txt" />
     <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />

@@ -33,51 +33,41 @@ namespace task03_0606.Controllers
         }
 
 
-        public ActionResult Create() {
-
-            return View();
-        }
-
-
-
-        //public ActionResult Create(int pid)
-        //{
-        //    var query = from o in db.myfoodproducts
-        //                where o.productId == pid
-        //                select o;
-        //    myfoodproduct mfp = query.Single();
-
-        //    return View(mfp);
-        //}
-        //[HttpPost]
-        //public ActionResult Create(myfoodproduct newproduct)
-        //{
-        //    myfoodproduct mfp = db.myfoodproducts.Find(newproduct.productId);
-        //    mfp.productId = newproduct.productId;
-        //    mfp.title = newproduct.title;
-        //    mfp.price = newproduct.price;
-        //    mfp.picture = newproduct.picture;
-        //    mfp.introduce = newproduct.introduce;
-        //    db.SaveChanges();
-
-
-        //    return RedirectToAction("ManagerIndex");
-        //}
-
-
-
-
-
-
-        public ActionResult Edit()
+        public ActionResult Create()
         {
 
             return View();
         }
 
 
+        [HttpPost]
+        public ActionResult Create(string productsId, string title, string price,string picture,string introduce)
+        {
 
+            myfoodproduct mfd = new myfoodproduct()
+            {
+                productId = Convert.ToInt32(productsId),
+                title = title,
+                price = Convert.ToInt32(price),
+                picture ="",
+                introduce = introduce,
+                addcount = 12,
+                imageURL = ""
+            };
+            //var query = from o in db.myfoodproducts
+            //            select o;
+            //myfoodproduct mfp = query.Single();
+            db.myfoodproducts.Add(mfd);
+            db.SaveChanges();
+            //return Content(productsId);
+            return RedirectToAction("ManagerIndex", "Products");
+        }
+       
+        public ActionResult Edit()
+        {
 
+            return View();
+        }
 
         public ActionResult Drinkproducts()
         {

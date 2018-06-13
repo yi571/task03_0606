@@ -39,6 +39,7 @@
                                 <label class="form-check-label" for="checkbox"></label>
                         </th>*@
                         <th class="th-lg"><a>商品編號<i class="fa fa-sort ml-1"></i></a></th>
+                        <th class="th-lg"><a>商品圖片<i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a>商品名稱<i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a href="">商品售價<i class="fa fa-sort ml-1"></i></a></th>
                         <td class="th-lg"><a href="">商品介紹<i class="fa fa-sort ml-1"></i></a></td>
@@ -59,6 +60,9 @@
                             </th>*@
                             <th>
                                 @Html.DisplayFor(modelItem => item.productId)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.picture)
                             </th>
                             <th>
                                 @Html.DisplayFor(modelItem => item.title)

@@ -7,72 +7,40 @@
 
 
 
-@using (Html.BeginForm())
-{
     @Html.AntiForgeryToken()
 
-
-    <div class="form-horizontal">
-        <h4>請於下方輸入產品內容：</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<form method="post" action="">
+    <div class="form-group">
+ 
+        <div class="col-md-6">
+            <label for="exampleInputName">產品編號</label>
+            <input class="form-control" id="productsId" name="productsId" type="text" aria-describedby="productsHelp" placeholder="Enter productsId">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputLastName">產品名稱</label>
+            <input class="form-control" id="title" name="title" type="text" placeholder="Enter title">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputEmail1">產品售價</label>
+            <input class="form-control" id="price" name="price" type="text" placeholder="Enter price">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputEmail1">產品介紹</label>
+            <input class="form-control" id="introduce" name="introduce"type="text" placeholder="Enter introduce">
+        </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.productId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.productId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.productId, "", new { @class = "text-danger" })
-            </div>
+            <label for="exampleFormControlFile1">圖片預上傳，請點選下方按鈕</label>
+            <input id="imgPicker" type="file" class="form-control-file"  name="exampleFormControlFile1"/>
+            <img id="preview" width="200" height="200"/>
+ 
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <br />
+        <button type="submit">確定</button>
+         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.introduce, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.introduce, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.introduce, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <!-- File Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="filebutton">把預備新增的圖片由下方按鈕點選</label>
-            <div class="col-md-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-   
-      
-
-
-}
-
-<div>
-    @Html.ActionLink("Back to List", "ManagerIndex")
-</div>
+        </form>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
