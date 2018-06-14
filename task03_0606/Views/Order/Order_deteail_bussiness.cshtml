@@ -71,8 +71,27 @@
      //訂單出餐
      function foodDelivery(ProductID,OrderId) {
 
-         alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
+        // alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
+
+         $.ajax({
+             method: "post",
+             dataType: "json",
+             url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
+             data: {
+                 productId_ok: parseInt(ProductID),
+                 orderId_ok: parseInt(OrderId),
+             }
+     })
+            .done(function (data) {
+                console.log(data);
+                alert("確定出餐");
+                $('#exampleModalCenter').modal('hide');
+
+            })
+
      }
+
+     
 
 
      @*$("#dataTable").find("tr.orderListItem").find("button").click(function () {

@@ -58,7 +58,7 @@ namespace task03_0606.Controllers
                         where o.MemberID == x && string.IsNullOrEmpty(o.FinshTime)
                         select ds;
 
-            List<OrderList> orders = query.ToList();
+            List<OrderList> orderDetailList = query.ToList();
 
             //var query = from o in db.OrderLists
             //            join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
@@ -81,15 +81,17 @@ namespace task03_0606.Controllers
             //            };
             //List<orderDetailViewModel> orderDetailList = query.ToList();
 
-            //var queryByID = from o in orderDetailList
-            //                group o by o.OrderId into g
-            //                select new OrderList
-            //                {
-            //                    OrderId = 
+            var queryByID = from o in orderDetailList
+                            group o by new { o.OrderId, o.CustomerPhone, o.SeatID, o.OrderTime } into g
+                            select new OrderList
+                            {
+                                OrderId = g.Key.OrderId,
+                                CustomerPhone = g.Key.CustomerPhone,
+                                SeatID = g.Key.SeatID,
+                                OrderTime = g.Key.OrderTime
+                            };
 
-            //                }
-
-
+            List<OrderList> orders = queryByID.ToList();
 
             return View(orders);
         }
@@ -126,13 +128,16 @@ namespace task03_0606.Controllers
 
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
-            OrderDetail orderItem = db.OrderDetails.Find(productId_ok & orderId_ok);
-            return Content(orderItem.ToString());
+            
+
+            OrderDetail orderItem = db.OrderDetails.Find(orderId_ok);
+
+            
 
             //orderItem.FinshTime = DateTime.Now.ToString();
-           
+
             //db.SaveChanges();
-            //return Json(true);
+            return Json(true);
 
             //return View("OrderBusiness"); ??
             //return RedirectToAction("OrderBusiness"); ??
