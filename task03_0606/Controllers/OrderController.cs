@@ -41,10 +41,55 @@ namespace task03_0606.Controllers
 
         public ActionResult Order_list_bussiness() {
 
-            var query = from o in db.OrderLists
-                        //where string.IsNullOrEmpty(c.FinshTime)
-                        select o;
+            int x = Convert.ToInt32(Session["Member"]);
+
+            //var query = from o in db.OrderDetails
+            //            where string.IsNullOrEmpty(o.FinshTime) && o.MemberID == x
+            //            select o;
+
+            //List<OrderDetail> orderDetailList = query.ToList();
+
+
+            var query = from o in db.OrderDetails
+                        join c in db.OrderLists
+                        on new { OrderId = o.OrderId } equals
+                           new { OrderId = c.OrderId } into temp
+                        from ds in temp.DefaultIfEmpty()
+                        where o.MemberID == x && string.IsNullOrEmpty(o.FinshTime)
+                        select ds;
+
             List<OrderList> orders = query.ToList();
+
+            //var query = from o in db.OrderLists
+            //            join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
+            //            from c in ps.DefaultIfEmpty()
+            //            where string.IsNullOrEmpty(c.FinshTime) && c.MemberID == x
+            //            select new orderDetailViewModel
+            //            {
+            //                OrderId = c.OrderId,
+            //                OrderTime = o.OrderTime,
+            //                SeatID = o.SeatID,
+            //                CustomerPhone = o.CustomerPhone,
+            //                FinshTime = c.FinshTime,
+            //                MemberID = c.MemberID,
+            //                MemberName = c.Member.MemberName,
+            //                OrderCount = c.OrderCount,
+            //                Note = c.Note,
+            //                ProductID = c.ProductID,
+            //                ProductName = c.Product.ProductName,
+            //                UnitPrice = c.Product.UnitPrice,
+            //            };
+            //List<orderDetailViewModel> orderDetailList = query.ToList();
+
+            //var queryByID = from o in orderDetailList
+            //                group o by o.OrderId into g
+            //                select new OrderList
+            //                {
+            //                    OrderId = 
+
+            //                }
+
+
 
             return View(orders);
         }
@@ -73,7 +118,9 @@ namespace task03_0606.Controllers
                             UnitPrice = c.Product.UnitPrice,
                         };
             List<orderDetailViewModel> orders = query.ToList();
-            
+
+
+
             return Json(orders, JsonRequestBehavior.AllowGet);
         }
 
