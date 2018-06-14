@@ -43,7 +43,7 @@ namespace task03_0606.Controllers
 
        
     [HttpPost]
-        public ActionResult Create(string productsId, string title, string price,string introduce)
+        public ActionResult Create(string productsId, string title, string price,string picture,string introduce)
         {
 
             myfoodproduct mfd = new myfoodproduct()
@@ -51,7 +51,7 @@ namespace task03_0606.Controllers
                 productId = Convert.ToInt32(productsId),
                 title = title,
                 price = Convert.ToInt32(price),
-                picture ="A13.jpg",
+                picture =picture,
                 introduce = introduce,
                 addcount = 12,
                 imageURL = ""

@@ -31,12 +31,16 @@
             <input class="form-control" id="introduce" name="introduce"type="text" placeholder="Enter introduce">
         </div>
         <div class="form-group">
+            <div class="col-md-6">
+                <label for="exampleInputEmail1">產品圖檔</label>
+                <input class="form-control" id="picture" name="picture" type="file" accept="image/*" onchange="showMyImage(this)" />
+<br />
+<img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
+            </div>
             @*<label for="exampleFormControlFile1">圖片預上傳，請點選下方按鈕</label>
             <input id="imgPicker" type="file" class="form-control-file"  name="exampleFormControlFile1"/>
             <img id="preview" width="200" height="200"/>*@
-            <input type="file" accept="image/*" onchange="showMyImage(this)" />
-            <br />
-            <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
+            @**@
 
         </div>
 
