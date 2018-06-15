@@ -284,11 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="photo\dessert\" />
-    <Folder Include="photo\drinksoup\" />
-    <Folder Include="photo\fastfood\" />
-    <Folder Include="photo\noodle\" />
-    <Folder Include="photo\rice\" />
     <Folder Include="picture\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
