@@ -318,3 +318,4 @@ function showMyImage(fileInput) {
         reader.readAsDataURL(file);
     }
 }
+//--------------------

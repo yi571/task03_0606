@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -65,7 +66,27 @@ namespace task03_0606.Controllers
             //return Content(productsId);
             return RedirectToAction("ManagerIndex", "Products");
         }
-       
+        public ActionResult Upload() {
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file) {
+
+            if (file.ContentLength > 0) {
+
+                var fileName = Path.GetFileName(file.FileName);
+
+                var path = Path.Combine(Server.MapPath("~/photo"), fileName);
+
+                file.SaveAs(path);
+
+            }
+
+            return RedirectToAction("ManagerIndex", "Products");
+        }
+
         public ActionResult Edit()
         {
 
