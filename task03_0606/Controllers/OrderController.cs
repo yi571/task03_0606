@@ -25,7 +25,7 @@ namespace task03_0606.Controllers
                             OrderTime = o.OrderTime,
                             SeatID = o.SeatID,
                             CustomerPhone = o.CustomerPhone,
-                            FinshTime =  c.FinshTime,
+                            FinshTime = string.Format("{0:T}", Convert.ToDateTime(c.FinshTime)),
                             MemberID = c.MemberID,
                             OrderCount = c.OrderCount,
                             Note = c.Note,
@@ -59,11 +59,10 @@ namespace task03_0606.Controllers
                             group o by new { o.OrderId, o.CustomerPhone, o.SeatID, o.OrderTime } into g
                             select new OrderList
                             {
-                                
                                 OrderId = g.Key.OrderId,
                                 CustomerPhone = g.Key.CustomerPhone,
                                 SeatID = g.Key.SeatID,
-                                OrderTime =g.Key.OrderTime
+                                OrderTime =string.Format("{0:T}", Convert.ToDateTime( g.Key.OrderTime))
                             };
             
 
@@ -107,16 +106,11 @@ namespace task03_0606.Controllers
             var result = (from o in db.OrderDetails
                           where o.ProductID == productId_ok && o.OrderId == orderId_ok
                           select o).FirstOrDefault();
-
             
-
-
             result.FinshTime = DateTime.Now.ToString();
             db.SaveChanges();
             return Json(true);
 
-            //return View("Order_deteail_bussiness"); 
-            //return RedirectToAction("OrderBusiness"); ??
         }
 
 

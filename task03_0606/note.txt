@@ -1,1 +1,7 @@
 ﻿https://dog0416.blogspot.com/2016/06/asp-net-mvc.html
+
+
+https://ithelp.ithome.com.tw/articles/10159342
+
+String Format for DateTime [C#]
+http://www.csharp-examples.net/string-format-datetime/
