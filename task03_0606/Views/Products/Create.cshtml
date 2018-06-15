@@ -35,17 +35,16 @@
                 <input type="file" accept="image/*" onchange="showMyImage(this)" />
                 <br />
                 <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
-                <form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
+
+            </div>
+
+            <button type="submit">確定</button>
+        </div>
+</form>
+
+<form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
     <label for="file">Filename:</label>
     <input type="file" name="file" id="file" />
     <input type="submit" />
-</div>
-           
-           
-        <button type="submit">確定</button>
-    </div>
 </form>
- </form>
 <hr />
-
-

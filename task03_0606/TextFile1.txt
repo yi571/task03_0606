@@ -1,0 +1,7 @@
+﻿ShoppingWeb
+https://github.com/Jyo238/PORTFOLIO_ShoppingWeb/blob/Master/ShoppingWeb/Views/Product/Create.cshtml
+
+
+
+ASP.Net MVC: Upload Image to Database and Show Image “Dynamically” Using a View
+http://byatool.com/mvc/asp-net-mvc-upload-image-to-database-and-show-image-dynamically-using-a-view/

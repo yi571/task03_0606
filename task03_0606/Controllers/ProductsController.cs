@@ -71,26 +71,47 @@ namespace task03_0606.Controllers
             return View();
 
         }
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file) {
+        //[HttpPost]
+        //public ActionResult Upload(HttpPostedFileBase file) {
 
-            if (file.ContentLength > 0) {
+        //    if (file.ContentLength > 0) {
 
-                var fileName = Path.GetFileName(file.FileName);
+        //        var fileName = Path.GetFileName(file.FileName);
 
-                var path = Path.Combine(Server.MapPath("~/photo"), fileName);
+        //        var path = Path.Combine(Server.MapPath("~/photo"), fileName);
 
-                file.SaveAs(path);
+        //        file.SaveAs(path);
 
-            }
+        //    }
 
-            return RedirectToAction("ManagerIndex", "Products");
-        }
+        //    return RedirectToAction("ManagerIndex", "Products");
+        //}
 
         public ActionResult Edit()
         {
-
             return View();
+        }
+
+        public ActionResult Edit(int productId)
+        {
+            var query = from o in db.myfoodproducts
+                        where o.productId == productId
+                        select o;
+            myfoodproduct mfp = query.Single();
+
+            return View(mfp);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(myfoodproduct mfp)
+        {
+            myfoodproduct mfpdbserver = db.myfoodproducts.Find(mfp.productId);
+            mfpdbserver.title = mfp.title;
+            mfpdbserver.price = mfp.price;
+            mfpdbserver.introduce = mfp.introduce;
+            mfpdbserver.picture = mfp.picture;
+            db.SaveChanges();
+            return RedirectToAction("ManagerIndex");
         }
 
         public ActionResult Drinkproducts()

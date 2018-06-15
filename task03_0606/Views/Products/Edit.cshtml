@@ -1,4 +1,4 @@
-﻿
+﻿@model task03_0606.Models.myfoodproduct
 @{
     ViewBag.Title = "Edit";
 }
@@ -8,60 +8,45 @@
 <div class="container">
 
 
+    <form method="post" action="" data-ajax="false">
+        <div class="form-group">
 
-    <div class="card-group">
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/d10_resized.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">飲品/湯品</h5>
-                <p class="card-text">多種不同風味飲品&湯品，讓您細細品嘗。</p>
-                <div>
-                    <a href="~/Products/Drinkproducts" class="btn btn-primary">進入挑選</a>
+            <div class="col-md-6">
+                <label for="exampleInputName">產品編號</label>
+                <input class="form-control" id="productsId" name="productsId" type="text" aria-describedby="productsHelp" value="@Model.productId">
+            </div>
+            <div class="col-md-6">
+                <label for="exampleInputLastName">產品名稱</label>
+                <input class="form-control" id="title" name="title" type="text" value="@Model.title">
+            </div>
+            <div class="col-md-6">
+                <label for="exampleInputEmail1">產品售價</label>
+                <input class="form-control" id="price" name="price" type="text" value="$@Model.price">
+            </div>
+            <div class="col-md-6">
+                <label for="exampleInputEmail1">產品介紹</label>
+                <input class="form-control" id="introduce" name="introduce" type="text" value="@Model.introduce">
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input type="file" accept="image/*" onchange="showMyImage(this)" />
+                    <br />
+                    <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
+                    
                 </div>
 
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/dessert_resized.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">美味甜點</h5>
-                <p class="card-text">五星級甜點師傅，用心製作真材實料的頂級美味。</p>
-                <div>
-                    <a href="~/Products/Dessertproducts" class="btn btn-primary">進入挑選</a>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input type="submit" name="btnOKCancel" value="OK" /></div>
+                    <div class="ui-block-b"><input type="submit" name="btnOKCancel" value="Cancel" /></div>
                 </div>
             </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/n1_resized.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">麵食類</h5>
-                <p class="card-text">無論是義大利麵，拉麵，還是傳統麵，麵條絕對香Q有勁！</p>
-                <div>
-                    <a href="~/Products/Noodleproducts" class="btn btn-primary">進入挑選</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/r5_resized.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">米飯類</h5>
-                <p class="card-text">本商場有丼飯、壽司、蛋包飯，可供您多變的選擇！</p>
-                <div>
-                    <a href="~/Products/Riceproducts" class="btn btn-primary">進入挑選</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/fast-food_resized.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">速食類</h5>
-                <p class="card-text">無論是炸雞、還是薯條，絕對讓你讚不絕口！</p>
-                <div>
-                    <a href="~/Products/Fastfoodproducts" class="btn btn-primary">進入挑選</a>
-                </div>
-            </div>
-        </div>
-
+    </form>
+    
     </div>
 
-</div>
+    @*<form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file" />
+        <input type="submit" />
+    </form>*@
+    <hr />
