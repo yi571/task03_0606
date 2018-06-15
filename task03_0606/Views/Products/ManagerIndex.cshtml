@@ -4,147 +4,84 @@
     ViewBag.Title = "ManagerIndex";
 }
 
- 
-        <!--Top Table UI-->
-
-        <div class="card card-cascade narrower">
-
-            <!--Card image-->
-            <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+        <div class="container-fluid">
 
 
 
-                <h1><a href="" class="white-text mx-3">商品列表</a></h1>
-                <div class="pull-right" id="toolbar">
-                    <button id="create" class="btn btn-danger" disabled>
-                        <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
-                    </button>
-                </div>
-
-            </div>
-  
-    <!--/Card image-->
-
-    <div class="px-lg-4">
-
-        <div>
-            <!--Table-->
-            <table style="word-break:break-all">
-
-                <!--Table head-->
-                <thead>
-                    <tr>
-                        @*<th>
-                            <input class="form-check-input" type="checkbox" id="checkbox">
-                                <label class="form-check-label" for="checkbox"></label>
-                        </th>*@
-                        <th class="th-lg"><a>商品編號<i class="fa fa-sort ml-1"></i></a></th>
-                        <th class="th-lg"><a>商品圖片<i class="fa fa-sort ml-1"></i></a></th>
-                        <th class="th-lg"><a>商品名稱<i class="fa fa-sort ml-1"></i></a></th>
-                        <th class="th-lg"><a href="">商品售價<i class="fa fa-sort ml-1"></i></a></th>
-                        <td class="th-lg"><a href="">商品介紹<i class="fa fa-sort ml-1"></i></a></td>
-                        <th class="th-lg"><a href=""><i class="fa fa-sort ml-1"></i></a></th>
-                    </tr>
-
-                    <!--Table head-->
-                    <!--Table body-->
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-
+<div class="pull-right" id="toolbar">
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
+            <button class="pull-right btn btn-warning" id="create">
+    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
+</button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-
-                            @*<th>
-                                <input class="form-check-input" type="checkbox" id="checkbox1"/>
-                                    <label class="form-check-label" for="checkbox1" ></label>
-                            </th>*@
-                            <th>
-                                @Html.DisplayFor(modelItem => item.productId)
-                            </th>
-                            <th>
-                                @Html.DisplayFor(modelItem => item.picture)
-                            </th>
-                            <th>
-                                @Html.DisplayFor(modelItem => item.title)
-                            </th>
-                            <th>
-                                @Html.DisplayFor(modelItem => item.price)
-                            </th>
+                            <th>商品編號</th>
+                            <th>商品檔名</th>
+                            <th>商品名稱</th>
+                            <th>商品售價</th>
+                            <th>商品介紹</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @foreach (var item in Model)
+                          {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.productId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.picture)</td>
+                            <td>@Html.DisplayFor(modelItem => item.title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.price)</td>
                             <td class="alert-danger" width="200">
                                 @Html.DisplayFor(modelItem => item.introduce)
                             </td>
-
-                            <th>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.productId })
-                            </th>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.productId })</td>
                         </tr>
-                    }
-
-
-
-                </tbody>
-                <!--Table body-->
-            </table>
-
-            <!--Table-->
+                          }
+                     </tbody>
+                </table>
+            </div>
         </div>
-
-
-
-        <!--Bottom Table UI-->
-        <div>
-
-            <!--Name-->
-            <select class="pull-left">
-                <option value="" disabled>Rows number</option>
-                <option value="1" selected>10 rows</option>
-                <option value="2">25 rows</option>
-                <option value="3">50 rows</option>
-                <option value="4">100 rows</option>
-            </select>
-            
-            <!--Pagination -->
-            <nav class="my-4">
-                <ul class="pagination pagination-circle pg-blue mb-0">
-
-                    <!--First-->
-                    <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
-
-                    <!--Arrow left-->
-                    <li class="page-item disabled">
-                        <a class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-
-                    <!--Numbers-->
-                    <li class="page-item active"><a class="page-link">1</a></li>
-                    <li class="page-item"><a class="page-link">2</a></li>
-                    <li class="page-item"><a class="page-link">3</a></li>
-                    <li class="page-item"><a class="page-link">4</a></li>
-                    <li class="page-item"><a class="page-link">5</a></li>
-
-                    <!--Arrow right-->
-                    <li class="page-item">
-                        <a class="page-link" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-
-                    <!--First-->
-                    <li class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
-
-                </ul>
-            </nav>
-            <!--/Pagination -->
-
-        </div>
-        <!--Bottom Table UI-->
-
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
 </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © 美食廣場 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+       
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="js/sb-admin-datatables.min.js"></script>
+    </div>
+</body>
+
+</html>
+
 
            
