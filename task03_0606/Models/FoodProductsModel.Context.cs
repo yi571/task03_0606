@@ -26,5 +26,10 @@ namespace task03_0606.Models
         }
     
         public virtual DbSet<myfoodproduct> myfoodproducts { get; set; }
+
+        internal string Rows(string picture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

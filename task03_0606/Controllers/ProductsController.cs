@@ -21,19 +21,22 @@ namespace task03_0606.Controllers
             return View();
         }
 
+
         public ActionResult ManagerIndex()
         {
             var query = from o in db.myfoodproducts
-                        select new Class1{
-                            productId=o.productId,
-                           title=o.title,
-                           price=o.price,
-                           picture=o.picture,
-                           introduce=o.introduce      
+                        select new Class1
+                        {
+                            productId = o.productId,
+                            title = o.title,
+                            price = o.price,
+                            picture = o.picture,
+                            introduce = o.introduce
                         };
             List<Class1> prolist = query.ToList();
             return View(prolist);
         }
+       
 
 
         public ActionResult Create()
@@ -92,15 +95,15 @@ namespace task03_0606.Controllers
             return View();
         }
 
-        public ActionResult Edit(int productId)
-        {
-            var query = from o in db.myfoodproducts
-                        where o.productId == productId
-                        select o;
-            myfoodproduct mfp = query.Single();
+        //public ActionResult Edit(int productId)
+        //{
+        //    var query = from o in db.myfoodproducts
+        //                where o.productId == productId
+        //                select o;
+        //    myfoodproduct mfp = query.Single();
 
-            return View(mfp);
-        }
+        //    return View(mfp);
+        //}
 
         [HttpPost]
         public ActionResult Edit(myfoodproduct mfp)

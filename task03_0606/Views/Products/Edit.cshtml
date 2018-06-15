@@ -5,15 +5,16 @@
 
 <h2>Edit</h2>
 
+
 <div class="container">
 
-
-    <form method="post" action="" data-ajax="false">
+@Html.AntiForgeryToken()
+    <form method="post" action="" data-ajax="ture">
         <div class="form-group">
 
             <div class="col-md-6">
                 <label for="exampleInputName">產品編號</label>
-                <input class="form-control" id="productsId" name="productsId" type="text" aria-describedby="productsHelp" value="@Model.productId">
+                <input class="form-control" id="productsId" name="productsId" type="text" value="@Model.productId">
             </div>
             <div class="col-md-6">
                 <label for="exampleInputLastName">產品名稱</label>
