@@ -11415,7 +11415,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "第 _START_ 筆 到 第 _END_ 筆, 共 _TOTAL_ 筆",
 	
 	
 			/**
@@ -11436,7 +11436,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "顯示第 0 筆 到 第 0 筆 , 共 0 筆",
 	
 	
 			/**

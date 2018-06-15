@@ -114,15 +114,14 @@
     <div class="col-xl-3 col-sm-3 mb-3">
         <div class="card text-dark bg-warning o-hidden h-100">
             <div class="card-header">
-                Step 1  選擇座位
+                Step 1  找座位
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
                 </span>
             </div>
             <div class="card-body">
                 <p class="card-text text-dark clearfix small z-1">
-                    .........
-                    ....
+                    找座位，掃描座位QR-code
                 </p>
             </div>
         </div>
@@ -243,7 +242,106 @@
     </div>
 </div>
 
+<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+
+                
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body max-height">
+
+                <div class="col-xl-12 col-sm-12 mb-12">
+                    <h2 style="text-align:center">美食優惠</h2>
+                    <div class="container">
+
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="~/picture/1602181025050000001.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="~/picture/1602181025050000001.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="~/picture/1602181025050000001.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="~/picture/1805211147050000001.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="~/picture/1805211147050000001.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">6 / 6</div>
+                            <img src="~/picture/1805211147050000001.jpg" style="width:100%">
+                        </div>
+
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+
+
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1602181025050000001.jpg" style="width:100%" onclick="currentSlide(1)" alt="店名1">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1602181025050000001.jpg" style="width:100%" onclick="currentSlide(2)" alt="店名2">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1602181025050000001.jpg" style="width:100%" onclick="currentSlide(3)" alt="店名3">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1805211147050000001.jpg" style="width:100%" onclick="currentSlide(4)" alt="店名4">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1805211147050000001.jpg" style="width:100%" onclick="currentSlide(5)" alt="店名5">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="~/picture/1805211147050000001.jpg" style="width:100%" onclick="currentSlide(6)" alt="店名5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="orderOK" type="button" class="btn btn-primary">出餐</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <script>
+    window.onload = init;
+    function init() {
+        $("#exampleModalCenter").modal('show');
+    }
+
     var slideIndex = 1;
     showSlides(slideIndex);
 

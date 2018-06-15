@@ -20,7 +20,7 @@
                         <th>訂單單號</th>
                         <th>座位</th>
                         <th>結單時間</th>
-
+                        
                     </tr>
                 </thead>
 
@@ -29,6 +29,7 @@
                     @foreach (task03_0606.Models.OrderList order in Model)
 
                     {
+                        
                         <tr class="orderListItem">
                             <td>@order.OrderTime</td>
                             <td>@order.CustomerPhone</td>

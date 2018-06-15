@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
+using System.Data.SqlClient;
 
 namespace task03_0606.Controllers
 {
@@ -24,7 +25,7 @@ namespace task03_0606.Controllers
                             OrderTime = o.OrderTime,
                             SeatID = o.SeatID,
                             CustomerPhone = o.CustomerPhone,
-                            FinshTime = c.FinshTime,
+                            FinshTime =  c.FinshTime,
                             MemberID = c.MemberID,
                             OrderCount = c.OrderCount,
                             Note = c.Note,
@@ -42,14 +43,7 @@ namespace task03_0606.Controllers
         public ActionResult Order_list_bussiness() {
 
             int x = Convert.ToInt32(Session["Member"]);
-
-            //var query = from o in db.OrderDetails
-            //            where string.IsNullOrEmpty(o.FinshTime) && o.MemberID == x
-            //            select o;
-
-            //List<OrderDetail> orderDetailList = query.ToList();
-
-
+            
             var query = from o in db.OrderDetails
                         join c in db.OrderLists
                         on new { OrderId = o.OrderId } equals
@@ -60,36 +54,18 @@ namespace task03_0606.Controllers
 
             List<OrderList> orderDetailList = query.ToList();
 
-            //var query = from o in db.OrderLists
-            //            join c in db.OrderDetails on o.OrderId equals c.OrderId into ps
-            //            from c in ps.DefaultIfEmpty()
-            //            where string.IsNullOrEmpty(c.FinshTime) && c.MemberID == x
-            //            select new orderDetailViewModel
-            //            {
-            //                OrderId = c.OrderId,
-            //                OrderTime = o.OrderTime,
-            //                SeatID = o.SeatID,
-            //                CustomerPhone = o.CustomerPhone,
-            //                FinshTime = c.FinshTime,
-            //                MemberID = c.MemberID,
-            //                MemberName = c.Member.MemberName,
-            //                OrderCount = c.OrderCount,
-            //                Note = c.Note,
-            //                ProductID = c.ProductID,
-            //                ProductName = c.Product.ProductName,
-            //                UnitPrice = c.Product.UnitPrice,
-            //            };
-            //List<orderDetailViewModel> orderDetailList = query.ToList();
 
             var queryByID = from o in orderDetailList
                             group o by new { o.OrderId, o.CustomerPhone, o.SeatID, o.OrderTime } into g
                             select new OrderList
                             {
+                                
                                 OrderId = g.Key.OrderId,
                                 CustomerPhone = g.Key.CustomerPhone,
                                 SeatID = g.Key.SeatID,
-                                OrderTime = g.Key.OrderTime
+                                OrderTime =g.Key.OrderTime
                             };
+            
 
             List<OrderList> orders = queryByID.ToList();
 
@@ -128,18 +104,18 @@ namespace task03_0606.Controllers
 
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
+            var result = (from o in db.OrderDetails
+                          where o.ProductID == productId_ok && o.OrderId == orderId_ok
+                          select o).FirstOrDefault();
+
             
 
-            OrderDetail orderItem = db.OrderDetails.Find(orderId_ok);
 
-            
-
-            //orderItem.FinshTime = DateTime.Now.ToString();
-
-            //db.SaveChanges();
+            result.FinshTime = DateTime.Now.ToString();
+            db.SaveChanges();
             return Json(true);
 
-            //return View("OrderBusiness"); ??
+            //return View("Order_deteail_bussiness"); 
             //return RedirectToAction("OrderBusiness"); ??
         }
 

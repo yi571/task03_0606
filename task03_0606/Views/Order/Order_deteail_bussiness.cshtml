@@ -78,14 +78,16 @@
              dataType: "json",
              url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
              data: {
-                 productId_ok: parseInt(ProductID),
+
+                 productId_ok: parseInt(ProductID), 
                  orderId_ok: parseInt(OrderId),
              }
      })
             .done(function (data) {
                 console.log(data);
                 alert("確定出餐");
-                $('#exampleModalCenter').modal('hide');
+                window.onload;
+             
 
             })
 

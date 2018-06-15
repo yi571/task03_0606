@@ -1,0 +1,109 @@
+﻿@model task03_0606.Models.Member
+@{
+    ViewBag.Title = "RestaurentMemberPage";
+}
+<style>
+    .card-header-icon {
+  position: absolute;
+  z-index: 0;
+  top: -25px;
+  right: -25px;
+  font-size: 1rem;
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+    .card {
+        position: relative;
+    }
+
+</style>
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">詳細菜單</li>
+</ol>
+<div class="col-xl-12 col-sm-12 mb-12">
+    <div class="card o-hidden h-100">
+
+        <div class="card-header">
+            <h5 class="card-title">@Model.MemberName</h5>
+            <img class="card-header-icon" src="~/picture/1602181025050000001.jpg" title="麥當勞" />
+            <p>「麥當勞」是全世界最大的快速餐飲服務餐廳領導品牌。麥當勞在一九五五年開業之初只是伊利諾州 Des Plaines 一間街坊餐廳,但時至今日,已在全球超過一百個國家設立了超過三萬間餐廳,成為全球最大的快餐服務機構。麥當勞的新精神 i'm lovin' it更是盡興表現自己並享受生活在其中。</p>
+
+        </div>
+        <div class="card-body">
+
+           
+            <div class="card text-center">
+                <div class="card-header">
+                    @*類別分類標籤*@
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                   @*產品卡片*@
+                    <div class="row card-deck">
+                        <div class="card col-sm-3">
+                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card  col-sm-3">
+                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card  col-sm-3">
+                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+
+                        <div class="card  col-sm-3">
+                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -129,8 +129,10 @@
       <DependentUpon>FoodCourtModel.edmx</DependentUpon>
       <LastGenOutput>FoodCourtModel.cs</LastGenOutput>
     </Content>
+    <Content Include="note.txt" />
     <Content Include="picture\1602181123510000001.jpg" />
     <Content Include="picture\1608031409360000001.jpg" />
+    <Content Include="picture\1610141734150000001.jpg" />
     <Content Include="picture\1805211154480000001.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -211,6 +213,7 @@
     <Content Include="Views\Order\Order_deteail_bussiness.cshtml" />
     <Content Include="Views\Order\Order_list_costomer.cshtml" />
     <Content Include="Views\Order\Order_list_bussiness.cshtml" />
+    <Content Include="Views\Home\RestaurentMemberPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
