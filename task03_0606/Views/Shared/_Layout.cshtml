@@ -6,121 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>美食廣場</title>
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="~/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+    <script src="~/js/Aindex.js"></script>
+
+    
+
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="~/Home/index">美食廣場</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="index.html">
-                        <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Dashboard</span>
+                @*商家專用-餐廳列表*@
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
+                    <a class="nav-link" href="~/Home/Restaurent">
+                        <i class="fa fa-fw fa-cutlery"></i>
+                        <span class="nav-link-text">餐廳列表</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fa fa-fw fa-area-chart"></i>
-                        <span class="nav-link-text">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">商家</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">Tables</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
-                        <span class="nav-link-text">Components</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
-                        <li>
-                            <a href="navbar.html">Navbar</a>
-                        </li>
-                        <li>
-                            <a href="cards.html">Cards</a>
-                        </li>
-                    </ul>
-                </li>
+                @*美食分類*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-file"></i>
-                        <span class="nav-link-text">Example Pages</span>
+                    <a class="nav-link" href="~/Products/index">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <span class="nav-link-text">美食分類</span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-                        <li>
-                            <a href="login.html">Login Page</a>
-                        </li>
-                        <li>
-                            <a href="register.html">Registration Page</a>
-                        </li>
-                        <li>
-                            <a href="forgot-password.html">Forgot Password Page</a>
-                        </li>
-                        <li>
-                            <a href="blank.html">Blank Page</a>
-                        </li>
-                    </ul>
+                   
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-sitemap"></i>
-                        <span class="nav-link-text">Menu Levels</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseMulti">
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
-                        <li>
-                            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-                            <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-fw fa-link"></i>
-                        <span class="nav-link-text">Link</span>
+
+                @*商家專用-新訂單*@
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新訂單">
+                    <a class="nav-link" href="~/Home/index">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <span class="nav-link-text">新訂單</span>
                     </a>
                 </li>
+
+                @*商家專用-歷史訂單*@
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
+                    <a class="nav-link" href="~/Home/index">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <span class="nav-link-text">歷史訂單</span>
+                    </a>
+                </li>
+
+                @*網站意見反應*@
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
+                    <a class="nav-link" href="~/Home/index">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <span class="nav-link-text">意見反應</span>
+                    </a>
+                </li>
+
             </ul>
+            @*側邊導覽頁收合標籤*@
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
@@ -128,65 +87,71 @@
                     </a>
                 </li>
             </ul>
+            @*上方導覽*@
             <ul class="navbar-nav ml-auto">
+                @*商家專用-新單訊息*@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-envelope"></i>
+                        <i class="fa fa-fw fa-bell"></i>
                         <span class="d-lg-none">
                             Messages
                             <span class="badge badge-pill badge-primary">12 New</span>
                         </span>
                         <span class="indicator text-primary d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle"></i>
+                            <i class="fa fa-fw fa-circle">10</i>  @*新增筆數*@
                         </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">New Messages:</h6>
+                        <h6 class="dropdown-header">新訂單：</h6>
+
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
+                        <div class="dropdown-item">
+                            <a href="#"><strong>訂單1</strong> </a>
+                            <span class="small float-right text-muted">新增時間 11:21 AM</span>
+                            <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
+                        </div>
+
+                        @*<div class="dropdown-divider"></div>
+                        <div class="dropdown-item" href="#">
                             <strong>David Miller</strong>
                             <span class="small float-right text-muted">11:21 AM</span>
                             <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <strong>Jane Smith</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <strong>John Doe</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-                        </a>
+                        </div>*@
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item small" href="#">View all messages</a>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li>  
+
+                @*顧客專用-購物車訊息*@
+                <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-bell"></i>
+                        <i class="fa fa-fw fa-shopping-cart"></i>
                         <span class="d-lg-none">
                             Alerts
                             <span class="badge badge-pill badge-warning">6 New</span>
                         </span>
                         <span class="indicator text-warning d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle"></i>
+                            <i class="fa fa-fw fa-circle">20</i> @*購物筆數*@
                         </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-                        <h6 class="dropdown-header">New Alerts:</h6>
+                        <h6 class="dropdown-header">購物車</h6>
+
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <span class="text-success">
-                                <strong>
-                                    <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
-                                </strong>
+                        <div class="dropdown-item">
+                            <span class="text-danger">
+                                <a href="#">
+                                    <strong> 產品1 </strong>
+                                </a>
+                                <button class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
                             </span>
-                            <span class="small float-right text-muted">11:21 AM</span>
                             <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                        </a>
+                        </div>
+
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">
                             <span class="text-danger">
@@ -197,6 +162,7 @@
                             <span class="small float-right text-muted">11:21 AM</span>
                             <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                         </a>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">
                             <span class="text-success">
@@ -207,10 +173,14 @@
                             <span class="small float-right text-muted">11:21 AM</span>
                             <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                         </a>
+
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item small" href="#">View all alerts</a>
                     </div>
-                </li>
+                </li> 
+
+                @*搜尋列*@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
@@ -223,73 +193,40 @@
                         </div>
                     </form>
                 </li>
+                @*網站登入/登出*@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                        @*<i class="fa fa-fw fa-sign-out"></i>會員登出*@
+                        <i class="fa fa-fw fa-sign-in"></i>會員登入
+                        <i class="fa fa-fw fa-question"></i>忘記密碼
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-
     <div class="content-wrapper">
         <div class="container-fluid">
             <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item active">My Dashboard</li>
-            </ol>
-            <!-- Icon Cards-->
-            <div class="row">
-                @RenderBody()
 
-                <!-- /.container-fluid-->
-                <!-- /.content-wrapper-->
-                <footer class="sticky-footer">
-                    <div class="container">
-                        <div class="text-center">
-                            <small>Copyright © Your Website 2018</small>
-                        </div>
-                    </div>
-                </footer>
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fa fa-angle-up"></i>
-                </a>
-                <!-- Logout Modal-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="login.html">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-                <!-- Page level plugin JavaScript-->
-                <script src="vendor/chart.js/Chart.min.js"></script>
-                <script src="vendor/datatables/jquery.dataTables.js"></script>
-                <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin.min.js"></script>
-                <!-- Custom scripts for this page-->
-                <script src="js/sb-admin-datatables.min.js"></script>
-                <script src="js/sb-admin-charts.min.js"></script>
-            </div>
+
+            @RenderBody()
+        
+        </div>
+    </div>
 </body>
 </html>
+<!-- Bootstrap core JavaScript-->
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+

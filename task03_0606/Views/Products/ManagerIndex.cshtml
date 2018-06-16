@@ -1,0 +1,99 @@
+﻿@model IEnumerable<task03_0606.Models.Class1>
+
+@{
+    ViewBag.Title = "ManagerIndex";
+}
+
+        <div class="container-fluid">
+
+
+
+<div class="pull-right" id="toolbar">
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
+            <button class="pull-right btn btn-warning" id="create">
+    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
+</button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>商品編號</th>
+                            <th>商品檔名</th>
+                            <th>商品名稱</th>
+                            <th>商品售價</th>
+                            <th>商品介紹</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @foreach (var item in Model)
+                          {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.productId)</td>
+                            @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
+
+                            <td class="ProfileImg">
+                                <img id="img1" src="~/photo/@item.picture" height="30" width="45" />
+                                @*<a title="Click to see the product detail" href="/admin/ProductDetail?productId=@item.productId">
+                                    @{
+                                        if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId)))
+                                        {
+                                            <img src="@(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId) " />
+                                        }
+                                        else
+                                        { <img src="~/photo/" alt="" />}
+                                    }
+                                </a>*@
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.price)</td>
+                            <td class="alert-danger" width="200">
+                                @Html.DisplayFor(modelItem => item.introduce)
+                            </td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.productId })</td>
+                        </tr>
+                          }
+                     </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+</div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © 美食廣場 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+       
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="js/sb-admin-datatables.min.js"></script>
+    </div>
+
+
+
+           
