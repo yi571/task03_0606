@@ -200,6 +200,11 @@
     <Content Include="photo\D7.jpg" />
     <Content Include="photo\D8.jpg" />
     <Content Include="photo\D9.jpg" />
+    <Content Include="photo\productsindex\test\d10_resized.jpg" />
+    <Content Include="photo\productsindex\test\dessert_resized.jpg" />
+    <Content Include="photo\productsindex\test\fast-food_resized.jpg" />
+    <Content Include="photo\productsindex\test\n1_resized.jpg" />
+    <Content Include="photo\productsindex\test\r5_resized.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\FoodProductsModel.edmx">
