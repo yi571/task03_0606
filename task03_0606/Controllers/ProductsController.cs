@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -222,3 +223,20 @@ namespace task03_0606.Controllers
          
         }
     }
+=======
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace task03_0606.Controllers
+{
+    public class ProductsController : Controller
+    {
+        // GET: Products
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+>>>>>>> Debbie0607

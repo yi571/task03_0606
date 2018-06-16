@@ -100,12 +100,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="create1.txt" />
     <Content Include="css\Astyle.css" />
+=======
+    <Content Include=".gitignore" />
+    <Content Include="blank.html" />
+    <Content Include="cards.html" />
+    <Content Include="charts.html" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+>>>>>>> Debbie0607
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-reboot.css" />
@@ -113,10 +123,18 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\yi.css" />
+<<<<<<< HEAD
     <Content Include="db.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\Aindex.js" />
+=======
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="forgot-password.html" />
+    <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
+    <Content Include="index.html" />
+>>>>>>> Debbie0607
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />
@@ -124,6 +142,7 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
+<<<<<<< HEAD
     <Content Include="Models\FoodProductsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FoodProductsModel.edmx</DependentUpon>
@@ -214,16 +233,36 @@
     <Content Include="Models\FoodProductsModel.edmx.diagram">
       <DependentUpon>FoodProductsModel.edmx</DependentUpon>
     </Content>
+=======
+    <Content Include="login.html" />
+    <Content Include="navbar.html" />
+    <Content Include="register.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include=".jsbeautifyrc" />
+    <Content Include=".travis.yml" />
+    <Content Include="LICENSE" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+>>>>>>> Debbie0607
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+<<<<<<< HEAD
     <Content Include="TextFile1.txt" />
+=======
+    <Content Include="tables.html" />
+>>>>>>> Debbie0607
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\HomeController.cs" />
+=======
+>>>>>>> Debbie0607
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +306,7 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Restaurent.cshtml" />
@@ -280,6 +320,10 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\ManagerIndex.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
+=======
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+>>>>>>> Debbie0607
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -289,11 +333,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
     <Folder Include="picture\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+=======
+    <Folder Include="Models\" />
+    <Folder Include="pug\" />
+    <Folder Include="scss\" />
+    <Folder Include="vendor\" />
+>>>>>>> Debbie0607
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
