@@ -1,0 +1,17 @@
+﻿ShoppingWeb
+https://github.com/Jyo238/PORTFOLIO_ShoppingWeb/blob/Master/ShoppingWeb/Views/Product/Create.cshtml
+
+
+
+ASP.Net MVC: Upload Image to Database and Show Image “Dynamically” Using a View
+http://byatool.com/mvc/asp-net-mvc-upload-image-to-database-and-show-image-dynamically-using-a-view/
+
+
+Edit-編輯的方法及View
+https://dotblogs.com.tw/berrynote/2016/08/20/114350
+
+
+
+ASP.NET MVC Shopping Cart with C#, EF, SQL Server-Part1
+
+http://www.webdevelopmenthelp.net/2016/10/asp-net-mvc-shopping-cart-part1.html

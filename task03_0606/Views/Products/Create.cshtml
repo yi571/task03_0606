@@ -1,0 +1,49 @@
+﻿@model task03_0606.Models.Class1
+
+@{ ViewBag.Title = "Create";
+}
+
+<h2>新增產品</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@Html.AntiForgeryToken()
+
+<form method="post" action="">
+    <div class="form-group">
+
+        <div class="col-md-6">
+            <label for="exampleInputName">產品編號</label>
+            <input class="form-control" id="productsId" name="productsId" type="text" aria-describedby="productsHelp" placeholder="Enter productsId">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputLastName">產品名稱</label>
+            <input class="form-control" id="title" name="title" type="text" placeholder="Enter title">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputEmail1">產品售價</label>
+            <input class="form-control" id="price" name="price" type="text" placeholder="Enter price">
+        </div>
+        <div class="col-md-6">
+            <label for="exampleInputEmail1">產品介紹</label>
+            <input class="form-control" id="introduce" name="introduce" type="text" placeholder="Enter introduce">
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="file" accept="image/*" onchange="showMyImage(this)" />
+                <br />
+                <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
+
+            </div>
+            <form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+            </form>
+            <button type="submit">確定</button>
+        </div>
+</form>
+
+
+<hr />
