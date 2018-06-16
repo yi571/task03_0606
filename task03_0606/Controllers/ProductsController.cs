@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+<<<<<<< HEAD
 using System.Drawing;
+=======
+>>>>>>> parent of 1f231fc... 0616
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -10,13 +14,11 @@ using task03_0606.Models;
 
 namespace task03_0606.Controllers
 {
-
+    
     public class ProductsController : Controller
     {
 
         FoodProductsEntities db = new FoodProductsEntities();
-        private readonly string base64;
-
         // GET: Products
         public ActionResult Index()
         {
@@ -50,16 +52,16 @@ namespace task03_0606.Controllers
 
        
     [HttpPost]
-        public ActionResult Create(string productsId, string title,string price,string picture,string introduce)
+        public ActionResult Create(string productsId, string title, string price,string picture,string introduce)
         {
-             myfoodproduct mfd = new myfoodproduct()
+
+            myfoodproduct mfd = new myfoodproduct()
             {
                 productId = Convert.ToInt32(productsId),
                 title = title,
                 price = Convert.ToInt32(price),
-                picture = (picture),
-               
-            introduce = introduce,
+                picture =picture,
+                introduce = introduce,
                 addcount = 12,
                 imageURL = ""
             };
@@ -77,23 +79,21 @@ namespace task03_0606.Controllers
             return View();
 
         }
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file)
-        {
+        //[HttpPost]
+        //public ActionResult Upload(HttpPostedFileBase file) {
 
-            if (file.ContentLength > 0)
-            {
+        //    if (file.ContentLength > 0) {
 
-                var fileName = Path.GetFileName(file.FileName);
+        //        var fileName = Path.GetFileName(file.FileName);
 
-                var path = Path.Combine(Server.MapPath("~/photo/"), fileName);
+        //        var path = Path.Combine(Server.MapPath("~/photo"), fileName);
 
-                file.SaveAs(path);
+        //        file.SaveAs(path);
 
-            }
+        //    }
 
-            return RedirectToAction("ManagerIndex", "Products");
-        }
+        //    return RedirectToAction("ManagerIndex", "Products");
+        //}
 
         public ActionResult Edit()
         {
@@ -222,3 +222,20 @@ namespace task03_0606.Controllers
          
         }
     }
+=======
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace task03_0606.Controllers
+{
+    public class ProductsController : Controller
+    {
+        // GET: Products
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+>>>>>>> Debbie0607

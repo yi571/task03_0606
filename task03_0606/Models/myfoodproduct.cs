@@ -22,9 +22,6 @@ namespace task03_0606.Models
         public Nullable<int> addcount { get; set; }
         public string imageURL { get; set; }
 
-        public static implicit operator myfoodproduct(myfoodproduct v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
