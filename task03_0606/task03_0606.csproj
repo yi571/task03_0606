@@ -334,6 +334,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <Folder Include="photo\dessert\" />
+    <Folder Include="photo\drinksoup\" />
+    <Folder Include="photo\fastfood\" />
+    <Folder Include="photo\noodle\" />
+    <Folder Include="photo\rice\" />
+>>>>>>> parent of 1f231fc... 0616
     <Folder Include="picture\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
