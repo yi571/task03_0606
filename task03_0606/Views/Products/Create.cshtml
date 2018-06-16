@@ -37,13 +37,14 @@
                 <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
 
             </div>
-            <form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" />
-            </form>
+
             <button type="submit">確定</button>
         </div>
 </form>
 
-
+<form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
+    <label for="file">Filename:</label>
+    <input type="file" name="file" id="file" />
+    <input type="submit" />
+</form>
 <hr />
