@@ -1,0 +1,59 @@
+﻿@model List<task03_0606.Models.Class1>
+@{
+    ViewBag.Title = "Noodleproducts";
+}
+
+<h2>麵食類</h2>
+@*<header>
+        <ul>
+            <i class='fa fa-shopping-cart'>
+                <span class='counter'></span>
+            </i>
+        </ul>
+    </header>*@
+<div class='row'>
+    @foreach (task03_0606.Models.Class1 db1 in Model)
+    {
+
+        <div class='product--yellow'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='~/photo/noodle/@db1.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productId" />
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.@db1.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db1.productId">@db1.title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src='~/photo/noodle/@db1.picture' width='500' /><br />
+                            @db1.introduce
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='product_inner'>
+                <p>@db1.title</p>
+                <p>Price $@db1.price</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
+        </div>
+    }
+
+</div>
