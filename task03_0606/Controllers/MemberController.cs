@@ -30,7 +30,7 @@ namespace task03_0606.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Login(string email, string pwd) {  //傳入email和password
+        public ActionResult Login(string phoneNum, string pwd) {  //傳入email和password
             //if (pwd == "1") {
             //    Session["identity"] = "superUser";
             //}
@@ -42,7 +42,7 @@ namespace task03_0606.Controllers {
             //}
 
             var queryLogin = from o in db.userInfoes
-                             where (o.email == email && o.pwd == pwd)
+                             where (o.phoneNum == phoneNum && o.pwd == pwd)
                              select new { o.id, o.lastName, o.firstName, o.userRank };
             if (queryLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
