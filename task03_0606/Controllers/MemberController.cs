@@ -65,6 +65,69 @@ namespace task03_0606.Controllers {
             return RedirectToAction("Member", "Member");  //此處應重導回首頁
         }
 
+        public ActionResult EasyRegister() {  //只需手機號碼的註冊
+
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EasyRegister(string LastName, string FirstName, string Password1, string ConfirmPassword, string cellPhone) {  //只需手機號碼的註冊
+            //post時，回傳已填入值
+            int checkNum = 0;  //用於檢查必填欄位是否填寫
+            if (!string.IsNullOrEmpty(LastName)) { //傳姓氏值
+                ViewBag.LastName = LastName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(FirstName)) { //傳名稱值
+                ViewBag.FirstName = FirstName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(cellPhone)) { //傳cellPhone值
+                ViewBag.cellPhone = cellPhone;
+                checkNum += 1;
+            }
+
+            //檢查電話是否註冊----------------------------------
+            var queryCheckPhone = from o in db.userInfoes
+                                  where o.phoneNum == cellPhone
+                                  select cellPhone;
+            ViewBag.phoneCheck = "";
+
+            if (queryCheckPhone.Count() > 0) {
+                ViewBag.phoneCheck = "號碼已註冊";
+                ViewBag.html = "<i class='fa fa-times' style='color: red; '></i> 此號碼已註冊";
+            }
+
+            if (ViewBag.phoneCheck == "信箱已註冊") {
+                return View();
+            } else {
+                if (Password1 == ConfirmPassword && checkNum == 3) {
+                    userInfo addMember = new userInfo() {
+                        lastName = LastName,
+                        firstName = FirstName,
+                        pwd = Password1,
+                        phoneNum = cellPhone,
+                        userRank = "normalUser"
+                    };
+                    db.userInfoes.Add(addMember);
+                    //db.SaveChanges();
+                    try {
+                        db.SaveChanges();
+                    } 
+                    catch (Exception ex){
+                        throw;
+                    }
+                    return RedirectToAction("Member", "Member");
+                }
+            }
+
+
+            return View();
+        }
+
         public ActionResult Register() {
             var queryCity = from o in db.streetNames //城市
                             group o by o.city into g
@@ -79,7 +142,7 @@ namespace task03_0606.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Register(string LastName, string FirstName, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {  //行政區選單控制
+        public ActionResult Register(string LastName, string FirstName, string birthday, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {  //行政區選單控制
 
             var query = from o in db.streetNames //行政區
                         where o.city == city
@@ -113,7 +176,12 @@ namespace task03_0606.Controllers {
                 checkNum += 1;
             }
 
-            if (!string.IsNullOrEmpty(uid)) { //傳名稱值
+            if (!string.IsNullOrEmpty(birthday)) { //傳身分證值
+                ViewBag.birthday = birthday;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(uid)) { //傳身分證值
                 ViewBag.uid = uid;
                 checkNum += 1;
             }
@@ -189,7 +257,7 @@ namespace task03_0606.Controllers {
             if (ViewBag.emailCheck == "信箱已註冊") {
                 return View();
             } else {
-                if (Password1 == ConfirmPassword && checkNum == 7) {
+                if (Password1 == ConfirmPassword && checkNum == 8) {
                     userInfo addMember = new userInfo() {
                         lastName = LastName,
                         firstName = FirstName,
@@ -246,7 +314,7 @@ namespace task03_0606.Controllers {
             return View();
         }
 
-        public ActionResult EditPersonalData() {
+        public ActionResult EditPersonalData() {  //編輯使用者訊息
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }

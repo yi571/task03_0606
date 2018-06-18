@@ -26,8 +26,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="birthday">生日</label>
+                    <input class="form-control" id="birthday" name="birthday" value="@ViewBag.birthday" type="date" required="required">
+                </div>
+                <div class="form-group">
                     <label for="uid">身分證字號</label>
-                    <input class="form-control" id="uid" name="uid" value="@ViewBag.uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="emailHelp" placeholder="請輸入身分證字號，首字母大寫...">
+                    <input class="form-control" id="uid" name="uid" value="@ViewBag.uid" type="text" maxlength="10" pattern="(^[A-Z]{1})([1-2]{1})([0-9]{8})" required="required" aria-describedby="" placeholder="請輸入身分證字號，首字母大寫...">
                 </div>
                 <div class="form-group">
 
