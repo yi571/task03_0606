@@ -265,6 +265,7 @@
     <Content Include="Views\_Member_Home_LayoutPage1.cshtml" />
     <Content Include="Views\Member\EasyRegister.cshtml" />
     <Content Include="Views\Member\OrderCard.cshtml" />
+    <Content Include="Views\Member\OrderDetial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

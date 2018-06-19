@@ -293,6 +293,23 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult OrderTable() {
+            Session["lastPage"] = "/Member/OrderTable";
+            ViewBag.Title = "所有訂單";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            return View();
+        }
+
+        public ActionResult OrderDetial() {
+            Session["lastPage"] = "/Member/OrderDetial";
+            ViewBag.Title = "訂單詳細資料";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
             if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
                 return RedirectToAction("Member", "Member");
             };
