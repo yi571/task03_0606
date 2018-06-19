@@ -292,10 +292,10 @@ function getScript(url, callback) {
     return undefined;
 }
 
-//-----------------------------TABLE  Material Select Initialization
-$(document).ready(function () {
-    $('.mdb-select').material_select();
-});
+////-----------------------------TABLE  Material Select Initialization
+//$(document).ready(function () {
+//    $('.mdb-select').material_select();
+//});
 
 
 //-------------------Create 預覽圖片

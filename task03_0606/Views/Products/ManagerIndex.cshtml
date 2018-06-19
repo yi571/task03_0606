@@ -16,6 +16,7 @@
             <button class="pull-right btn btn-warning" id="create">
     <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
 </button>
+        
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -51,7 +52,7 @@
                                 </a>*@
                             </td>
                             <td>@Html.DisplayFor(modelItem => item.title)</td>
-                            <td>@Html.DisplayFor(modelItem => item.price)</td>
+                            <td>$@Html.DisplayFor(modelItem => item.price)</td>
                             <td class="alert-danger" width="200">
                                 @Html.DisplayFor(modelItem => item.introduce)
                             </td>
@@ -63,9 +64,11 @@
                 </table>
             </div>
         </div>
+        
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
 </div>
+            
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->
         <footer class="sticky-footer">

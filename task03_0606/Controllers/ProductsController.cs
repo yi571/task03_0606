@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
@@ -27,15 +28,22 @@ namespace task03_0606.Controllers
 
         public ActionResult ManagerIndex()
         {
-            var query = from o in db.myfoodproducts
-                        select new Class1
-                        {
-                            productId = o.productId,
-                            title = o.title,
-                            price = o.price,
-                            picture = o.picture,
-                            introduce = o.introduce
-                        };
+            List<Models.myfoodproduct> result = new List<Models.myfoodproduct>();
+            ViewBag.ResultMessage = TempData["ResultMessage"];
+            using (Models.FoodProductsEntities db = new Models.FoodProductsEntities())
+            {
+                result = (from pro in db.myfoodproducts select pro).ToList();
+                return View(result);
+            }
+                var query = from o in db.myfoodproducts
+                            select new Class1
+                            {
+                                productId = o.productId,
+                                title = o.title,
+                                price = o.price,
+                                picture = o.picture,
+                                introduce = o.introduce
+                            };
             List<Class1> prolist = query.ToList();
             return View(prolist);
         }
@@ -95,11 +103,91 @@ namespace task03_0606.Controllers
             return RedirectToAction("ManagerIndex", "Products");
         }
 
-        public ActionResult Edit()
+
+
+
+
+        public ActionResult Edit(int productId)
         {
-            return View();
+            using (Models.FoodProductsEntities db = new Models.FoodProductsEntities())
+            {
+                var result = (from pro in db.myfoodproducts where pro.productId == productId select pro).FirstOrDefault();
+                if (result != default(Models.myfoodproduct))
+                {
+                    return View(result);
+                }
+                else
+                {
+                    TempData["resultMessage"] = "ERROR";
+                    return RedirectToAction("ManagerIndex");
+                }
+            }
         }
 
+        //[HttpPost]
+        //public ActionResult Edit(Models.myfoodproduct postback)
+        //{
+        //    if (this.ModelState.IsValid)
+        //    {
+        //        using (Models.FoodProductsEntities db = new Models.FoodProductsEntities())
+        //        {
+        //            var result = (from pro in db.myfoodproducts where pro.productId == postback.productId select pro).FirstOrDefault();
+        //            result.title = postback.title;
+        //            result.price = postback.price;
+        //            result.introduce = postback.introduce;
+        //            result.picture = postback.picture;
+
+        //            db.SaveChanges();
+        //            TempData["ResultMessage"] = string.Format("商品[{0}]成功編輯", postback.title);
+        //            return RedirectToAction("ManagerIndex");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return View(postback);
+        //    }
+        //}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "productId,title,price,picture,introduce")]Class1 class1)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(class1).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ManagerIndex");
+            }
+            return View(class1);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int productId)
+        {
+            using (Models.FoodProductsEntities db = new Models.FoodProductsEntities())
+            {
+                //抓取Product.Id等於輸入id的資料
+                var result = (from s in db.myfoodproducts where s.productId == productId select s).FirstOrDefault();
+                if (result != default(Models.myfoodproduct)) //判斷此id是否有資料
+                {
+                    db.myfoodproducts.Remove(result);
+
+                    //儲存所有變更
+                    db.SaveChanges();
+
+                    //設定成功訊息並導回index頁面
+                    TempData["ResultMessage"] = string.Format("商品[{0}]成功刪除", result.title);
+                    return RedirectToAction("ManagerIndex");
+                }
+                else
+                {   //如果沒有資料則顯示錯誤訊息並導回Index頁面
+                    TempData["resultMessage"] = "指定資料不存在，無法刪除，請重新操作";
+                    return RedirectToAction("ManagerIndex");
+                }
+            }
+        }
+
+        //[HttpPost]
         //public ActionResult Edit(int productId)
         //{
         //    var query = from o in db.myfoodproducts
@@ -110,17 +198,17 @@ namespace task03_0606.Controllers
         //    return View(mfp);
         //}
 
-        [HttpPost]
-        public ActionResult Edit(myfoodproduct mfp)
-        {
-            myfoodproduct mfpdbserver = db.myfoodproducts.Find(mfp.productId);
-            mfpdbserver.title = mfp.title;
-            mfpdbserver.price = mfp.price;
-            mfpdbserver.introduce = mfp.introduce;
-            mfpdbserver.picture = mfp.picture;
-            db.SaveChanges();
-            return RedirectToAction("ManagerIndex");
-        }
+        //[HttpPost]
+        //public ActionResult Edit(myfoodproduct mfp)
+        //{
+        //    myfoodproduct mfpdbserver = db.myfoodproducts.Find(mfp.productId);
+        //    mfpdbserver.title = mfp.title;
+        //    mfpdbserver.price = mfp.price;
+        //    mfpdbserver.introduce = mfp.introduce;
+        //    mfpdbserver.picture = mfp.picture;
+        //    db.SaveChanges();
+        //    return RedirectToAction("ManagerIndex");
+        //}
 
         public ActionResult Drinkproducts()
         {
