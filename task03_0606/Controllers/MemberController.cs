@@ -45,7 +45,7 @@ namespace task03_0606.Controllers {
                              where (o.phoneNum == phoneNum && o.pwd == pwd)
                              select new { o.id, o.lastName, o.firstName, o.userRank };
             if (queryLogin.Count() > 0) {
-                Session["logState"] = "login";    //將登入狀態設為登入，此處應和資料庫連結
+                Session["logState"] = "login";    //將登入狀態設為登入
                 Session["identity"] = queryLogin.ToArray()[0].userRank.ToString();
                 Session["userInfoId"] = queryLogin.ToArray()[0].id;
                 Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
@@ -293,10 +293,27 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult OrderTable() {
-            if ((string)Session["identity"] != "superUser" || (string)Session["identity"] != "storeUser") {
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
                 return RedirectToAction("Member", "Member");
             };
             return View();
+        }
+
+        public ActionResult OrderCard() {
+
+            Session["lastPage"] = "/Member/OrderCard";
+
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+                //return Content((string)Session["identity"]);
+            };
+
+            return View();
+            //return Content((string)Session["identity"]);
         }
 
         public ActionResult MemberTable() {
