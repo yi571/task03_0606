@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Order_list_history_bussiness";
+}
+
+<style>
+    input[type=date]::-webkit-inner-spin-button {
+        visibility: hidden;
+    }
+</style>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">歷史訂單明細</li>
+</ol>
+
+<div class="col-xl-12 col-sm-12 mb-12">
+    <div class="card-header">
+        <i class="fa fa-table"></i>未出餐清單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    <div class="card-body">
+        接單起始日期：<input id="beginDate" type="date"/>   接單截止日期：<input id="endDate" type="date" /> <button class="btn btn-success" onclick="queryBydate()">確認</button>
+        <div class="table-responsive-sm　table-sm">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>接單時間</th>
+                        <th>客戶電話</th>
+                        <th>訂單單號</th>
+                        <th>座位</th>
+                        <th style="display:none">產品編號</th>
+                        <th>產品編號</th>
+                        <th>產品名稱</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
+                        <th>備註</th>
+                        <th>結單時間</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+
+                    @foreach (task03_0606.Models.orderDetailViewModel order in Model)
+
+                    {
+                        <tr class="orderListItem">
+                            <td> @order.OrderTime </td>
+                            <td> @order.CustomerPhone </td>
+                            <td> @order.OrderId</td>
+                            <td> @order.SeatID</td>
+                            <td style="display:none"> @order.ProductID</td>
+                            <td> @order.ProductID</td>
+                            <td> @order.ProductName</td>
+                            <td> @order.OrderCount</td>
+                            <td> @order.UnitPrice</td>
+                            <td> @(@order.UnitPrice * @order.OrderCount)</td>
+                            <td> @order.Note</td>
+                            <td> @order.FinshTime </td>
+                           
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function queryBydate() {
+        
+
+        alert("開始日期: "+ $("#beginDate").val() + "  結束日期: " + $("#endDate").val());
+        
+
+    }
+
+
+     //訂單出餐
+     function foodDelivery(ProductID,OrderId) {
+
+        // alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
+
+         $.ajax({
+             method: "post",
+             dataType: "json",
+             url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
+             data: {
+
+                 productId_ok: parseInt(ProductID),
+                 orderId_ok: parseInt(OrderId),
+             }
+     })
+            .done(function (data) {
+                console.log(data);
+                alert("確定出餐");
+
+            })
+
+     }
+
+
+
+
+
+</script>
+

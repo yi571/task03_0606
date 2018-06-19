@@ -18,7 +18,6 @@ namespace task03_0606
         protected void Session_Start() {
             Session["memberType"] = "Business";
             // "Customer" , "Admin" ,"Guest"
-
             Session["Member"] = 1;
 
             //Session["memberType"] = "Customer";

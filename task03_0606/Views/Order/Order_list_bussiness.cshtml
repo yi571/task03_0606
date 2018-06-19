@@ -31,7 +31,7 @@
                     {
                         
                         <tr class="orderListItem">
-                            <td>@order.OrderTime</td>
+                            <td>@string.Format("{0:T}", Convert.ToDateTime(order.OrderTime))</td>
                             <td>@order.CustomerPhone</td>
                             <td>@order.OrderId</td>
                             <td>@order.SeatID</td>
@@ -53,7 +53,14 @@
         <div class="modal-content modal-lg">
             <div class="modal-header">
 
-                <table>
+                <div>
+                    訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
+                    客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
+                    座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
+                    訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
+                </div>
+
+                @*<table>
                     <tr>
                         <th>
                             訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
@@ -68,7 +75,7 @@
                             訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
                         </th>
                     </tr>
-                </table>
+                </table>*@
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -81,13 +88,15 @@
                         <thead>
                             <tr>
                                 <th>項次</th>
-                                <th>廠商</th>
+                                <th>廠商編號</th>
                                 <th>產品編號</th>
                                 <th>產品名稱</th>
                                 <th>數量</th>
                                 <th>單價</th>
                                 <th>小計</th>
                                 <th>訂單備註</th>
+                                <th>結單時間</th>
+                                <th>..</th>
                             </tr>
                         </thead>
                         <tbody id="detailList">
@@ -99,6 +108,7 @@
                                 <td>30</td>
                                 <td>60</td>
                                 <td>去冰</td>
+                                
                             </tr>
 
 
@@ -161,7 +171,7 @@
                 var countSum = 0;
                 var amountSum = 0;
                 $.each(dataList, function (index, data) {
-                    $("#detailList").append('<tr><td>' + (index+1) + '</td><td>' + data.MemberID + '</td><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note + '</td></tr >');
+                    $("#detailList").append('<tr><td>' + (index+1) + '</td><td>' + data.MemberID + '</td><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note  + '</td><td>' + data.FinshTime +'</td><td><input type="checkbox" />ok</td></tr >');
                     countSum += data.OrderCount;
                     amountSum += data.OrderCount * data.UnitPrice;
                 });

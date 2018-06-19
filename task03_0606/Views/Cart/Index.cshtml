@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .table td, .table th {
+    padding: 0rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+</style>
+
+<div>
+    <table class="table table-hover table-responsive-sm">
+        
+        <tbody>
+            <tr>
+                <td colspan="2" >產品明細</td>
+                <td>數量</td>
+                <td>單價</td>
+                <td>小計</td>
+                <td></td>
+           </tr>
+            
+            <tr>
+
+                <td class="col-sm-2">
+                <img class="img-fluid"width="400" height="350" src="~/picture/1610141734150000001.jpg" /></td>
+                <td class="col-sm-3">
+                    <p style="font-size:1vw";>產品名稱：可樂</p> <br />
+                    <p style="font-size:1vw";>店家：麥當勞</p>
+                    <label style="display:none">產品編號：1</label>
+                    <label style="display:none">店家編號：1</label>
+                </td>
+                <td class="col-sm-1"><input size="1" style="text-align:right;" value="2" /></td>
+                <td class="col-sm-1">30</td>
+                <td >60</td>
+                <td class="col-sm-1">
+                    <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    @*<table class="table table-hover table-responsive-xl">
+        <tbody>
+
+            <tr>
+                
+                <td class="col-md-4">img</td>
+                <td class="col-md-4">
+                    <h5>產品名稱：可樂 / 店家：麥當勞</h5>
+                    <label>產品編號：1</label>
+                    <label>店家編號：1</label>
+                </td>
+                <td><input size="1" style="text-align:right;" value="2" /></td>
+                <td>30</td>
+                <td>60</td>
+                <td>
+                    <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td><img width="100" height="80" src="~/picture/1610141734150000001.jpg" /></td>
+                <td style="display:none"></td>
+                <td>可樂</td>
+                <td style="display:none">Doe</td>
+                <td>麥當勞</td>
+                <td><input size="1" style="text-align:right;" value="2" /></td>
+                <td>30</td>
+                <td>60</td>
+                <td>
+                    <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>*@
+
+    <a href="~/#/Payment" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-dollar"></i>結帳</a>
+</div>
