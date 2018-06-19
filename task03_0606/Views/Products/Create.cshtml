@@ -2,14 +2,56 @@
 
 @{ ViewBag.Title = "Create";
 }
-
-<h2>新增產品</h2>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<body>
+    @Html.AntiForgeryToken()
 
+    <section id="hire">
+        <h1>建立新產品</h1>
 
-@Html.AntiForgeryToken()
+        <form method="post" action="~/Views/Products/ManagerIndex.cshtml">
+            <div class="field name-box">
+                <input type="text" id="productId" placeholder="輸入您的商品編號" />
+                <label for="productId">商品編號</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field email-box">
+                <input type="text" id="title" placeholder="輸入您的商品名稱" />
+                <label for="title">商品名稱</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field email-box">
+                <input type="text" id="title" placeholder="輸入您的商品價錢" />
+                <label for="title">商品價錢</label>
+                <span class="ss-icon">check</span>
+            </div>
+            <div class="field email-box">
+                <input type="text" id="introduce" placeholder="輸入您的商品介紹" />
+                <label for="introduce">商品介紹</label>
+                <span class="ss-icon">check</span>
+            </div>
+                <div class="field msg-box">
+                    <from>
+                 <input id="picture" type="file" accept="image/*" onchange="showMyImage(this)"/>
+                <img id="thumbnil" style="width:15%;height:5px margin-top:0px;" src="" alt="image" />
+                    @*<form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
+                        <label for="file">Filename:</label>
+                        <input type="file" name="file" id="file" />
+                    </form>*@
+                <label for="msg">商品圖片</label>
+                <span class="ss-icon">check</span>
+           </from> </div>
+            <br/>
+            <br />
+            <input class="button" type="submit" value="確定" /> <input class="button" type="submit" value="取消" />
+        </form>
+    </section>
+</body>
+
 
 <form method="post" action="">
     <div class="form-group">
@@ -37,10 +79,7 @@
                 <img id="thumbnil" style="width:20%; margin-top:10px;" src="" alt="image" />
 
             </div>
-            <form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data">
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" />
-            </form>
+           
             <button type="submit">確定</button>
         </div>
 </form>

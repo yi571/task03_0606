@@ -15,3 +15,8 @@ https://dotblogs.com.tw/berrynote/2016/08/20/114350
 ASP.NET MVC Shopping Cart with C#, EF, SQL Server-Part1
 
 http://www.webdevelopmenthelp.net/2016/10/asp-net-mvc-shopping-cart-part1.html
+
+Form Create
+https://codepen.io/nikhil8krishnan/pen/gaybLK
+Form Edit
+https://codepen.io/ssbalakumar/pen/uzDIA?editors=0100

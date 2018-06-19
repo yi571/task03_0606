@@ -1,82 +1,34 @@
 ﻿@model task03_0606.Models.Class1
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
 
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-
-<h2>修改產品</h2>
-
-
-@using (Html.BeginForm())
-{ @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.productId)
-
-        <div class="form-group">
-
-            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
-                @*<label for="exampleInputName">產品編號</label>
-                    <input class="form-control" id="productsId" name="productsId" type="text" aria-describedby="productsHelp" value="@Model.productId">*@
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.picture, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.picture, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.picture, "", new { @class = "text-danger" })
-                    @*<label for="exampleInputLastName">產品名稱</label>
-                        <input class="form-control" id="title" name="title" type="text" value="@Model.title">*@
-                </div>
-                <div class="form-group">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-                            @*<label for="exampleInputEmail1">產品售價</label>
-                                <input class="form-control" id="price" name="price" type="text" value="@Model.price">*@
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.introduce, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.introduce, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.introduce, "", new { @class = "text-danger" })
-                                @*<label for="exampleInputEmail1">產品介紹</label>
-                                    <input class="form-control" id="introduce" name="introduce" type="text" value="@Model.introduce">*@
-                            </div>
-
-                            @*<div class="col-md-6">
-                                    <label for="exampleInputEmail1">產品圖片</label>
-                                    <input class="form-control" id="picture" name="picture" type="text" value="@Model.picture">
-                                </div>*@
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div>
-                            @Html.ActionLink("Back to List", "ManagerIndex")
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <hr />
-}
+<body>
+    <div class="container">  
+  <form id="contact" action="" method="post">
+    <h3>Quick Contact</h3>
+    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <fieldset>
+      <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Email Address" type="email" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
+  </form>
+ 
+  
+</div>
+</body>
