@@ -4,6 +4,85 @@
     ViewBag.Title = "Order_deteail_bussiness";
 }
 
+<style>
+    /*.table td, .table th {
+        padding: 0rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }*/
+
+    .rwd-table {
+        background: #fff;
+        overflow: hidden;
+    }
+
+        .rwd-table tr:nth-of-type(2n) {
+            background: #eee;
+        }
+
+        .rwd-table th,
+        .rwd-table td {
+            margin: 0.5em 1em;
+        }
+
+    .rwd-table {
+        min-width: 100%;
+    }
+
+        .rwd-table th {
+            display: none;
+        }
+
+        .rwd-table td {
+            display: block;
+        }
+
+            .rwd-table td:before {
+                content: attr(data-th);
+                font-weight: bold;
+                width: 6.5em;
+                display: inline-block;
+            }
+
+        .rwd-table th,
+        .rwd-table td {
+            text-align: left;
+        }
+
+            .rwd-table th,
+            .rwd-table td:before {
+                /*color: #D20B2A;*/
+                font-weight: bold;
+            }
+
+    @@media (min-width: 480px) {
+
+        .rwd-table td:before {
+            display: none;
+        }
+
+        .rwd-table th, .rwd-table td {
+            display: table-cell;
+            padding: 0.25em 0.5em;
+        }
+
+            .rwd-table th:first-child,
+            .rwd-table td:first-child {
+                padding-left: 0;
+            }
+
+            .rwd-table th:last-child,
+            .rwd-table td:last-child {
+                padding-right: 0;
+            }
+
+        .rwd-table th,
+        .rwd-table td {
+            padding: 1em !important;
+        }
+    }
+</style>
+
 <ol class="breadcrumb">
     <li class="breadcrumb-item active">訂單明細</li>
 </ol>
@@ -14,7 +93,7 @@
     </div>
     <div class="card-body">
 
-        <div class="table-responsive">
+        @*<div class="table-responsive">
             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -23,7 +102,7 @@
                         <th>訂單單號</th>
                         <th>座位</th>
                         <th style="display:none">產品編號</th>
-                        <th >產品編號</th>
+                        <th>產品編號</th>
                         <th>產品名稱</th>
                         <th>數量</th>
                         <th>單價</th>
@@ -34,34 +113,79 @@
 
                     </tr>
                 </thead>
-                
+
                 <tbody>
-                    
-                   
+
+
                     @foreach (task03_0606.Models.orderDetailViewModel order in Model)
-                        
-                    {
-                        <tr class="orderListItem">
-                            <td> @order.OrderTime </td>
-                            <td> @order.CustomerPhone </td>
-                            <td> @order.OrderId</td>
-                            <td> @order.SeatID</td>
-                            <td style="display:none"> @order.ProductID</td>
-                            <td > @order.ProductID</td>
-                            <td> @order.ProductName</td>
-                            <td> @order.OrderCount</td>
-                            <td> @order.UnitPrice</td>
-                            <td> @(@order.UnitPrice*@order.OrderCount)</td>
-                            <td> @order.Note</td>
-                            <td> @order.FinshTime </td>
-                            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
-                        </tr>
-                        
-                    }
+
+                {
+                    <tr class="orderListItem">
+                        <td> @order.OrderTime </td>
+                        <td> @order.CustomerPhone </td>
+                        <td> @order.OrderId</td>
+                        <td> @order.SeatID</td>
+                        <td style="display:none"> @order.ProductID</td>
+                        <td> @order.ProductID</td>
+                        <td> @order.ProductName</td>
+                        <td> @order.OrderCount</td>
+                        <td> @order.UnitPrice</td>
+                        <td> @(@order.UnitPrice * @order.OrderCount)</td>
+                        <td> @order.Note</td>
+                        <td> @order.FinshTime </td>
+                        <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
+                    </tr>
+
+            }
 
                 </tbody>
             </table>
-        </div>
+        </div>*@
+
+
+        <table class="table table-hover rwd-table">
+            <tr>
+                <th>接單時間</th>
+                <th>客戶電話</th>
+                <th>訂單單號</th>
+                <th>座位</th>
+                <th style="display:none">產品編號</th>
+                <th>產品編號</th>
+                <th>產品名稱</th>
+                <th>數量</th>
+                <th>單價</th>
+                <th>小計</th>
+                <th>備註</th>
+                <th>結單時間</th>
+                <th></th>
+            </tr>
+
+            
+
+                @foreach (task03_0606.Models.orderDetailViewModel order in Model)
+
+        {
+        <tr>
+            <td data-th="接單時間："> @order.OrderTime </td>
+            <td data-th="客戶電話："> @order.CustomerPhone </td>
+            <td data-th="訂單單號："> @order.OrderId</td>
+            <td data-th="座位："> @order.SeatID</td>
+            <td data-th="產品編號：" style="display:none"> @order.ProductID</td>
+            <td data-th="產品編號："> @order.ProductID</td>
+            <td data-th="產品名稱："> @order.ProductName</td>
+            <td data-th="數量："> @order.OrderCount</td>
+            <td data-th="單價："> @order.UnitPrice</td>
+            <td data-th="小計："> @(@order.UnitPrice * @order.OrderCount)</td>
+            <td data-th="備註："> @order.Note</td>
+            <td data-th="結單時間："> @order.FinshTime </td>
+            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
+        </tr>
+
+}
+               
+                
+
+            </table>
 
     </div>
 </div>
