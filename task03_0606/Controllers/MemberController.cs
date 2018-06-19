@@ -17,6 +17,7 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Member() {
+            ViewBag.Title = "儀錶板";
             if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
                 Session["lastPage"] = "/Member/Member";      //儲存最後頁面
                 return RedirectToAction("Login", "Member");  //重導到登入頁面
@@ -25,12 +26,14 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Login() {
+            ViewBag.Title = "登入";
             Session["UserAllName"] = "Guest";
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(string phoneNum, string pwd) {  //傳入email和password
+            ViewBag.Title = "登入";
             //if (pwd == "1") {
             //    Session["identity"] = "superUser";
             //}
@@ -41,7 +44,7 @@ namespace task03_0606.Controllers {
             //    Session["identity"] = "normalUser";
             //}
 
-            var queryLogin = from o in db.userInfoes
+            var queryLogin = from o in db.userInfoes  //比對手機號碼和密碼
                              where (o.phoneNum == phoneNum && o.pwd == pwd)
                              select new { o.id, o.lastName, o.firstName, o.userRank };
             if (queryLogin.Count() > 0) {
@@ -66,13 +69,14 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult EasyRegister() {  //只需手機號碼的註冊
+            ViewBag.Title = "註冊帳號";
 
-            
             return View();
         }
 
         [HttpPost]
         public ActionResult EasyRegister(string LastName, string FirstName, string Password1, string ConfirmPassword, string cellPhone) {  //只需手機號碼的註冊
+            ViewBag.Title = "註冊帳號";
             //post時，回傳已填入值
             int checkNum = 0;  //用於檢查必填欄位是否填寫
             if (!string.IsNullOrEmpty(LastName)) { //傳姓氏值
@@ -129,6 +133,7 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Register() {
+            ViewBag.Title = "註冊帳號";
             var queryCity = from o in db.streetNames //城市
                             group o by o.city into g
                             select g.Key;
@@ -143,7 +148,7 @@ namespace task03_0606.Controllers {
 
         [HttpPost]
         public ActionResult Register(string LastName, string FirstName, string birthday, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {  //行政區選單控制
-
+            ViewBag.Title = "註冊帳號";
             var query = from o in db.streetNames //行政區
                         where o.city == city
                         group o by o.district into g
@@ -288,29 +293,49 @@ namespace task03_0606.Controllers {
         }
 
 
-        public ActionResult ForgotPassword() {
+        public ActionResult ForgotPassword() {  //忘記密碼
             return View();
         }
 
-        public ActionResult OrderTable() {
+        public ActionResult OrderTable() {  //所有訂單
             Session["lastPage"] = "/Member/OrderTable";
             ViewBag.Title = "所有訂單";
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
-            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser" && (string)Session["identity"] != "store") {
                 return RedirectToAction("Member", "Member");
             };
             return View();
         }
 
-        public ActionResult OrderDetial() {
+        public ActionResult CustemerOrder() {  //客戶所有訂單
+            Session["lastPage"] = "/Member/CustemerOrder";
+            ViewBag.Title = "所有訂單";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            
+            return View();
+        }
+
+        public ActionResult CustemerOrderDetial() {  //客戶訂單詳細資料
+            Session["lastPage"] = "/Member/CustemerOrderDetial";
+            ViewBag.Title = "訂單詳細資料";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+
+            return View();
+        }
+
+        public ActionResult OrderDetial() {  //訂單詳細資料
             Session["lastPage"] = "/Member/OrderDetial";
             ViewBag.Title = "訂單詳細資料";
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
-            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser" && (string)Session["identity"] != "store") {
                 return RedirectToAction("Member", "Member");
             };
             return View();
@@ -319,21 +344,57 @@ namespace task03_0606.Controllers {
         public ActionResult OrderCard() {
 
             Session["lastPage"] = "/Member/OrderCard";
+            ViewBag.Title = "新訂單";
 
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
 
-            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser" && (string)Session["identity"] != "store") {
                 return RedirectToAction("Member", "Member");
-                //return Content((string)Session["identity"]);
             };
 
             return View();
-            //return Content((string)Session["identity"]);
+        }
+
+        public ActionResult StoreTable() {
+            Session["lastPage"] = "/Member/StoreTable";
+            ViewBag.Title = "商家列表";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            return View();
+        }
+
+        public ActionResult StoreDetial() {
+            Session["lastPage"] = "/Member/StoreDetial";
+            ViewBag.Title = "商家詳細資料";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            return View();
+        }
+
+        public ActionResult AddStore() {
+            Session["lastPage"] = "/Member/AddStore";
+            ViewBag.Title = "新增商店";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {
+                return RedirectToAction("Login", "Member");
+            }
+            if ((string)Session["identity"] != "superUser" && (string)Session["identity"] != "storeUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            return View();
         }
 
         public ActionResult MemberTable() {
+            ViewBag.Title = "會員列表";
             if ((string)Session["identity"] != "superUser") {
                 return RedirectToAction("Member", "Member");
             };
@@ -349,6 +410,7 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult EditPersonalData() {  //編輯使用者訊息
+            ViewBag.Title = "編輯個人資訊";
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }
@@ -403,6 +465,7 @@ namespace task03_0606.Controllers {
         }
         [HttpPost]
         public ActionResult EditPersonalData(string LastName, string FirstName, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {
+            ViewBag.Title = "編輯個人資訊";
             if (String.IsNullOrEmpty((string)Session["logState"])) {
                 return RedirectToAction("Login", "Member");
             }

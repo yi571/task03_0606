@@ -1,8 +1,11 @@
 ﻿
 @{
     string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
-    if ((string)Session["identity"] == "superUser" || (string)Session["identity"] == "storeUser") {
+    if ((string)Session["identity"] == "storeUser") {
         LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
+    }
+    if((string)Session["identity"] == "superUser") {
+        LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
     }
     ViewBag.Title = "EditPersonalData";
     Layout = LayoutUrl;
@@ -11,7 +14,7 @@
 <h2>編輯個人資料</h2>
 <div class="container custom-container-width">
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header">修改個人資料</div>
+        <div class="card-header"><i class="fa fa-fw fa-pencil"></i>修改個人資料</div>
         <div class="card-body">
             <form method="post" action="" id="regForm">
                 <div class="form-group">

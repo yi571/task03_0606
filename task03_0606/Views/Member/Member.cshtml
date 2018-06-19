@@ -1,14 +1,18 @@
-﻿
+﻿@using  task03_0606.Models
 @{
-    string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
-    if ((string)Session["identity"] == "storeUser") {
-        LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
-    }
-    if ((string)Session["identity"] == "superUser") {
-        LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
-    }
-    ViewBag.Title = "EditPersonalData";
-    Layout = LayoutUrl;
+    string layoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
+    //if ((string)Session["identity"] == "storeUser") {
+    //    LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
+    //}
+    //if ((string)Session["identity"] == "superUser") {
+    //    LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
+    //}
+    //if ((string)Session["identity"] == "store") {
+    //    LayoutUrl = "~/Views/_Store_Home_LayoutPage1.cshtml";
+    //}
+    CLayoutChoose layoutChoose = new CLayoutChoose();
+    ViewBag.Title = "美食街";
+    Layout = layoutChoose.LayoutUrl(layoutUrl, Session["identity"].ToString());
 
 }
 

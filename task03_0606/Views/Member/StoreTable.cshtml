@@ -1,20 +1,11 @@
 ﻿
 @{
-    string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
-    if ((string)Session["identity"] == "storeUser") {
-        LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
-    }
-    if ((string)Session["identity"] == "superUser") {
-        LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
-    }
-    if ((string)Session["identity"] == "store") {
-        LayoutUrl = "~/Views/_Store_Home_LayoutPage1.cshtml";
-    }
-    ViewBag.Title = "EditPersonalData";
-    Layout = LayoutUrl;
+    ViewBag.Title = "StoreTable";
+    Layout = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
 }
 
-<h2>OrderTable</h2>
+@*<h2>StoreTable</h2>*@
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
@@ -22,63 +13,56 @@
             <li class="breadcrumb-item">
                 <a href="#">儀錶板</a>
             </li>
-            <li class="breadcrumb-item active">所有訂單</li>
+            <li class="breadcrumb-item active">表格</li>
         </ol>
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> 所有訂單
+                <i class="fa fa-list-alt"></i> 商家列表
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>桌號</th>
-                                <th>訂單日期</th>
-                                <th>訂單狀態</th>
+                                <th>店名</th>
+                                <th>電話號碼</th>
+                                <th>負責人</th>
+                                <th>負責人電話</th>
                                 <th>詳細資料</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>桌號</th>
-                                <th>訂單日期</th>
-                                <th>訂單狀態</th>
+                                <th>店名</th>
+                                <th>電話號碼</th>
+                                <th>負責人</th>
+                                <th>負責人電話</th>
                                 <th>詳細資料</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>王五</td>
-                                <td>1</td>
-                                <td>2018-06-19</td>
-                                <td>顧客訂購</td>
-                                <td><a class="btn btn-primary" href="/Member/OrderDetial">詳細資料</a></td>
-                            </tr>
-                            <tr>
-                                <td>王五</td>
-                                <td>12</td>
-                                <td>2018-06-19</td>
-                                <td>顧客訂購</td>
-                                <td><button class="btn btn-primary">詳細資料</button></td>
-                            </tr>
-                            <tr>
-                                <td>王五</td>
-                                <td>12</td>
-                                <td>2018-06-19</td>
-                                <td>顧客訂購</td>
-                                <td><button class="btn btn-primary">詳細資料</button></td>
-                            </tr>
+
+
+
+
+                                    <tr>
+                                        <td>東風</td>
+                                        <td>0971234567</td>
+                                        <td>李四</td>
+                                        <td>0922345678</td>
+                                        <td><a class="btn btn-primary" href="/Member/StoreDetial">詳細資料</a></td>
+                                    </tr>
+                            
+
+
 
 
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">更新於2018-06-19 11:59 PM</div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
     </div>
     <!-- /.container-fluid-->
@@ -125,3 +109,5 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 </div>
+
+

@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Models\CCity.cs" />
     <Compile Include="Models\CEasyRegistrt.cs" />
+    <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
     <Compile Include="Models\streetName.cs">
       <DependentUpon>task03LabModel.tt</DependentUpon>
@@ -266,6 +267,12 @@
     <Content Include="Views\Member\EasyRegister.cshtml" />
     <Content Include="Views\Member\OrderCard.cshtml" />
     <Content Include="Views\Member\OrderDetial.cshtml" />
+    <Content Include="Views\Member\StoreTable.cshtml" />
+    <Content Include="Views\Member\StoreDetial.cshtml" />
+    <Content Include="Views\Member\AddStore.cshtml" />
+    <Content Include="Views\Member\CustemerOrder.cshtml" />
+    <Content Include="Views\Member\CustemerOrderDetial.cshtml" />
+    <Content Include="Views\_Store_Home_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

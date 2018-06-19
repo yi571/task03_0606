@@ -22,6 +22,8 @@
     <link href="/css/yi.css" rel="stylesheet">
     <script src="/js/jquery-3.2.1.slim.min.js"></script>
     <script src="/js/jquery.twzipcode.min.js"></script>
+    <script src="/js/yi.js"></script>
+
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -44,21 +46,22 @@
                         <span class="nav-link-text">儀錶板</span>
                     </a>
                 </li>
+                @{ }
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="/Member/CustemerOrder">
+                    <a class="nav-link" href="/Member/OrderCard">
+                        <i class="fa fa-fw fa-list"></i>
+                        <span class="nav-link-text">新訂單</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                    <a class="nav-link" href="/Member/OrderTable">
                         <i class="fa fa-fw fa-table"></i>
                         <span class="nav-link-text">所有訂單</span>
                     </a>
                 </li>
 
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="/Member/EditPersonalData">
-                        <i class="fa fa-fw fa-pencil"></i>
-                        <span class="nav-link-text">修改個人資料</span>
-                    </a>
-                </li>
-                
+               
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
@@ -191,25 +194,6 @@
         <!-- Navigation-->
 
         @RenderBody()
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">準備登出?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">當你準備好離開時，按下"登出"按鍵登出。</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">關閉</button>
-                        <a class="btn btn-primary" href="~/Member/Logout">登出</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->

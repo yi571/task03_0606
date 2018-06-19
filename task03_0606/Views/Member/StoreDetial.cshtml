@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "StoreDetial";
+    Layout = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
+}
+
+<h2>StoreDetial</h2>
+<div class="container custom-container-width">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">商店詳細資料</div>
+        <div class="card-body">
+            <form method="post" action="" id="regForm">
+                <div class="form-group">
+                    <label for="storeName">商店名稱</label>
+                    <input class="form-control" id="storeName" name="storeName" value="東風" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="storePhone">電話</label>
+                    <input class="form-control" id="storePhone" name="storePhone" value="0412345678" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="uid">統一編號</label>
+                    <input class="form-control" id="uid" name="uid" value="12345678" type="text">
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label for="ownerName">負責人</label>
+                    <div class="form-row">
+
+                        <div class="col-md-6">
+                            <label for="LastName">姓氏</label>
+                            <input class="form-control" id="LastName" name="LastName" value="李" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入姓氏...">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="FirstName">名稱</label>
+                            <input class="form-control" id="FirstName" name="FirstName" value="四" type="text" required="required" aria-describedby="nameHelp" placeholder="請輸入名稱...">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cellPhone">連絡電話</label>
+                    <input class="form-control" id="cellPhone" name="cellPhone" value="0922345678" type="tel" maxlength="10" pattern="([0]{1})([9]{1})(\d{8})" required aria-describedby="telHelp" placeholder="請輸入手機號碼...">
+                </div>
+
+
+
+
+                @*<a class="btn btn-primary btn-block" href="login.html">註冊</a>*@
+                <a id="submitBtn" class="btn btn-primary btn-block text-white" href="/Member/StoreTable">返回</a>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="">確認修改</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/yi.js"></script>

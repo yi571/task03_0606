@@ -1,7 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "OrderCard";
-    Layout = "~/Views/_Member_Home_LayoutPage1.cshtml";
+    string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
+    if ((string)Session["identity"] == "storeUser") {
+        LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
+    }
+    if ((string)Session["identity"] == "superUser") {
+        LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
+    }
+    if ((string)Session["identity"] == "store") {
+        LayoutUrl = "~/Views/_Store_Home_LayoutPage1.cshtml";
+    }
+    ViewBag.Title = "EditPersonalData";
+    Layout = LayoutUrl;
 }
 
 @*<h2>OrderCard</h2>*@

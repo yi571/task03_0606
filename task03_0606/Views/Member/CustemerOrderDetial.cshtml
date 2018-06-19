@@ -1,33 +1,16 @@
 ﻿
 @{
-    string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
-    if ((string)Session["identity"] == "storeUser") {
-        LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
-    }
-    if ((string)Session["identity"] == "superUser") {
-        LayoutUrl = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
-    }
-    if ((string)Session["identity"] == "store") {
-        LayoutUrl = "~/Views/_Store_Home_LayoutPage1.cshtml";
-    }
-    ViewBag.Title = "EditPersonalData";
-    Layout = LayoutUrl;
+    ViewBag.Title = "CustemerOrderDetial";
+    Layout = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
 }
 
-<h2>訂單詳細資料</h2>
-<!-- Example Notifications Card-->
+<h2>CustemerOrderDetial</h2>
 <div class="content-wrapper">
     <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">儀錶板</a>
-            </li>
-            <li class="breadcrumb-item active">訂單詳細資料</li>
-        </ol>
+       
         <div class="card mb-3">
             <div class="card-header bg-primary text-white">
-                <i class="fa fa-bell-o"></i> 第一桌 <i class="fa fa-angle-right "></i> 王五
+                <i class="fa fa-bell-o"></i> 商店名稱：東風
             </div>
             <div class="list-group list-group-flush small">
                 <a class="list-group-item list-group-item-action" href="#">
@@ -36,7 +19,7 @@
                         <div class="media-body">
                             <strong>排骨飯</strong>x
                             <strong>2</strong>.
-                            <div class="text-muted smaller"><i class="fa fa-dollar"></i> 單類總金額：100 元</div>
+                            <div class="text-muted smaller">今天 5:43 PM - 5分鐘前</div>
                         </div>
                     </div>
                 </a>
@@ -46,7 +29,7 @@
                         <div class="media-body">
                             <strong>魚丸湯</strong>x
                             <strong>2</strong>.
-                            <div class="text-muted smaller"><i class="fa fa-dollar"></i> 單類總金額：40 元</div>
+                            <div class="text-muted smaller">今天 5:43 PM - 5分鐘前</div>
                         </div>
                     </div>
                 </a>
@@ -56,7 +39,7 @@
                         <div class="media-body">
                             <strong>滷肉飯</strong>x
                             <strong>1</strong>.
-                            <div class="text-muted smaller"><i class="fa fa-dollar"></i> 單類總金額：20 元</div>
+                            <div class="text-muted smaller">今天 5:43 PM - 5分鐘前</div>
                         </div>
                     </div>
                 </a>
@@ -66,15 +49,17 @@
                         <div class="media-body">
                             <strong>香草冰淇淋</strong>x
                             <strong>2</strong>.
-                            <div class="text-muted smaller"><i class="fa fa-dollar"></i> 單類總金額：40 元</div>
+                            <div class="text-muted smaller">今天 5:47 PM - 1分鐘前</div>
                         </div>
                     </div>
                 </a>
                 <a class="list-group-item list-group-item-action bg-light" href="#"><i class="fa fa-dollar"></i> 總金額：200 元</a>
 
-                <a class="list-group-item list-group-item-action bg-success text-white" href="#"><i class="fa fa-clock-o btn-success"></i> 訂單狀態：顧客訂購</a>
             </div>
-            <div class="card-footer small text-muted">5:48 PM 更新</div>
+            <div class="card-footer small text-muted">2018-06-19</div>
+        </div>
+        <div>
+            <a class="btn btn-primary" href="/Member/CustemerOrder">返回</a>
         </div>
 
     </div>
