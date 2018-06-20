@@ -3,11 +3,14 @@
 create table myfoodproducts
 ( productId int NOT NULL,
   PRIMARY KEY (productId),
-  title varchar(45) NOT NULL,
-  price int not null,
-  picture varchar(250) NOT NULL,
-  introduce varchar(250) not null,
-  addcount int
+  productPicture varchar(250) NOT NULL,
+  productName nvarchar(30) NOT NULL,
+  productPrice int not null,
+  productDescription nvarchar(50),
+  salesVolume int not null,
+  storeId varchar(50),
+  productState int,
+  categoryID
 )
 INSERT INTO myfoodproducts VALUES(1,'漂浮冰咖啡','180','A1.jpg','將單品熱咖啡倒入鋼杯中，將鋼杯放入裝有冰塊和水的容器中，等待咖啡變涼~最後在杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','0')
 

@@ -48,9 +48,12 @@ namespace task03_0606.Controllers {
             return View();
 
         }
-
-        public ActionResult Dessertproducts() {
-
+     
+        public ActionResult Dessertproducts()
+        {
+            var query = from o in db.myfoodproducts
+                        select o;
+            List<>
             return View();
         }
         public ActionResult Noodleproducts() {
