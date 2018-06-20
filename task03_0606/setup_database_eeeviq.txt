@@ -86,3 +86,30 @@ LEFT JOIN OrderList ON OrderDetail.OrderId = OrderList.OrderId
 
 drop table OrderDetail
 drop table OrderList
+
+
+////////////////////
+insert into UserInfo(phoneNum, lastName, firstName, pwd, userRank, userIcon ,userState) values ('0988111222', '王', '大民', '0988111222','storeUser','picture/1602181025050000001.jpg',1 )
+insert into Stores(storeId,storeName,storePhone,storePwd,ownerPhoneNum,storeState) values ('21354423','麥當勞', '0422254423', '21354423','0988111222',1)
+
+insert into UserInfo(phoneNum, lastName, firstName, pwd, userRank, userIcon ,userState) values ('0988111333', '陳', '天財', '0988111333','storeUser','picture/1805211152570000001.jpg',1 )
+insert into Stores(storeId,storeName,storePhone,storePwd,ownerPhoneNum,storeState) values ('54123513','花月嵐拉麵', '0422254423', '54123513','0988111222',1)
+
+insert into TableListes(tableId,tableLocation) values (1,'A區-1')
+insert into TableListes(tableId,tableLocation) values (2,'A區-2')
+insert into TableListes(tableId,tableLocation) values (3,'A區-3')
+insert into TableListes(tableId,tableLocation) values (4,'A區-4')
+insert into TableListes(tableId,tableLocation) values (5,'A區-1')
+insert into TableListes(tableId,tableLocation) values (6,'A區-2')
+insert into TableListes(tableId,tableLocation) values (7,'A區-3')
+insert into TableListes(tableId,tableLocation) values (8,'A區-4')
+
+insert into Orders(orderDate,orderState,phoneNum,tableId) values('2018-06-08 12:55',1,'0962345678',1)
+insert into OrderDetials(orderId,productID,productCount,productionStatus) values(2,4,2,1)
+insert into OrderDetials(orderId,productID,productCount,productionStatus) values(2,5,3,1)
+insert into OrderDetials(orderId,productID,productCount,productionStatus) values(2,6,1,1)
+
+insert into Orders(orderDate,orderState,phoneNum,tableId) values('2018-06-20 12:55',1,'0932345678',2)
+insert into OrderDetials(orderId,productID,productCount,productionStatus,customerNote) values(3,4,2,1,'少冰')
+insert into OrderDetials(orderId,productID,productCount,productionStatus) values(3,6,3,1)
+insert into OrderDetials(orderId,productID,productCount,productionStatus) values(3,7,1,1)

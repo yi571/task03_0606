@@ -8,3 +8,6 @@ http://www.csharp-examples.net/string-format-datetime/
 
 Bootstrap教學－實現Table表格也支援RWD自適應效果
 https://www.minwt.com/webdesign-dev/html/14066.html
+
+jquery實現簡單的分頁功能
+http://www.itread01.com/articles/1476096304.html
