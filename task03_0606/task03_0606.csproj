@@ -212,8 +212,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Restaurent.cshtml" />
-    <Content Include="Views\Home\OrderBusiness.cshtml" />
-    <Content Include="Views\Home\OrderCustomer.cshtml" />
     <Content Include="Views\Order\Order_deteail_bussiness.cshtml" />
     <Content Include="Views\Order\Order_list_costomer.cshtml" />
     <Content Include="Views\Order\Order_list_bussiness.cshtml" />
