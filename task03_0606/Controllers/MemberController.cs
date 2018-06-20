@@ -95,7 +95,7 @@ namespace task03_0606.Controllers {
             }
 
             //檢查電話是否註冊----------------------------------
-            var queryCheckPhone = from o in db.userInfoes
+            var queryCheckPhone = from o in db.UserInfoes
                                   where o.phoneNum == cellPhone
                                   select cellPhone;
             ViewBag.phoneCheck = "";
@@ -109,14 +109,14 @@ namespace task03_0606.Controllers {
                 return View();
             } else {
                 if (Password1 == ConfirmPassword && checkNum == 3) {
-                    userInfo addMember = new userInfo() {
+                    UserInfo addMember = new UserInfo() {
                         lastName = LastName,
                         firstName = FirstName,
                         pwd = Password1,
                         phoneNum = cellPhone,
                         userRank = "normalUser"
                     };
-                    db.userInfoes.Add(addMember);
+                    db.UserInfoes.Add(addMember);
                     //db.SaveChanges();
                     try {
                         db.SaveChanges();
