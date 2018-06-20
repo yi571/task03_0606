@@ -13,28 +13,28 @@
     </ul>
 </header>*@
 <div class='row'>
-    @foreach (task03_0606.Models.Class1 db in Model)
-    {
+    @*@foreach (task03_0606.Models.Class1 db in Model)
+    {*@
 
         <div class='product--blue'>
             <div class="row"></div>
             <!-- Button trigger modal -->
-            <img src='~/photo/@db.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productId" />
+            <img src='~/photo/@*@db.picture*@' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@*@db.productId*@" />
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter.@db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productId" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter.@*@db.productId*@" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@*@db.productId*@" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle.@db.productId">@db.title</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle.@*@db.productId*@">@*@db.title*@</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
                         <div class="modal-body">
-                            <img src='~/photo/@db.picture' width='500' /><br />
-                            @db.introduce
+                            <img src='~/photo/@*@db.picture*@' width='500' /><br />
+                            @*@db.introduce*@
                         </div>
                         <div class="modal-footer">
 
@@ -45,8 +45,8 @@
                 </div>
             </div>
             <div class='product_inner'>
-                <p>@db.title</p>
-                <p>Price $@db.price</p>
+                <p>@*@db.title*@</p>
+                <p>Price $@*@db.price*@</p>
                 <button>Add to basket</button>
             </div>
 
@@ -55,6 +55,6 @@
                 <i class='fa fa-check'></i>
             </div>
         </div>
-    }
+    @*}*@
 
 </div>
