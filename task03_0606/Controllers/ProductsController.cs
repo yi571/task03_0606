@@ -51,9 +51,22 @@ namespace task03_0606.Controllers {
      
         public ActionResult Dessertproducts()
         {
-            var query = from o in db.myfoodproducts
-                        select o;
-            List<>
+        //    var query = from o in db.myfoodproducts
+        //                    //where o.productId < 200 | o.productId > 1
+        //                where o.productId <= 200
+        //                where o.productId >= 001
+        //                select new Class1
+        //                {
+ 
+        //productId = o.productId,
+        //                    productName = o.title,
+        //                    productPrice = o.price,
+        //                    productPicture = o.picture,
+        //                    productDescription = o.introduce,
+        //                    salesVolue = (int)o.addcount
+
+        //                };
+        //    List<Class1> prolist = query.ToList();
             return View();
         }
         public ActionResult Noodleproducts() {

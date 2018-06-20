@@ -4,7 +4,26 @@
 }
 
 <h2>美味甜點</h2>
-
+ <!-- Bootstrap core CSS-->
+<link href="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="~/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Page level plugin CSS-->
+<link href="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="~/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+<link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="~/js/Aindex.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 @*<header>
     <ul>
         <i class='fa fa-shopping-cart'>
@@ -13,28 +32,551 @@
     </ul>
 </header>*@
 <div class='row'>
-    @*@foreach (task03_0606.Models.Class1 db in Model)
-    {*@
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.201" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.201" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.201" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.201">原味葡式蛋撻</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B1.jpg' width='500' /><br />
+                        是一種以蛋漿做成餡料的西式餡餅~蛋塔是把餅皮放進小圓盆狀的餅模中，倒入由砂糖、鮮奶及雞蛋混合而成之蛋漿，然後放入烤爐；烤出成品外層為鬆脆之塔皮，內層則為香甜的黃色凝固蛋漿。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>原味葡式蛋撻</p>
+            <p>Price $45</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.202" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.202" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.202" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.202">藍莓三色蛋糕</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B2.jpg' width='500' /><br />
+                        香草、草莓、藍莓三色組合而成，甜而不膩的繽紛蛋糕~
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>藍莓三色蛋糕</p>
+            <p>Price $150</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.203" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.203" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.203" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.203">巧克力蛋糕</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B3.jpg' width='500' /><br />
+                        一種以巧克力製成的蛋糕，是常見的甜品之一。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>巧克力蛋糕</p>
+            <p>Price $80</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.204" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.204" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.204" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.204">牛奶慕斯蛋糕</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B4.jpg' width='500' /><br />
+                        牛奶慕斯，餅乾碎做底，加入鮮奶油和水果，香濃順滑，多層口感，綿密蕩漾，獨一無二，是一個值得每個人品味的蛋糕。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>牛奶慕斯蛋糕</p>
+            <p>Price $80</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.205" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.205" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.205" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.205">卡士達泡芙</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B5.jpg' width='500' /><br />
+                        一種源自法國的球形糕點。裡面包裹的材料是通過注射或者將麵包頂部撕破後加進去的。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>卡士達泡芙</p>
+            <p>Price $45</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.206" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.206" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.206" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.206">焦糖花生乳酪蛋糕</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B6.jpg' width='500' /><br />
+                        香濃滑順的自製焦糖,柔滑細緻的花生乳酪,香酥新鮮的熟核桃碎,以及乳酪蛋糕一定要有的黑餅乾底,這些美好的象徵組合在一起~
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>焦糖花生乳酪蛋糕</p>
+            <p>Price $150</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.207" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.207" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.207" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.207">香酥可麗餅</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B7.jpg' width='500' /><br />
+                        又稱凱普餅，有時意譯為法國薄餅或法國蛋餅，是一種很薄且面積大的薄烤餅、以小麥製作且風行全歐洲和世界許多角落的美食，由一種可麗餅烤盤或平底鍋煎製兩面而成，可用作甜點的盤底，也可以自成一道佳餚美饌。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>香酥可麗餅</p>
+            <p>Price $80</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.208" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.208" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.208" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.208">焦糖奶酪布丁</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B8.jpg' width='500' /><br />
+                        布丁杯烤好後灑入杏仁碎片，表層脆香，中層軟綿，底層香濃，絕對讓你回味無窮！
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>焦糖奶酪布丁</p>
+            <p>Price $100</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.209" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.209" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.209" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.209">冰火菠蘿油</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B9.jpg' width='500' /><br />
+                        手工製作現烤的菠蘿麵包搭配香濃奶油，讓你吃完一個，還想再吃一個！
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>冰火菠蘿油</p>
+            <p>Price $50</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.210" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.210" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.210" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.210">義式奶油捲餅</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B10.jpg' width='500' /><br />
+                        義式捲餅，把義大利紅酒餅皮切成圓形的，在拿去炸，最後在裡面放入滿滿的奶油~
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>義式奶油捲餅</p>
+            <p>Price $80</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.211" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.211" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.211" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.211">冰淇淋</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B11.jpg' width='500' /><br />
+                        一種冷凍的甜品，通常以牛奶或奶油等乳製品為原料，並加入水果或其他成分和香料混合製成。
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>冰淇淋</p>
+            <p>Price $60</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+    <div class='product--blue'>
+        <div class="row"></div>
+        <!-- Button trigger modal -->
+        <img src='/photo/B12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.212" />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter.212" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.212" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle.212">日式鬆餅</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src='/photo/B12.jpg' width='500' /><br />
+                        大大一張，甜甜的~軟綿綿的~油油的~厚薄適中~還在等甚麼呢?
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='product_inner'>
+            <p>日式鬆餅</p>
+            <p>Price $120</p>
+            <button>Add to basket</button>
+        </div>
+
+        <div class='product_overlay'>
+            <h2>Added to basket</h2>
+            <i class='fa fa-check'></i>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Chrome","requestId":"a80bb4642fb14e6da7a128272693c182"}
+</script>
+<script type="text/javascript" src="http://localhost:55781/5aec2ad9f50a4284ab52c4d24855e764/browserLink" async="async"></script>
+<!-- End Browser Link -->
+</body>
+</html>
+<!-- Bootstrap core JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class='row'>
+    foreach (task03_0606.Models.Class1 db in Model)
+    {
 
         <div class='product--blue'>
             <div class="row"></div>
             <!-- Button trigger modal -->
-            <img src='~/photo/@*@db.picture*@' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@*@db.productId*@" />
+            <img src='~/photo/db.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.db.productId" />
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter.@*@db.productId*@" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@*@db.productId*@" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter.db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.db.productId" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle.@*@db.productId*@">@*@db.title*@</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle.db.productId">db.title</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
                         <div class="modal-body">
-                            <img src='~/photo/@*@db.picture*@' width='500' /><br />
-                            @*@db.introduce*@
+                            <img src='~/photo/db.picture' width='500' /><br />
+                            db.introduce
                         </div>
                         <div class="modal-footer">
 
@@ -45,8 +587,8 @@
                 </div>
             </div>
             <div class='product_inner'>
-                <p>@*@db.title*@</p>
-                <p>Price $@*@db.price*@</p>
+                <p>title</p>
+                <p>Price $price</p>
                 <button>Add to basket</button>
             </div>
 
@@ -55,6 +597,6 @@
                 <i class='fa fa-check'></i>
             </div>
         </div>
-    @*}*@
+    }
 
-</div>
+</div>*@
