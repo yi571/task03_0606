@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -46,9 +47,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -97,6 +100,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\E13.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="create1.txt" />
+    <Content Include="css\Astyle.css" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\yi.css" />
+    <Content Include="db.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-reboot.css" />
@@ -155,11 +173,112 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="js\Aindex.js" />
+    <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-3.2.1.slim.min.js" />
+    <Content Include="js\jquery-3.3.1.min.js" />
+    <Content Include="js\popper.min.js" />
+    <Content Include="Models\FoodProductsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+      <LastGenOutput>FoodProductsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FoodProductsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+      <LastGenOutput>FoodProductsModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="photo\B1.jpg" />
+    <Content Include="photo\B10.jpg" />
+    <Content Include="photo\B11.jpg" />
+    <Content Include="photo\B12.jpg" />
+    <Content Include="photo\B2.jpg" />
+    <Content Include="photo\B3.jpg" />
+    <Content Include="photo\B4.jpg" />
+    <Content Include="photo\B5.jpg" />
+    <Content Include="photo\B6.jpg" />
+    <Content Include="photo\B7.jpg" />
+    <Content Include="photo\B8.jpg" />
+    <Content Include="photo\B9.jpg" />
+    <Content Include="photo\A1.jpg" />
+    <Content Include="photo\A10.jpg" />
+    <Content Include="photo\A11.jpg" />
+    <Content Include="photo\A12.jpg" />
+    <Content Include="photo\A2.jpg" />
+    <Content Include="photo\A3.jpg" />
+    <Content Include="photo\A4.jpg" />
+    <Content Include="photo\A5.jpg" />
+    <Content Include="photo\A6.jpg" />
+    <Content Include="photo\A7.jpg" />
+    <Content Include="photo\A8.jpg" />
+    <Content Include="photo\A9.jpg" />
+    <Content Include="photo\E1.jpg" />
+    <Content Include="photo\E10.jpg" />
+    <Content Include="photo\E11.jpg" />
+    <Content Include="photo\E12.jpg" />
+    <Content Include="photo\E13.jpg" />
+    <Content Include="photo\E2.jpg" />
+    <Content Include="photo\E3.jpg" />
+    <Content Include="photo\E4.jpg" />
+    <Content Include="photo\E5.jpg" />
+    <Content Include="photo\E6.jpg" />
+    <Content Include="photo\E7.jpg" />
+    <Content Include="photo\E8.jpg" />
+    <Content Include="photo\E9.jpg" />
+    <Content Include="photo\C1.jpg" />
+    <Content Include="photo\C10.jpg" />
+    <Content Include="photo\C11.jpg" />
+    <Content Include="photo\C12.jpg" />
+    <Content Include="photo\C2.jpg" />
+    <Content Include="photo\C3.jpg" />
+    <Content Include="photo\C4.jpg" />
+    <Content Include="photo\C5.jpg" />
+    <Content Include="photo\C6.jpg" />
+    <Content Include="photo\C7.jpg" />
+    <Content Include="photo\C8.jpg" />
+    <Content Include="photo\C9.jpg" />
+    <Content Include="photo\productsindex\1213454654.png" />
+    <Content Include="photo\productsindex\d10_resized.jpg" />
+    <Content Include="photo\productsindex\dessert_resized.jpg" />
+    <Content Include="photo\productsindex\fast-food_resized.jpg" />
+    <Content Include="photo\productsindex\n1_resized.jpg" />
+    <Content Include="photo\productsindex\r5_resized.jpg" />
+    <Content Include="photo\D1.jpg" />
+    <Content Include="photo\D10.jpg" />
+    <Content Include="photo\D11.jpg" />
+    <Content Include="photo\D12.jpg" />
+    <Content Include="photo\D2.jpg" />
+    <Content Include="photo\D3.jpg" />
+    <Content Include="photo\D4.jpg" />
+    <Content Include="photo\D5.jpg" />
+    <Content Include="photo\D6.jpg" />
+    <Content Include="photo\D7.jpg" />
+    <Content Include="photo\D8.jpg" />
+    <Content Include="photo\D9.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\FoodProductsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodProductsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FoodProductsModel.edmx.diagram">
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +307,25 @@
     <Compile Include="Models\userInfo.cs">
       <DependentUpon>task03LabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\FoodProductsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodProductsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodProductsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\myfoodproduct.cs">
+      <DependentUpon>FoodProductsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +347,19 @@
     <Content Include="Models\task03LabModel.edmx.diagram">
       <DependentUpon>task03LabModel.edmx</DependentUpon>
     </Content>
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="js\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap.bundle.min.js.map" />
+    <Content Include="js\bootstrap.js.map" />
+    <Content Include="js\bootstrap.min.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_Member_LayoutPage1.cshtml" />
     <Content Include="Views\Member\Member.cshtml" />
@@ -273,6 +424,22 @@
     <Content Include="Views\Member\CustemerOrder.cshtml" />
     <Content Include="Views\Member\CustemerOrderDetial.cshtml" />
     <Content Include="Views\_Store_Home_LayoutPage1.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Restaurent.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="scss\Astyle.scss" />
+    <Content Include="Views\Products\Drinkproducts.cshtml" />
+    <Content Include="Views\Products\Dessertproducts.cshtml" />
+    <Content Include="Views\Products\Noodleproducts.cshtml" />
+    <Content Include="Views\Products\Riceproducts.cshtml" />
+    <Content Include="Views\Products\Fastfoodproducts.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\ManagerIndex.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -282,6 +449,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="picture\" />
+    <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,0 +1,87 @@
+﻿@model task03_0606.Models.Class1
+@{
+    ViewBag.Title = "Edit";
+
+
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">修改商品</h2>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text-uppercase">商品編號</label>
+                        <input type="text" class="form-control" placeholder="16">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text-uppercase">商品名稱</label>
+                        <input type="text" class="form-control" placeholder="豚骨拉麵">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text-uppercase">商品價格</label>
+                        <input type="text" class="form-control" placeholder="$220">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="text-uppercase">商品介紹</label>
+                        <input type="text" class="form-control" placeholder="傳承日本師傅的精神，耗時費力的自製麵條，以及讓您回味無窮的湯頭！">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="text-uppercase">商品檔案</label>
+                        <input type="text" class="form-control" placeholder="C13.jpg">
+                    </div>
+                    <div class="pull-right">
+                    <input type="submit" value="確認" class="btn btn-default" />|<input type="submit" value="取消" class="btn btn-default right" />
+                        </div>
+                </form>
+                @*<div class="copy-text">Created with <i class="fa fa-heart"></i> by <a href="http://grafreez.com">Grafreez.com</a></div>*@
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>Specific foods will often change from year to year with passing fads and become characteristic snacks of Taiwan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>I would like to introduce Taiwan night market food to the foreigners mostly. No matter which place we are, we can also taste the diffent snacks and local products in Taiwan.
+</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</section>
