@@ -17,16 +17,29 @@ namespace task03_0606.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.Cartes = new HashSet<Carte>();
+            this.Feedbacks = new HashSet<Feedback>();
+            this.OrderDetials = new HashSet<OrderDetial>();
         }
     
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }
-        public Nullable<int> MemberID { get; set; }
-        public Nullable<int> UnitPrice { get; set; }
+        public int productID { get; set; }
+        public string productName { get; set; }
+        public string productPicture { get; set; }
+        public Nullable<int> salesVolume { get; set; }
+        public string storeProductId { get; set; }
+        public string productDescription { get; set; }
+        public int productPrice { get; set; }
+        public string storeId { get; set; }
+        public int productState { get; set; }
+        public int categoryID { get; set; }
     
-        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<Carte> Cartes { get; set; }
+        public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetial> OrderDetials { get; set; }
+        public virtual Store Store { get; set; }
     }
 }

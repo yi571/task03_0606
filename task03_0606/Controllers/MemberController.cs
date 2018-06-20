@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace task03_0606.Controllers {
     public class MemberController : Controller {
-        task03LabEntities db = new task03LabEntities();
+        FoodCourtDBEntities db = new FoodCourtDBEntities();
 
         // GET: Member
         public ActionResult Index() {
@@ -44,13 +44,13 @@ namespace task03_0606.Controllers {
             //    Session["identity"] = "normalUser";
             //}
 
-            var queryLogin = from o in db.userInfoes  //比對手機號碼和密碼
+            var queryLogin = from o in db.UserInfoes  //比對手機號碼和密碼
                              where (o.phoneNum == phoneNum && o.pwd == pwd)
-                             select new { o.id, o.lastName, o.firstName, o.userRank };
+                             select new { o.UserInfoId, o.lastName, o.firstName, o.userRank };
             if (queryLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入
                 Session["identity"] = queryLogin.ToArray()[0].userRank.ToString();
-                Session["userInfoId"] = queryLogin.ToArray()[0].id;
+                Session["userInfoId"] = queryLogin.ToArray()[0].UserInfoId;
                 Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                     Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
@@ -415,10 +415,11 @@ namespace task03_0606.Controllers {
                 return RedirectToAction("Login", "Member");
             }
             int idNum = Convert.ToInt32(Session["userInfoId"]);
-            var queryEdit = from o in db.userInfoes
-                            join p in db.streetNames on o.userAddressPart1 equals p.uid
-                            where o.id == idNum
-                            select new { o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, p.city, p.district, p.road, o.lane, o.alley, o.addressNum, o.addressF };
+            var queryEdit = from o in db.UserInfoes
+                            join p in db.UserAddresses on o.phoneNum equals p.phoneNum
+                            join q in db.streetNames on p.userAddressPart1 equals q.userAddressPart1
+                            where o.UserInfoId == idNum
+                            select new { o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, q.city, q.district, q.road, p.lane, p.alley, p.addressNum, p.addressF };
             var userInfoEdit = queryEdit.ToArray();
 
             ViewBag.LastName = userInfoEdit[0].lastName;
@@ -548,15 +549,19 @@ namespace task03_0606.Controllers {
 
 
             //查詢出AddressPart1
-            var queryCheckAddressPart1 = from o in db.streetNames
-                                         where (o.city == city & o.district == district & o.road == road)
-                                         select o.uid;
+            //var queryCheckAddressPart1 = from o in db.streetNames
+            //                             where (o.city == city & o.district == district & o.road == road)
+            //                             select o.uid;
+            var queryCheckAddressPart1 = from o in db.UserAddresses
+                                         join p in db.streetNames on o.userAddressPart1 equals p.userAddressPart1
+                                         where (p.city == city & p.district == district & p.road == road)
+                                         select o.userAddressPart1;
 
             //檢查信箱是否註冊----------------------------------
-            var queryCheckEmail = from o in db.userInfoes
+            var queryCheckEmail = from o in db.UserInfoes
                                   where o.email == Email1
                                   select o;
-            var queryEmailNotChange = from o in db.userInfoes
+            var queryEmailNotChange = from o in db.UserInfoes
                                       where (o.email == Email1 & o.pwd == Password1)
                                       select o;
             ViewBag.emailCheck = "";
@@ -583,7 +588,8 @@ namespace task03_0606.Controllers {
                 return View();
             } else {
                 if (Password1 == ConfirmPassword && checkNum == 7) {
-                    userInfo addMember = new userInfo() {
+                   
+                    UserInfo addMember = new UserInfo() {
                         lastName = LastName,
                         firstName = FirstName,
                         userId = uid,
