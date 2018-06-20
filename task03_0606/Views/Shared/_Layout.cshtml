@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>美食廣場</title>
     <!-- Bootstrap core CSS-->
     <link href="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -16,63 +15,93 @@
     <link href="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="~/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-    <link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
-    <script src="~/js/Aindex.js"></script>
 
-    
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="~/Home/index">美食廣場</a>
+        <h2><a class="navbar-brand" href="~/Home/index"><i class="fa fa-fw fa-delicious"></i>美食廣場</a></h2>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @*商家專用-餐廳列表*@
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
-                    <a class="nav-link" href="~/Home/Restaurent">
-                        <i class="fa fa-fw fa-cutlery"></i>
-                        <span class="nav-link-text">餐廳列表</span>
-                    </a>
-                </li>
-                @*美食分類*@
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                    <a class="nav-link" href="~/Products/index">
-                        <i class="fa fa-fw fa-sticky-note"></i>
-                        <span class="nav-link-text">美食分類</span>
-                    </a>
-                   
-                </li>
+                @if (Session["memberType"].ToString() == "Customer")
+                {
+                    @*顧客專用-餐廳列表*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
+                        <a class="nav-link" href="~/Home/Restaurent">
+                            <i class="fa fa-fw fa-cutlery"></i>
+                            <span class="nav-link-text">餐廳列表</span>
+                        </a>
+                    </li>
+                    @*顧客專用-美食分類*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-cutlery"></i>
+                            <span class="nav-link-text">美食分類</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                            <li>
+                                <a href="login.html"> <i class="fa fa-glass"></i> 湯品/飲料</a>
+                            </li>
+                            <li>
+                                <a href="register.html">速食</a>
+                            </li>
+                            <li>
+                                <a href="forgot-password.html">飯</a>
+                            </li>
+                            <li>
+                                <a href="blank.html">麵</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                @*商家專用-新訂單*@
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新訂單">
-                    <a class="nav-link" href="~/Home/index">
-                        <i class="fa fa-fw fa-sticky-note"></i>
-                        <span class="nav-link-text">新訂單</span>
-                    </a>
-                </li>
+                    @*顧客專用-訂單列表*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
+                        <a class="nav-link" href="~/Order/Order_list_costomer">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">訂單列表</span>
+                        </a>
+                    </li>
 
-                @*商家專用-歷史訂單*@
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
-                    <a class="nav-link" href="~/Home/index">
-                        <i class="fa fa-fw fa-sticky-note"></i>
-                        <span class="nav-link-text">歷史訂單</span>
-                    </a>
-                </li>
 
+                };
+                @if (Session["memberType"].ToString() == "Business")
+                {
+                    @*商家專用-未出餐訂單-訂單別*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
+                        <a class="nav-link" href="~/Order/Order_list_bussiness">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">未出餐訂單-訂單別</span>
+                        </a>
+                    </li>
+
+                    @*商家專用-未出餐訂單-明細別*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-明細別">
+                        <a class="nav-link" href="~/Order/Order_deteail_bussiness">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">未出餐訂單-明細別</span>
+                        </a>
+                    </li>
+                    @*商家專用-產品列表*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品列表">
+                        <a class="nav-link" href="~/#/Product?userID=1">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">產品列表</span>
+                        </a>
+                    </li>
+                };
                 @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
-                    <a class="nav-link" href="~/Home/index">
+                    <a class="nav-link" href="~/Home/Respone">
                         <i class="fa fa-fw fa-sticky-note"></i>
                         <span class="nav-link-text">意見反應</span>
                     </a>
@@ -89,97 +118,105 @@
             </ul>
             @*上方導覽*@
             <ul class="navbar-nav ml-auto">
-                @*商家專用-新單訊息*@
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-bell"></i>
-                        <span class="d-lg-none">
-                            Messages
-                            <span class="badge badge-pill badge-primary">12 New</span>
-                        </span>
-                        <span class="indicator text-primary d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle">10</i>  @*新增筆數*@
-                        </span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">新訂單：</h6>
 
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">
-                            <a href="#"><strong>訂單1</strong> </a>
-                            <span class="small float-right text-muted">新增時間 11:21 AM</span>
-                            <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
-                        </div>
-
-                        @*<div class="dropdown-divider"></div>
-                        <div class="dropdown-item" href="#">
-                            <strong>David Miller</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                        </div>*@
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item small" href="#">View all messages</a>
-                    </div>
-                </li>  
-
-                @*顧客專用-購物車訊息*@
-                <li class="nav-item dropdown"> 
-                    <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-shopping-cart"></i>
-                        <span class="d-lg-none">
-                            Alerts
-                            <span class="badge badge-pill badge-warning">6 New</span>
-                        </span>
-                        <span class="indicator text-warning d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle">20</i> @*購物筆數*@
-                        </span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-                        <h6 class="dropdown-header">購物車</h6>
-
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">
-                            <span class="text-danger">
-                                <a href="#">
-                                    <strong> 產品1 </strong>
-                                </a>
-                                <button class="btn btn-sm btn-danger pull-right" aria-label="Delete">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </button>
+                @if (Session["memberType"].ToString() == "Business")
+                {
+                    @*商家專用-新單訊息*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-bell"></i>
+                            <span class="indicator text-primary d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle">10</i>  @*新增筆數*@
                             </span>
-                            <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                        </div>
-
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <span class="text-danger">
-                                <strong>
-                                    <i class="fa fa-long-arrow-down fa-fw"></i>Status Update
-                                </strong>
-                            </span>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">新訂單：</h6>
 
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <span class="text-success">
-                                <strong>
-                                    <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
-                                </strong>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item">
+                                <a href="/Home/Order?orderID=1"><strong>訂單1</strong> </a>
+                                <span class="small float-right text-muted">新增時間 11:21 AM</span>
+                                <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item">
+                                <a href="/Home/Order?orderID=2"><strong>訂單2</strong> </a>
+                                <span class="small float-right text-muted">新增時間 11:21 AM</span>
+                                <div class="dropdown-message small"> 桌號: 2 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="~/Order/Order_list_bussiness">詳細訂單明細</a>
+                        </div>
+                    </li>
+                }
+                @if (Session["memberType"].ToString() == "Customer")
+                {
+                    @*顧客專用-購物車訊息*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-shopping-cart"></i>
+                            <span class="indicator text-warning d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle">20</i> @*購物筆數*@
                             </span>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">購物車</h6>
+
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item">
+                                <span class="text-danger">
+                                    <a href="~/#/Products?productID=1">
+                                        <strong> 產品1 </strong>
+                                    </a>
+                                    <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                                <div class="dropdown-message small">
+                                    This is an automated server response message. All systems are online.
+                                </div>
+                            </div>
 
 
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item small" href="#">View all alerts</a>
-                    </div>
-                </li> 
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item">
+                                <span class="text-danger">
+                                    <a href="~/#/Products?productID=2">
+                                        <strong> 產品2 </strong>
+                                    </a>
+                                    <a href="~/#/Delete?productID=2" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                                <div class="dropdown-message small">
+                                    This is an automated server response message. All systems are online.
+                                </div>
+                            </div>
 
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-success">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
+                                    </strong>
+                                </span>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                            </a>
+
+
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item small">
+                                <span>
+                                    <a href="~/#/ShoppingList?userID=1">詳細購物明細</a>
+                                    <a href="~/#/Payment" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-dollar"></i>結帳</a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                }
                 @*搜尋列*@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
@@ -194,11 +231,25 @@
                     </form>
                 </li>
                 @*網站登入/登出*@
+                
+                @if (Session["memberType"].ToString() =="Guest") {
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                        @*<i class="fa fa-fw fa-sign-out"></i>會員登出*@
-                        <i class="fa fa-fw fa-sign-in"></i>會員登入
+                   
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                        親愛的訪客  您好<i class="fa fa-fw fa-sign-in"></i>登入
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
                         <i class="fa fa-fw fa-question"></i>忘記密碼
+                    </a>
+                </li>
+                }
+                <li class="nav-item">
+                   
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                        店名XXX  您好 <i class="fa fa-fw fa-sign-out"></i>登出
+
                     </a>
                 </li>
             </ul>
@@ -210,23 +261,34 @@
 
 
             @RenderBody()
-        
+
         </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
     </div>
 </body>
 </html>
-<!-- Bootstrap core JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 <!-- Page level plugin JavaScript-->
-<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+@*<script src="~/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>*@
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
 <script src="~/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
 <script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
-<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+@*<script src="~/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>*@
+
+
 

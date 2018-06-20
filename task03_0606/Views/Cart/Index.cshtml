@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    /*.table td, .table th {
+        padding: 0rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }*/
+
+.rwd-table {
+         background: #fff;
+         overflow: hidden;
+    }
+
+.rwd-table tr:nth-of-type(2n) {
+             background: #eee;
+        }
+
+.rwd-table th, 
+.rwd-table td {
+             margin: 0.5em 1em;
+        }
+
+.rwd-table {
+         min-width: 100%;
+    }
+
+.rwd-table th {
+             display: none;
+        }
+
+.rwd-table td {
+             display: block;
+        }
+
+.rwd-table td:before {
+          content: attr(data-th) ;
+          font-weight: bold;
+          width: 6.5em;
+          display: inline-block;
+            }
+
+.rwd-table th, 
+.rwd-table td {
+           text-align: left;
+        }
+
+.rwd-table th,
+.rwd-table td:before {
+          /*color: #D20B2A;*/
+          font-weight: bold;
+            }
+
+ @@media (min-width: 480px) {
+
+.rwd-table td:before {
+         display: none;
+    }
+
+.rwd-table th, .rwd-table td {
+         display: table-cell;
+         padding: 0.25em 0.5em;
+    }
+
+.rwd-table th:first-child,
+.rwd-table td:first-child {
+             padding-left: 0;
+        }
+
+.rwd-table th:last-child, 
+.rwd-table td:last-child {
+             padding-right: 0;
+        }
+
+.rwd-table th, 
+.rwd-table td {
+         padding: 1em !important;
+    }
+ }
+</style>
+
+<div>
+
+
+    <table class="table table-hover table-responsive-sm rwd-table">
+        <tr>
+            <th>產品圖片</th>
+            <th style="display:none">產品編號</th>
+            <th>產品名稱</th>
+            <th style="display:none">店家編號</th>
+            <th>店家</th>
+            <th>數量</th>
+            <th>單價</th>
+            <th>小計</th>
+            <th>備註</th>
+            <th> </th>
+        </tr>
+
+        <tr>
+            <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/picture/1610141734150000001.jpg" /> </td>
+            <td style="display:none" data-th="產品編號">1</td>
+            <td data-th="產品名稱：">可樂</td>
+            <td style="display:none" data-th="店家編號">1</td>
+            <td data-th="店家：">麥當勞</td>
+            <td data-th="數量："><input size="1" style="text-align:right;" value="2" /></td>
+            <td data-th="單價：">30</td>
+            <td data-th="小計：">60</td>
+            <td data-th="備註："><input size="5" style="text-align:right;" /></td>
+            <td>
+                <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/picture/1610141734150000001.jpg" /> </td>
+            <td style="display:none" data-th="產品編號">1</td>
+            <td data-th="產品名稱：">可樂</td>
+            <td style="display:none" data-th="店家編號">1</td>
+            <td data-th="店家：">麥當勞</td>
+            <td data-th="數量："><input size="1" style="text-align:right;" value="2" /></td>
+            <td data-th="單價：">30</td>
+            <td data-th="小計：">60</td>
+            <td data-th="備註："><input size="5" style="text-align:right;" /></td>
+            <td>
+                <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+
+    </table>
+    <div class="pull-right">
+        共 2 項，總計：1500 元
+        <a href="~/#/Payment" class="btn btn-sm btn-success"><i class="fa fa-fw fa-dollar"></i>結帳</a>
+    </div>
+   
+</div>

@@ -1,0 +1,68 @@
+﻿@model List<task03_0606.Models.OrderList> 
+@{
+    ViewBag.Title = "OrderCustomer";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">訂單明細</li>
+</ol>
+<div id="debug"></div>
+<div class="row">
+  
+
+
+
+    <div class="col-xl-12 col-sm-12 mb-12">
+        <div class="card-header">
+            <i class="fa fa-table"></i>所有訂單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>下訂時間</th>
+                            <th>訂單單號</th>
+                            <th>座位</th>
+                            <th>結單時間</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (task03_0606.Models.OrderList order in Model)
+                        {
+                            <tr class="orderListItem">
+                                <td>@order.OrderTime</td>
+                                <td><a href="#">@order.OrderId</a></td>
+                                <td>@order.SeatID</td>
+                                <td>@order.FinshTime</td>
+                            </tr>
+                        }
+                        @*<tr class="orderListItem">
+                                <td>201806060005</td>
+                                <td>20</td>
+                                <td>2018-06-06 12:59 PM</td>
+                                <td></td>
+                            </tr>
+                            <tr class="orderListItem">
+                                <td>201806060020</td>
+                                <td>20</td>
+                                <td>2018-06-06 6:30 PM</td>
+                                <td></td>
+                            </tr>
+                            <tr class="orderListItem">
+                                <td>201806060009</td>
+                                <td>20</td>
+                                <td>2018-06-07 12:59 PM</td>
+                                <td></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -124,6 +124,17 @@
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="css\yi.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\yi.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
@@ -272,6 +283,42 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="TextFile1.txt" />
+    <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-3.2.1.slim.min.js" />
+    <Content Include="js\jquery-3.3.1.min.js" />
+    <Content Include="js\popper.min.js" />
+    <Content Include="Models\FoodCourtModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
+      <LastGenOutput>FoodCourtModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FoodCourtModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
+      <LastGenOutput>FoodCourtModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="note.txt" />
+    <Content Include="picture\1602181123510000001.jpg" />
+    <Content Include="picture\1608031409360000001.jpg" />
+    <Content Include="picture\1610141734150000001.jpg" />
+    <Content Include="picture\1805211154480000001.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\FoodCourtModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodCourtModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FoodCourtModel.edmx.diagram">
+      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="setup_database_eeeviq.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +326,9 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -326,6 +376,37 @@
     <Compile Include="Models\myfoodproduct.cs">
       <DependentUpon>FoodProductsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
+    <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\FoodCourtModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodCourtModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodCourtModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodCourtModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderList.cs">
+      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\orderViewModel.cs" />
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +428,19 @@
     <Content Include="Models\task03LabModel.edmx.diagram">
       <DependentUpon>task03LabModel.edmx</DependentUpon>
     </Content>
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="js\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap.bundle.min.js.map" />
+    <Content Include="js\bootstrap.js.map" />
+    <Content Include="js\bootstrap.min.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="css\bootstrap-grid.css.map" />
     <Content Include="css\bootstrap-grid.min.css.map" />
     <Content Include="css\bootstrap-reboot.css.map" />
@@ -440,6 +534,19 @@
     <Content Include="Views\Products\ManagerIndex.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\test.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Restaurent.cshtml" />
+    <Content Include="Views\Home\OrderBusiness.cshtml" />
+    <Content Include="Views\Home\OrderCustomer.cshtml" />
+    <Content Include="Views\Order\Order_deteail_bussiness.cshtml" />
+    <Content Include="Views\Order\Order_list_costomer.cshtml" />
+    <Content Include="Views\Order\Order_list_bussiness.cshtml" />
+    <Content Include="Views\Home\RestaurentMemberPage.cshtml" />
+    <Content Include="Views\Order\Order_list_history_bussiness.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

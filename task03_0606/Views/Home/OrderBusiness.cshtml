@@ -1,0 +1,331 @@
+﻿@model List<task03_0606.Models.OrderList>
+
+@{
+    ViewBag.Title = "OrderBusiness";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">訂單明細</li>
+</ol>
+<div id="debug"></div>
+<div class="row">
+    @*<div class="col-xl-12 col-sm-12 mb-12 ">
+        <div class="card-header">
+            <form method="post" action="" id="orderDetailForm">
+                <table class="table">
+                    <tr id="orderDetail">
+                        <th>
+                            訂單編號：
+                            <label id="orderDetail_orderID" name="orderDetail_orderID"></label>
+                            <input id="orderDetail_orderID_input" name="orderDetail_orderID_input" style="display:none" />
+                        </th>
+                        <th>
+                            客戶電話：
+                            <label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
+                            <input id="orderDetail_customerPhone_input" name="orderDetail_customerPhone_input" style="display:none" />
+                        </th>
+                        <th>
+                            座位：
+                            <label id="orderDetail_seatID" name="orderDetail_seatID"></label>
+                            <input id="orderDetail_seatID_input" name="orderDetail_seatID_input" style="display:none" />
+                        </th>
+                        <th>
+                            訂餐時間：
+                            <label id="orderDetail_time" name="orderDetail_time"></label>
+                            <input id="orderDetail_time_input" name="orderDetail_time_input" style="display:none" />
+                        </th>
+
+                        <th>
+                            @*<a href="~/Home/OrderBusiness_send" class="btn btn-success "><i class="fa fa-fw fa-sign-in"></i>出餐</a>*@
+    @*<button class="btn btn-success" type="submit"><i class="fa fa-fw fa-sign-in"></i>出餐</button>
+                        </th>
+                    </tr>
+                </table>
+            </form>
+        </div>*@
+
+    @*<div class="table-responsive-sm">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        <from method="post" action="">
+                            <input id="orderDetail_orderID_input2"
+                                   name="orderDetail_orderID_input"*@
+    @*style="display:none"/>*@
+    @*</from>
+                              </td>
+                          </tr>
+                          <tr>
+                              <th>廠商</th>
+                              <th>產品編號</th>
+                              <th>產品名稱</th>
+                              <th>數量</th>
+                              <th>單價</th>
+                              <th>小計</th>
+                              <th>訂單備註</th>
+                          </tr>
+                      </thead>
+                      <tbody id="detailList">
+                          <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>可樂(中)</td>
+                              <td>2</td>
+                              <td>30</td>
+                              <td>60</td>
+                              <td>去冰</td>
+                          </tr>
+
+                          <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>薯條(中)</td>
+                              <td>1</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td>1</td>
+                              <td>3</td>
+                              <td>漢堡</td>
+                              <td>1</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td></td>
+                          </tr>
+
+                      </tbody>
+                      <thead>
+                          <tr>
+                              <th>總計</th>
+                              <th> </th>
+                              <th> </th>
+                              <th>3</th>
+                              <th> </th>
+                              <th>160</th>
+                              <th> </th>
+                          </tr>
+                      </thead>
+                  </table>
+
+              </div>
+        </div>*@
+
+
+
+    <div class="col-xl-12 col-sm-12 mb-12">
+        <div class="card-header">
+            <i class="fa fa-table"></i>未出餐清單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>接單時間</th>
+                            <th>客戶電話</th>
+                            <th>訂單單號</th>
+                            <th>座位</th>
+                            <th>結單時間</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                      
+                        @foreach (task03_0606.Models.OrderList order in Model)
+
+                        {
+                            <tr class="orderListItem">
+                                <td>@order.OrderTime</td>
+                                <td>@order.CustomerPhone</td>
+                                <td>@order.OrderId</td>
+                                <td>@order.SeatID</td>
+                                <td>@order.FinshTime</td>
+                            </tr>
+                        }
+                        @*<tr class="orderListItem">
+                                <td>201806060005</td>
+                                <td>20</td>
+                                <td>2018-06-06 12:59 PM</td>
+                                <td></td>
+                            </tr>
+                            <tr class="orderListItem">
+                                <td>201806060020</td>
+                                <td>20</td>
+                                <td>2018-06-06 6:30 PM</td>
+                                <td></td>
+                            </tr>
+                            <tr class="orderListItem">
+                                <td>201806060009</td>
+                                <td>20</td>
+                                <td>2018-06-07 12:59 PM</td>
+                                <td></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+               
+                    <table>
+                        <tr>
+                            <th>
+                                訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
+                            </th>
+                            <th>
+                                客戶電話：
+                                <label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
+                            </th>
+                            <th>
+                                座位：
+                                <label id="orderDetail_seatID" name="orderDetail_seatID"></label>
+                            </th>
+                            <th>
+                                訂餐時間：
+                                <label id="orderDetail_time" name="orderDetail_time"></label>
+                            </th>
+                        </tr>
+                    </table>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body max-height">
+                <div class="table-responsive-sm">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>廠商</th>
+                                <th>產品編號</th>
+                                <th>產品名稱</th>
+                                <th>數量</th>
+                                <th>單價</th>
+                                <th>小計</th>
+                                <th>訂單備註</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailList">
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>可樂(中)</td>
+                                <td>2</td>
+                                <td>30</td>
+                                <td>60</td>
+                                <td>去冰</td>
+                            </tr>
+
+
+                        </tbody>
+                        <thead  id="detailSum">
+                            <tr>
+                                <th>總計</th>
+                                <th> </th>
+                                <th> </th>
+                                <th>3</th>
+                                <th> </th>
+                                <th>160</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="orderOK"type="button" class="btn btn-primary">出餐</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    //找 id=dataTable table 下的 tr class=orderListItem ==> tr[]
+    $("#dataTable").find("tr.orderListItem").click(function () {
+        //alert(this.innerText);
+        //alert(this.cells[0].innerText);
+        //$("#debug").text(this.cells[0].innerText);
+        $("#orderDetail_time").text(this.cells[0].innerText);
+        $("#orderDetail_customerPhone").text(this.cells[1].innerText);
+        $("#orderDetail_orderID").text(this.cells[2].innerText);
+        $("#orderDetail_seatID").text(this.cells[3].innerText);
+
+        $('#exampleModalCenter').modal('show');
+
+
+        $.ajax({
+            method: "POST",
+            dataType: 'json',
+
+            url:"@Url.Action("OrderBusiness_detail", "Home")",
+            data: { OrderId: parseInt(this.cells[2].innerText) }
+        })
+            .done(function (dataList) {
+                //console.log(dataList)
+                $("#detailList").empty();
+               
+                var countSum = 0;
+                var amountSum = 0;
+                $.each(dataList, function (index, data) {
+                    $("#detailList").append('<tr>< td >' + index + '</td ><td>' + data.MemberID + '</td ><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note + '</td></tr >');
+                    countSum += data.OrderCount;
+                    amountSum += data.OrderCount * data.UnitPrice;
+                });
+                $("#detailSum").empty();
+                $("#detailSum").append('<tr>< td >總計</td ><td></td ><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td></tr >');
+            });
+    });
+
+   
+
+    $("#orderOK").click(function () {
+        $.ajax({
+            method: "post",
+            dataType: "json",
+            url: "@Url.Action("OrderBusiness", "Home")",
+            data: { orderDetail_time_input : $("#orderDetail_time").text(),
+                    orderDetail_customerPhone_input : $("#orderDetail_customerPhone").text(),
+                    orderDetail_orderID_input : $("#orderDetail_orderID").text(),
+                    orderDetail_seatID_input: $("#orderDetail_seatID").text(),
+            }
+        })
+            .done(function (data) {
+            console.log(data);
+            alert("確定出餐");
+            $('#exampleModalCenter').modal('hide');
+
+               
+           
+        })
+    })
+    
+
+
+</script>
