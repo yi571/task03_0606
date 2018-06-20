@@ -11,14 +11,16 @@
 		//實現分頁思路:
 		var pageSize=4;      //每頁顯示數據條數
 		var currentPage=1;   //當前頁數
-		var totalSize=$("ul li").index(); //獲取總數據
+        var totalSize = $("ul li").index(); //獲取總數據
+        var totalSize1 = $("ul li").length ;
 		var totalPage=Math.round(totalSize/pageSize); //計算總頁數
 		$("ul li:gt(3)").hide(); //設置首頁顯示4條數據
 		$(".total").text(totalPage);  //設置總頁數
 		$(".current_page").text(currentPage); //設置當前頁數
 
 		//實現下一頁
-		$(".next").click(function(){
+        $(".next").click(function () {
+            alert(totalSize1);
 			if(currentPage ==totalPage){ //當前頁數==最後一頁，禁止下一頁
 				   return false;
 				}else{//不是最後一頁，顯示應該顯示的數據.
