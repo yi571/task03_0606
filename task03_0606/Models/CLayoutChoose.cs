@@ -13,14 +13,15 @@ namespace task03_0606.Models {
             if (identity == "superUser") {
                 const string V = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
                 LayoutUrl = V;
-            }
-            if (identity == "storeUser") {
+            } else if (identity == "storeUser") {
                 const string V1 = "~/Views/_Member_Home_LayoutPage1.cshtml";
                 LayoutUrl = V1;
-            }
-            if (identity == "store") {
+            } else if (identity == "store") {
                 const string V2 = "~/Views/_Store_Home_LayoutPage1.cshtml";
                 LayoutUrl = V2;
+            } else {
+                const string V3 = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
+                LayoutUrl = V3;
             }
            
             return LayoutUrl;

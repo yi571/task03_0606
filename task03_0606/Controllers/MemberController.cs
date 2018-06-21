@@ -9,8 +9,8 @@ using System.Linq.Expressions;
 
 namespace task03_0606.Controllers {
     public class MemberController : Controller {
-        
 
+        FoodCourtDBEntities db = new FoodCourtDBEntities();
         // GET: Member
         public ActionResult Index() {
             return View();
@@ -22,20 +22,54 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Login() {
-           
+            ViewBag.Title = "登入";
+            Session["UserAllName"] = "Guest";
+            
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(string phoneNum, string pwd) {  //傳入email和password
-            
+            ViewBag.Title = "登入";
+
+            var queryLogin = from o in db.UserInfoes  //比對手機號碼和密碼
+                             where (o.phoneNum == phoneNum && o.pwd == pwd)
+                             select new { o.UserInfoId, o.lastName, o.firstName, o.userRank };
+            var queryStoreLogin = from o in db.Stores //店家登入
+                                  where (o.storePhone == phoneNum && o.storePwd == pwd)
+                                  select new { o.storeId, o.storeName };
+            if (queryLogin.Count() > 0) {
+                Session["logState"] = "login";    //將登入狀態設為登入
+                Session["identity"] = queryLogin.ToArray()[0].userRank.ToString();
+                Session["userInfoId"] = queryLogin.ToArray()[0].UserInfoId;
+                Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
+                if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                }
+                return Redirect((string)Session["lastPage"]);  //重導回最後頁面
+            } else if(queryStoreLogin.Count() > 0) {
+                Session["logState"] = "login";    //將登入狀態設為登入
+                Session["identity"] = "store";
+                Session["userInfoId"] = queryStoreLogin.ToArray()[0].storeId;
+                Session["UserAllName"] = queryStoreLogin.ToArray()[0].storeName.ToString();
+                if (String.IsNullOrEmpty((string)Session["lastPage"])) {
+                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                }
+                return Redirect((string)Session["lastPage"]);  //重導回最後頁面
+            } 
+            else {
+                ViewBag.loginError = "<div class='alert alert-danger' role='alert'><h2>帳號或密碼錯誤</h2></div>";
                 return View();
+            }
+            
             
         }
 
         public ActionResult Logout() {
-
-            return View();
+            Session.Clear();
+            Session["logState"] = "";   //登出則將logState設為空字串
+            Session["identity"] = "";
+            return RedirectToAction("Member", "Member");  //此處應重導回首頁
         }
 
         public ActionResult EasyRegister() {  //只需手機號碼的註冊
