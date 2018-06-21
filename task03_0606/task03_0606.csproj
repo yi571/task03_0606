@@ -157,16 +157,6 @@
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
       <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\task03LabModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>task03LabModel.Context.cs</LastGenOutput>
-      <DependentUpon>task03LabModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\task03LabModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>task03LabModel.edmx</DependentUpon>
-      <LastGenOutput>task03LabModel.cs</LastGenOutput>
-    </Content>
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -202,16 +192,6 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
-    <Content Include="Models\FoodProductsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
-      <LastGenOutput>FoodProductsModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FoodProductsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
-      <LastGenOutput>FoodProductsModel.cs</LastGenOutput>
-    </Content>
     <Content Include="photo\B1.jpg" />
     <Content Include="photo\B10.jpg" />
     <Content Include="photo\B11.jpg" />
@@ -281,13 +261,6 @@
     <Content Include="photo\D9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\FoodProductsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodProductsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FoodProductsModel.edmx.diagram">
-      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\FoodStreetModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FoodStreetModel.Designer.cs</LastGenOutput>
@@ -307,16 +280,6 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
-    <Content Include="Models\FoodCourtModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
-      <LastGenOutput>FoodCourtModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FoodCourtModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
-      <LastGenOutput>FoodCourtModel.cs</LastGenOutput>
-    </Content>
     <Content Include="note.txt" />
     <Content Include="picture\1602181123510000001.jpg" />
     <Content Include="picture\1608031409360000001.jpg" />
@@ -324,13 +287,6 @@
     <Content Include="picture\1805211154480000001.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\FoodCourtModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodCourtModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FoodCourtModel.edmx.diagram">
-      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -358,6 +314,10 @@
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
+    <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
@@ -382,6 +342,10 @@
     <Compile Include="Models\OrderDetial.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\orderViewModel.cs" />
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Store.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
@@ -391,75 +355,10 @@
     <Compile Include="Models\TableListe.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\task03LabModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>task03LabModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\task03LabModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>task03LabModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\task03LabModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>task03LabModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserAddress.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\userInfo.cs">
-      <DependentUpon>FoodStreetModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Class1.cs" />
-    <Compile Include="Models\FoodProductsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodProductsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodProductsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodProductsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodProductsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodProductsModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\myfoodproduct.cs">
-      <DependentUpon>FoodProductsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cart\Cart.cs" />
-    <Compile Include="Models\Cart\CartItem.cs" />
-    <Compile Include="Models\Cart\Operation.cs" />
-    <Compile Include="Models\FoodCourtModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodCourtModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodCourtModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodCourtModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodCourtModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodCourtModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Member.cs">
-      <DependentUpon>FoodCourtModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>FoodCourtModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderList.cs">
-      <DependentUpon>FoodCourtModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\orderViewModel.cs" />
-    <Compile Include="Models\Product.cs">
+    <Compile Include="Models\UserInfo.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -476,13 +375,6 @@
     <Content Include="js\bootstrap.bundle.min.js.map" />
     <Content Include="js\bootstrap.js.map" />
     <Content Include="js\bootstrap.min.js.map" />
-    <EntityDeploy Include="Models\task03LabModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>task03LabModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\task03LabModel.edmx.diagram">
-      <DependentUpon>task03LabModel.edmx</DependentUpon>
-    </Content>
     <Content Include="css\bootstrap-grid.css.map" />
     <Content Include="css\bootstrap-grid.min.css.map" />
     <Content Include="css\bootstrap-reboot.css.map" />

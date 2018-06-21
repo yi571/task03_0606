@@ -80,6 +80,7 @@
           <Property Name="storePwd" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ownerPhoneNum" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="storeState" Type="int" Nullable="false" />
+          <Property Name="storeDescription" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="streetName">
           <Key>
@@ -444,6 +445,7 @@
           <Property Name="storePwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ownerPhoneNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="storeState" Type="Int32" Nullable="false" />
+          <Property Name="storeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_235" FromRole="Stores" ToRole="Products" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_320" FromRole="Stores" ToRole="UserInfo" />
         </EntityType>
@@ -806,6 +808,7 @@
                 <ScalarProperty Name="storePwd" ColumnName="storePwd" />
                 <ScalarProperty Name="ownerPhoneNum" ColumnName="ownerPhoneNum" />
                 <ScalarProperty Name="storeState" ColumnName="storeState" />
+                <ScalarProperty Name="storeDescription" ColumnName="storeDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

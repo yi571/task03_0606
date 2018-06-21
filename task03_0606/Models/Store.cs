@@ -26,6 +26,7 @@ namespace task03_0606.Models
         public string storePwd { get; set; }
         public string ownerPhoneNum { get; set; }
         public int storeState { get; set; }
+        public string storeDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
