@@ -147,6 +147,16 @@
     <Content Include="js\popper.min.js" />
     <Content Include="js\twzipcode.js" />
     <Content Include="js\yi.js" />
+    <Content Include="Models\FoodStreetModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodStreetModel.edmx</DependentUpon>
+      <LastGenOutput>FoodStreetModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FoodStreetModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodStreetModel.edmx</DependentUpon>
+      <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\task03LabModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>task03LabModel.Context.cs</LastGenOutput>
@@ -278,6 +288,13 @@
     <Content Include="Models\FoodProductsModel.edmx.diagram">
       <DependentUpon>FoodProductsModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\FoodStreetModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodStreetModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FoodStreetModel.edmx.diagram">
+      <DependentUpon>FoodStreetModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -331,12 +348,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Carte.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CCity.cs" />
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
+    <Compile Include="Models\Feedback.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodStreetModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodStreetModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodStreetModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodStreetModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodStreetModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetial.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Store.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\streetName.cs">
-      <DependentUpon>task03LabModel.tt</DependentUpon>
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TableListe.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\task03LabModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -353,8 +406,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>task03LabModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserAddress.cs">
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\userInfo.cs">
-      <DependentUpon>task03LabModel.tt</DependentUpon>
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\FoodProductsModel.Context.cs">
@@ -404,7 +460,7 @@
     </Compile>
     <Compile Include="Models\orderViewModel.cs" />
     <Compile Include="Models\Product.cs">
-      <DependentUpon>FoodCourtModel.tt</DependentUpon>
+      <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

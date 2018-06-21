@@ -12,22 +12,38 @@ namespace task03_0606.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class userInfo
+    public partial class UserInfo
     {
-        public int id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserInfo()
+        {
+            this.Cartes = new HashSet<Carte>();
+            this.Feedbacks = new HashSet<Feedback>();
+            this.Orders = new HashSet<Order>();
+            this.Stores = new HashSet<Store>();
+        }
+    
+        public string phoneNum { get; set; }
+        public int UserInfoId { get; set; }
         public string lastName { get; set; }
         public string firstName { get; set; }
         public string userId { get; set; }
+        public string birthday { get; set; }
         public string email { get; set; }
         public string pwd { get; set; }
-        public string phoneNum { get; set; }
-        public int userAddressPart1 { get; set; }
-        public string lane { get; set; }
-        public string alley { get; set; }
-        public string addressNum { get; set; }
-        public string addressF { get; set; }
         public string userRank { get; set; }
+        public string userIcon { get; set; }
+        public Nullable<int> userPoint { get; set; }
+        public int userState { get; set; }
     
-        public virtual streetName streetName { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Carte> Cartes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Store> Stores { get; set; }
+        public virtual UserAddress UserAddress { get; set; }
     }
 }

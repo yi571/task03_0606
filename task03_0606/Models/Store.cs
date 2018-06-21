@@ -12,21 +12,23 @@ namespace task03_0606.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class streetName
+    public partial class Store
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public streetName()
+        public Store()
         {
-            this.UserAddresses = new HashSet<UserAddress>();
+            this.Products = new HashSet<Product>();
         }
     
-        public int userAddressPart1 { get; set; }
-        public string postalCode { get; set; }
-        public string city { get; set; }
-        public string district { get; set; }
-        public string road { get; set; }
+        public string storeId { get; set; }
+        public string storeName { get; set; }
+        public string storePhone { get; set; }
+        public string storePwd { get; set; }
+        public string ownerPhoneNum { get; set; }
+        public int storeState { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAddress> UserAddresses { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
     }
 }

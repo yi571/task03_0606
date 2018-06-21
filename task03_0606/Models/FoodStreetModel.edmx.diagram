@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d72ee7a475a4924924da5813c7c8ef7" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodCourtDBModel.Carte" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Category" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Feedback" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.OrderDetial" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Order" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Product" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Store" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.streetName" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.TableListe" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.UserAddress" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.UserInfo" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_116" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_120" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_261" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_206" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_216" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_272" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_283" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_277" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_288" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_235" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_320" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_316" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodCourtDBModel.FK_311" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

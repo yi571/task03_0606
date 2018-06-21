@@ -12,21 +12,20 @@ namespace task03_0606.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class streetName
+    public partial class TableListe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public streetName()
+        public TableListe()
         {
-            this.UserAddresses = new HashSet<UserAddress>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public int userAddressPart1 { get; set; }
-        public string postalCode { get; set; }
-        public string city { get; set; }
-        public string district { get; set; }
-        public string road { get; set; }
+        public int tableId { get; set; }
+        public string tableLocation { get; set; }
+        public Nullable<int> seatNum { get; set; }
+        public Nullable<int> seatAvailable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAddress> UserAddresses { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
