@@ -8,8 +8,6 @@ namespace task03_0606.Models.Cart
     [Serializable]
     public class Cart
     {
-        
-
         public Cart() {
             this.cartItemList = new List<CartItem>();
         }

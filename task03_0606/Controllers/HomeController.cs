@@ -9,24 +9,41 @@ namespace task03_0606.Controllers
 {
     public class HomeController : Controller
     {
-       
+        FoodCourtDBEntities db = new FoodCourtDBEntities();
         public ActionResult Index()
         {
-            
             return View();
         }
-
+        
         // GET: Home
         public ActionResult Restaurent()
         {
-            return View();
+            var restaurentList = (from r in db.Stores
+                                  select r).ToList();
+            return View(restaurentList);
         }
 
         public ActionResult RestaurentMemberPage() {
+            //return Content(Request["storeId"]);
+            string id = Request["storeId"].ToString();
+            var restaurent = (from r in db.Stores
+                              where r.storeId == id
+                              select r).Single();
+
+            //ViewBag.message = "訊息";  //View : @ViewBag.message
+            //ViewData["message"] = "訊息";  //View : @ViewData["message"]
+
+            ViewBag.restaurentName = restaurent.storeName.ToString();
+            ViewBag.restaurentDescription = restaurent.storeDescription.ToString();
+            ViewBag.restaurentIcon = restaurent.UserInfo.userIcon.ToString();
+
+            var menuList = (from m in db.Products
+                            where m.Store.storeId == id
+                            select m).ToList();
             
-           
             
-            return View();
+            return View(menuList);
+            
         }
   
     }

@@ -1,26 +1,29 @@
-﻿
+﻿@model List<task03_0606.Models.Store>
 @{
     ViewBag.Title = "Restaurent";
 }
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">餐廳列表</li>
+    <li class="breadcrumb-item">
+        <a href="~/Home/Index">首頁</a>
+    </li>
+    <li class="breadcrumb-item active">餐廳列表 </li>
 </ol>
 
 <div class="row">
-
+    @foreach (task03_0606.Models.Store restaurent in Model) { 
     <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-primary o-hidden h-100">
            
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <div class="card-body-icon ">
-                    <img src="~/picture/1602181025050000001.jpg" title="麥當勞" />
+                    <img src="~/@restaurent.UserInfo.userIcon" title="@restaurent.storeName" />
                    
                 </div>
                 @*<div class="mr-5">26 New Messages!</div>*@
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="~/Home/RestaurentMemberPage?MemberId=1">
+            <a class="card-footer text-white clearfix small z-1" href="~/Home/RestaurentMemberPage?storeId=@restaurent.storeId">
                 <span class="float-left">詳細菜單</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -29,6 +32,7 @@
         </div>
     </div>
 
+    }
     <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-warning o-hidden h-100">
             <div class="card-body">
