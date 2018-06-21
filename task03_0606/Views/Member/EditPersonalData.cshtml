@@ -159,4 +159,14 @@
     $("#Email1").blur(function () {
         regForm.submit();
     })
+
+    $("document").ready(function () {
+        if (@ViewBag.sweetAlert == 1) {
+            swal(
+                '資料已修改！',
+                '',
+                'success'
+            )
+        }
+    })
 </script>

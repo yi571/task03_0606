@@ -393,7 +393,7 @@ namespace task03_0606.Controllers {
 
             db.SaveChanges();
 
-
+            ViewBag.sweetAlert = 1;
             return View();
         }
 

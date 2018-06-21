@@ -157,6 +157,13 @@
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
       <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SweetAlert2\enhancers.js" />
+    <Content Include="SweetAlert2\globalState.js" />
+    <Content Include="SweetAlert2\instanceMethods.js" />
+    <Content Include="SweetAlert2\privateProps.js" />
+    <Content Include="SweetAlert2\staticMethods.js" />
+    <Content Include="SweetAlert2\SweetAlert.js" />
+    <Content Include="SweetAlert2\sweetalert2.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -493,6 +500,11 @@
     <Content Include="Views\Home\RestaurentMemberPage.cshtml" />
     <Content Include="Views\Order\Order_list_history_bussiness.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="SweetAlert2\variables.scss" />
+    <Content Include="SweetAlert2\toasts.scss" />
+    <Content Include="SweetAlert2\sweetalert2.scss" />
+    <Content Include="SweetAlert2\mixins.scss" />
+    <Content Include="SweetAlert2\animations.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
