@@ -21,4 +21,8 @@ https://codepen.io/nikhil8krishnan/pen/gaybLK
 Form Edit
 https://codepen.io/ssbalakumar/pen/uzDIA?editors=0100
 
+
 <add name="FoodCourtDBEntities" connectionString="metadata=res://*/Models.FoodStreetModel.csdl|res://*/Models.FoodStreetModel.ssdl|res://*/Models.FoodStreetModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=10.1.6.73;initial catalog=FoodCourtDB;user id=foodAdmin;password=food123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+
+本地主機
+<add name="FoodCourtDBEntities" connectionString="metadata=res://*/Models.FoodStreetModel.csdl|res://*/Models.FoodStreetModel.ssdl|res://*/Models.FoodStreetModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=FoodCourtDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
