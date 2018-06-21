@@ -17,7 +17,11 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Member() {
-           
+            ViewBag.Title = "儀錶板";
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Member/Member";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
             return View();
         }
 
@@ -73,14 +77,61 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult EasyRegister() {  //只需手機號碼的註冊
-           
 
+            ViewBag.Title = "註冊帳號";
             return View();
         }
 
         [HttpPost]
         public ActionResult EasyRegister(string LastName, string FirstName, string Password1, string ConfirmPassword, string cellPhone) {  //只需手機號碼的註冊
-            
+            //post時，回傳已填入值
+            int checkNum = 0;  //用於檢查必填欄位是否填寫
+            if (!string.IsNullOrEmpty(LastName)) { //傳姓氏值
+                ViewBag.LastName = LastName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(FirstName)) { //傳名稱值
+                ViewBag.FirstName = FirstName;
+                checkNum += 1;
+            }
+
+            if (!string.IsNullOrEmpty(cellPhone)) { //傳cellPhone值
+                ViewBag.cellPhone = cellPhone;
+                checkNum += 1;
+            }
+            //檢查電話是否註冊----------------------------------
+            var queryCheckPhone = from o in db.UserInfoes
+                                  where o.phoneNum == cellPhone
+                                  select cellPhone;
+            ViewBag.phoneCheck = "";
+
+            if (queryCheckPhone.Count() > 0) {
+                ViewBag.phoneCheck = "號碼已註冊";
+                ViewBag.html = "<i class='fa fa-times' style='color: red; '></i> 此號碼已註冊";
+            }
+
+            if (ViewBag.phoneCheck == "信箱已註冊") {
+                return View();
+            } else {
+                if (Password1 == ConfirmPassword && checkNum == 3) {
+                    UserInfo addMember = new UserInfo() {
+                        lastName = LastName,
+                        firstName = FirstName,
+                        pwd = Password1,
+                        phoneNum = cellPhone,
+                        userRank = "normalUser"
+                    };
+                    db.UserInfoes.Add(addMember);
+                    db.SaveChanges();
+                    //try {
+                    //    db.SaveChanges();
+                    //} catch (Exception ex) {
+                    //    throw;
+                    //}
+                    return RedirectToAction("Member", "Member");
+                }
+            }
 
             return View();
         }
