@@ -13,7 +13,7 @@ namespace task03_0606.Controllers {
 
     public class ProductsController : Controller {
 
-        FoodProductsEntities db = new FoodProductsEntities();
+      
 
 
         // GET: Products
@@ -51,9 +51,7 @@ namespace task03_0606.Controllers {
      
         public ActionResult Dessertproducts()
         {
-            var query = from o in db.myfoodproducts
-                        select o;
-            List<>
+            
             return View();
         }
         public ActionResult Noodleproducts() {
