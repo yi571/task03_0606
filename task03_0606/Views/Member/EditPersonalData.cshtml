@@ -162,11 +162,12 @@
 
     $("document").ready(function () {
         if (@ViewBag.sweetAlert == 1) {
-            swal(
-                '資料已修改！',
-                '',
-                'success'
-            )
+            swal({
+                type: 'success',
+                title: '個人資料已修改！',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     })
 </script>

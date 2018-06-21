@@ -198,8 +198,30 @@ namespace task03_0606.Controllers {
             return View();
         }
 
-        public ActionResult MemberTable() {
-           
+        public ActionResult MemberTable(string UserInfoId) {  //會員列表
+
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
+            var queryUserList = from o in db.UserInfoes
+                                select o;
+            ViewBag.userList = queryUserList.ToList();
+            //ViewBag.testA = UserInfoId;
+            if (Convert.ToInt32(UserInfoId) > 0) {
+                ViewBag.sweetAlertMemberTabl = 1;
+                int UserInfoIdNum = Convert.ToInt32(UserInfoId);
+                var querySingleUser = (from o in db.UserInfoes
+                                       where o.UserInfoId == UserInfoIdNum
+                                       select o).First();
+                ViewBag.SingleUser = querySingleUser;
+                
+                //ViewBag.testA = querySingleUser.phoneNum;
+            } else {
+                ViewBag.sweetAlertMemberTabl = 0;
+            }
+
+            
+
             return View();
         }
 

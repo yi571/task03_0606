@@ -17,7 +17,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> 會員列表
+                <i class="fa fa-table"></i> 會員列表 @ViewBag.testA
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -26,36 +26,34 @@
                             <tr>
                                 <th>姓名</th>
                                 <th>手機號碼</th>
-                                <th>Email</th>
-                                <th>住址</th>
-                                <th>備註</th>
+                                <th>電子信箱</th>
+                                <th>詳細資料</th>
+                                <th>權限</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>姓名</th>
                                 <th>手機號碼</th>
-                                <th>Email</th>
-                                <th>住址</th>
-                                <th>備註</th>
+                                <th>電子信箱</th>
+                                <th>詳細資料</th>
+                                <th>權限</th>
                             </tr>
                         </tfoot>
                         <tbody>
 
 
 
-                            @{foreach (task03_0606.Models.CUserList item in ViewBag.userList) {
+                            @{foreach (task03_0606.Models.UserInfo item in ViewBag.userList) {
                                     string[] strArray = new string[3];
                                     string[] strUserRank = new string[3] { "網站管理員", "商家管理員", "顧客" };
-                                    if (!string.IsNullOrEmpty(item.Lane)) { strArray[0] = "巷"; };
-                                    if (!string.IsNullOrEmpty(item.Alley)) { strArray[1] = "弄"; };
-                                    if (!string.IsNullOrEmpty(item.AddressF)) { strArray[2] = "樓"; };
+
                                     <tr>
-                                        <td>@item.LastName@item.FirstName</td>
-                                        <td>@item.PhoneNum</td>
-                                        <td>@item.Email</td>
-                                        <td>@item.City@item.District@item.Road@item.Lane @strArray[0] @item.Alley @strArray[1] @item.AddressNum 號 @item.AddressF @strArray[2]</td>
-                                        <td>@item.UserRank</td>
+                                        <td>@item.lastName@item.firstName</td>
+                                        <td>@item.phoneNum</td>
+                                        <td>@item.email</td>
+                                        <td><a class="btn btn-primary" href="/Member/MemberTable/?UserInfoId=@item.UserInfoId" id="detial-@item.UserInfoId">詳細資料</a></td>
+                                        <td>@item.userRank</td>
                                     </tr>
                                 } }
 
@@ -113,4 +111,15 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 </div>
+<script>
 
+    $('a').click(function () {
+        alert('ok');
+    });
+
+    $('document').ready(function () {
+        
+    })
+
+
+</script>
