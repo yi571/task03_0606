@@ -157,6 +157,7 @@
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
       <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
     </Content>
+    <Content Include="test.html" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -493,6 +494,7 @@
     <Content Include="Views\Home\RestaurentMemberPage.cshtml" />
     <Content Include="Views\Order\Order_list_history_bussiness.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_CartList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

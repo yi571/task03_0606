@@ -67,6 +67,190 @@
         }
 </style>
 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 700;
+    }
+
+    html, body {
+        background: #EEE5E9;
+    }
+
+    header {
+        width: 95%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    }
+
+        header ul {
+            padding: 1.2em 0 0.5em;
+        }
+
+        header span {
+            padding: 0 0 0 0.5em;
+        }
+
+        header span, header i {
+            color: #2B2D42;
+        }
+
+            header i:nth-of-type(2) {
+                cursor: pointer;
+            }
+
+    .row {
+        width: 100%;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    }
+
+    .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+        box-shadow: 1px 5px 15px #CCC;
+        /*width: 10em;
+        height: auto;*/
+        border-radius: 6px;
+        padding: 0.5em;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+    }
+
+    .product--blue {
+        background: -webkit-linear-gradient(180deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+    .product--orange {
+        background: -webkit-linear-gradient(135deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+    .product--red {
+        background: -webkit-linear-gradient(135deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+    .product--green {
+        background: -webkit-linear-gradient(135deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+    .product--yellow {
+        background: -webkit-linear-gradient(135deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+    .product--pink {
+        background: -webkit-linear-gradient(135deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
+        background: linear-gradient(-45deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
+    }
+
+        .product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
+            max-width: 100%;
+            height: auto !important;
+            text-align: center;
+        }
+
+    .product_inner {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+    }
+
+        .product_inner p {
+            color: black;
+        }
+
+        .product_inner button {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #FFF;
+            border-radius: 3px;
+            padding: 1em 3em;
+            margin: 1em 0 0 0;
+            background: none;
+            cursor: pointer;
+            -webkit-transition: background ease-in .25s;
+            transition: background ease-in .25s;
+        }
+
+            .product_inner button:hover {
+                background: white;
+                color: #2B2D42;
+            }
+
+            .product_inner button:before {
+                font-family: FontAwesome;
+                content: '\f07A';
+                color: #FFF;
+                position: absolute;
+                font-size: 1.5em;
+                margin: 0 -1.5em;
+            }
+
+            .product_inner button:hover:before {
+                color: #2B2D42;
+            }
+
+    .product_overlay {
+        background: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+        opacity: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+        .product_overlay h2 {
+            color: rgba(43, 45, 66, 0.7);
+            font-size: 1.2em;
+            margin: 1em 0;
+        }
+
+        .product_overlay i {
+            color: rgba(43, 45, 66, 0.7);
+            font-size: 1.5em;
+        }
+</style>
+
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -74,6 +258,33 @@
     </li>
     <li class="breadcrumb-item active">@ViewBag.restaurentName  詳細菜單</li>
 </ol>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.801" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 i class="modal-title" id="itemName">卡啦炸雞</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                    <img id="itemImg" class="col-sm-12"  src='/photo/E1.jpg' />
+                    <br />
+                <p id="itemDescription">炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。</p>
+                <p id="itemId"></p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-primary" onclick="addItemToCart($('#itemId').text())" >加入購物車</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="col-xl-12 col-sm-12 mb-12">
     <div class="card o-hidden h-100">
@@ -87,27 +298,30 @@
         </div>
         <div class="card-body">
 
-          
+
             <div id="item" class="item">
                 <ul class="clear">
-              @foreach (task03_0606.Models.Product item in Model) { 
-                    <li class="card col-sm-3">
-                        <div>
-                            <img class="card-img-top" src="~/photo/@item.productPicture" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">@item.productName</h5>
-                                @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>*@
-                                @*<label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>*@
-                                <label class="card-text" id="UnitPrice">@item.productPrice</label>
+                    @foreach (task03_0606.Models.Product item in Model)
+                    {
+                        <li class="card col-sm-3 product--green">
+                            <div>
+                                @*<img class="card-img-top" src="~/photo/@item.productPicture" type="button" data-toggle="modal" data-target="#exampleModalCenter.801">*@
+                                <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)" />
+                                 <div class="card-body">
+                                    <h5 class="card-title">@item.productName</h5>
+                                    @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>*@
+                                    @*<label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>*@
+                                    <label class="card-text" id="UnitPrice">價格 $ @item.productPrice</label>
+                                </div>
+                                <div class="card-footer">
+                                    <div class='product_inner'>
+                                        <button onclick="addItemToCart(@item.productID)">加入購物車</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
-
-                    </li>
-}
+                        </li>
+                    }
                     <li class="card col-sm-3">
                         <div>
                             <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
@@ -246,17 +460,17 @@
 
 <script type="text/javascript">
 
-	$(function(){
+    $(function () {
 
-		//實現分頁思路:
-		var pageSize=6;      //每頁顯示數據條數
+        //實現分頁思路:
+        var pageSize = 6;      //每頁顯示數據條數
         var currentPage = 1;   //當前頁數
-        var prevPage = 0 ;
+        var prevPage = 0;
         /*var totalSize = $("#item li").index();*/ //獲取總數據
-        var totalSize = $("#item li").length ;
-		var totalPage=Math.round(totalSize/pageSize); //計算總頁數
-		$("#item li:gt(5)").hide(); //設置首頁顯示4條數據
-		$(".total").text(totalPage);  //設置總頁數
+        var totalSize = $("#item li").length;
+        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
+        $("#item li:gt(5)").hide(); //設置首頁顯示4條數據
+        $(".total").text(totalPage);  //設置總頁數
         $(".current_page").text(currentPage); //設置當前頁數
 
 
@@ -267,50 +481,50 @@
         }
         $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
 
-		//實現下一頁
-		$(".next").click(function(){
-			if(currentPage ==totalPage){ //當前頁數==最後一頁，禁止下一頁
-				   return false;
-				}else{//不是最後一頁，顯示應該顯示的數據.
-				    $(".current_page").text(++currentPage);  //當前頁數先+1
-					var start=pageSize*(currentPage-1);
-					var end=pageSize*currentPage;
-					$.each($('#item li'),function(index,item){
-							if(index >=start && index < end){
-								$(this).show();
-								}
-								else{
-									$(this).hide();
-									}
-						});
+        //實現下一頁
+        $(".next").click(function () {
+            if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
+                return false;
+            } else {//不是最後一頁，顯示應該顯示的數據.
+                $(".current_page").text(++currentPage);  //當前頁數先+1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('#item li'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
 
-					}
-			});
+            }
+        });
 
-	    //實現上一頁
-		$(".prev").click(function(){
-			if(currentPage == 1){//當前頁數==1，禁止上一頁
-			     return false;
-				}else{
-					 $(".current_page").text(--currentPage);  //當前頁數先-1
-					 var start=pageSize*(currentPage-1);
-					 var end=pageSize*currentPage;
-					 $.each($('#item li'),function(index,item){
-						   if(index >=start && index < end){
-								$(this).show();
-								}
-								else{
-									$(this).hide();
-									}
-						 });
-					}
-			});
+        //實現上一頁
+        $(".prev").click(function () {
+            if (currentPage == 1) {//當前頁數==1，禁止上一頁
+                return false;
+            } else {
+                $(".current_page").text(--currentPage);  //當前頁數先-1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('#item li'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
 
         //選擇特定頁
         $(".pageItems").click(function () {
             //alert(this.innerText);
-            prevPage = currentPage ;
-            currentPage = this.innerText ;
+            prevPage = currentPage;
+            currentPage = this.innerText;
 
             //alert($(".pagination").find("li")[0].innerText);
             //加入page-item  active
@@ -329,11 +543,20 @@
 
         });
 
-		});
+    });
+
+    function modalShow(itemName, itemDescription ,itemPic, itemId) {
+       
+        $("#itemName").text(itemName);
+        $("#itemDescription").text(itemDescription);
+        $("#itemId").text(itemId);
+        $("#itemImg").attr("src","../photo/"+ itemPic ); 
+        $("#Modal").modal("show");
+
+    }
+
+    function addItemToCart(itemId) {
+        alert(itemId);
+    }
 
 </script>
-
-
-
-
-

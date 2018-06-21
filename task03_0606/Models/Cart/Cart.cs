@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web;
 namespace task03_0606.Models.Cart
 {
     [Serializable]
-    public class Cart
+    public class Cart /*: IEnumerable<CartItem>*/
     {
         public Cart() {
             this.cartItemList = new List<CartItem>();
@@ -23,5 +24,14 @@ namespace task03_0606.Models.Cart
                 return totalAmount;
             }
         }
+
+        public int Count {
+            get {
+                return this.cartItemList.Count;
+            }
+        }
+
+       
     }
+
 }

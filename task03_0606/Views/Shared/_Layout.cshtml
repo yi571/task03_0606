@@ -154,11 +154,14 @@
                 @if (Session["memberType"].ToString() == "Customer")
                 {
                     @*顧客專用-購物車訊息*@
-                    <li class="nav-item dropdown">
+
+                    @Html.Partial("_CartList")
+
+                    @*<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-shopping-cart"></i>
                             <span class="indicator text-warning d-none d-lg-block">
-                                <i class="fa fa-fw fa-circle">20</i> @*購物筆數*@
+                                <i class="fa fa-fw fa-circle">20</i> 
                             </span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="alertsDropdown">
@@ -215,7 +218,8 @@
                                 </span>
                             </div>
                         </div>
-                    </li>
+                    </li>*@
+
                 }
                 @*搜尋列*@
                 <li class="nav-item">

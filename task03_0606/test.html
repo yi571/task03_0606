@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+
+html, body {
+  background: #EEE5E9;
+}
+
+header {
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+header ul {
+  padding: 1.2em 0 0.5em;
+}
+header span {
+  padding: 0 0 0 0.5em;
+}
+header span, header i {
+  color: #2B2D42;
+}
+header i:nth-of-type(2) {
+  cursor: pointer;
+}
+
+.row {
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+
+.product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+
+  box-shadow: 1px 5px 15px #CCC;
+  width: 10em;
+  height: auto;
+  border-radius: 6px;
+  padding: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.product--blue {
+  background: -webkit-linear-gradient(180deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--orange {
+  background: -webkit-linear-gradient(135deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--red {
+  background: -webkit-linear-gradient(135deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--green {
+  background: -webkit-linear-gradient(135deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--yellow {
+  background: -webkit-linear-gradient(135deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--pink {
+  background: -webkit-linear-gradient(135deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-45deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
+  max-width: 100%;
+  height: auto !important;
+  text-align: center;
+}
+.product_inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
+}
+.product_inner p {
+  color: black;
+}
+.product_inner button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #FFF;
+  border-radius: 3px;
+  padding: 1em 3em;
+  margin: 1em 0 0 0;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: background ease-in .25s;
+  transition: background ease-in .25s;
+}
+.product_inner button:hover {
+  background: white;
+  color: #2B2D42;
+}
+.product_inner button:before {
+  font-family: FontAwesome;
+  content: '\f07A';
+  color: #FFF;
+  position: absolute;
+  font-size: 1.5em;
+  margin: 0 -1.5em;
+}
+.product_inner button:hover:before {
+  color: #2B2D42;
+}
+.product_overlay {
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-500px);
+          transform: translateY(-500px);
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.product_overlay h2 {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.2em;
+  margin: 1em 0;
+}
+.product_overlay i {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.5em;
+}
+
+
+    </style>
+   
+
+        <h2>速食類</h2>
+
+        
+        <div class='row'>
+
+
+            <div class='product--green'>
+                <div class="row"></div>
+                <!-- Button trigger modal -->
+                <img src='/photo/E1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.801" />
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter.801" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.801" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle.801">卡啦炸雞- Modal</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <img src='/photo/E1.jpg' width='500' /><br />
+                                炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Add to basket</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='product_inner'>
+                    <p>卡啦炸雞</p>
+                    <p>Price $75</p>
+                    <button>Add to basket-111</button>
+                </div>
+
+                <div class='product_overlay'>
+                    <h2>Added to basket</h2>
+                    <i class='fa fa-check'></i>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+</body>
+</html>
+
+<!-- Visual Studio Browser Link -->
+<!--<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Chrome","requestId":"32b7a4ee2234459981abae7c961e0425"}
+</script>
+<script type="text/javascript" src="http://localhost:58616/fa0e7f63f3094157b227e25d36672b38/browserLink" async="async"></script>-->
+<!-- End Browser Link -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
+<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
+
+
+<script>
+
+    $(function () {
+        "use strict";
+
+        var init = "";
+        var counter = 0;
+
+        // Initial Cart
+        $(".counter").html(init);
+
+        // Add Items To Basket
+        function addToBasket() {
+            counter++;
+            $(".counter")
+              .html(counter)
+              .animate(
+                {
+                    opacity: "0"
+                },
+                300,
+                function () {
+                    $(".counter")
+                      .delay(300)
+                      .animate({
+                          opacity: "1"
+                      });
+                }
+              );
+        }
+
+        //Add To Basket Animation
+        $("#button1").click(function () {
+            addToBasket();
+            $(this)
+              .parent()
+              .parent()
+              .find(".product_overlay")
+              .css({
+                  transform: " translateY(0px)",
+                  opacity: "1",
+                  transition: "all ease-in-out .45s"
+              })
+              .delay(1500)
+              .queue(function () {
+                  $(this)
+                    .css({
+                        transform: "translateY(-500px)",
+                        opacity: "0",
+                        transition: "all ease-in-out .45s"
+                    })
+                    .dequeue();
+              });
+        });
+    });
+
+    $("button").on("click", function () {
+        addToBasket();
+        $(this)
+          .parent()
+          .parent()
+          .find(".product_overlay")
+          .css({
+              transform: " translateY(0px)",
+              opacity: "1",
+              transition: "all ease-in-out .45s"
+          })
+          .delay(1500)
+          .queue(function () {
+              $(this)
+                .css({
+                    transform: "translateY(-500px)",
+                    opacity: "0",
+                    transition: "all ease-in-out .45s"
+                })
+                .dequeue();
+          });
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
