@@ -1,4 +1,4 @@
-﻿@model List<task03_0606.Models.Class1>
+﻿@model List<task03_0606.Models.FoodProducts>
     @{
         ViewBag.Title = "Fastfoodproducts";
     }
@@ -14,49 +14,72 @@
     </header>*@
 
 
-    <div class='row'>
-       @foreach(task03_0606.Models.Class1 db in Model) {
+   <link href="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Page level plugin CSS-->
+<link href="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+<link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet/scss" type="text/css" href="/scss/Astyle.scss">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+<script src="/js/Aindex.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <div class='product--green'>
+
+
+
+<div class="row">
+    @foreach (task03_0606.Models.FoodProducts db in Model)
+    {
+
+        <div class="product--green col-sm-4 row justify-content-between">
             <div class="row"></div>
-                <!-- Button trigger modal -->
-                <img src='~/photo/@db.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productId" />
+            <!-- Button trigger modal -->
+            <img src='~/photo/@db.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productId" />
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter.@db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productId" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle.@db.productId">@db.title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.@db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db.productId">@db.productName</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                            <div class="modal-body">
-                                <img src='~/photo/@db.picture' width='500' /><br />
-                                @db.introduce
-                            </div>
-                            <div class="modal-footer">
+                        <div class="modal-body">
+                            <img src='~/photo/@db.productPicture' width='500' /><br />
+                            @db.productDescription
+                        </div>
+                        <div class="modal-footer">
 
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Add to basket</button>
-                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
                         </div>
                     </div>
                 </div>
-                <div class='product_inner'>
-                    <p>@db.title</p>
-                    <p>Price $@db.price</p>
-                    <button>Add to basket</button>
-                </div>
-
-                <div class='product_overlay'>
-                    <h2>Added to basket</h2>
-                    <i class='fa fa-check'></i>
-                </div>
             </div>
-        }
+            <div class='product_inner'>
+                <p>@db.productName</p>
+                <p>Price $@db.productPrice</p>
+                <button>Add to basket</button>
+            </div>
 
-  </div>
-      
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
+        </div>
+    }
+</div>

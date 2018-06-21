@@ -298,6 +298,9 @@ $(document).ready(function () {
 });
 
 
+
+
+
 //-------------------Create 預覽圖片
 function showMyImage(fileInput) {
     var files = fileInput.files;

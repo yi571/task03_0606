@@ -1,9 +1,30 @@
-﻿@model List<task03_0606.Models.Class1>
+﻿@model List<task03_0606.Models.FoodProducts>
 @{
     ViewBag.Title = "Drinkproducts";
 }
 
 <h2>飲品/湯品</h2>
+<link href="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Page level plugin CSS-->
+<link href="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+<link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet/scss" type="text/css" href="/scss/Astyle.scss">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+<script src="/js/Aindex.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 @*<header>
         <ul>
@@ -14,580 +35,28 @@
     </header>*@
 
 <div class='row'>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.1" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.1">漂浮冰咖啡</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A1.jpg' width='500' /><br />
-                        將單品熱咖啡倒入鋼杯中，將鋼杯放入裝有冰塊和水的容器中，等待咖啡變涼~最後在杯口放上一球香草冰淇淋，並淋上少許巧克力醬~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>漂浮冰咖啡</p>
-            <p>Price $180</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.2" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.2" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.2">巧克力牛奶</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A2.jpg' width='500' /><br />
-                        巧克力牛奶，是一種可可味道的牛奶飲料，冷熱飲用皆宜~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>巧克力牛奶</p>
-            <p>Price $120</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.3" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.3" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.3">現榨蘋果汁</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A3.jpg' width='500' /><br />
-                        蘋果可以提供能量,因為它含有糖~新鮮的蘋果汁味道好,嬰幼和孩子們都很喜歡~是一種完美飲品。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>現榨蘋果汁</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.4" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.4" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.4">純正黑咖啡</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A4.jpg' width='500' /><br />
-                        文青最愛，黑咖啡的純郁，最適合喚醒疲勞者緩緩甦醒的心靈。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>純正黑咖啡</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.5" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.5" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.5">可樂</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A5.jpg' width='500' /><br />
-                        一種黑褐色、帶有甜味、含咖啡因的碳酸飲料，但不含酒精，永不退燒的商品。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>可樂</p>
-            <p>Price $40</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.6" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.6" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.6">焦糖瑪奇朵</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A6.jpg' width='500' /><br />
-                        焦糖瑪琪雅朵是一種加入焦糖的瑪琪雅朵咖啡。在香濃熱牛奶上加入濃縮咖啡、香草，最後淋上純正焦糖而製成的飲品，特點是在一杯飲品裡可以喝到三種不同的口味。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>焦糖瑪奇朵</p>
-            <p>Price $150</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.7" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.7" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.7">高山烏龍茶</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A7.jpg' width='500' /><br />
-                        高山烏龍茶以海拔1,000公尺以上茶園所產製的茶葉所以稱「高山茶」~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>高山烏龍茶</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.8" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.8" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.8" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.8">金桔檸檬</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A8.jpg' width='500' /><br />
-                        金桔檸檬茶是非常去火的好茶，酸酸甜甜的味道讓很多人對它愛不釋手~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>金桔檸檬</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.9" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.9" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.9">新鮮柳橙汁</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A9.jpg' width='500' /><br />
-                        從柳橙的果肉榨出的果汁~其酸酸甜甜的味道，十分可口~此款柳橙汁含有果肉顆粒，又是另一種風味哦~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>新鮮柳橙汁</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.10" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.10" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.10" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.10">日月潭紅茶</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A10.jpg' width='500' /><br />
-                        日月潭附近高度、濕度、土質類似種出的阿薩姆紅茶品質、口感極佳~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>日月潭紅茶</p>
-            <p>Price $120</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.11" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.11" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.11" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.11">珍珠奶茶</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A11.jpg' width='500' /><br />
-                        台灣的茶飲界的巨星~將「粉圓」加入香醇的奶茶中，口感特殊，所以受到廣大的歡迎與回響~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>珍珠奶茶</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/A12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.12" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.12" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.12" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.12">日式味增湯</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/A12.jpg' width='500' /><br />
-                        味噌湯是一種湯料理，即麵豉湯，是日本具代表性的傳統食品，常見於日本人的早餐。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>日式味增湯</p>
-            <p>Price $60</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--red'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.15" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.15" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.15" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.15">55644</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/' width='500' /><br />
-                        45644546
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='product_inner'>
-            <p>55644</p>
-            <p>Price $245464</p>
-            <button>Add to basket</button>
-        </div>
-
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-</div>
-
-
-        </div>
-    </div>
-
-<!-- Visual Studio Browser Link -->
-<script type="application/json" id="__browserLink_initializationData">
-    {"appName":"Chrome","requestId":"8a35012c713e43b6b5c2b7346a152754"}
-</script>
-<script type="text/javascript" src="http://localhost:58616/fa0e7f63f3094157b227e25d36672b38/browserLink" async="async"></script>
-<!-- End Browser Link -->
-</body>
-</html>
-<!-- Bootstrap core JavaScript-->
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Page level plugin JavaScript-->
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.min.js"></script>
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/jquery.dataTables.js"></script>
-<script src="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
-<!-- Custom scripts for this page-->
-<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-datatables.min.js"></script>
-<script src="/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<div class='row'>
-    foreach (task03_0606.Models.Class1 db in Model)
+    @foreach (task03_0606.Models.FoodProducts db in Model)
     {
 
-        <div class='product--red'>
-            <div class="row"></div>
+        <div class="product--red col-sm-2 align-items:flex-start">
+            <div class="row" style="max-width: 18rem;"></div>
             <!-- Button trigger modal -->
-            <img src='~/photo/db.picture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.db.productId" />
+            <img src='~/photo/@db.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productId" />
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter.db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.db.productId" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter.@db.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productId" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle.db.productId">db.title</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db.productId">@db.productName</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
                         <div class="modal-body">
-                            <img src='~/photo/db.picture' width='500' /><br />
-                            db.introduce
+                            <img src='~/photo/@db.productPicture' width='500' /><br />
+                            @db.productDescription
                         </div>
                         <div class="modal-footer">
 
@@ -598,8 +67,8 @@
                 </div>
             </div>
             <div class='product_inner'>
-                <p>db.title</p>
-                <p>Price $db.price</p>
+                <p>@db.productName</p>
+                <p>Price $@db.productPrice</p>
                 <button>Add to basket</button>
             </div>
 
@@ -609,4 +78,4 @@
             </div>
         </div>
     }
-    </div>*@
+    </div>

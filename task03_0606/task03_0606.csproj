@@ -314,7 +314,8 @@
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\FoodCategories.cs" />
+    <Compile Include="Models\FoodProducts.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
     <Compile Include="Models\Cart\CartItem.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
