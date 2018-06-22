@@ -21,7 +21,8 @@ namespace task03_0606
             //Session["Member"] = 1;
 
             Session["memberType"] = "Customer";
-            Session["userID"] = "0912345655";
+            Session["userPhone"] = "0972345678";
+            Session["seat"] = 5;
 
 
         }

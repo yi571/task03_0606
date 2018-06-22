@@ -30,9 +30,10 @@ namespace task03_0606.Controllers
             //}
             cart.AddProduct(1);
             return Content(string.Format("目前購物車{0}元", cart.TotalAmount));
+        }
 
-
-
+        public ActionResult Index() {
+            return View();
         }
     }
 }

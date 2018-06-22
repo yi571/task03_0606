@@ -73,7 +73,7 @@
                     </li>
 
 
-                };
+                }
                 @if (Session["memberType"].ToString() == "Business")
                 {
                     @*商家專用-未出餐訂單-訂單別*@
@@ -98,7 +98,7 @@
                             <span class="nav-link-text">產品列表</span>
                         </a>
                     </li>
-                };
+                }
                 @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
                     <a class="nav-link" href="~/Home/Respone">
@@ -305,6 +305,7 @@
             data: { id: productId }
         }).done(function (msg) {
             $("li#Cart").html(msg);
+            $("#Modal").modal("hide");
             })
     }
 

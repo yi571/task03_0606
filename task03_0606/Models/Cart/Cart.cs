@@ -65,6 +65,7 @@ namespace task03_0606.Models.Cart
                 produtctId = product.productID,
                 productName = product.productName,
                 price = product.productPrice,
+                picture = product.productPicture,
                 quantity = 1,
             };
             this.cartItemList.Add(cartItem);
@@ -85,7 +86,26 @@ namespace task03_0606.Models.Cart
             return true;
         }
 
+        public List<OrderDetial>ToOrderDetail(int id) {
+            var findItem = this.cartItemList;
 
+            List<OrderDetial> newOrderDetail = new List<OrderDetial>();
+ 
+            foreach (var item in findItem) {
+                newOrderDetail.Add
+                    (new OrderDetial()
+                {
+                    orderId = id,
+                    productID = item.produtctId,
+                    productCount = item.quantity,
+                    productionStatus = 1, //訂單產品準備狀態 1-準備中 2-準備ok
+                    customerNote = "",
+                });
+                
+                    }
+
+            return newOrderDetail ;
+        }
 
 
         public IEnumerator<CartItem> GetEnumerator()

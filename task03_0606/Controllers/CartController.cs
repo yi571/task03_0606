@@ -9,6 +9,7 @@ namespace task03_0606.Controllers
     public class CartController : Controller
     {
         public ActionResult Index ()
+
         {
             return View();
         }
@@ -30,7 +31,6 @@ namespace task03_0606.Controllers
             var currentCart = task03_0606.Models.Cart.Operation.GetCurrentCart();
             currentCart.RemoveProduct(id);
             return PartialView("_CartList");
-
         }
     }
 }

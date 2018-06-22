@@ -189,7 +189,7 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: #FFF;
             border-radius: 3px;
-            padding: 1em 3em;
+            /*padding: 1em 3em;*/
             margin: 1em 0 0 0;
             background: none;
             cursor: pointer;
@@ -286,7 +286,7 @@
 </div>
 
 
-<div class="col-xl-12 col-sm-12 mb-12">
+<div class="col-12">
     <div class="card o-hidden h-100">
 
         <div class="card-header">
@@ -296,164 +296,168 @@
                 <p>@ViewBag.restaurentDescription</p>
             </div>
         </div>
+
         <div class="card-body">
 
-
-            <div id="item" class="item">
-                <ul class="clear">
-                    @foreach (task03_0606.Models.Product item in Model)
-                    {
-                        <li class="card col-sm-3 product--green">
-                            <div>
-                                @*<img class="card-img-top" src="~/photo/@item.productPicture" type="button" data-toggle="modal" data-target="#exampleModalCenter.801">*@
-                                <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)" />
-                                 <div class="card-body">
-                                    <h5 class="card-title">@item.productName</h5>
-                                    @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>*@
-                                    @*<label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>*@
-                                    <label class="card-text" id="UnitPrice">價格 $ @item.productPrice</label>
-                                </div>
-                                <div class="card-footer">
-                                    <div class='product_inner'>
-                                        <button onclick="AddToCart(@item.productID)">加入購物車</button>
+                <div id="item" class="item">
+                    <ul class="clear">
+                        @*<div class="card-deck">*@
+                            @foreach (task03_0606.Models.Product item in Model)
+                            {
+                                <li class="card col-sm-3">
+                                    <div class="product--green">
+                                        @*<img class="card-img-top" src="~/photo/@item.productPicture" type="button" data-toggle="modal" data-target="#exampleModalCenter.801">*@
+                                        <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">@item.productName</h5>
+                                            @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>*@
+                                            @*<label class="card-text" id="ProductName">可樂(中)</label>
+                            <label class="card-text" id="MemberID">1</label>*@
+                                            <label class="card-text" id="UnitPrice">價格 $ @item.productPrice</label>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class='product_inner'>
+                                            <button onclick="AddToCart(@item.productID)">加入購物車</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            <li class="card col-sm-3">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">加入購物車</a>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    }
-                    <li class="card col-sm-3">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
 
-                    </li>
-                    <li class="card col-sm-3">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="card col-sm-3">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">加入購物車</a>
+                                    </div>
+                                </div>
 
-                    </li>
-                    <li class="card col-sm-3">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="card col-sm-3">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">加入購物車</a>
+                                    </div>
+                                </div>
 
-                    </li>
-                    <li class="card col-sm-4">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="card col-sm-4">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">加入購物車</a>
+                                    </div>
+                                </div>
 
-                    </li>
-                    <li class="card col-sm-4">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="card col-sm-4">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">加入購物車</a>
+                                    </div>
+                                </div>
 
-                    </li>
-                    <li class="card col-sm-3">
-                        <div>
-                            <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <label class="card-text" id="ProductName">可樂(中)</label>
-                                <label class="card-text" id="MemberID">1</label>
-                                <label class="card-text" id="UnitPrice">30</label>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#">加入購物車</a>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="card col-sm-3">
+                                <div>
+                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <label class="card-text" id="ProductName">可樂(中)</label>
+                                        <label class="card-text" id="MemberID">1</label>
+                                        <label class="card-text" id="UnitPrice">30</label>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div></div>
+                                        <a href="#">加入購物車</a>
+                                    </div>
+                                </div>
 
-                    </li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                    <li>13</li>
-                    <li>14</li>
-                    <li>15</li>
-                    <li>16</li>
-                    <li>17</li>
-                    <li>18</li>
-                    <li>19</li>
-                    <li>20</li>
-                    <li>21</li>
-                    <li>22</li>
-                    <li>23</li>
-                    <li>24</li>
-                    <li>25</li>
-                    <li>26</li>
-                    <li>27</li>
-                    <li>28</li>
-                </ul>
+                            </li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li>18</li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li>21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                        @*</div>*@
+                    </ul>
+                </div>
+
+
+                <div id="page">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+                    </ul>
+                </div>
+
             </div>
-
-
-            <div id="page">
-                <ul class="pagination pagination-sm">
-                    <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
-                </ul>
-            </div>
-
-        </div>
+    
     </div>
 </div>
 
@@ -545,6 +549,7 @@
 
     });
 
+    //點選產品圖片，顯示明細在modal
     function modalShow(itemName, itemDescription ,itemPic, itemId) {
        
         $("#itemName").text(itemName);
