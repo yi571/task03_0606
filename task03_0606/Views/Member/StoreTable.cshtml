@@ -18,7 +18,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-list-alt"></i> 商家列表
+                <i class="fa fa-list-alt"></i> 商家列表 @ViewBag.Test
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -26,34 +26,30 @@
                         <thead>
                             <tr>
                                 <th>店名</th>
-                                <th>電話號碼</th>
-                                <th>負責人</th>
-                                <th>負責人電話</th>
+                                <th class="d-none d-lg-table-cell">商店電話</th>
+                                <th class="d-none d-lg-table-cell">統一編號</th>
                                 <th>詳細資料</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>店名</th>
-                                <th>電話號碼</th>
-                                <th>負責人</th>
-                                <th>負責人電話</th>
+                                <th class="d-none d-lg-table-cell">商店電話</th>
+                                <th class="d-none d-lg-table-cell">統一編號</th>
                                 <th>詳細資料</th>
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach (var item in ViewBag.storeList) {
+                        <tr>
+                            <td>@item.storeName</td>
+                            <td class="d-none d-lg-table-cell">@item.storePhone</td>
+                            <td class="d-none d-lg-table-cell">@item.storeId</td>
+                            <td><a class="btn btn-primary" href="/Member/StoreTable/?storeId=@item.storeId">詳細資料</a></td>
+                        </tr>
+}
 
 
-
-
-                                    <tr>
-                                        <td>東風</td>
-                                        <td>0971234567</td>
-                                        <td>李四</td>
-                                        <td>0922345678</td>
-                                        <td><a class="btn btn-primary" href="/Member/StoreDetial">詳細資料</a></td>
-                                    </tr>
-                            
 
 
 
@@ -109,5 +105,32 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 </div>
+<script>
+    $(document).ready(function () {
+        if (@ViewBag.sweetAlertStoreTabl == 1) {
+            swal({
+                title: '<i>商店詳細資料</i>',
+                type: 'info',
+                html:
+                    '<div class="card card-register mx-auto mt-5">' +
+                    '<div class="card-header"><i class="fa fa-fw fa-user-o"></i>@ViewBag.storeName</div>' +
+                    '<div class="card-body">' +
 
+                    '<label>統一編號：@ViewBag.storeId</label></br>' +
+                    '<label>商店電話：@ViewBag.storePhone</label></br>' +
+                    '<label>負責人：@ViewBag.lastName@ViewBag.firstName</label></br>' +
+                    '<label>負責人電話：@ViewBag.ownerPhoneNum</label></br>' +
+
+
+                    '</div>' +
+                    '</div>' +
+                    '</div>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+
+            })
+        }
+    })
+</script>
 

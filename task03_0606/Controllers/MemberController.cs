@@ -183,18 +183,47 @@ namespace task03_0606.Controllers {
             return View();
         }
 
-        public ActionResult StoreTable() {
-            
+        public ActionResult StoreTable(string storeId) {
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
+
+            var queryStore = from o in db.Stores
+                             select o;
+            ViewBag.storeList = queryStore;
+            ViewBag.Test = "未設定";
+            if (!string.IsNullOrEmpty(storeId)) {
+                ViewBag.sweetAlertStoreTabl = 1;
+                var queryStoreDetial = (from o in db.Stores
+                                       join p in db.UserInfoes on o.ownerPhoneNum equals p.phoneNum into q
+                                       from p in q.DefaultIfEmpty()
+                                       where o.storeId == storeId
+                                       select new { o.storeId, o.storeName, o.storePhone, o.ownerPhoneNum, p.lastName, p.firstName }).First();
+                ViewBag.storeId = queryStoreDetial.storeId;
+                ViewBag.storeName = queryStoreDetial.storeName;
+                ViewBag.storePhone = queryStoreDetial.storePhone;
+                ViewBag.ownerPhoneNum = queryStoreDetial.ownerPhoneNum;
+                ViewBag.lastName = queryStoreDetial.lastName;
+                ViewBag.firstName = queryStoreDetial.firstName;
+
+
+            } else {
+                ViewBag.sweetAlertStoreTabl = 0;
+            };
             return View();
         }
 
         public ActionResult StoreDetial() {
-           
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
             return View();
         }
 
         public ActionResult AddStore() {
-            
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
             return View();
         }
 
