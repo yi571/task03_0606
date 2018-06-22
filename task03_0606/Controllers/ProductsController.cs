@@ -140,25 +140,66 @@ namespace task03_0606.Controllers {
                 return View(postback);
             }
         }
-        //[HttpPost]
-        //public ActionResult Edit(Product pd)
+        //// GET: Products/Delete/5
+        //public ActionResult Delete(int? productID)
         //{
-        //    Product pdDbServer = dbpro.Products.Find(pd.productID);
-        //    pdDbServer.productName = pd.productName;
-        //    pdDbServer.productPicture = pd.productPicture;
-        //    pdDbServer.salesVolume = pd.salesVolume;
-        //    pdDbServer.storeProductId = pd.storeProductId;
-        //    pdDbServer.productDescription = pd.productDescription;
-        //    pdDbServer.productPrice = pd.productPrice;
-        //    pdDbServer.productState = pd.productState;
-        //    pdDbServer.categoryID = pd.categoryID;
+        //    if (productID == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Product pd = dbpro.Products.Find(productID);
+        //    if (pd == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(pd);
+        //}
 
+        //// POST: Employees/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int productID)
+        //{
+        //    Product product = dbpro.Products.Find(productID);
+        //    dbpro.Products.Remove(product);
         //    dbpro.SaveChanges();
         //    return RedirectToAction("ManagerIndex");
         //}
 
 
 
+
+
+        [HttpPost]
+        public ActionResult Delete(int? productID)
+        {
+            using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities())
+            {
+                //抓取Product.Id等於輸入id的資料
+                var result = (from s in db.Products where s.productID == productID select s).FirstOrDefault();
+                if (result != default(Models.Product)) //判斷此id是否有資料
+                {
+                    db.Products.Remove(result);
+
+                    //儲存所有變更
+                    db.SaveChanges();
+
+                    //設定成功訊息並導回ManagerIndex頁面
+                    TempData["ResultMessage"] = string.Format("商品[{0}]成功刪除", result.productName);
+                    return RedirectToAction("ManagerIndex");
+                }
+                else
+                {   //如果沒有資料則顯示錯誤訊息並導回ManagerIndex頁面
+                    TempData["resultMessage"] = "指定資料不存在，無法刪除，請重新操作";
+                    return RedirectToAction("ManagerIndex");
+                }
+            }
+        }
+
+
+
+
+        //商品頁面 - 飲品&湯品-類別代號2
         public ActionResult Drinkproducts() {
             var query = from o in dbpro.Products
                         where o.categoryID==2
@@ -174,7 +215,8 @@ namespace task03_0606.Controllers {
             return View(foodproducts);
 
         }
-     
+
+        //商品頁面 - 甜點類-類別代號3
         public ActionResult Dessertproducts()
         {
             var query = from o in dbpro.Products
@@ -191,6 +233,8 @@ namespace task03_0606.Controllers {
             return View(foodproducts);
 
         }
+
+        //商品頁面 - 麵食類-類別代號4
         public ActionResult Noodleproducts() {
             var query = from o in dbpro.Products
                         where o.categoryID == 4
@@ -206,6 +250,7 @@ namespace task03_0606.Controllers {
             return View(foodproducts);
 
         }
+        //商品頁面 - 米飯類-類別代號5
         public ActionResult Riceproducts() {
             var query = from o in dbpro.Products
                         where o.categoryID == 5
@@ -221,7 +266,7 @@ namespace task03_0606.Controllers {
             return View(foodproducts);
 
         }
-
+        //商品頁面 - 速食類-類別代號6
         public ActionResult Fastfoodproducts() {
             var query = from o in dbpro.Products
                         where o.categoryID == 6

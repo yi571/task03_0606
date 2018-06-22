@@ -15,7 +15,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
+                <h1><i class="fa fa-table"/><a href="" class="white-text mx-3">商品列表</a></h1>
                 <button class="pull-right btn btn-warning" id="create">
                     <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
                 </button>
@@ -42,7 +42,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td width="10">@Html.DisplayFor(modelItem => item.productId)</td>
+                                    <td width="10">@Html.DisplayFor(modelItem => item.productID)</td>
                                     @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
                                     <td width="60">@Html.DisplayFor(modelItem => item.productName)</td>
                                     <td class="ProfileImg">
@@ -69,8 +69,8 @@
                                     <td  width="10">@Html.DisplayFor(modelItem => item.categoryID)</td>
 
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { productId = item.productId }) |
-                                        @Html.ActionLink("Delete", "Delete", new { productId = item.productId })
+                                        @Html.ActionLink("Edit", "Edit", new { productId = item.productID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { productId = item.productID })
                                 </tr>
                             }
                         </tbody>

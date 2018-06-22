@@ -504,7 +504,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Restaurent.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="scss\Astyle.scss" />
     <Content Include="Views\Products\Drinkproducts.cshtml" />
     <Content Include="Views\Products\Dessertproducts.cshtml" />
     <Content Include="Views\Products\Noodleproducts.cshtml" />
@@ -525,6 +524,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
