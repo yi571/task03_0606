@@ -28,7 +28,7 @@ namespace task03_0606.Controllers {
         public ActionResult Login() {
             ViewBag.Title = "登入";
             Session["UserAllName"] = "Guest";
-            
+
             return View();
         }
 
@@ -40,7 +40,7 @@ namespace task03_0606.Controllers {
                              where (o.phoneNum == phoneNum && o.pwd == pwd)
                              select new { o.UserInfoId, o.lastName, o.firstName, o.userRank };
             var queryStoreLogin = from o in db.Stores //店家登入
-                                  where (o.storePhone == phoneNum && o.storePwd == pwd)
+                                  where (o.storeId == phoneNum && o.storePwd == pwd)
                                   select new { o.storeId, o.storeName };
             if (queryLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入
@@ -51,7 +51,7 @@ namespace task03_0606.Controllers {
                     Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
-            } else if(queryStoreLogin.Count() > 0) {
+            } else if (queryStoreLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入
                 Session["identity"] = "store";
                 Session["userInfoId"] = queryStoreLogin.ToArray()[0].storeId;
@@ -60,13 +60,12 @@ namespace task03_0606.Controllers {
                     Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
-            } 
-            else {
+            } else {
                 ViewBag.loginError = "<div class='alert alert-danger' role='alert'><h2>帳號或密碼錯誤</h2></div>";
                 return View();
             }
-            
-            
+
+
         }
 
         public ActionResult Logout() {
@@ -137,14 +136,14 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult Register() {
-            
+
 
             return View();
         }
 
         [HttpPost]
         public ActionResult Register(string LastName, string FirstName, string birthday, string uid, string Email1, string Password1, string ConfirmPassword, string cellPhone, string city, string district, string road, string lane, string alley, string addressNum, string addressF) {  //行政區選單控制
-           
+
 
             return View();
         }
@@ -155,30 +154,30 @@ namespace task03_0606.Controllers {
         }
 
         public ActionResult OrderTable() {  //所有訂單
-           
+
             return View();
         }
 
         public ActionResult CustemerOrder() {  //客戶所有訂單
-            
-            
+
+
             return View();
         }
 
         public ActionResult CustemerOrderDetial() {  //客戶訂單詳細資料
-            
+
 
             return View();
         }
 
         public ActionResult OrderDetial() {  //訂單詳細資料
-            
+
             return View();
         }
 
         public ActionResult OrderCard() {
 
-            
+
 
             return View();
         }
@@ -195,10 +194,10 @@ namespace task03_0606.Controllers {
             if (!string.IsNullOrEmpty(storeId)) {
                 ViewBag.sweetAlertStoreTabl = 1;
                 var queryStoreDetial = (from o in db.Stores
-                                       join p in db.UserInfoes on o.ownerPhoneNum equals p.phoneNum into q
-                                       from p in q.DefaultIfEmpty()
-                                       where o.storeId == storeId
-                                       select new { o.storeId, o.storeName, o.storePhone, o.ownerPhoneNum, p.lastName, p.firstName }).First();
+                                        join p in db.UserInfoes on o.ownerPhoneNum equals p.phoneNum into q
+                                        from p in q.DefaultIfEmpty()
+                                        where o.storeId == storeId
+                                        select new { o.storeId, o.storeName, o.storePhone, o.ownerPhoneNum, p.lastName, p.firstName }).First();
                 ViewBag.storeId = queryStoreDetial.storeId;
                 ViewBag.storeName = queryStoreDetial.storeName;
                 ViewBag.storePhone = queryStoreDetial.storePhone;
@@ -225,6 +224,140 @@ namespace task03_0606.Controllers {
                 return RedirectToAction("Member", "Member");
             };
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddStore(string storeName, string storePhone, string storeId, string Password1, string ConfirmPassword, string cellPhone, string storeDescription) {
+            var querystoreId = from o in db.Stores
+                               where o.storeId == storeId
+                               select o;
+            //post時，回傳已填入值
+            int checkNum = 0;  //用於檢查必填欄位是否填寫
+            if (!string.IsNullOrEmpty(storeName)) {
+                ViewBag.storeName = storeName;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(storePhone)) {
+                ViewBag.storePhone = storePhone;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(storeId)) {
+                ViewBag.storeId = storeId;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(Password1)) {
+                ViewBag.Password1 = Password1;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(ConfirmPassword)) {
+                ViewBag.ConfirmPassword = ConfirmPassword;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(cellPhone)) {
+                ViewBag.cellPhone = cellPhone;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(storeDescription)) {
+                ViewBag.storeDescription = storeDescription;
+                checkNum += 1;
+            }
+            if (querystoreId.Count() > 0) {
+                ViewBag.storeIdCheck = "<i class='fa fa-times' style='color: red; '></i> 統一編號已註冊";
+            } else {
+                ViewBag.storeIdCheck = "";
+                if (Password1 == ConfirmPassword && checkNum == 7) {
+                    Store addStore = new Store() {
+                        storeId = storeId,
+                        storeName = storeName,
+                        storePhone = storePhone,
+                        storePwd = Password1,
+                        storeDescription = storeDescription,
+                        ownerPhoneNum = cellPhone,
+                        storeState = 1
+                    };
+                    db.Stores.Add(addStore);
+                    db.SaveChanges();
+                    return RedirectToAction("storeTable", "Member");
+                };
+            };
+
+            return View();
+        }
+
+        public ActionResult EditStore() {
+            if ((string)Session["identity"] != "store") {
+                return RedirectToAction("Member", "Member");
+            };
+            string userInfoId = Session["userInfoId"].ToString();
+            var queryEditStore = (from o in db.Stores
+                                  where o.storeId == userInfoId
+                                  select o).First();
+            ViewBag.storeName = queryEditStore.storeName;
+            ViewBag.storePhone = queryEditStore.storePhone;
+            ViewBag.storeId = queryEditStore.storeId;
+            ViewBag.Password1 = queryEditStore.storePwd;
+            ViewBag.ConfirmPassword = queryEditStore.storePwd;
+            ViewBag.cellPhone = queryEditStore.ownerPhoneNum;
+            ViewBag.storeDescription = queryEditStore.storeDescription;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditStore(string storeName, string storePhone, string storeId, string Password1, string ConfirmPassword, string cellPhone, string storeDescription) {
+            if ((string)Session["identity"] != "store") {
+                return RedirectToAction("Member", "Member");
+            };
+            ViewBag.sweetAlert = 0;
+            ViewBag.storeName = storeName;
+            ViewBag.storePhone = storePhone;
+            ViewBag.storeId = storeId;
+            ViewBag.Password1 = Password1;
+            ViewBag.ConfirmPassword = ConfirmPassword;
+            ViewBag.cellPhone = cellPhone;
+            ViewBag.storeDescription = storeDescription;
+
+            int checkNum = 0;  //用於檢查必填欄位是否填寫
+            if (!string.IsNullOrEmpty(storeName)) {
+                ViewBag.storeName = storeName;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(storePhone)) {
+                ViewBag.storePhone = storePhone;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(Password1)) {
+                ViewBag.Password1 = Password1;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(ConfirmPassword)) {
+                ViewBag.ConfirmPassword = ConfirmPassword;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(cellPhone)) {
+                ViewBag.cellPhone = cellPhone;
+                checkNum += 1;
+            }
+            if (!string.IsNullOrEmpty(storeDescription)) {
+                ViewBag.storeDescription = storeDescription;
+                checkNum += 1;
+            }
+            if (Password1 == ConfirmPassword && checkNum == 6) {
+                string userInfoId = Session["userInfoId"].ToString();
+                var queryUpdateStore = (from o in db.Stores
+                                       where o.storeId == userInfoId
+                                       select o).First();
+                queryUpdateStore.storeName = storeName;
+                queryUpdateStore.storePhone = storePhone;
+                queryUpdateStore.storePwd = Password1;
+                queryUpdateStore.storeDescription = storeDescription;
+                queryUpdateStore.ownerPhoneNum = cellPhone;
+                db.SaveChanges();
+                ViewBag.sweetAlert = 1;
+            }
+
+            return View();
+
         }
 
         public ActionResult MemberTable(string UserInfoId) {  //會員列表
@@ -264,13 +397,13 @@ namespace task03_0606.Controllers {
                 ViewBag.alley = querySingleUser.alley;
                 ViewBag.addressNum = querySingleUser.addressNum;
                 ViewBag.addressF = querySingleUser.addressF;
-                
+
 
                 //querySingleUser.;
 
                 //ViewBag.testA = querySingleUser.phoneNum;
             } else {
-                
+
                 ViewBag.sweetAlertMemberTabl = 0;
 
                 var querySingleUser = (from o in db.UserInfoes
@@ -279,7 +412,7 @@ namespace task03_0606.Controllers {
                 ViewBag.SingleUser = querySingleUser;
             }
 
-            
+
 
             return View();
         }
@@ -299,7 +432,7 @@ namespace task03_0606.Controllers {
                             where o.UserInfoId == idNum
                             select new { o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, q.city, q.district, q.road, p.lane, p.alley, p.addressNum, p.addressF };
             var userInfoEdit = queryEdit.ToArray();
-            
+
             ViewBag.LastName = userInfoEdit[0].lastName;
             ViewBag.FirstName = userInfoEdit[0].firstName;
             ViewBag.uid = userInfoEdit[0].userId;
@@ -412,7 +545,7 @@ namespace task03_0606.Controllers {
                 ViewBag.addressF = addressF;
             }
 
-            
+
 
             //查詢出AddressPart1
             var queryCheckAddressPart1 = from o in db.streetNames
@@ -425,11 +558,11 @@ namespace task03_0606.Controllers {
                                 where o.UserInfoId == idNum
                                 select o).FirstOrDefault();
             var queryUserAddressPhoneCheck = (from o in db.UserInfoes
-                            join p in db.UserAddresses on o.phoneNum equals p.phoneNum into r //left join
-                            from p in r.DefaultIfEmpty()  //如果右邊沒資料則傳出null
-                            where o.UserInfoId == idNum
-                            select new { p.phoneNum, o.lastName }).First();
-           
+                                              join p in db.UserAddresses on o.phoneNum equals p.phoneNum into r //left join
+                                              from p in r.DefaultIfEmpty()  //如果右邊沒資料則傳出null
+                                              where o.UserInfoId == idNum
+                                              select new { p.phoneNum, o.lastName }).First();
+
             queryUserIfo.lastName = LastName;
             queryUserIfo.lastName = LastName;
             queryUserIfo.firstName = FirstName;
@@ -451,7 +584,7 @@ namespace task03_0606.Controllers {
 
                 };
                 db.UserAddresses.Add(userAddress);
-                
+
 
             } else {
                 var queryUserAddress = (from o in db.UserAddresses
@@ -462,12 +595,12 @@ namespace task03_0606.Controllers {
                 queryUserAddress.alley = alley;
                 queryUserAddress.addressNum = addressNum;
                 queryUserAddress.addressF = addressF;
-                
+
             }
-            
+
 
             //if (queryUserAddress.phoneNum)
-            
+
 
 
 

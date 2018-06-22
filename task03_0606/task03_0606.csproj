@@ -505,6 +505,7 @@
     <Content Include="SweetAlert2\sweetalert2.scss" />
     <Content Include="SweetAlert2\mixins.scss" />
     <Content Include="SweetAlert2\animations.scss" />
+    <Content Include="Views\Member\EditStore.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
