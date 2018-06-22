@@ -17,27 +17,27 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> 會員列表 @ViewBag.testA
+                <i class="fa fa-table"></i> 會員列表
             </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive-sm">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>姓名</th>
-                                <th>手機號碼</th>
-                                <th>電子信箱</th>
+                                <th class="d-none d-lg-table-cell">手機號碼</th>
+                                <th class="d-none d-lg-table-cell">電子信箱</th>
+                                <th class="d-none d-lg-table-cell">權限</th>
                                 <th>詳細資料</th>
-                                <th>權限</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>姓名</th>
-                                <th>手機號碼</th>
-                                <th>電子信箱</th>
+                                <th class="d-none d-lg-table-cell">手機號碼</th>
+                                <th class="d-none d-lg-table-cell">電子信箱</th>
+                                <th class="d-none d-lg-table-cell">權限</th>
                                 <th>詳細資料</th>
-                                <th>權限</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -48,13 +48,13 @@
                                     string[] strArray = new string[3];
                                     string[] strUserRank = new string[3] { "網站管理員", "商家管理員", "顧客" };
 
-                                    <tr>
-                                        <td>@item.lastName@item.firstName</td>
-                                        <td>@item.phoneNum</td>
-                                        <td>@item.email</td>
-                                        <td><a class="btn btn-primary" href="/Member/MemberTable/?UserInfoId=@item.UserInfoId" id="detial-@item.UserInfoId">詳細資料</a></td>
-                                        <td>@item.userRank</td>
-                                    </tr>
+                            <tr>
+                                <td>@item.lastName@item.firstName</td>
+                                <td class="d-none d-lg-table-cell">@item.phoneNum</td>
+                                <td class="d-none d-lg-table-cell">@item.email</td>
+                                <td class="d-none d-lg-table-cell">@item.userRank</td>
+                                <td><a class="btn btn-primary" href="/Member/MemberTable/?UserInfoId=@item.UserInfoId" id="detial-@item.UserInfoId">詳細資料</a></td>
+                            </tr>
                                 } }
 
 
@@ -114,11 +114,36 @@
 <script>
 
     $('a').click(function () {
-        alert('ok');
+        //alert('ok');
+
     });
 
-    $('document').ready(function () {
-        
+    $(document).ready(function () {
+        if (@ViewBag.sweetAlertMemberTabl == 1) {
+            swal({
+                title: '<i>會員詳細資料</i>',
+                type: 'info',
+                html:
+                    '<div class="card card-register mx-auto mt-5">' +
+                    '<div class="card-header"><i class="fa fa-fw fa-pencil"></i>@ViewBag.lastName@ViewBag.firstName</div>' +
+                    '<div class="card-body">' +
+                    
+                    '<label>身分證字號：@ViewBag.userId</label></br>' +
+                    '<label>電子信箱：@ViewBag.email</label></br>' +
+                    '<label>手機號碼：@ViewBag.phoneNum</label></br>' +
+                    '<label>地址：@ViewBag.city@ViewBag.district@ViewBag.road @ViewBag.lane @((string.IsNullOrEmpty(ViewBag.lane))?" ":" 巷") @ViewBag.alley @((string.IsNullOrEmpty(ViewBag.alley))?" ":" 弄") @ViewBag.addressNum @((string.IsNullOrEmpty(ViewBag.addressNum))?" ":" 號") @ViewBag.addressF @((string.IsNullOrEmpty(ViewBag.addressF))?"":"樓")</label></br>' +
+                    '<label>使用者權限：@((ViewBag.userRank == "superUser")?"網站管理者":"")@((ViewBag.userRank == "storeUser")?"商店管理者":"")@((ViewBag.userRank == "normalUser")?"一般使用者":"")</label></br>' +
+
+                    
+                    '</div>' +
+                    '</div>' +
+                    '</div>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+
+            })
+        }
     })
 
 

@@ -206,18 +206,48 @@ namespace task03_0606.Controllers {
             var queryUserList = from o in db.UserInfoes
                                 select o;
             ViewBag.userList = queryUserList.ToList();
-            //ViewBag.testA = UserInfoId;
+            ViewBag.testA = UserInfoId;  //測試用
             if (Convert.ToInt32(UserInfoId) > 0) {
                 ViewBag.sweetAlertMemberTabl = 1;
                 int UserInfoIdNum = Convert.ToInt32(UserInfoId);
+                //var querySingleUser = (from o in db.UserInfoes
+                //                       where o.UserInfoId == UserInfoIdNum
+                //                       select o).First();
                 var querySingleUser = (from o in db.UserInfoes
+                                       join p in db.UserAddresses on o.phoneNum equals p.phoneNum into r //left join
+                                       from p in r.DefaultIfEmpty()  //如果右邊沒資料則傳出null
+                                       join q in db.streetNames on p.userAddressPart1 equals q.userAddressPart1 into s
+                                       from q in s.DefaultIfEmpty()
                                        where o.UserInfoId == UserInfoIdNum
-                                       select o).First();
-                ViewBag.SingleUser = querySingleUser;
+                                       select new { o.lastName, o.firstName, o.userId, o.email, o.phoneNum, o.pwd, q.city, q.district, q.road, p.lane, p.alley, p.addressNum, p.addressF, o.userRank }
+                                ).First();
+
+                ViewBag.lastName = querySingleUser.lastName;
+                ViewBag.firstName = querySingleUser.firstName;
+                ViewBag.userId = querySingleUser.userId;
+                ViewBag.email = querySingleUser.email;
+                ViewBag.phoneNum = querySingleUser.phoneNum;
+                ViewBag.userRank = querySingleUser.userRank;
+                ViewBag.city = querySingleUser.city;
+                ViewBag.district = querySingleUser.district;
+                ViewBag.road = querySingleUser.road;
+                ViewBag.lane = querySingleUser.lane;
+                ViewBag.alley = querySingleUser.alley;
+                ViewBag.addressNum = querySingleUser.addressNum;
+                ViewBag.addressF = querySingleUser.addressF;
                 
+
+                //querySingleUser.;
+
                 //ViewBag.testA = querySingleUser.phoneNum;
             } else {
+                
                 ViewBag.sweetAlertMemberTabl = 0;
+
+                var querySingleUser = (from o in db.UserInfoes
+                                       where o.UserInfoId == 3
+                                       select o).First();
+                ViewBag.SingleUser = querySingleUser;
             }
 
             
