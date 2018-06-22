@@ -89,24 +89,47 @@ INSERT INTO myfoodproducts VALUES(812,'豆腐炸雞丁','120','E12.jpg','這是�
 INSERT INTO myfoodproducts VALUES(813,'酥炸玉米筍','80','E13.jpg','玉米在吐絲授粉前的幼嫩果穗，因外形細長，上尖下粗,微微的清甜，油炸之後更顯玉米的香味','0')
 
 
-麥當勞-
-'大麥克','69','E1.jpg','「雙層純牛肉，獨特醬料加生菜，吉事洋蔥酸黃瓜，芝麻麵包蓋上去，好吃過癮大麥克！」這句麥當勞耳熟能詳的經典口訣相信大家都不陌生吧！ 剛好也完整介紹到大麥克的特色喔~'
-'雙層牛肉吉事堡','59','E2.jpg','雙層澳洲純牛肉加上雙層香濃吉事，再搭配酸黃瓜、洋蔥末、蕃茄醬，通通夾在鬆軟麵包裡，這就是麥當勞經典的雙層牛肉吉事堡。'
-'四盎司牛肉堡','79','E3.jpg','選用重達四盎司的紐澳純牛肉，僅用鹽與胡椒調味，再搭配雙層濃郁的切達吉事，那一口咬下的厚實感，只有麥當勞的四盎司牛肉堡才享受的到喔！'
-'雙層四盎司牛肉堡','109','E4.jpg','選用雙層重達四盎司的紐澳純牛肉，僅用鹽與胡椒調味，再搭配雙層濃郁的切達吉事，那一口咬下的超厚實感，只有麥當勞的雙層四盎司牛肉堡才享受的到喔！'
-'1955 美式培根牛肉堡','99','E5.jpg','1955 年，是全球第一間麥當勞誕生的日子！ 所以在歡慶麥當勞在台 30 週年時，推出 1955 美式培根牛肉堡，四盎司牛肉搭配香煎培根、烤洋蔥和生菜蕃茄，還有那道地的經典美式 BBQ 醬，趕快來感受那一年的美味吧！'
-'嫩煎雞腿堡','79','E6.jpg','嫩煎雞腿肉搭配BBQ醬，加上牛蕃茄和生菜通通夾在芝麻漢堡裡，這就是麥當勞新推出長期供應的『嫩煎雞腿堡』！'
-'麥香雞','49','E7.jpg','印象深刻的麥當勞漢堡，麥香雞一定是其中之一，芝麻麵包、生菜和香雞排，造就了這經典美味。'
-' 麥克雞塊(6塊)','59','E8.jpg','說到麥當勞的麥克雞塊，可是大小朋友的最愛呢！ 炸的金黃酥脆鮮嫩多汁的滋味，搭配超經典的糖醋醬，不管是誰都抗拒不了吧！'
-' 麥克雞塊(9塊)','89','E9.jpg','金黃酥脆的外皮下，裡面的雞肉鮮嫩多汁，搭配超經典的糖醋醬，這麥克雞塊真是超好吃的啦~'
-'勁辣雞腿堡','69','E10.jpg','麥當勞勁辣雞腿堡內可是夾有一整塊勁辣雞腿排，加上碎生菜通通夾在芝麻麵包裡，就算停紅綠燈也要吃一口勁辣雞腿堡過過癮！'
-'麥脆雞(2塊)','104','E11.jpg','有原味和辣味可以選擇，雖然部位只有雞翅、小腿和大腿排，也常常拿到雞翅，皮脆肉嫩多汁的滋味一口咬下真是太好吃了！'
-'麥脆雞(3塊)','156','E12.jpg','不管是原味和辣味，還是雞翅、小腿或大腿排，皮脆肉嫩多汁的滋味就是麥脆雞的特色！'
-'黃金起司豬排堡','109','E13.jpg','炸豬排口感相當當厚實！ 跟濃郁的切達起司醬真的是超級搭！ 再加上切絲生菜的口感，整體感覺實在是太棒了！'
+select * from Products
+select*from Categories 
+select * from Stores
+set identity_insert Products off
+delete from Products where productID='6'
 
-花月嵐-麵
-'大蒜拳骨拉麵','160','C1.jpg','拉麵麵條細而有嚼勁，肉片燉到超嫩的，非常入口即化~還在等甚麼呢?'
-'叉燒雞拉麵','220','C2.jpg','切成圓片狀的雞肉，製作成叉燒口感，味道鹹香。雞肉的部分是薄片的，份量並不大唷。'
-'道豚堀拉麵','200','C3.jpg','醬油湯頭，認真的日式風味，台灣人可能較不能接受，真的滿重鹹的。嚐試加入生鮮大蒜，味道喝起來較不死鹹，有點像是蒜泥醬油膏的味道。'
-花月嵐-飯
-'鐵板炒飯 (拿坡里風味)','160','D1.jpg','白飯上頭有德式香腸、蛋、洋蔥、青豆，這一大塊奶油，頗為誘人。'
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('大麥克','E1.jpg','f001','「雙層純牛肉，獨特醬料加生菜，吉事洋蔥酸黃瓜，芝麻麵包蓋上去，好吃過癮大麥克！」這句麥當勞耳熟能詳的經典口訣相信大家都不陌生吧！ 剛好也完整介紹到大麥克的特色喔~',69,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('雙層牛肉吉事堡','E2.jpg','f002','雙層澳洲純牛肉加上雙層香濃吉事，再搭配酸黃瓜、洋蔥末、蕃茄醬，通通夾在鬆軟麵包裡，這就是麥當勞經典的雙層牛肉吉事堡。',59,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('四盎司牛肉堡','E3.jpg','f003','選用重達四盎司的紐澳純牛肉，僅用鹽與胡椒調味，再搭配雙層濃郁的切達吉事，那一口咬下的厚實感，只有麥當勞的四盎司牛肉堡才享受的到喔！',79,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('雙層四盎司牛肉堡','E4.jpg','f004','選用雙層重達四盎司的紐澳純牛肉，僅用鹽與胡椒調味，再搭配雙層濃郁的切達吉事，那一口咬下的超厚實感，只有麥當勞的雙層四盎司牛肉堡才享受的到喔！',109,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('雙層四盎司牛肉堡','E4.jpg','f004','選用雙層重達四盎司的紐澳純牛肉，僅用鹽與胡椒調味，再搭配雙層濃郁的切達吉事，那一口咬下的超厚實感，只有麥當勞的雙層四盎司牛肉堡才享受的到喔！',109,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('1955 美式培根牛肉堡','E5.jpg','f005','1955 年，是全球第一間麥當勞誕生的日子！ 所以在歡慶麥當勞在台 30 週年時，推出 1955 美式培根牛肉堡，四盎司牛肉搭配香煎培根、烤洋蔥和生菜蕃茄，還有那道地的經典美式 BBQ 醬，趕快來感受那一年的美味吧！',99,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('嫩煎雞腿堡','E6.jpg','f006','嫩煎雞腿肉搭配BBQ醬，加上牛蕃茄和生菜通通夾在芝麻漢堡裡，這就是麥當勞新推出長期供應的『嫩煎雞腿堡』！',79,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('麥香雞','E7.jpg','f007','印象深刻的麥當勞漢堡，麥香雞一定是其中之一，芝麻麵包、生菜和香雞排，造就了這經典美味。',49,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('麥克雞塊(6塊)','E8.jpg','f008','說到麥當勞的麥克雞塊，可是大小朋友的最愛呢！ 炸的金黃酥脆鮮嫩多汁的滋味，搭配超經典的糖醋醬，不管是誰都抗拒不了吧！',59,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('麥克雞塊(9塊)','E9.jpg','f009','金黃酥脆的外皮下，裡面的雞肉鮮嫩多汁，搭配超經典的糖醋醬，這麥克雞塊真是超好吃的啦~',89,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('勁辣雞腿堡','E10.jpg','f010','麥當勞勁辣雞腿堡內可是夾有一整塊勁辣雞腿排，加上碎生菜通通夾在芝麻麵包裡，就算停紅綠燈也要吃一口勁辣雞腿堡過過癮！',69,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('麥脆雞(2塊)','E11.jpg','f011','有原味和辣味可以選擇，雖然部位只有雞翅、小腿和大腿排，也常常拿到雞翅，皮脆肉嫩多汁的滋味一口咬下真是太好吃了！',104,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('麥脆雞(3塊)','E12.jpg','f012','不管是原味和辣味，還是雞翅、小腿或大腿排，皮脆肉嫩多汁的滋味就是麥脆雞的特色！',156,'21354423',1,6)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('黃金起司豬排堡','E13.jpg','f013','炸豬排口感相當當厚實！ 跟濃郁的切達起司醬真的是超級搭！ 再加上切絲生菜的口感，整體感覺實在是太棒了！',109,'21354423',1,6)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('大蒜拳骨拉麵','C1.jpg','N001','拉麵麵條細而有嚼勁，肉片燉到超嫩的，非常入口即化~還在等甚麼呢?',160,'54123513',1,4)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('叉燒雞拉麵','C2.jpg','N002','切成圓片狀的雞肉，製作成叉燒口感，味道鹹香。雞肉的部分是薄片的，份量並不大唷。',220,'54123513',1,4)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('道豚堀拉麵','C3.jpg','N003','醬油湯頭，認真的日式風味，台灣人可能較不能接受，真的滿重鹹的。嚐試加入生鮮大蒜，味道喝起來較不死鹹，有點像是蒜泥醬油膏的味道。',200,'54123513',1,4)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('鐵板炒飯 (拿坡里風味)','D1.jpg','R003','白飯上頭有德式香腸、蛋、洋蔥、青豆，這一大塊奶油，頗為誘人。',200,'54123513',1,5)
+

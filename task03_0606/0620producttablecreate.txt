@@ -1,0 +1,28 @@
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('漂浮冰咖啡','A1.jpg','001','將單品熱咖啡倒入鋼杯中，將鋼杯放入裝有冰塊和水的容器中，等待咖啡變涼~最後在杯口放上一球香草冰淇淋，並淋上少許巧克力醬~',180,'21354423',1,2)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('焦糖奶酪布丁','B8.jpg','208','布丁杯烤好後灑入杏仁碎片，表層脆香，中層軟綿，底層香濃，絕對讓你回味無窮！',100,'54123513',1,3)
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('卡啦炸雞','E1.jpg','801','炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。',75,'21354423',1,6)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('日式味增湯','A12.jpg','012','味噌湯是一種湯料理，即麵豉湯，是日本具代表性的傳統食品，常見於日本人的早餐。',60,'54123513',1,2)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('現榨蘋果汁','A3.jpg','003','蘋果可以提供能量,因為它含有糖~新鮮的蘋果汁味道好,嬰幼和孩子們都很喜歡~是一種完美飲品。',80,'54123513',1,2)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('奶油培根義大利麵','C5.jpg','405','濃郁乳香的醬汁全部緊密裹住帶有彈性的麵條，鹹香氣恰到好處的培根~',180,'21354423',1,4)
+
+INSERT  Products(productName,productPicture,storeProductId,productDescription,productPrice,storeId,productState,categoryID) VALUES
+('蛋皮海苔醋壽司','D7.jpg','607','薄可透光的美味蛋皮以及海苔是壽司的絕佳搭配~',200,'21354423',1,5)
+
+
+
+
+select * from Products
+select*from Categories 
+select * from Stores
+set identity_insert Products off
+
