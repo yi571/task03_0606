@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "RestaurentMemberPage";
 }
+
 <style>
     .card-header-icon {
         position: absolute;
@@ -15,109 +16,10 @@
         opacity: 0.3;
     }
 
-    .card {
-        position: relative;
-    }
-
-
-    .main {
-        width: 800px;
-        zoom: 1;
-        margin: 0 auto;
-    }
-
-
-    .clear {
-        zoom: 1;
-        padding: 0px;
-    }
-
-        .clear:after {
-            content: "";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-
-    .item {
-        /*width: 800px;*/
-        overflow: hidden;
-    }
-
-    #item {
-        padding: 0;
-        margin: 0;
-        /*width: 860px;*/
-        zoom: 1;
-    }
-
-        #item li {
-            list-style-type: none;
-            float: left;
-            /*background: #F69;*/
-            /*font-size: 60px;*/
-            text-shadow: 1px 1px 3px #555;
-            /*width: 380px;
-            height: 200px;*/
-            margin: 10px 0px 10px 0px;
-            /*line-height: 200px;*/
-            text-align: center;
-            /*color: #fff;*/
-        }
-</style>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Open Sans Condensed', sans-serif;
+    .cardMenuItem {
+        border: none;
+        text-shadow: 1px 1px 3px #555;
         font-weight: 700;
-    }
-
-    html, body {
-        background: #EEE5E9;
-    }
-
-    header {
-        width: 95%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: end;
-        -ms-flex-pack: end;
-        justify-content: flex-end;
-        -ms-flex-flow: row wrap;
-        flex-flow: row wrap;
-    }
-
-        header ul {
-            padding: 1.2em 0 0.5em;
-        }
-
-        header span {
-            padding: 0 0 0 0.5em;
-        }
-
-        header span, header i {
-            color: #2B2D42;
-        }
-
-            header i:nth-of-type(2) {
-                cursor: pointer;
-            }
-
-    .row {
-        width: 100%;
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        flex-flow: row wrap;
     }
 
     .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
@@ -137,31 +39,6 @@
     .product--blue {
         background: -webkit-linear-gradient(180deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
         background: linear-gradient(-45deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
-    }
-
-    .product--orange {
-        background: -webkit-linear-gradient(135deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
-        background: linear-gradient(-45deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
-    }
-
-    .product--red {
-        background: -webkit-linear-gradient(135deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
-        background: linear-gradient(-45deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
-    }
-
-    .product--green {
-        background: -webkit-linear-gradient(135deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
-        background: linear-gradient(-45deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
-    }
-
-    .product--yellow {
-        background: -webkit-linear-gradient(135deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
-        background: linear-gradient(-45deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
-    }
-
-    .product--pink {
-        background: -webkit-linear-gradient(135deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
-        background: linear-gradient(-45deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
     }
 
         .product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
@@ -189,18 +66,13 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: #FFF;
             border-radius: 3px;
-            /*padding: 1em 3em;*/
+            padding: 1em 3em;
             margin: 1em 0 0 0;
             background: none;
             cursor: pointer;
             -webkit-transition: background ease-in .25s;
             transition: background ease-in .25s;
         }
-
-            .product_inner button:hover {
-                background: white;
-                color: #2B2D42;
-            }
 
             .product_inner button:before {
                 font-family: FontAwesome;
@@ -211,9 +83,14 @@
                 margin: 0 -1.5em;
             }
 
-            .product_inner button:hover:before {
+            .product_inner button:hover {
+                background: white;
                 color: #2B2D42;
             }
+
+                .product_inner button:hover:before {
+                    color: #2B2D42;
+                }
 
     .product_overlay {
         background: rgba(255, 255, 255, 0.9);
@@ -251,7 +128,6 @@
         }
 </style>
 
-
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
         <a href="~/Home/Restaurent">餐廳列表</a>
@@ -271,180 +147,258 @@
             </div>
 
             <div class="modal-body">
-                    <img id="itemImg" class="col-sm-12"  src='/photo/E1.jpg' />
-                    <br />
+                <img id="itemImg" class="col-sm-12" src='/photo/E1.jpg' />
+                <br />
                 <p id="itemDescription">炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。</p>
                 <p id="itemId"></p>
             </div>
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                <button type="button" class="btn btn-primary" onclick="AddToCart($('#itemId').text())" >加入購物車</button>
+                <button type="button" class="btn btn-primary" onclick="AddToCart($('#itemId').text())">加入購物車</button>
             </div>
         </div>
     </div>
 </div>
 
-
 <div class="col-12">
-    <div class="card o-hidden h-100">
-
+    <div class="card o-hidden">
         <div class="card-header">
             <h5 class="card-title"><a href="#demo" data-toggle="collapse"> @ViewBag.restaurentName</a></h5>
-            <img class="card-header-icon" src="~/@ViewBag.restaurentIcon" title="@ViewBag.restaurentName" />
+            <img class="card-header-icon" src="~/@ViewBag.restaurentIcon" />
             <div id="demo" class="collapse">
                 <p>@ViewBag.restaurentDescription</p>
             </div>
         </div>
 
         <div class="card-body">
+            <div class="row">
 
-                <div id="item" class="item">
-                    <ul class="clear">
-                        @*<div class="card-deck">*@
-                            @foreach (task03_0606.Models.Product item in Model)
-                            {
-                                <li class="card col-sm-3">
-                                    <div class="product--green">
-                                        @*<img class="card-img-top" src="~/photo/@item.productPicture" type="button" data-toggle="modal" data-target="#exampleModalCenter.801">*@
-                                        <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">@item.productName</h5>
-                                            @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>*@
-                                            @*<label class="card-text" id="ProductName">可樂(中)</label>
-                            <label class="card-text" id="MemberID">1</label>*@
-                                            <label class="card-text" id="UnitPrice">價格 $ @item.productPrice</label>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class='product_inner'>
-                                            <button onclick="AddToCart(@item.productID)">加入購物車</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                            <li class="card col-sm-3">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#">加入購物車</a>
+                @foreach (task03_0606.Models.Product item in Model)
+                {
+                    <div class="card text-center cardMenuItem col-sm-3 ">
+                        <div class="product--blue">
+                            <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.productName</h5>
+                                <p class="card-text">價格 $ @item.productPrice</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class='product_inner'>
+                                    <button id="button1" onclick="AddToCart(@item.productID)">加入購物車</button>
+                                    <div class='product_overlay'>
+                                        <h2>Added to basket</h2>
+                                        <i class='fa fa-check'></i>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                }
 
-                            </li>
-                            <li class="card col-sm-3">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#">加入購物車</a>
-                                    </div>
+
+
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                            <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            </li>
-                            <li class="card col-sm-3">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#">加入購物車</a>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li class="card col-sm-4">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#">加入購物車</a>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li class="card col-sm-4">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#">加入購物車</a>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li class="card col-sm-3">
-                                <div>
-                                    <img class="card-img-top" src="~/picture/1610141734150000001.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <label class="card-text" id="ProductName">可樂(中)</label>
-                                        <label class="card-text" id="MemberID">1</label>
-                                        <label class="card-text" id="UnitPrice">30</label>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div></div>
-                                        <a href="#">加入購物車</a>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li>8</li>
-                            <li>9</li>
-                            <li>10</li>
-                            <li>11</li>
-                            <li>12</li>
-                            <li>13</li>
-                            <li>14</li>
-                            <li>15</li>
-                            <li>16</li>
-                            <li>17</li>
-                            <li>18</li>
-                            <li>19</li>
-                            <li>20</li>
-                            <li>21</li>
-                            <li>22</li>
-                            <li>23</li>
-                            <li>24</li>
-                            <li>25</li>
-                            <li>26</li>
-                            <li>27</li>
-                            <li>28</li>
-                        @*</div>*@
-                    </ul>
                 </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card text-center cardMenuItem col-sm-3 ">
+                    <div class="product--blue">
+                        <img class="card-img-top" src="~/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
 
                 <div id="page">
                     <ul class="pagination pagination-sm">
@@ -456,10 +410,13 @@
                     </ul>
                 </div>
 
+
             </div>
-    
+        </div>
     </div>
 </div>
+
+
 
 
 <script type="text/javascript">
@@ -467,23 +424,23 @@
     $(function () {
 
         //實現分頁思路:
-        var pageSize = 6;      //每頁顯示數據條數
+        var pageSize = 8;      //每頁顯示數據條數
         var currentPage = 1;   //當前頁數
         var prevPage = 0;
-        /*var totalSize = $("#item li").index();*/ //獲取總數據
-        var totalSize = $("#item li").length;
+        var totalSize = $(".cardMenuItem").length; //獲取總數據
         var totalPage = Math.round(totalSize / pageSize); //計算總頁數
-        $("#item li:gt(5)").hide(); //設置首頁顯示4條數據
-        $(".total").text(totalPage);  //設置總頁數
-        $(".current_page").text(currentPage); //設置當前頁數
+        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
 
 
+        //移除原有 .pagination 裡的元素 , append "前一頁" li
         $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
-
+        //依總分頁數 , append 各分頁 li
         for (var index = currentPage; index <= totalPage; index++) {
             $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
         }
+        //append "後一頁" li
         $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
+
 
         //實現下一頁
         $(".next").click(function () {
@@ -493,7 +450,7 @@
                 $(".current_page").text(++currentPage);  //當前頁數先+1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('#item li'), function (index, item) {
+                $.each($('.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -513,7 +470,7 @@
                 $(".current_page").text(--currentPage);  //當前頁數先-1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('#item li'), function (index, item) {
+                $.each($('.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -536,7 +493,7 @@
 
             var start = pageSize * (currentPage - 1);
             var end = pageSize * currentPage;
-            $.each($('#item li'), function (index, item) {
+            $.each($('.cardMenuItem'), function (index, item) {
                 if (index >= start && index < end) {
                     $(this).show();
                 }
@@ -550,18 +507,37 @@
     });
 
     //點選產品圖片，顯示明細在modal
-    function modalShow(itemName, itemDescription ,itemPic, itemId) {
-       
+    function modalShow(itemName, itemDescription, itemPic, itemId) {
+
         $("#itemName").text(itemName);
         $("#itemDescription").text(itemDescription);
         $("#itemId").text(itemId);
-        $("#itemImg").attr("src","../photo/"+ itemPic ); 
+        $("#itemImg").attr("src", "../photo/" + itemPic);
         $("#Modal").modal("show");
 
     }
 
-    function addItemToCart(itemId) {
-        alert(itemId);
-    }
 
+    //Add To Basket Animation
+    $("button#button1").click(function () {
+        //alert(this);
+        $(this).parent()
+            .find(".product_overlay")
+            .css({
+                transform: " translateY(0px)",
+                opacity: "1",
+                transition: "all ease-in-out .45s"
+            })
+            .delay(1500)
+            .queue(function () {
+                $(this)
+                    .css({
+                        transform: "translateY(-500px)",
+                        opacity: "0",
+                        transition: "all ease-in-out .45s"
+                    })
+                    .dequeue();
+            });
+
+    })
 </script>
