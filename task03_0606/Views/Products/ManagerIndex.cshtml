@@ -15,7 +15,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h1><i class="fa fa-table"/><a href="" class="white-text mx-3">商品列表</a></h1>
+                <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
                 <button class="pull-right btn btn-warning" id="create">
                     <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
                 </button>
@@ -69,8 +69,8 @@
                                     <td  width="10">@Html.DisplayFor(modelItem => item.categoryID)</td>
 
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { productId = item.productID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { productId = item.productID })
+                                        @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
                                 </tr>
                             }
                         </tbody>
