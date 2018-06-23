@@ -3,101 +3,154 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Product</h4>
-        <hr />
-        @if (ViewBag.ResultMessage != null)
-        {
-            @Html.ValidationSummary(true, (string)ViewBag.ResultMessage, new { @class = "text-danger" })
-        }
-        <div class="form-group">
-            @Html.LabelFor(model => model.productName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.productName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
+        <hr/>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <section class="login-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 login-sec">
+                        <h2 class="text-center">建立新商品</h2>
+                        <h4>以下欄位，皆需填寫</h4>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品名稱@*@Html.LabelFor(model => model.productName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.productName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品圖檔@*@Html.LabelFor(model => model.productPicture, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.productPicture, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.productPicture, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp銷售數量@*@Html.LabelFor(model => model.salesVolume, htmlAttributes: new { @class = "control-label col-md-2" })*@ (可不填)
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.salesVolume, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.salesVolume, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.productPicture, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.productPicture, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.productPicture, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品代號@*@Html.LabelFor(model => model.storeProductId, htmlAttributes: new { @class = "control-label col-md-2" })*@ (可不填)
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.storeProductId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.storeProductId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.salesVolume, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.salesVolume, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.salesVolume, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品介紹@*@Html.LabelFor(model => model.productDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.productDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.productDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.storeProductId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.storeProductId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.storeProductId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品價錢@*@Html.LabelFor(model => model.productPrice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.productPrice)
+                                    @Html.ValidationMessageFor(model => model.productPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.productDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.productDescription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.productDescription, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp店家代號@*@Html.LabelFor(model => model.storeId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.storeId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.storeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.productPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.productPrice)
-                    @Html.ValidationMessageFor(model => model.productPrice, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品狀態@*@Html.LabelFor(model => model.productState, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.productState, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.productState, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            &nbsp&nbsp&nbsp商品類別@*@Html.LabelFor(model => model.categoryID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.categoryID, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                        <div>
+                            @Html.ActionLink("Back to List", "ManagerIndex")
+                        </div>
+
+
+
+                        </div>
+
+                    <div class="col-md-8 banner-sec">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <div class="banner-text">
+                                            <h2>This is Heaven</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <div class="banner-text">
+                                            <h2>This is Heaven</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <div class="banner-text">
+                                            <h2>This is Heaven</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+        </section>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.storeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.storeId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.storeId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.productState, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.productState, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.productState, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.categoryID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.categoryID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "ManagerIndex")
-</div>
+
+

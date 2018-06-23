@@ -22,37 +22,38 @@
             storeId=o.storeId,
             productState=o.productState,
             categoryID=o.categoryID*@
-        <dd>
+        <dd class="align-content-md-start">
             商品編號：
             @Html.DisplayFor(model => model.productID)
         </dd>
         <dd>
+           商品名稱：     
             @Html.DisplayFor(model => model.productName)
         </dd>
-        <dd>
+        <dd> 商品圖片：
             @Html.DisplayFor(model => model.productPicture)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.salesVolume)
-        </dt>
-
-        <dd>
+        <dd> 銷售數量：
+            @Html.DisplayFor(model => model.salesVolume)
+        </dd>
+        <dd> 商品代號：            
             @Html.DisplayFor(model => model.storeProductId)
         </dd>
-        <dd>
+        <dd>商品介紹：           
             @Html.DisplayFor(model => model.productDescription)
         </dd>
-        <dd>
+        <dd>商品價錢：
+           
             @Html.DisplayFor(model => model.productPrice)
         </dd>
-        <dd>
+        <dd>店家代號：
+            
             @Html.DisplayFor(model => model.storeId)
         </dd>
-        <dd>
+        <dd>目前狀態：          
             @Html.DisplayFor(model => model.productState)
         </dd>
-        <dd>
+        <dd>商品類別：
             @Html.DisplayFor(model => model.categoryID)
         </dd>
     </dl>

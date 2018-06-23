@@ -85,7 +85,7 @@ namespace task03_0606.Controllers
                 }
             }
             //失敗訊息
-            ViewBag.ResultMessage = "資料有誤，請檢查";
+            ViewBag.ResultMessage = "輸入資料有誤，請檢查";
 
             //停留在Create頁面
             return View(postback);

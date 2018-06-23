@@ -11,7 +11,7 @@
 
 
 
-    <div class="pull-right" id="toolbar">
+    <div id="toolbar">
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
@@ -25,26 +25,31 @@
                     <table class="table table-bordered" id="dataTable" width="140%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>商品編號</th>
-                                <th>商品名稱</th>
-                                <th>商品圖片</th>
-                                <th>銷售數量</th>
-                                <th>商品編號</th>
-                                <th>商品內容</th>
-                                <th>商品價錢</th>
-                                <th>店家統編</th>
-                                <th>目前狀態</th>
-                                <th>商品類別</th>
-                                <th></th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品編號: activate to sort column descending" aria-sort="ascending">商品編號</th>
+                                <th style="width: 80px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="activate to sort column descending" aria-sort="ascending"></th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品名稱: activate to sort column descending" aria-sort="ascending">商品名稱</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品圖片: activate to sort column descending" aria-sort="ascending">商品圖片</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="銷售數量: activate to sort column descending" aria-sort="ascending">銷售數量</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品代號: activate to sort column descending" aria-sort="ascending">商品代號</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品介紹: activate to sort column descending" aria-sort="ascending">商品介紹</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品價錢: activate to sort column descending" aria-sort="ascending">商品價錢</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="店家代號: activate to sort column descending" aria-sort="ascending">店家代號</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="目前狀態: activate to sort column descending" aria-sort="ascending">目前狀態</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品類別: activate to sort column descending" aria-sort="ascending">商品類別</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td width="10">@Html.DisplayFor(modelItem => item.productID)</td>
+                                    <td >@Html.DisplayFor(modelItem => item.productID)</td>
                                     @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
-                                    <td width="60">@Html.DisplayFor(modelItem => item.productName)</td>
+                                    <td>
+                                    @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
+                                    </td>
+                                    <td >@Html.DisplayFor(modelItem => item.productName)</td>
                                     <td class="ProfileImg">
                                         <img id="img1" src="~/photo/@item.productPicture" height="40" width="55" />
                                         @*<a title="Click to see the product detail" href="/admin/ProductDetail?productId=@item.productId">
@@ -58,19 +63,17 @@
                                                 }
                                             </a>*@
                                     </td>
-                                    <td  width="60">@Html.DisplayFor(modelItem => item.salesVolume)</td>
-                                    <td  width="60">@Html.DisplayFor(modelItem => item.storeProductId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.salesVolume)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.storeProductId)</td>
                                     <td id="productDescription" name="productDescription" class="alert-danger" width="200">
                                         @Html.DisplayFor(modelItem => item.productDescription)
                                     </td>
-                                    <td  width="10">$@Html.DisplayFor(modelItem => item.productPrice)</td>
-                                    <td width="10">@Html.DisplayFor(modelItem => item.storeId)</td>
-                                    <td  width="10">@Html.DisplayFor(modelItem => item.productState)</td>
-                                    <td  width="10">@Html.DisplayFor(modelItem => item.categoryID)</td>
+                                    <td>$@Html.DisplayFor(modelItem => item.productPrice)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.storeId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.productState)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.categoryID)</td>
 
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
+                                   
                                 </tr>
                             }
                         </tbody>
