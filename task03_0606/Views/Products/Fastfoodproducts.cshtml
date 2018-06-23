@@ -1,4 +1,4 @@
-﻿@model List<task03_0606.Models.FoodProduct>
+﻿@model List<task03_0606.Models.Product>
     @{
         ViewBag.Title = "Fastfoodproducts";
     }
@@ -23,7 +23,7 @@
 
 
 <div class='row'>
-    @foreach(task03_0606.Models.FoodProduct db in Model)
+    @foreach(task03_0606.Models.Product db in Model)
     {
 
         <div class="product--green col-sm-2">

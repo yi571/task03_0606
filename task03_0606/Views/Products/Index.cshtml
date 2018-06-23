@@ -9,14 +9,14 @@
       
 
    
-     <div class="card-group">
-       @foreach (task03_0606.Models.FoodCategories db in Model)
+     @*<div class="card-group">
+        (task03_0606.Models.FoodCategories db in Model)
        {
            <div class="card" style="width:200px">
-            <img class="card-img-top" src="~/photo/productsindex/@db.categoryPicture" alt="Card image cap">
+            <img class="card-img-top" src="~/photo/productsindex/db.categoryPicture" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@db.categoryName</h5>
-                <p class="card-text">@db.Description</p>
+                <h5 class="card-title">b.categoryName</h5>
+                <p class="card-text">db.Description</p>
                 <div>
                     <a href="~/Products/Drinkproducts" class="btn btn-primary">進入挑選</a>
                     
@@ -25,51 +25,62 @@
             </div>
          
         </div>
-       }
+       }*@
+    <div class="card-group">
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/d10_resized.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">飲品/湯品</h5>
+                <p class="card-text">多種不同風味飲品&湯品，讓您細細品嘗。</p>
+                <div>
+                    <a href="~/Products/Drinkproducts" class="btn btn-primary">進入挑選</a>
+                </div>
+            </div>
+        </div>
 
-        @*<div class="card" style="width:200px">
-                     <img class="card-img-top" src="~/photo/productsindex/dessert_resized.jpg" alt="Card image cap">
-                     <div class="card-body">
-                         <h5 class="card-title">美味甜點</h5>
-                         <p class="card-text">五星級甜點師傅，用心製作真材實料的頂級美味。</p>
-                         <div>
-                             <a href="~/Products/Dessertproducts" class="btn btn-primary">進入挑選</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card" style="width:200px">
-                     <img class="card-img-top" src="~/photo/productsindex/n1_resized.jpg" alt="Card image cap">
-                     <div class="card-body">
-                         <h5 class="card-title">麵食類</h5>
-                         <p class="card-text">無論是義大利麵，拉麵，還是傳統麵，麵條絕對香Q有勁！</p>
-                         <div>
-                             <a href="~/Products/Noodleproducts" class="btn btn-primary">進入挑選</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card" style="width:200px">
-                     <img class="card-img-top" src="~/photo/productsindex/r5_resized.jpg" alt="Card image cap">
-                     <div class="card-body">
-                         <h5 class="card-title">米飯類</h5>
-                         <p class="card-text">本商場有丼飯、壽司、蛋包飯，可供您多變的選擇！</p>
-                         <div>
-                             <a href="~/Products/Riceproducts" class="btn btn-primary">進入挑選</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card" style="width:200px">
-                     <img class="card-img-top" src="~/photo/productsindex/fast-food_resized.jpg" alt="Card image cap">
-                     <div class="card-body">
-                         <h5 class="card-title">速食類</h5>
-                         <p class="card-text">無論是炸雞、還是薯條，絕對讓你讚不絕口！</p>
-                         <div>
-                             <a href="~/Products/Fastfoodproducts" class="btn btn-primary">進入挑選</a>
-                         </div>
-                     </div>
-                 </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/dessert_resized.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">美味甜點</h5>
+                <p class="card-text">五星級甜點師傅，用心製作真材實料的頂級美味。</p>
+                <div>
+                    <a href="~/Products/Dessertproducts" class="btn btn-primary">進入挑選</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/n1_resized.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">麵食類</h5>
+                <p class="card-text">無論是義大利麵，拉麵，還是傳統麵，麵條絕對香Q有勁！</p>
+                <div>
+                    <a href="~/Products/Noodleproducts" class="btn btn-primary">進入挑選</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/r5_resized.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">米飯類</h5>
+                <p class="card-text">本商場有丼飯、壽司、蛋包飯，可供您多變的選擇！</p>
+                <div>
+                    <a href="~/Products/Riceproducts" class="btn btn-primary">進入挑選</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/fast-food_resized.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">速食類</h5>
+                <p class="card-text">無論是炸雞、還是薯條，絕對讓你讚不絕口！</p>
+                <div>
+                    <a href="~/Products/Fastfoodproducts" class="btn btn-primary">進入挑選</a>
+                </div>
+            </div>
+        </div>
 
-             </div>
+    </div>
 
-            </div>*@
+            </div>
 
-
+         </div>

@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 login-sec">
-                        <h2 class="text-center">建立新商品</h2>
+                        <h2 class="text-center"><i class="fa fa-plus-circle"></i> 建立新商品</h2>
                         <h4>以下欄位，皆需填寫</h4>
                         <div class="form-group">
                             &nbsp&nbsp&nbsp商品名稱@*@Html.LabelFor(model => model.productName, htmlAttributes: new { @class = "control-label col-md-2" })*@
@@ -96,11 +96,11 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
+                                <i class="fa glyphicon-ok-sign"></i><input type="submit" value="Create" class="btn btn-default" />
                             </div>
                         </div>
                         <div>
-                            @Html.ActionLink("Back to List", "ManagerIndex")
+                            <i class="fa fa-heart"></i> @Html.ActionLink("Back to List回商品列表", "ManagerIndex")
                         </div>
 
 

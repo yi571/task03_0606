@@ -1,4 +1,4 @@
-﻿@model List<task03_0606.Models.FoodProducts>
+﻿@model List<task03_0606.Models.Product>
 @{
     ViewBag.Title = "Noodleproducts";
 }
@@ -22,20 +22,20 @@
         </ul>
     </header>*@
 <div class='row'>
-    @foreach (task03_0606.Models.FoodProducts db1 in Model)
+    @foreach(task03_0606.Models.Product db1 in Model)
     {
 
         <div class='product--yellow'>
             <div class="row"></div>
             <!-- Button trigger modal -->
-            <img src='~/photo/@db1.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productId" />
+            <img src='~/photo/@db1.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productID" />
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter.@db1.productId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productId" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter.@db1.productID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productID" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle.@db1.productId">@db1.productName</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle.@db1.productID">@db1.productName</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
