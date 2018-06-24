@@ -27,14 +27,15 @@ namespace task03_0606.Controllers
                             categoryID = o.categoryID,
                             categoryName = o.categoryName,
                             Description = o.Description,
-                            categoryPicture = o.categoryPicture
+                            categoryPicture = o.categoryPicture,
+                            categoryURL=o.categoryURL
 
-                        };
+    };
             List<FoodCategories> categorieslist = query.ToList();
             return View(categorieslist);
         }
 
-
+        //管理人員-所有商品列表
         public ActionResult ManagerIndex()
         {
 
@@ -51,7 +52,7 @@ namespace task03_0606.Controllers
                             productDescription = o.productDescription,
                             productPrice = o.productPrice,
                             storeId = o.storeId,
-                            productState = o.productState,
+                            productState =o.productState,
                             categoryID = o.categoryID
                         };
             List<FoodProduct> foodproductslist = query.ToList();
@@ -199,6 +200,30 @@ namespace task03_0606.Controllers
         //        }
         //    }
         //}
+
+            //麥當勞管理介面
+        public ActionResult store00543689Index(string storeId)
+        {
+            
+            int salesVolume = 0;
+            var query = from o in dbpro.Products
+                        where o.storeId = 
+                        select new FoodProduct
+                        {
+                            productID = o.productID,
+                            productName = o.productName,
+                            productPicture = o.productPicture,
+                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
+                            storeProductId = o.storeProductId,
+                            productDescription = o.productDescription,
+                            productPrice = o.productPrice,
+                            storeId = o.storeId,
+                            productState = o.productState,
+                            categoryID = o.categoryID
+                        };
+            List<FoodProduct> foodproductslist = query.ToList();
+            return View(foodproductslist);
+        }
 
 
 

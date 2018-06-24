@@ -23,6 +23,7 @@
           <Property Name="categoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="categoryPicture" Type="varchar" MaxLength="50" />
+          <Property Name="categoryURL" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Feedbacks">
           <Key>
@@ -376,6 +377,7 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_261" FromRole="Categories" ToRole="Products" />
           <Property Name="categoryPicture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoryURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -746,6 +748,7 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="FoodCourtDBModel.Category">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="categoryURL" ColumnName="categoryURL" />
                 <ScalarProperty Name="categoryPicture" ColumnName="categoryPicture" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="categoryName" ColumnName="categoryName" />
