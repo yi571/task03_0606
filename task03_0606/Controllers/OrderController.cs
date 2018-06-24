@@ -88,7 +88,7 @@ namespace task03_0606.Controllers
                 var query = from o in db.Orders
                                  join c in db.OrderDetials on o.orderId equals c.orderId into ps
                                  from c in ps.DefaultIfEmpty()
-                                 where o.orderState == 1  && c.Product.Store.storeId == stroeId
+                                 where c.productionStatus == 1  && c.Product.Store.storeId == stroeId
                                  select new OrderDetailViewModel
                                  {
                                      orderId = o.orderId,
@@ -128,8 +128,15 @@ namespace task03_0606.Controllers
 
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities()) {
+                var result = (from o in db.OrderDetials
+                          where o.productID == productId_ok && o.orderId == orderId_ok
+                          select o).FirstOrDefault();
 
-            return View();
+            result.productionStatus= 2 ;
+            db.SaveChanges();
+            return RedirectToAction("Order_deteail_bussiness");
+            }
         }
 
         public ActionResult Order_list_history_bussiness()
