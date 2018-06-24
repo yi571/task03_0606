@@ -175,8 +175,8 @@
             <div class="row">
 
                 @foreach (task03_0606.Models.Product item in Model)
-    {
-            <div class="card text-center cardMenuItem col-sm-3 product--blue">
+        {
+            <div class="card text-center cardMenuItem product--blue col-sm-12 col-md-4 col-xl-3">
 
                 <img class="card-img-top" src="~/photo/@item.productPicture" onclick="modalShow('@item.productName','@item.productDescription','@item.productPicture' ,@item.productID)">
                 <div class="card-body">
@@ -196,7 +196,7 @@
             </div>
 }
 
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
 
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="~/photo/E1.jpg">
                     <div class="card-body">
                         <h5 class="card-title">卡啦炸雞</h5>
@@ -225,7 +225,7 @@
                     </div>
                 </div>
 
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="~/photo/E1.jpg">
                     <div class="card-body">
                         <h5 class="card-title">卡啦炸雞</h5>
@@ -242,25 +242,7 @@
                     </div>
                 </div>
 
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
-                    <img class="card-img-top" src="~/photo/E1.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">卡啦炸雞</h5>
-                        <p class="card-text"> 價格：$75</p>
-                        <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
-                    </div>
-                    <div class="card-footer">
-                        <div class='product_inner'>
-                            <button id="button1">加入購物車</button>
-                            <div class='product_overlay'>
-                                <h2>Added to basket</h2>
-                                <i class='fa fa-check'></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="~/photo/E1.jpg">
                     <div class="card-body">
                         <h5 class="card-title">卡啦炸雞</h5>
@@ -278,7 +260,25 @@
                     </div>
                 </div>
 
-                <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
+                    <img class="card-img-top" src="~/photo/E1.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">卡啦炸雞</h5>
+                        <p class="card-text"> 價格：$75</p>
+                        <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
+                    </div>
+                    <div class="card-footer">
+                        <div class='product_inner'>
+                            <button id="button1">加入購物車</button>
+                            <div class='product_overlay'>
+                                <h2>Added to basket</h2>
+                                <i class='fa fa-check'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="~/photo/E1.jpg">
                     <div class="card-body">
                         <h5 class="card-title">卡啦炸雞</h5>
@@ -294,19 +294,18 @@
                         </div>
                     </div>
                 </div>
+           </div>
 
-                <div id="page">
-                    <ul class="pagination pagination-sm">
-                        <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
-                    </ul>
-                </div>
-
-
+            <div id="page" class="card-footer">
+                <ul class="pagination pagination-sm">
+                    <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+                </ul>
             </div>
+
         </div>
     </div>
 </div>
