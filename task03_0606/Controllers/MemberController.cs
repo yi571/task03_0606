@@ -37,10 +37,10 @@ namespace task03_0606.Controllers {
             ViewBag.Title = "登入";
 
             var queryLogin = from o in db.UserInfoes  //比對手機號碼和密碼
-                             where (o.phoneNum == phoneNum && o.pwd == pwd)
+                             where (o.phoneNum == phoneNum && o.pwd == pwd && o.userState == 1)
                              select new { o.UserInfoId, o.lastName, o.firstName, o.userRank };
             var queryStoreLogin = from o in db.Stores //店家登入
-                                  where (o.storeId == phoneNum && o.storePwd == pwd)
+                                  where (o.storeId == phoneNum && o.storePwd == pwd && o.storeState == 1)
                                   select new { o.storeId, o.storeName };
             if (queryLogin.Count() > 0) {
                 Session["logState"] = "login";    //將登入狀態設為登入
@@ -119,7 +119,8 @@ namespace task03_0606.Controllers {
                         firstName = FirstName,
                         pwd = Password1,
                         phoneNum = cellPhone,
-                        userRank = "normalUser"
+                        userRank = "normalUser",
+                        userState = 1
                     };
                     db.UserInfoes.Add(addMember);
                     db.SaveChanges();
@@ -182,12 +183,14 @@ namespace task03_0606.Controllers {
             return View();
         }
 
+        //商店列表
         public ActionResult StoreTable(string storeId) {
             if ((string)Session["identity"] != "superUser") {
                 return RedirectToAction("Member", "Member");
             };
 
             var queryStore = from o in db.Stores
+                             where o.storeState == 1
                              select o;
             ViewBag.storeList = queryStore;
             ViewBag.Test = "未設定";
@@ -219,6 +222,22 @@ namespace task03_0606.Controllers {
             return View();
         }
 
+        //移除商店
+        public ActionResult DeleteStore(string storeId) {  
+            if ((string)Session["identity"] != "superUser") {
+                return RedirectToAction("Member", "Member");
+            };
+
+            var queryChangeStoreState = (from o in db.Stores
+                                        where o.storeId == storeId
+                                        select o).First();
+
+            queryChangeStoreState.storeState = 0;
+            db.SaveChanges();
+
+            return RedirectToAction("StoreTable", "Member");
+        }
+
         public ActionResult AddStore() {
             if ((string)Session["identity"] != "superUser") {
                 return RedirectToAction("Member", "Member");
@@ -226,6 +245,7 @@ namespace task03_0606.Controllers {
             return View();
         }
 
+        //新增商店
         [HttpPost]
         public ActionResult AddStore(string storeName, string storePhone, string storeId, string Password1, string ConfirmPassword, string cellPhone, string storeDescription) {
             var querystoreId = from o in db.Stores
@@ -303,6 +323,7 @@ namespace task03_0606.Controllers {
             return View();
         }
 
+        //post編輯商店
         [HttpPost]
         public ActionResult EditStore(string storeName, string storePhone, string storeId, string Password1, string ConfirmPassword, string cellPhone, string storeDescription) {
             if ((string)Session["identity"] != "store") {
@@ -366,6 +387,7 @@ namespace task03_0606.Controllers {
                 return RedirectToAction("Member", "Member");
             };
             var queryUserList = from o in db.UserInfoes
+                                where o.userState == 1
                                 select o;
             ViewBag.userList = queryUserList.ToList();
             ViewBag.testA = UserInfoId;  //測試用
