@@ -1,0 +1,108 @@
+﻿@model List<task03_0606.Models.FoodProduct>
+
+@{
+    ViewBag.Title = "store00543689Index";
+}
+
+<h2>store00543689Index</h2>
+
+<link href="~/css/A1style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
+<link rel="stylesheet" href="responsive-tables.css">
+
+<div class="container-fluid">
+
+
+
+    <div id="toolbar">
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h1><i class="fa fa-table"><a href="~/Views/Products/store00543689Index.cshtml" class="white-text mx-3">商品列表</a></h1></i>
+                <button class="pull-right btn btn-warning" id="create">
+                    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="140%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品編號: activate to sort column descending" aria-sort="ascending">商品編號</th>
+                                <th style="width: 80px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="activate to sort column descending" aria-sort="ascending"></th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品名稱: activate to sort column descending" aria-sort="ascending">商品名稱</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品圖片: activate to sort column descending" aria-sort="ascending">商品圖片</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="銷售數量: activate to sort column descending" aria-sort="ascending">銷售數量</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品代號: activate to sort column descending" aria-sort="ascending">商品代號</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品介紹: activate to sort column descending" aria-sort="ascending">商品介紹</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品價錢: activate to sort column descending" aria-sort="ascending">商品價錢</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="店家代號: activate to sort column descending" aria-sort="ascending">店家代號</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="目前狀態: activate to sort column descending" aria-sort="ascending">目前狀態</th>
+                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品類別: activate to sort column descending" aria-sort="ascending">商品類別</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.productID)</td>
+                                    @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.productName)</td>
+                                    <td class="ProfileImg">
+                                        <img id="img1" src="~/photo/@item.productPicture" height="40" width="55" />
+                                        @*<a title="Click to see the product detail" href="/admin/ProductDetail?productId=@item.productId">
+                                                @{
+                                                    if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId)))
+                                                    {
+                                                        <img src="@(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId) " />
+                                                    }
+                                                    else
+                                                    { <img src="~/photo/" alt="" />}
+                                                }
+                                            </a>*@
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.salesVolume)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.storeProductId)</td>
+                                    <td id="productDescription" name="productDescription" class="alert-danger" width="200">
+                                        @Html.DisplayFor(modelItem => item.productDescription)
+                                    </td>
+                                    <td>$@Html.DisplayFor(modelItem => item.productPrice)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.storeId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.productState)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.categoryID)</td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © 美食廣場 2018</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+
+
+</div>
+

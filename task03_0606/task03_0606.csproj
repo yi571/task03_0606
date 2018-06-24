@@ -110,6 +110,7 @@
     <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="create1.txt" />
+    <Content Include="css\A1style.css" />
     <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -542,6 +543,7 @@
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\store00543689Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -202,12 +202,11 @@ namespace task03_0606.Controllers
         //}
 
             //麥當勞管理介面
-        public ActionResult store00543689Index(string storeId)
+        public ActionResult store00543689Index()
         {
-            
             int salesVolume = 0;
             var query = from o in dbpro.Products
-                        where o.storeId = 
+                        where o.storeId == ("00543689")
                         select new FoodProduct
                         {
                             productID = o.productID,
@@ -227,9 +226,8 @@ namespace task03_0606.Controllers
 
 
 
-
-        //商品頁面 - 飲品&湯品-類別代號2
-        public ActionResult Drinkproducts()
+    //商品頁面 - 飲品&湯品-類別代號2
+    public ActionResult Drinkproducts()
         {
             var query = from o in dbpro.Products
                         where o.categoryID == 2
