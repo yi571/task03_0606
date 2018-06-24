@@ -1,4 +1,4 @@
-﻿@model List<task03_0606.Models.orderDetailViewModel>
+﻿@model List<task03_0606.Models.OrderDetailViewModel>
 
 @{
     ViewBag.Title = "Order_deteail_bussiness";
@@ -156,29 +156,29 @@
                 <th>單價</th>
                 <th>小計</th>
                 <th>備註</th>
-                <th>結單時間</th>
+                <th>產品狀態</th>
                 <th></th>
             </tr>
 
             
 
-                @foreach (task03_0606.Models.orderDetailViewModel order in Model)
+                @foreach (task03_0606.Models.OrderDetailViewModel order in Model)
 
         {
         <tr>
-            <td data-th="接單時間："> @order.OrderTime </td>
-            <td data-th="客戶電話："> @order.CustomerPhone </td>
-            <td data-th="訂單單號："> @order.OrderId</td>
-            <td data-th="座位："> @order.SeatID</td>
-            <td data-th="產品編號：" style="display:none"> @order.ProductID</td>
-            <td data-th="產品編號："> @order.ProductID</td>
-            <td data-th="產品名稱："> @order.ProductName</td>
-            <td data-th="數量："> @order.OrderCount</td>
-            <td data-th="單價："> @order.UnitPrice</td>
-            <td data-th="小計："> @(@order.UnitPrice * @order.OrderCount)</td>
-            <td data-th="備註："> @order.Note</td>
-            <td data-th="結單時間："> @order.FinshTime </td>
-            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
+            <td data-th="接單時間："> @order.orderTime </td>
+            <td data-th="客戶電話："> @order.customerPhone </td>
+            <td data-th="訂單單號："> @order.orderId</td>
+            <td data-th="座位："> @order.seatID</td>
+            <td data-th="產品編號：" style="display:none"> @order.productID</td>
+            <td data-th="產品編號："> @order.productID</td>
+            <td data-th="產品名稱："> @order.productName</td>
+            <td data-th="數量："> @order.productCount</td>
+            <td data-th="單價："> @order.unitPrice</td>
+            <td data-th="小計："> @(order.unitPrice * order.productCount)</td>
+            <td data-th="備註："> @order.customerNote</td>
+            <td data-th="產品狀態："> @order.productionStatus </td>
+            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.productID,@order.orderId)">出餐</button> </td>
         </tr>
 
 }

@@ -24,7 +24,7 @@ namespace task03_0606
             Session["userPhone"] = "0972345678";
             Session["seat"] = 5;
 
-
+            Session["storeId"] = 21354423;
         }
 
     }

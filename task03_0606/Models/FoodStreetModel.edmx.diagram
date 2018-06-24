@@ -6,12 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="34a5378cec3443dd99093c40a53e5bd0" Name="Diagram1">
         <EntityTypeShape EntityType="FoodCourtDBModel.Carte" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtDBModel.Category" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Category" Width="1.5" PointX="8.625" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodCourtDBModel.Feedback" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtDBModel.OrderDetial" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.OrderDetial" Width="1.875" PointX="8.25" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodCourtDBModel.Order" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtDBModel.Product" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodCourtDBModel.Store" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Product" Width="1.5" PointX="6.625" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodCourtDBModel.Store" Width="1.5" PointX="4.875" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodCourtDBModel.streetName" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodCourtDBModel.TableListe" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodCourtDBModel.UserAddress" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />

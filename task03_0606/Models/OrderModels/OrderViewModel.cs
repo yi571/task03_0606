@@ -5,24 +5,23 @@ using System.Web;
 
 namespace task03_0606.Models
 {
-
-   
-
-    public class orderDetailViewModel
+    
+    public class OrderDetailViewModel
     {
-        public int OrderId { get; set; }
-        public string OrderTime { get; set; }
-        public int SeatID { get; set; }
-        public string CustomerPhone { get; set; }
-        public string FinshTime { get; set; }
-        public int? MemberID { get; set; }
-        public string MemberName { get; set; }
-        public int? OrderCount { get; set; }
-        public string Note { get; set; }
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }
-        public int? UnitPrice { get; set; }
-
+        public int orderId { get; set; }
+        public string orderTime { get; set; }
+        public int seatID { get; set; }
+        public string customerPhone { get; set; }
+        
+        public string storeID { get; set; }
+        public string storeName { get; set; }
+        
+        public int productID { get; set; }
+        public string productName { get; set; }
+        public int productCount { get; set; }
+        public int? unitPrice { get; set; }
+        public string customerNote { get; set; }
+        public int productionStatus { get; set; }
     }
 
 
@@ -54,16 +53,6 @@ namespace task03_0606.Models
 
 
 
-
-    public class orderSubmitViewModel
-    {
-        public int OrderId { get; set; }
-        public string OrderTime { get; set; }
-        public int SeatID { get; set; }
-        public string CustomerPhone { get; set; }
-        public string FinshTime { get; set; }
-       
-    }
 
 
 

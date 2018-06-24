@@ -344,7 +344,7 @@
     <Compile Include="Models\OrderDetial.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\orderViewModel.cs" />
+    <Compile Include="Models\OrderModels\OrderViewModel.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
@@ -507,7 +507,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\OrderModels\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <ItemGroup>
