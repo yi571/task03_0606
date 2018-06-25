@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["identity"].ToString() == "normalUser") {
+                
                     @*顧客專用-餐廳列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
                         <a class="nav-link" href="~/Home/Restaurent">
@@ -71,32 +71,7 @@
                         </a>
                     </li>
 
-
-                }
-                @if (Session["identity"].ToString() == "store") {
-                    @*商家專用-未出餐訂單-訂單別*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
-                        <a class="nav-link" href="~/Order/Order_list_bussiness">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">未出餐訂單-訂單別</span>
-                        </a>
-                    </li>
-
-                    @*商家專用-未出餐訂單-明細別*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-明細別">
-                        <a class="nav-link" href="~/Order/Order_deteail_bussiness">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">未出餐訂單-明細別</span>
-                        </a>
-                    </li>
-                    @*商家專用-產品列表*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品列表">
-                        <a class="nav-link" href="~/#/Product?userID=1">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">產品列表</span>
-                        </a>
-                    </li>
-                }
+                
                 @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
                     <a class="nav-link" href="~/Home/Respone">
@@ -117,106 +92,15 @@
             @*上方導覽*@
             <ul class="navbar-nav ml-auto">
 
-                @if (Session["identity"].ToString() == "store") {
-                    @*商家專用-新單訊息*@
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-fw fa-bell"></i>
-                            <span class="indicator text-primary d-none d-lg-block">
-                                <i class="fa fa-fw fa-circle">10</i>  @*新增筆數*@
-                            </span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                            <h6 class="dropdown-header">新訂單：</h6>
-
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-item">
-                                <a href="/Home/Order?orderID=1"><strong>訂單1</strong> </a>
-                                <span class="small float-right text-muted">新增時間 11:21 AM</span>
-                                <div class="dropdown-message small"> 桌號: 1 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
-                            </div>
-
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-item">
-                                <a href="/Home/Order?orderID=2"><strong>訂單2</strong> </a>
-                                <span class="small float-right text-muted">新增時間 11:21 AM</span>
-                                <div class="dropdown-message small"> 桌號: 2 號, 訂餐內容: .... Hey there! This new version of SB Admin is Hey there! This new version of SB Admin is</div>
-                            </div>
-
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item small" href="~/Order/Order_list_bussiness">詳細訂單明細</a>
-                        </div>
-                    </li>
-                }
-                @if (Session["identity"].ToString() == "normalUser") {
+                
+               
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
                     </li>
-                    @*<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-fw fa-shopping-cart"></i>
-                                <span class="indicator text-warning d-none d-lg-block">
-                                    <i class="fa fa-fw fa-circle">20</i>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">購物車</h6>
+                    
 
-                                <div class="dropdown-divider"></div>
-                                <div class="dropdown-item">
-                                    <span class="text-danger">
-                                        <a href="~/#/Products?productID=1">
-                                            <strong> 產品1 </strong>
-                                        </a>
-                                        <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
-                                    </span>
-                                    <div class="dropdown-message small">
-                                        This is an automated server response message. All systems are online.
-                                    </div>
-                                </div>
-
-
-                                <div class="dropdown-divider"></div>
-                                <div class="dropdown-item">
-                                    <span class="text-danger">
-                                        <a href="~/#/Products?productID=2">
-                                            <strong> 產品2 </strong>
-                                        </a>
-                                        <a href="~/#/Delete?productID=2" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
-                                    </span>
-                                    <div class="dropdown-message small">
-                                        This is an automated server response message. All systems are online.
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
-                                    <span class="text-success">
-                                        <strong>
-                                            <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
-                                        </strong>
-                                    </span>
-                                    <span class="small float-right text-muted">11:21 AM</span>
-                                    <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                                </a>
-
-
-                                <div class="dropdown-divider"></div>
-                                <div class="dropdown-item small">
-                                    <span>
-                                        <a href="~/#/ShoppingList?userID=1">詳細購物明細</a>
-                                        <a href="~/#/Payment" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-dollar"></i>結帳</a>
-                                    </span>
-                                </div>
-                            </div>
-                        </li>*@
-
-                }
+                
                 @*搜尋列*@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
@@ -235,7 +119,6 @@
                 <li class="nav-item">
 
                     @{
-                        string diaplayName = Session["UserAllName"].ToString();
                         string strUrl = "";
                         string faStr = "out";
                         string logStr = "登出";
@@ -244,11 +127,11 @@
                         if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
                             strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
                             faStr = "in";
-                            logStr = "親愛的顧客，您好 登入";
+                            logStr = "登入";
                             toggleStr = "";
                             targetStr = "";
                         }
-                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">@diaplayName，您好！
+                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">
                             <i class="fa fa-fw fa-sign-@faStr"></i>@logStr
                         </a>
                     }

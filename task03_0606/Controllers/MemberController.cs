@@ -48,7 +48,7 @@ namespace task03_0606.Controllers {
                 Session["userInfoId"] = queryLogin.ToArray()[0].UserInfoId;
                 Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    Session["lastPage"] = "/Products/Index";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
             } else if (queryStoreLogin.Count() > 0) {
@@ -57,7 +57,7 @@ namespace task03_0606.Controllers {
                 Session["userInfoId"] = queryStoreLogin.ToArray()[0].storeId;
                 Session["UserAllName"] = queryStoreLogin.ToArray()[0].storeName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    Session["lastPage"] = "/Products/Index";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
             } else {
@@ -72,7 +72,7 @@ namespace task03_0606.Controllers {
             Session.Clear();
             Session["logState"] = "";   //登出則將logState設為空字串
             Session["identity"] = "";
-            return RedirectToAction("Member", "Member");  //此處應重導回首頁
+            return RedirectToAction("Index", "Products");  //此處應重導回首頁
         }
 
         public ActionResult EasyRegister() {  //只需手機號碼的註冊

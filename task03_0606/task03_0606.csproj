@@ -562,6 +562,9 @@
     <Content Include="Views\Shared\_CartList.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\_storeUser_LayoutPage.cshtml" />
+    <Content Include="Views\_superUser_LayoutPage1.cshtml" />
+    <Content Include="Views\_normal_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
