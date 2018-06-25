@@ -70,7 +70,6 @@ namespace task03_0606.Models.Cart
             };
             this.cartItemList.Add(cartItem);
             return true;
-
         }
 
         public bool RemoveProduct(int ProductId) {
@@ -84,6 +83,37 @@ namespace task03_0606.Models.Cart
             }
             else { this.cartItemList.Remove(findItem); }
             return true;
+        }
+
+        public bool EditCartProduct(int ItemId_edit, int quantity_edit ,string ItemNoet_edit)
+        {
+            var findItem = this.cartItemList
+                          .Where(s => s.produtctId == ItemId_edit)
+                          .Select(s => s)
+                          .FirstOrDefault();
+
+            if (findItem == default(Models.Cart.CartItem))
+            {
+                using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+                {
+                    var product = (from s in db.Products
+                                   where s.productID == ItemId_edit
+                                   select s).FirstOrDefault();
+
+                    if (product != default(Models.Product))
+                    {
+                        this.AddProduct(product);
+                    }
+
+                }
+
+            }
+
+            else { findItem.quantity = quantity_edit;
+                findItem.note = ItemNoet_edit;
+            }
+            return true;
+
         }
 
         public List<OrderDetial>ToOrderDetail(int id) {
@@ -105,6 +135,11 @@ namespace task03_0606.Models.Cart
                     }
 
             return newOrderDetail ;
+        }
+
+        public bool ClearCart() {
+            this.cartItemList.RemoveAll(it => true);
+            return true;
         }
 
 

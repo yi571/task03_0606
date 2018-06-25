@@ -13,6 +13,7 @@ namespace task03_0606.Models.Cart
         public decimal price { set; get; }
         public int quantity { set; get; }
         public string picture { set; get; }
+        public string note { set; get; }
         public decimal amount {
             get {
                 return this.price * this.quantity ;

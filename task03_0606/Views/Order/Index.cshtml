@@ -101,9 +101,7 @@
                 <table class="table-responsive-sm rwd-table">
                     <tr>
                         <th>產品圖片</th>
-                        <th style="display:none">產品編號</th>
                         <th>產品名稱</th>
-                        <th style="display:none">店家編號</th>
                         <th>店家</th>
                         <th>數量</th>
                         <th>單價</th>
@@ -115,14 +113,12 @@
                     {
                         <tr>
                             <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/photo/@item.picture" /> </td>
-                            <td style="display:none" data-th="產品編號">@item.produtctId</td>
                             <td data-th="產品名稱：">@item.productName</td>
-                            <td style="display:none" data-th="店家編號">1</td>
                             <td data-th="店家：">麥當勞</td>
-                            <td data-th="數量："><input size="1" style="text-align:center; border:1px solid black;" value="@item.quantity" /></td>
+                            <td data-th="數量："><input size="1" id="itemCount" style="text-align:center; border:none" value="@item.quantity" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
                             <td data-th="單價：">@item.price</td>
                             <td data-th="小計：">@(item.price * item.quantity)</td>
-                            <td data-th="備註："><input size="5" style="text-align:right; border:1px solid black;" /></td>
+                            <td data-th="備註："><input size="5" id="itemNote"style="text-align:right; border:none;" value="@item.note" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
                             <td>
                                 <a onclick="RemoveFromCart(@item.produtctId)" class="btn btn-sm btn-danger pull-right text-white" aria-label="Delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -157,6 +153,29 @@
             </div>
         </div>
     </div>
+
+<script>
+    //修改數量
+    function itemEdit(itemId, count, note) {
+        alert("id：" + itemId + "  count：" + count + "  note" + note);
+        $.ajax({
+            type : "post",
+            url:"@Url.Action("EditCartItem","Cart")",
+            data: {
+                ItemId_edit: itemId,
+                quantity_edit: count,
+                ItemNoet_edit: note,
+            }
+        })
+            .done(function (msg) {
+                window.location.reload();
+                //alert("id：" + itemId + "  count：" + count + "  note" + note);
+            //$("li#Cart").html(msg);
+            
+        })
+    }
+
+</script>
 
 
 

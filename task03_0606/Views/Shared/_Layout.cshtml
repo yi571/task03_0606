@@ -298,6 +298,7 @@
 <script>
     $(document).ready(function () { console.log("ready"); });
 
+    //產品加入購物車
     function AddToCart(productId) {
         $.ajax({
             type: "post",
@@ -308,7 +309,7 @@
             $("#Modal").modal("hide");
             })
     }
-
+    //產品移除購物車
     function RemoveFromCart(productId) {
         $.ajax({
             type: "post",

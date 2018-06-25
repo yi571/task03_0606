@@ -30,17 +30,17 @@
             <div class="dropdown-divider"></div>
             <div class="dropdown-item ">
 
-                <a href="~/#/Products?productID=@cartItem.produtctId">
+                @*<a href="~/#/Products?productID=@cartItem.produtctId">*@
                     <strong> @cartItem.productName </strong>
 
-                </a>
+                @*</a>*@
                 @*<p>@string.Format("數量：{0}  單價：{1}", cartItem.quantity, cartItem.price)</p>*@
                 <a onclick="RemoveFromCart(@cartItem.produtctId)" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
                     <i class="fa fa-trash-o text-white" aria-hidden="true"></i>
                 </a>
 
                 <div class="dropdown-message">
-                    <p id="cartItemMessage">@string.Format("數量：{0}  單價：{1}", cartItem.quantity, cartItem.price)</p>
+                    <p id="cartItemMessage">@string.Format("數量：{0} &nbsp 單價：{1}", cartItem.quantity, cartItem.price)</p>
                 </div>
             </div>
             }

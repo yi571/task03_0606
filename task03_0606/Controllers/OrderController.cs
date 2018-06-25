@@ -36,7 +36,7 @@ namespace task03_0606.Controllers
                 return View();
         }
 
-        //購物車清單 ==>訂單
+        //購物車清單 ==> 訂單
         public ActionResult OrderPayment()
         {
             //將存在session中的 電話取出
@@ -69,7 +69,8 @@ namespace task03_0606.Controllers
                db.SaveChanges();      
                  //清空購物車session   
                      
-            } return Content("訂購成功");
+            } //return Content("訂購成功");
+                return RedirectToAction("ClearFromCart", "Cart");
 
             }
             return View();
@@ -126,16 +127,20 @@ namespace task03_0606.Controllers
             return View();
         }
 
+        //
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
+            int test = productId_ok;
+
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities()) {
                 var result = (from o in db.OrderDetials
                           where o.productID == productId_ok && o.orderId == orderId_ok
                           select o).FirstOrDefault();
 
-            result.productionStatus= 2 ;
-            db.SaveChanges();
-            return RedirectToAction("Order_deteail_bussiness");
+                result.productionStatus= 2 ; 
+                db.SaveChanges();
+                ViewBag.Message = string.Format("確定訂單{0}的{1}出餐", result.orderId, result.Product.productName);
+                return Json(true);
             }
         }
 
