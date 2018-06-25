@@ -1,50 +1,152 @@
-﻿@model List<task03_0606.Models.OrderList>
+﻿@model List<task03_0606.Models.Order>
 @{
     ViewBag.Title = "Order_list_bussiness";
-}
+
+    }
+<style>
+
+    .cardMenuItem {
+        border: none;
+        font-weight: 700;
+    }
+</style>
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">訂單明細</li>
+    <li class="breadcrumb-item">
+        <a href="~/Home/Index">詳細菜單</a>
+    </li>
+    <li class="breadcrumb-item active">未出餐清單 <small class="pull-right text-muted">Updated yesterday at 11:59 PM</small></li>
+    
 </ol>
-<div class="col-xl-12 col-sm-12 mb-12">
-    <div class="card-header">
-        <i class="fa fa-table"></i>未出餐清單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive table-hover">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>接單時間</th>
-                        <th>客戶電話</th>
-                        <th>訂單單號</th>
-                        <th>座位</th>
-                        <th>結單時間</th>
-                        
-                    </tr>
-                </thead>
 
-                <tbody>
 
-                    @foreach (task03_0606.Models.OrderList order in Model)
 
-                    {
-                        
-                        <tr class="orderListItem">
-                            <td>@string.Format("{0:T}", Convert.ToDateTime(order.OrderTime))</td>
-                            <td>@order.CustomerPhone</td>
-                            <td>@order.OrderId</td>
-                            <td>@order.SeatID</td>
-                            <td><button id="orderOK1" type="button" class="btn btn-primary">出餐</button></td>
-                        </tr>
-                    }
-                   
-                </tbody>
-            </table>
+        <div class="row">
+            @foreach (var order in Model)
+            {
+                <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+                    <div class="card-header bg-success">
+                        <p class="card-text text-white">
+                            桌號：@order.tableId &nbsp 電話：@order.phoneNum <br />
+                            <small class="text-white">@string.Format("{0:T}", Convert.ToDateTime(order.orderDate))</small>
+                            <button class="btn btn-sm btn-success pull-right" disabled>@order.orderId+出餐</button>
+                        </p>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @{
+
+                            using (task03_0606.Models.FoodCourtDBEntities db = new task03_0606.Models.FoodCourtDBEntities())
+                            {
+                               
+                                string stroeId = Session["storeId"].ToString();
+
+                                var detailList = (from o in db.OrderDetials
+                                                  where o.orderId == order.orderId &&  o.Product.Store.storeId == stroeId
+                                                  select o).ToList();
+
+                                foreach (var detail in detailList)
+                                {
+                                    <li class="list-group-item container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img style="width:50px; height:40px" src="~/photo/@detail.Product.productPicture">
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
+                                                <p class="card-text">@((detail.productionStatus)==1 ? "準備中":"OK")</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    }
+                                }
+                            }
+                    @*@foreach (var detail in detailList) {
+                        <li class="list-group-item container-fluid">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img style="width:50px; height:40px" src="~/@detail.Product.productPicture">
+                                </div>
+                                <div class="col-xs-9">
+                                    <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
+                                </div>
+                            </div>
+                        </li>
+                        }*@
+                       
+                        @*<li class="list-group-item container-fluid">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                                </div>
+                                <div class="col-xs-9">
+                                    <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：去冰,無糖</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item container-fluid">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                                </div>
+                                <div class="col-xs-9">
+                                    <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                                </div>
+                            </div>
+                        </li>*@
+
+                     </ul>
+                </div>
+            }
+
+
+
+
+            @*<div class="table-responsive table-hover">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>接單時間</th>
+                                <th>客戶電話</th>
+                                <th>訂單單號</th>
+                                <th>座位</th>
+                                <th>結單時間</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (task03_0606.Models.OrderList order in Model)
+
+                            {
+
+                                <tr class="orderListItem">
+                                    <td>@string.Format("{0:T}", Convert.ToDateTime(order.OrderTime))</td>
+                                    <td>@order.CustomerPhone</td>
+                                    <td>@order.OrderId</td>
+                                    <td>@order.SeatID</td>
+                                    <td><button id="orderOK1" type="button" class="btn btn-primary">出餐</button></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>*@
         </div>
-    </div>
-</div>
 
+<div class="row"></div>
+<div id="page">
+    <ul class="pagination pagination-sm">
+        <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+    </ul>
+</div>
+</div>
 
 <!-- Modal -->
 @*訂單明細彈跳視窗*@
@@ -201,7 +303,90 @@
         })
     })
 
+    $(function () {
 
+        //實現分頁思路:
+        var pageSize = 8;      //每頁顯示數據條數
+        var currentPage = 1;   //當前頁數
+        var prevPage = 0;
+        var totalSize = $(".cardMenuItem").length; //獲取總數據
+        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
+        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
+
+
+        //移除原有 .pagination 裡的元素 , append "前一頁" li
+        $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
+        //依總分頁數 , append 各分頁 li
+        for (var index = currentPage; index <= totalPage; index++) {
+            $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
+        }
+        //append "後一頁" li
+        $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
+
+
+        //實現下一頁
+        $(".next").click(function () {
+            if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
+                return false;
+            } else {//不是最後一頁，顯示應該顯示的數據.
+                $(".current_page").text(++currentPage);  //當前頁數先+1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+
+            }
+        });
+
+        //實現上一頁
+        $(".prev").click(function () {
+            if (currentPage == 1) {//當前頁數==1，禁止上一頁
+                return false;
+            } else {
+                $(".current_page").text(--currentPage);  //當前頁數先-1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+
+        //選擇特定頁
+        $(".pageItems").click(function () {
+            //alert(this.innerText);
+            prevPage = currentPage;
+            currentPage = this.innerText;
+
+            //alert($(".pagination").find("li")[0].innerText);
+            //加入page-item  active
+            //$(".pagination").find("li")[currentPage].addClass('active');
+
+            var start = pageSize * (currentPage - 1);
+            var end = pageSize * currentPage;
+            $.each($('.cardMenuItem'), function (index, item) {
+                if (index >= start && index < end) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
+
+        });
+
+    });
 
 </script>
 

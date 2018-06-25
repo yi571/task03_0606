@@ -66,6 +66,7 @@ namespace task03_0606.Models.Cart
                 productName = product.productName,
                 price = product.productPrice,
                 picture = product.productPicture,
+                storeName = product.Store.storeName,
                 quantity = 1,
             };
             this.cartItemList.Add(cartItem);

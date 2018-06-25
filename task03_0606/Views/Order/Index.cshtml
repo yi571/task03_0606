@@ -114,11 +114,11 @@
                         <tr>
                             <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/photo/@item.picture" /> </td>
                             <td data-th="產品名稱：">@item.productName</td>
-                            <td data-th="店家：">麥當勞</td>
-                            <td data-th="數量："><input size="1" id="itemCount" style="text-align:center; border:none" value="@item.quantity" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
+                            <td data-th="店家：">@item.storeName>
+                            <td data-th="數量："><input size="1" id="itemCount" style="text-align:center; border:none" value="@item.quantity" onblur="itemEdit(@item.produtctId, $(this).val(), '')"/></td>
                             <td data-th="單價：">@item.price</td>
                             <td data-th="小計：">@(item.price * item.quantity)</td>
-                            <td data-th="備註："><input size="5" id="itemNote"style="text-align:right; border:none;" value="@item.note" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
+                            <td data-th="備註："><input size="5" id="itemNote"style="text-align:right; border:none;" value="@item.note" onblur="itemEdit(@item.produtctId, '' ,$(this).val())"/></td>
                             <td>
                                 <a onclick="RemoveFromCart(@item.produtctId)" class="btn btn-sm btn-danger pull-right text-white" aria-label="Delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -157,7 +157,7 @@
 <script>
     //修改數量
     function itemEdit(itemId, count, note) {
-        alert("id：" + itemId + "  count：" + count + "  note" + note);
+        //alert("id：" + itemId + "  count：" + count + "  note" + note);
         $.ajax({
             type : "post",
             url:"@Url.Action("EditCartItem","Cart")",
@@ -170,7 +170,7 @@
             .done(function (msg) {
                 window.location.reload();
                 //alert("id：" + itemId + "  count：" + count + "  note" + note);
-            //$("li#Cart").html(msg);
+                //$("li#Cart").html(msg);
             
         })
     }

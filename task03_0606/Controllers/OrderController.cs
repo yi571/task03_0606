@@ -78,7 +78,7 @@ namespace task03_0606.Controllers
 
         }
 
-        //廠商未出餐清單
+        //廠商未出餐訂單明細清單
         public ActionResult Order_deteail_bussiness()
         {
             string stroeId = Session["storeId"].ToString();
@@ -112,11 +112,57 @@ namespace task03_0606.Controllers
             }
     }
 
+        //單筆訂單明細出餐
+        public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
+        {
+            int test = productId_ok;
+
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var result = (from o in db.OrderDetials
+                              where o.productID == productId_ok && o.orderId == orderId_ok
+                              select o).FirstOrDefault();
+
+                result.productionStatus = 2;
+                db.SaveChanges();
+                return Json(true);
+            }
+        }
 
         public ActionResult Order_list_bussiness() {
-            
+           
+            string stroeId = Session["storeId"].ToString();
 
-            return View();
+            //依結單時間=null &　廠商編號，篩選廠商訂單明細
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var query = from o in db.OrderDetials
+                            join c in db.Orders
+                            on new { OrderId = o.orderId } equals
+                               new { OrderId = c.orderId } into temp
+                            from ds in temp.DefaultIfEmpty()
+                            where o.Product.storeId == stroeId   && o.Order.orderState == 1
+                            select ds;
+
+                List<Order> orderDetailList = query.ToList();
+
+
+                var queryByID = from o in orderDetailList
+                                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate } into g
+                                select new Order
+                                {
+                                    orderId = g.Key.orderId,
+                                    phoneNum = g.Key.phoneNum,
+                                    tableId = g.Key.tableId,
+                                    //OrderTime =string.Format("{0:T}", Convert.ToDateTime( g.Key.OrderTime))
+                                    orderDate = g.Key.orderDate,
+                                };
+
+
+                List<Order> orders = queryByID.ToList();
+
+                return View(orders);
+            }
         }
         [HttpPost]
         public ActionResult Order_list_bussiness(int OrderId)
@@ -127,22 +173,7 @@ namespace task03_0606.Controllers
             return View();
         }
 
-        //
-        public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
-        {
-            int test = productId_ok;
-
-            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities()) {
-                var result = (from o in db.OrderDetials
-                          where o.productID == productId_ok && o.orderId == orderId_ok
-                          select o).FirstOrDefault();
-
-                result.productionStatus= 2 ; 
-                db.SaveChanges();
-                ViewBag.Message = string.Format("確定訂單{0}的{1}出餐", result.orderId, result.Product.productName);
-                return Json(true);
-            }
-        }
+        
 
         public ActionResult Order_list_history_bussiness()
         {
