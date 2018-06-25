@@ -16,22 +16,14 @@ namespace task03_0606.Controllers
     {
 
 
-        FoodCourtDBEntities dbpro = new FoodCourtDBEntities();
+        FoodCourtDBEntities db = new FoodCourtDBEntities();
 
         // GET: Products
         public ActionResult Index()
         {
-            var query = from o in dbpro.Categories
-                        select new FoodCategories
-                        {
-                            categoryID = o.categoryID,
-                            categoryName = o.categoryName,
-                            Description = o.Description,
-                            categoryPicture = o.categoryPicture,
-                            categoryURL=o.categoryURL
-
-    };
-            List<FoodCategories> categorieslist = query.ToList();
+            var query = from o in db.Categories
+                        select o;
+            var categorieslist = query.ToList();
             return View(categorieslist);
         }
 
@@ -41,7 +33,7 @@ namespace task03_0606.Controllers
 
 
             int salesVolume = 0;
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         select new FoodProduct
                         {
                             productID = o.productID,
@@ -152,7 +144,7 @@ namespace task03_0606.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product pd = dbpro.Products.Find(productID);
+            Product pd = db.Products.Find(productID);
             if (pd == null)
             {
                 return HttpNotFound();
@@ -165,9 +157,9 @@ namespace task03_0606.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int productID)
         {
-            Product product = dbpro.Products.Find(productID);
-            dbpro.Products.Remove(product);
-            dbpro.SaveChanges();
+            Product product = db.Products.Find(productID);
+            db.Products.Remove(product);
+            db.SaveChanges();
             return RedirectToAction("ManagerIndex");
         }
 
@@ -205,7 +197,7 @@ namespace task03_0606.Controllers
         public ActionResult store00543689Index()
         {
             int salesVolume = 0;
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.storeId == ("00543689")
                         select new FoodProduct
                         {
@@ -229,7 +221,7 @@ namespace task03_0606.Controllers
     //商品頁面 - 飲品&湯品-類別代號2
     public ActionResult Drinkproducts()
         {
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.categoryID == 2
                         select new FoodProduct
                         {
@@ -247,7 +239,7 @@ namespace task03_0606.Controllers
         //商品頁面 - 甜點類-類別代號3
         public ActionResult Dessertproducts()
         {
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.categoryID == 3
                         select new FoodProduct
                         {
@@ -265,7 +257,7 @@ namespace task03_0606.Controllers
         //商品頁面 - 麵食類-類別代號4
         public ActionResult Noodleproducts()
         {
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.categoryID == 4
                         select new FoodProduct
                         {
@@ -282,7 +274,7 @@ namespace task03_0606.Controllers
         //商品頁面 - 米飯類-類別代號5
         public ActionResult Riceproducts()
         {
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.categoryID == 5
                         select new FoodProduct
                         {
@@ -299,7 +291,7 @@ namespace task03_0606.Controllers
         //商品頁面 - 速食類-類別代號6
         public ActionResult Fastfoodproducts()
         {
-            var query = from o in dbpro.Products
+            var query = from o in db.Products
                         where o.categoryID == 6
                         select new FoodProduct
                         {
