@@ -110,7 +110,6 @@
     <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="create1.txt" />
-    <Content Include="css\A1style.css" />
     <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -266,6 +265,7 @@
     <Content Include="photo\NewFolder1\6\new\E33.jpg" />
     <Content Include="photo\NewFolder1\6\new\E34.jpg" />
     <Content Include="photo\NewFolder1\6\new\E35.jpg" />
+    <Content Include="photo\world-cup-2018-day-12-6225439109414912-5753952654065664-ssw.png" />
     <Content Include="SweetAlert2\enhancers.js" />
     <Content Include="SweetAlert2\globalState.js" />
     <Content Include="SweetAlert2\instanceMethods.js" />
@@ -552,7 +552,7 @@
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\store21354423Index.cshtml" />
+    <Content Include="Views\Products\storeAIndex.cshtml" />
     <Content Include="SweetAlert2\variables.scss" />
     <Content Include="SweetAlert2\toasts.scss" />
     <Content Include="SweetAlert2\sweetalert2.scss" />

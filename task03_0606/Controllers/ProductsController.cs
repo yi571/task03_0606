@@ -203,7 +203,7 @@ namespace task03_0606.Controllers
         //}
 
             //麥當勞管理介面
-        public ActionResult store21354423Index()
+        public ActionResult storeAIndex()
         {
             int salesVolume = 0;
             var query = from o in db.Products
