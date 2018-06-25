@@ -266,6 +266,13 @@
     <Content Include="photo\NewFolder1\6\new\E33.jpg" />
     <Content Include="photo\NewFolder1\6\new\E34.jpg" />
     <Content Include="photo\NewFolder1\6\new\E35.jpg" />
+    <Content Include="photo\NewFolder2\041118blog66.jpg" />
+    <Content Include="photo\NewFolder2\14803860756_60170a1725.jpg" />
+    <Content Include="photo\NewFolder2\160923092857-mcdonalds-breakfast-happy-meal-780x439.jpg" />
+    <Content Include="photo\NewFolder2\2016-03-02-231629-25.jpg" />
+    <Content Include="photo\NewFolder2\b170301-1_04.jpg" />
+    <Content Include="photo\NewFolder2\McDonalds2.jpg" />
+    <Content Include="photo\NewFolder2\qq_whatsinside_fries_f.jpg" />
     <Content Include="photo\storeBindex.jpg" />
     <Content Include="SweetAlert2\enhancers.js" />
     <Content Include="SweetAlert2\globalState.js" />
