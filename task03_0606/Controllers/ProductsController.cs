@@ -9,42 +9,42 @@ using System.Web.Mvc;
 using task03_0606.Models;
 
 
-namespace task03_0606.Controllers {
+namespace task03_0606.Controllers
+{
 
-    public class ProductsController : Controller {
+    public class ProductsController : Controller
+    {
 
         /*AP0010_ConitionModel condition = new AP0010_ConitionModel();*/ //下拉式選單
-        FoodCourtDBEntities db = new FoodCourtDBEntities();
+         FoodCourtDBEntities db = new FoodCourtDBEntities();
 
 
         // GET: Products
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
             var query = from o in db.Categories
-                        select new FoodCategories {
+                        select new FoodCategories
+                        {
                             categoryID = o.categoryID,
                             categoryName = o.categoryName,
                             Description = o.Description,
                             categoryPicture = o.categoryPicture,
-                            categoryURL = o.categoryURL
+                            categoryURL=o.categoryURL
 
-                        };
+    };
             List<FoodCategories> categorieslist = query.ToList();
             return View(categorieslist);
         }
 
         //管理人員-所有商品列表
-        public ActionResult ManagerIndex() {
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/ManagerIndex";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
-            if ((string)Session["identity"] != "storeUser" || (string)Session["identity"] != "superUser" || (string)Session["identity"] != "store") {
-                return RedirectToAction("Member", "Member");
-            };
+        public ActionResult ManagerIndex()
+        {
+
 
             int salesVolume = 0;
             var query = from o in db.Products
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -53,32 +53,26 @@ namespace task03_0606.Controllers {
                             productDescription = o.productDescription,
                             productPrice = o.productPrice,
                             storeId = o.storeId,
-                            productState = o.productState,
+                            productState =o.productState,
                             categoryID = o.categoryID
                         };
             List<FoodProduct> foodproductslist = query.ToList();
             return View(foodproductslist);
         }
 
-        public ActionResult Create() {
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/Create";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
+        public ActionResult Create()
+        {
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult Create(Models.Product postback) {
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/Create";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
-
+        public ActionResult Create(Models.Product postback)
+        {
             if (this.ModelState.IsValid) //如果資料驗證成功
             {
-                using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities()) {
+                using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities())
+                {
                     //將回傳資料postback加入至Products
                     db.Products.Add(postback);
 
@@ -104,19 +98,18 @@ namespace task03_0606.Controllers {
 
 
 
-        public ActionResult Edit(int? productID) {
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/Edit";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
-
-            using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities()) {
+        public ActionResult Edit(int? productID)
+        {
+            using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities())
+            {
                 //抓取Product.Id等於輸入id的資料
                 var result = (from s in db.Products where s.productID == productID select s).FirstOrDefault();
                 if (result != default(Models.Product)) //判斷此id是否有資料
                 {
                     return View(result); //如果有回傳編輯商品頁面
-                } else {   //如果沒有資料則顯示錯誤訊息並導回Index頁面
+                }
+                else
+                {   //如果沒有資料則顯示錯誤訊息並導回Index頁面
                     TempData["resultMessage"] = "資料有誤，請重新操作";
                     return RedirectToAction("ManagerIndex");
                 }
@@ -124,16 +117,12 @@ namespace task03_0606.Controllers {
         }
         //編輯商品頁面 - 資料傳回處理
         [HttpPost]
-        public ActionResult Edit(Models.Product postback) {
-
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/Edit";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
-
+        public ActionResult Edit(Models.Product postback)
+        {
             if (this.ModelState.IsValid) //判斷使用者輸入資料是否正確
             {
-                using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities()) {
+                using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities())
+                {
                     //抓取Product.Id等於回傳postback.Id的資料
                     var result = (from s in db.Products where s.productID == postback.productID select s).FirstOrDefault();
 
@@ -151,18 +140,22 @@ namespace task03_0606.Controllers {
                     TempData["ResultMessage"] = String.Format("商品[{0}]成功編輯", postback.productName);
                     return RedirectToAction("ManagerIndex");
                 }
-            } else //如果資料不正確則導向自己(Edit頁面)
-              {
+            }
+            else //如果資料不正確則導向自己(Edit頁面)
+            {
                 return View(postback);
             }
         }
         // GET: Products/Delete/5
-        public ActionResult Delete(int? productID) {
-            if (productID == null) {
+        public ActionResult Delete(int? productID)
+        {
+            if (productID == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product pd = db.Products.Find(productID);
-            if (pd == null) {
+            if (pd == null)
+            {
                 return HttpNotFound();
             }
             return View(pd);
@@ -171,7 +164,8 @@ namespace task03_0606.Controllers {
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int productID) {
+        public ActionResult DeleteConfirmed(int productID)
+        {
             Product product = db.Products.Find(productID);
             db.Products.Remove(product);
             db.SaveChanges();
@@ -208,17 +202,14 @@ namespace task03_0606.Controllers {
         //    }
         //}
 
-        //麥當勞管理介面
-        public ActionResult store21354423Index() {
-            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
-                Session["lastPage"] = "/Products/store21354423Index";      //儲存最後頁面
-                return RedirectToAction("Login", "Member");  //重導到登入頁面
-            }
-
+            //麥當勞管理介面
+        public ActionResult store21354423Index()
+        {
             int salesVolume = 0;
             var query = from o in db.Products
                         where o.storeId == ("21354423")
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -236,11 +227,13 @@ namespace task03_0606.Controllers {
 
 
 
-        //商品頁面 - 飲品&湯品-類別代號2
-        public ActionResult Drinkproducts() {
+    //商品頁面 - 飲品&湯品-類別代號2
+    public ActionResult Drinkproducts()
+        {
             var query = from o in db.Products
                         where o.categoryID == 2
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -253,10 +246,12 @@ namespace task03_0606.Controllers {
         }
 
         //商品頁面 - 甜點類-類別代號3
-        public ActionResult Dessertproducts() {
+        public ActionResult Dessertproducts()
+        {
             var query = from o in db.Products
                         where o.categoryID == 3
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -269,10 +264,12 @@ namespace task03_0606.Controllers {
         }
 
         //商品頁面 - 麵食類-類別代號4
-        public ActionResult Noodleproducts() {
+        public ActionResult Noodleproducts()
+        {
             var query = from o in db.Products
                         where o.categoryID == 4
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -284,10 +281,12 @@ namespace task03_0606.Controllers {
 
         }
         //商品頁面 - 米飯類-類別代號5
-        public ActionResult Riceproducts() {
+        public ActionResult Riceproducts()
+        {
             var query = from o in db.Products
                         where o.categoryID == 5
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -299,10 +298,12 @@ namespace task03_0606.Controllers {
 
         }
         //商品頁面 - 速食類-類別代號6
-        public ActionResult Fastfoodproducts() {
+        public ActionResult Fastfoodproducts()
+        {
             var query = from o in db.Products
                         where o.categoryID == 6
-                        select new FoodProduct {
+                        select new FoodProduct
+                        {
                             productID = o.productID,
                             productName = o.productName,
                             productPicture = o.productPicture,
@@ -347,17 +348,21 @@ namespace task03_0606.Controllers {
 
         //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
         //}
-        public class ViewModel {
+        public class ViewModel
+        {
             public string Name { get; set; }
             public IEnumerable<Product> MyList { get; set; }
         }
-        public ActionResult testIndex() {
-
+        public ActionResult testIndex()
+        {
+           
 
             List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-            foreach (var item in db.Stores) {
-                mySelectItemList.Add(new SelectListItem() {
+            foreach (var item in db.Stores)
+            {
+                mySelectItemList.Add(new SelectListItem()
+                {
                     Text = item.storeId,
                     Value = item.storeName,
                     Selected = false

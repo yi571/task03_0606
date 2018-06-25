@@ -33,7 +33,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["identity"].ToString() == "normalUser") {
+                @if (Session["memberType"].ToString() == "Customer")
+                {
                     @*顧客專用-餐廳列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
                         <a class="nav-link" href="~/Home/Restaurent">
@@ -73,7 +74,8 @@
 
 
                 }
-                @if (Session["identity"].ToString() == "store") {
+                @if (Session["memberType"].ToString() == "Business")
+                {
                     @*商家專用-未出餐訂單-訂單別*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
                         <a class="nav-link" href="~/Order/Order_list_bussiness">
@@ -117,7 +119,8 @@
             @*上方導覽*@
             <ul class="navbar-nav ml-auto">
 
-                @if (Session["identity"].ToString() == "store") {
+                @if (Session["memberType"].ToString() == "Business")
+                {
                     @*商家專用-新單訊息*@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -148,7 +151,8 @@
                         </div>
                     </li>
                 }
-                @if (Session["identity"].ToString() == "normalUser") {
+                @if (Session["memberType"].ToString() == "Customer")
+                {
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
@@ -232,49 +236,30 @@
                 </li>
                 @*網站登入/登出*@
 
+                @if (Session["memberType"].ToString() == "Guest")
+                {
+                    <li class="nav-item">
+
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                            親愛的訪客  您好<i class="fa fa-fw fa-sign-in"></i>登入
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                            <i class="fa fa-fw fa-question"></i>忘記密碼
+                        </a>
+                    </li>
+                }
                 <li class="nav-item">
 
-                    @{
-                        string diaplayName = Session["UserAllName"].ToString();
-                        string strUrl = "";
-                        string faStr = "out";
-                        string logStr = "登出";
-                        string toggleStr = "modal";
-                        string targetStr = "#exampleModal";
-                        if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
-                            strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
-                            faStr = "in";
-                            logStr = "親愛的顧客，您好 登入";
-                            toggleStr = "";
-                            targetStr = "";
-                        }
-                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">@diaplayName，您好！
-                            <i class="fa fa-fw fa-sign-@faStr"></i>@logStr
-                        </a>
-                    }
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                        店名XXX  您好 <i class="fa fa-fw fa-sign-out"></i>登出
 
+                    </a>
                 </li>
             </ul>
         </div>
     </nav>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">準備登出?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">當你準備好離開時，按下"登出"按鍵登出。</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">關閉</button>
-                    <a class="btn btn-primary" href="~/Member/Logout">登出</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="content-wrapper">
         <div class="container-fluid">
             <!-- Breadcrumbs-->

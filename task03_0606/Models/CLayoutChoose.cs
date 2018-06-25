@@ -11,16 +11,16 @@ namespace task03_0606.Models {
             string LayoutUrl = layoutUrl;
             
             if (identity == "superUser") {
-                const string V = "~/Views/_superUser_LayoutPage1.cshtml";
+                const string V = "~/Views/_Member_SuperUser_LayoutPage1.cshtml";
                 LayoutUrl = V;
             } else if (identity == "storeUser") {
-                const string V1 = "~/Views/_storeUser_LayoutPage.cshtml";
+                const string V1 = "~/Views/_Member_Home_LayoutPage1.cshtml";
                 LayoutUrl = V1;
             } else if (identity == "store") {
-                const string V2 = "~/Views/_storeUser_LayoutPage.cshtml";
+                const string V2 = "~/Views/_Store_Home_LayoutPage1.cshtml";
                 LayoutUrl = V2;
             } else {
-                const string V3 = "~/Views/_normal_LayoutPage1.cshtml";
+                const string V3 = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
                 LayoutUrl = V3;
             }
            
