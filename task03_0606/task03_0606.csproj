@@ -53,6 +53,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -100,11 +104,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="0620producttablecreate.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\E13.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="create1.txt" />
+    <Content Include="css\A1style.css" />
     <Content Include="css\Astyle.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -114,6 +120,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\yi.css" />
     <Content Include="db.txt" />
+    <Content Include="dbupdata.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -157,6 +164,108 @@
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
       <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
     </Content>
+    <Content Include="photo\A1.jpg" />
+    <Content Include="photo\A10.jpg" />
+    <Content Include="photo\A11.jpg" />
+    <Content Include="photo\A12.jpg" />
+    <Content Include="photo\A2.jpg" />
+    <Content Include="photo\A3.jpg" />
+    <Content Include="photo\A4.jpg" />
+    <Content Include="photo\A5.jpg" />
+    <Content Include="photo\A6.jpg" />
+    <Content Include="photo\A7.jpg" />
+    <Content Include="photo\A8.jpg" />
+    <Content Include="photo\A9.jpg" />
+    <Content Include="photo\B8.jpg" />
+    <Content Include="photo\C1.jpg" />
+    <Content Include="photo\C2.jpg" />
+    <Content Include="photo\C3.jpg" />
+    <Content Include="photo\C5.jpg" />
+    <Content Include="photo\D1.jpg" />
+    <Content Include="photo\D7.jpg" />
+    <Content Include="photo\E14.jpg" />
+    <Content Include="photo\E15.jpg" />
+    <Content Include="photo\E16.jpg" />
+    <Content Include="photo\E17.jpg" />
+    <Content Include="photo\E18.jpg" />
+    <Content Include="photo\E19.jpg" />
+    <Content Include="photo\E20.jpg" />
+    <Content Include="photo\E21.jpg" />
+    <Content Include="photo\E22.jpg" />
+    <Content Include="photo\E23.jpg" />
+    <Content Include="photo\E24.jpg" />
+    <Content Include="photo\E25.jpg" />
+    <Content Include="photo\E26.jpg" />
+    <Content Include="photo\E27.jpg" />
+    <Content Include="photo\E28.jpg" />
+    <Content Include="photo\E29.jpg" />
+    <Content Include="photo\E30.jpg" />
+    <Content Include="photo\E31.jpg" />
+    <Content Include="photo\E32.jpg" />
+    <Content Include="photo\E35.jpg" />
+    <Content Include="photo\E36.jpg" />
+    <Content Include="photo\E37.jpg" />
+    <Content Include="photo\E38.jpg" />
+    <Content Include="photo\E39.jpg" />
+    <Content Include="photo\E40.jpg" />
+    <Content Include="photo\B1.jpg" />
+    <Content Include="photo\B10.jpg" />
+    <Content Include="photo\B11.jpg" />
+    <Content Include="photo\B12.jpg" />
+    <Content Include="photo\B2.jpg" />
+    <Content Include="photo\B3.jpg" />
+    <Content Include="photo\B4.jpg" />
+    <Content Include="photo\B5.jpg" />
+    <Content Include="photo\B6.jpg" />
+    <Content Include="photo\B7.jpg" />
+    <Content Include="photo\B9.jpg" />
+    <Content Include="photo\C13.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C22.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C23.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C24.jpg" />
+    <Content Include="photo\C14.jpg" />
+    <Content Include="photo\C15.jpg" />
+    <Content Include="photo\C16.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C18.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C19.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C20.jpg" />
+    <Content Include="photo\NewFolder1\6\first\C21.jpg" />
+    <Content Include="photo\D13.jpg" />
+    <Content Include="photo\NewFolder1\6\first\D10.jpg" />
+    <Content Include="photo\NewFolder1\6\first\D11.jpg" />
+    <Content Include="photo\NewFolder1\6\first\D12.jpg" />
+    <Content Include="photo\D2.jpg" />
+    <Content Include="photo\D3.jpg" />
+    <Content Include="photo\D4.jpg" />
+    <Content Include="photo\D5.jpg" />
+    <Content Include="photo\D6.jpg" />
+    <Content Include="photo\D8.jpg" />
+    <Content Include="photo\NewFolder1\6\first\D9.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E15.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E16.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E17.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E18.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E19.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E20.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E21.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E22.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E23.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E24.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E25.jpg" />
+    <Content Include="photo\NewFolder1\6\first\E26.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E27.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E36.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E37.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E38.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E39.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E28.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E29.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E30.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E31.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E32.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E33.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E34.jpg" />
+    <Content Include="photo\NewFolder1\6\new\E35.jpg" />
     <Content Include="SweetAlert2\enhancers.js" />
     <Content Include="SweetAlert2\globalState.js" />
     <Content Include="SweetAlert2\instanceMethods.js" />
@@ -199,73 +308,12 @@
     <Content Include="js\jquery-3.2.1.slim.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\popper.min.js" />
-    <Content Include="photo\B1.jpg" />
-    <Content Include="photo\B10.jpg" />
-    <Content Include="photo\B11.jpg" />
-    <Content Include="photo\B12.jpg" />
-    <Content Include="photo\B2.jpg" />
-    <Content Include="photo\B3.jpg" />
-    <Content Include="photo\B4.jpg" />
-    <Content Include="photo\B5.jpg" />
-    <Content Include="photo\B6.jpg" />
-    <Content Include="photo\B7.jpg" />
-    <Content Include="photo\B8.jpg" />
-    <Content Include="photo\B9.jpg" />
-    <Content Include="photo\A1.jpg" />
-    <Content Include="photo\A10.jpg" />
-    <Content Include="photo\A11.jpg" />
-    <Content Include="photo\A12.jpg" />
-    <Content Include="photo\A2.jpg" />
-    <Content Include="photo\A3.jpg" />
-    <Content Include="photo\A4.jpg" />
-    <Content Include="photo\A5.jpg" />
-    <Content Include="photo\A6.jpg" />
-    <Content Include="photo\A7.jpg" />
-    <Content Include="photo\A8.jpg" />
-    <Content Include="photo\A9.jpg" />
-    <Content Include="photo\E1.jpg" />
-    <Content Include="photo\E10.jpg" />
-    <Content Include="photo\E11.jpg" />
-    <Content Include="photo\E12.jpg" />
-    <Content Include="photo\E13.jpg" />
-    <Content Include="photo\E2.jpg" />
-    <Content Include="photo\E3.jpg" />
-    <Content Include="photo\E4.jpg" />
-    <Content Include="photo\E5.jpg" />
-    <Content Include="photo\E6.jpg" />
-    <Content Include="photo\E7.jpg" />
-    <Content Include="photo\E8.jpg" />
-    <Content Include="photo\E9.jpg" />
-    <Content Include="photo\C1.jpg" />
-    <Content Include="photo\C10.jpg" />
-    <Content Include="photo\C11.jpg" />
-    <Content Include="photo\C12.jpg" />
-    <Content Include="photo\C2.jpg" />
-    <Content Include="photo\C3.jpg" />
-    <Content Include="photo\C4.jpg" />
-    <Content Include="photo\C5.jpg" />
-    <Content Include="photo\C6.jpg" />
-    <Content Include="photo\C7.jpg" />
-    <Content Include="photo\C8.jpg" />
-    <Content Include="photo\C9.jpg" />
     <Content Include="photo\productsindex\1213454654.png" />
     <Content Include="photo\productsindex\d10_resized.jpg" />
     <Content Include="photo\productsindex\dessert_resized.jpg" />
     <Content Include="photo\productsindex\fast-food_resized.jpg" />
     <Content Include="photo\productsindex\n1_resized.jpg" />
     <Content Include="photo\productsindex\r5_resized.jpg" />
-    <Content Include="photo\D1.jpg" />
-    <Content Include="photo\D10.jpg" />
-    <Content Include="photo\D11.jpg" />
-    <Content Include="photo\D12.jpg" />
-    <Content Include="photo\D2.jpg" />
-    <Content Include="photo\D3.jpg" />
-    <Content Include="photo\D4.jpg" />
-    <Content Include="photo\D5.jpg" />
-    <Content Include="photo\D6.jpg" />
-    <Content Include="photo\D7.jpg" />
-    <Content Include="photo\D8.jpg" />
-    <Content Include="photo\D9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\FoodStreetModel.edmx">
@@ -299,7 +347,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="setup_database_eeeviq.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -321,13 +371,14 @@
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
-    <Compile Include="Models\Class1.cs" />
-    <Compile Include="Models\Cart\Cart.cs" />
-    <Compile Include="Models\Cart\CartItem.cs" />
-    <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FoodCategories.cs" />
+    <Compile Include="Models\FoodProduct.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
+    <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\FoodStreetModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -478,16 +529,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Restaurent.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="scss\Astyle.scss" />
     <Content Include="Views\Products\Drinkproducts.cshtml" />
     <Content Include="Views\Products\Dessertproducts.cshtml" />
     <Content Include="Views\Products\Noodleproducts.cshtml" />
     <Content Include="Views\Products\Riceproducts.cshtml" />
     <Content Include="Views\Products\Fastfoodproducts.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\ManagerIndex.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\test.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -500,6 +547,10 @@
     <Content Include="Views\Home\RestaurentMemberPage.cshtml" />
     <Content Include="Views\Order\Order_list_history_bussiness.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\store21354423Index.cshtml" />
     <Content Include="SweetAlert2\variables.scss" />
     <Content Include="SweetAlert2\toasts.scss" />
     <Content Include="SweetAlert2\sweetalert2.scss" />
@@ -515,6 +566,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="scss\" />
     <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <ItemGroup>

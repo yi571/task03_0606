@@ -1,0 +1,70 @@
+﻿@model task03_0606.Models.Product
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>刪除商品</h2>
+<h3>確定要刪除此項商品嗎</h3>
+<div class="alert-danger">
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <h4>Product</h4>
+        </dt>
+        @*productID=o.productID,
+            productName=o.productName ,
+            productPicture=o.productPicture,
+            salesVolume =o.salesVolume== null ? default(int) :salesVolume,
+            storeProductId =o.storeProductId,
+            productDescription=o.productDescription,
+            productPrice=o.productPrice,
+            storeId=o.storeId,
+            productState=o.productState,
+            categoryID=o.categoryID*@
+        <dd class="align-content-md-start">
+            商品編號：
+            @Html.DisplayFor(model => model.productID)
+        </dd>
+        <dd>
+           商品名稱：     
+            @Html.DisplayFor(model => model.productName)
+        </dd>
+        <dd> 商品圖片：
+            @Html.DisplayFor(model => model.productPicture)
+        </dd>
+        <dd> 銷售數量：
+            @Html.DisplayFor(model => model.salesVolume)
+        </dd>
+        <dd> 商品代號：            
+            @Html.DisplayFor(model => model.storeProductId)
+        </dd>
+        <dd>商品介紹：           
+            @Html.DisplayFor(model => model.productDescription)
+        </dd>
+        <dd>商品價錢：
+           
+            @Html.DisplayFor(model => model.productPrice)
+        </dd>
+        <dd>店家代號：
+            
+            @Html.DisplayFor(model => model.storeId)
+        </dd>
+        <dd>目前狀態：          
+            @Html.DisplayFor(model => model.productState)
+        </dd>
+        <dd>商品類別：
+            @Html.DisplayFor(model => model.categoryID)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ManagerIndex")
+        </div>
+    }
+</div>

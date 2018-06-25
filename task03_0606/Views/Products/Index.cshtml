@@ -1,4 +1,4 @@
-﻿
+﻿@model List<task03_0606.Models.FoodCategories>
 @{
     ViewBag.Title = "Index";
 }
@@ -8,8 +8,25 @@
 <div class="container">
       
 
+   
+     <div class="card-group">
+        @foreach(task03_0606.Models.FoodCategories db in Model)
+       {
+           <div class="card" style="width:200px">
+            <img class="card-img-top" src="~/photo/productsindex/@db.categoryPicture" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@db.categoryName</h5>
+                <p class="card-text">@db.Description</p>
+                <div>
+                    <a href="~/Products/@db.categoryURL" class="btn btn-primary">進入挑選</a>
+                    
+                </div>
 
-    <div class="card-group">
+            </div>
+         
+        </div>
+       }
+    @*<div class="card-group">
         <div class="card" style="width:200px">
             <img class="card-img-top" src="~/photo/productsindex/d10_resized.jpg" alt="Card image cap">
             <div class="card-body">
@@ -18,9 +35,9 @@
                 <div>
                     <a href="~/Products/Drinkproducts" class="btn btn-primary">進入挑選</a>
                 </div>
-     
             </div>
         </div>
+
         <div class="card" style="width:200px">
             <img class="card-img-top" src="~/photo/productsindex/dessert_resized.jpg" alt="Card image cap">
             <div class="card-body">
@@ -64,6 +81,8 @@
 
     </div>
 
-   </div>
+            </div>
 
-   
+         </div>*@
+         </div>
+</div>

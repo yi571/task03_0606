@@ -5,12 +5,12 @@ using System.Web;
 
 namespace task03_0606.Models
 {
-    public class Class1
+    public class FoodProduct
     {
-        public int productId { get; set; }
+        public int productID { get; set; }
         public string productName { get; set; }
         public string productPicture { get; set; }
-        public int salesVolue { get; set; }
+        public int salesVolume { get; set; }
         public string storeProductId { get; set; }
         public string productDescription { get; set; }
         public int productPrice { get; set; }
