@@ -1,12 +1,11 @@
 ﻿@model List<task03_0606.Models.FoodProduct>
-
 @{
-    ViewBag.Title = "store00543689Index";
+    ViewBag.Title = "store21354423Index";
 }
 
-<h2>store00543689Index</h2>
+<h2>store21354423Index</h2>
 
-<link href="~/css/A1style.css" rel="stylesheet" type="text/css" />
+<link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
 <link rel="stylesheet" href="responsive-tables.css">
 
@@ -18,7 +17,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h1><i class="fa fa-table"><a href="~/Views/Products/store00543689Index.cshtml" class="white-text mx-3">商品列表</a></h1></i>
+                <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
                 <button class="pull-right btn btn-warning" id="create">
                     <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
                 </button>
@@ -43,8 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                
-                            @foreach(var item in Model)
+                            @foreach (var item in Model)
                             {
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.productID)</td>
@@ -105,4 +103,3 @@
 
 
 </div>
-

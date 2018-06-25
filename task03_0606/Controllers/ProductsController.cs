@@ -15,15 +15,24 @@ namespace task03_0606.Controllers
     public class ProductsController : Controller
     {
 
+        /*AP0010_ConitionModel condition = new AP0010_ConitionModel();*/ //下拉式選單
+         FoodCourtDBEntities db = new FoodCourtDBEntities();
 
-        FoodCourtDBEntities db = new FoodCourtDBEntities();
 
         // GET: Products
         public ActionResult Index()
         {
             var query = from o in db.Categories
-                        select o;
-            var categorieslist = query.ToList();
+                        select new FoodCategories
+                        {
+                            categoryID = o.categoryID,
+                            categoryName = o.categoryName,
+                            Description = o.Description,
+                            categoryPicture = o.categoryPicture,
+                            categoryURL=o.categoryURL
+
+    };
+            List<FoodCategories> categorieslist = query.ToList();
             return View(categorieslist);
         }
 
@@ -194,11 +203,11 @@ namespace task03_0606.Controllers
         //}
 
             //麥當勞管理介面
-        public ActionResult store00543689Index()
+        public ActionResult store21354423Index()
         {
             int salesVolume = 0;
             var query = from o in db.Products
-                        where o.storeId == ("00543689")
+                        where o.storeId == ("21354423")
                         select new FoodProduct
                         {
                             productID = o.productID,
@@ -306,6 +315,68 @@ namespace task03_0606.Controllers
 
         }
 
+        // 下拉式選單ManagerIndex
+        //    public class AP0010_ConitionModel
+        //{
+        //    //我要選取的預設值
+        //    public string storeId { get; set; }
+        //    //資料來源
+        //    public List<FoodProduct> State_ListItem { get; set; }
+        //}
+
+        //public class AP0010ViewModel
+        //{
+        //    public AP0010_ConitionModel condition { get; set; }
+        //    //以下可以放其他條件
+        //}
+
+        //public SelectList GetEMP_CATEGORY()
+        //{
+
+        //    List<FoodProduct> Category = new List<FoodProduct>()
+        //{
+        //    new FoodProduct() {storeId = "21354423", storeProductId = ""},
+        //    new FoodProduct() {storeId = "20035001", storeProductId = ""},
+        //    new FoodProduct() {storeId = "15498527", storeProductId = ""},
+        //    new FoodProduct() {storeId = "00543689", storeProductId = ""},
+        //    new FoodProduct() {storeId = "54123513", storeProductId = ""},
+        //    new FoodProduct() {storeId = "68999999", storeProductId = ""},
+        //    new FoodProduct() {storeId = "70425874", storeProductId = ""},
+        //    new FoodProduct() {storeId = "90856422", storeProductId = ""},
+
+        //};
+
+        //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
+        //}
+        public class ViewModel
+        {
+            public string Name { get; set; }
+            public IEnumerable<Product> MyList { get; set; }
+        }
+        public ActionResult testIndex()
+        {
+           
+
+            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
+
+            foreach (var item in db.Stores)
+            {
+                mySelectItemList.Add(new SelectListItem()
+                {
+                    Text = item.storeId,
+                    Value = item.storeName,
+                    Selected = false
+                });
+            }
+
+            ViewModel model = new ViewModel() //上面的 Model
+            {
+                //MyList = mySelectItemList
+            };
+
+            return View(model);
+        }
 
     }
+
 }
