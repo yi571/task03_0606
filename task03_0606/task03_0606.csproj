@@ -163,6 +163,7 @@
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
       <LastGenOutput>FoodStreetModel.cs</LastGenOutput>
     </Content>
+    <Content Include="photo\111.png" />
     <Content Include="photo\A1.jpg" />
     <Content Include="photo\A10.jpg" />
     <Content Include="photo\A11.jpg" />
@@ -265,7 +266,7 @@
     <Content Include="photo\NewFolder1\6\new\E33.jpg" />
     <Content Include="photo\NewFolder1\6\new\E34.jpg" />
     <Content Include="photo\NewFolder1\6\new\E35.jpg" />
-    <Content Include="photo\world-cup-2018-day-12-6225439109414912-5753952654065664-ssw.png" />
+    <Content Include="photo\storeBindex.jpg" />
     <Content Include="SweetAlert2\enhancers.js" />
     <Content Include="SweetAlert2\globalState.js" />
     <Content Include="SweetAlert2\instanceMethods.js" />
@@ -562,6 +563,7 @@
     <Content Include="Views\Shared\_CartList.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Products\storeBIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

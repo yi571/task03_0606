@@ -226,9 +226,36 @@ namespace task03_0606.Controllers
         }
 
 
+        //花月嵐管理介面
+        public ActionResult storeBIndex()
+        {
+            int salesVolume = 0;
+            var query = from o in db.Products
+                        where o.storeId == ("54123513")
+                        select new FoodProduct
+                        {
+                            productID = o.productID,
+                            productName = o.productName,
+                            productPicture = o.productPicture,
+                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
+                            storeProductId = o.storeProductId,
+                            productDescription = o.productDescription,
+                            productPrice = o.productPrice,
+                            storeId = o.storeId,
+                            productState = o.productState,
+                            categoryID = o.categoryID
+                        };
+            List<FoodProduct> foodproductslist = query.ToList();
+            return View(foodproductslist);
+        }
 
-    //商品頁面 - 飲品&湯品-類別代號2
-    public ActionResult Drinkproducts()
+
+
+
+
+
+        //商品頁面 - 飲品&湯品-類別代號2
+        public ActionResult Drinkproducts()
         {
             var query = from o in db.Products
                         where o.categoryID == 2
