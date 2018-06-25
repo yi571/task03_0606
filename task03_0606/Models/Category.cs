@@ -24,6 +24,7 @@ namespace task03_0606.Models
         public string categoryName { get; set; }
         public string Description { get; set; }
         public string categoryPicture { get; set; }
+        public string categoryURL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
