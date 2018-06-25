@@ -1,0 +1,791 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+
+    .cardMenuItem {
+        border: none;
+        /*text-shadow: 1px 1px 3px #555;*/
+        font-weight: 700;
+        /*margin: 4px;*/
+        /*padding-left: 0px;
+        padding-right: 0px;*/
+        
+    }
+    
+</style>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Home/Restaurent">...</a>
+    </li>
+    <li class="breadcrumb-item active">待出餐訂單</li>
+</ol>
+
+
+<div class="col-12">
+
+    <div class="row">
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：去冰,無糖</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：1 &nbsp 電話：0988222111 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header bg-success">
+                <p class="card-text text-white">
+                    桌號：2 &nbsp 電話：0988777666 <br />
+                    <small class="text-white">Last updated 3 mins ago</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/B8.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 焦糖奶酪布丁 <br /> &nbsp 2 份</p>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/A1.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 漂浮冰咖啡<br /> &nbsp 5 份</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item container-fluid">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img style="width:50px; height:40px" src="~/photo/C5.jpg">
+                        </div>
+                        <div class="col-xs-9">
+                            <p class="card-text">&nbsp 奶油培根義大利麵<br /> &nbsp 3 份</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="page">
+        <ul class="pagination pagination-sm">
+            <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+
+    $(function () {
+
+        //實現分頁思路:
+        var pageSize = 8;      //每頁顯示數據條數
+        var currentPage = 1;   //當前頁數
+        var prevPage = 0;
+        var totalSize = $(".cardMenuItem").length; //獲取總數據
+        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
+        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
+        
+
+        //移除原有 .pagination 裡的元素 , append "前一頁" li
+        $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
+        //依總分頁數 , append 各分頁 li
+        for (var index = currentPage; index <= totalPage; index++) {
+            $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
+        }
+        //append "後一頁" li
+        $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
+
+
+        //實現下一頁
+        $(".next").click(function () {
+            if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
+                return false;
+            } else {//不是最後一頁，顯示應該顯示的數據.
+                $(".current_page").text(++currentPage);  //當前頁數先+1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+
+            }
+        });
+
+        //實現上一頁
+        $(".prev").click(function () {
+            if (currentPage == 1) {//當前頁數==1，禁止上一頁
+                return false;
+            } else {
+                $(".current_page").text(--currentPage);  //當前頁數先-1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+
+        //選擇特定頁
+        $(".pageItems").click(function () {
+            //alert(this.innerText);
+            prevPage = currentPage;
+            currentPage = this.innerText;
+
+            //alert($(".pagination").find("li")[0].innerText);
+            //加入page-item  active
+            //$(".pagination").find("li")[currentPage].addClass('active');
+
+            var start = pageSize * (currentPage - 1);
+            var end = pageSize * currentPage;
+            $.each($('.cardMenuItem'), function (index, item) {
+                if (index >= start && index < end) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
+
+        });
+
+    });
+
+    
+    $(".list-group-item.container-fluid").click(function () {
+        //if ($(this).find("p.card-text").color() ='green') { alert("ok") }
+        //else { alert("not ok")}
+
+        if ($(this).find("i") ==null) {
+            $(this)
+            .find("p.card-text")
+            .css({
+                color: 'green',
+            })
+            .append('<i class="fa fa-fw fa-check-circle"></i>')}
+       
+    })
+    $(".list-group-item.container-fluid").dblclick(function () {
+        $(this)
+            .find("p.card-text")
+            .css({
+                color: 'black',
+            }).find('i').remove();
+            
+    })
+
+</script>
+
+

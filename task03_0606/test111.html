@@ -1,0 +1,502 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Bootstrap core CSS-->
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/startbootstrap-sb-admin-gh-pages/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/startbootstrap-sb-admin-gh-pages/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+    <script src="/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+    <style>
+        .card-header-icon {
+            position: absolute;
+            z-index: 0;
+            top: -25px;
+            right: -25px;
+            font-size: 1rem;
+            -webkit-transform: rotate(15deg);
+            -ms-transform: rotate(15deg);
+            transform: rotate(15deg);
+            opacity: 0.3;
+        }
+
+        .cardMenuItem {
+            border: none;
+            text-shadow: 1px 1px 3px #555;
+            font-weight: 700;
+        }
+
+        .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+            box-shadow: 1px 5px 15px #CCC;
+            /*width: 10em;
+        height: auto;*/
+            border-radius: 6px;
+            padding: 0.5em;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: auto;
+            flex: auto;
+        }
+
+        .product--blue {
+            background: -webkit-linear-gradient(180deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+            background: linear-gradient(-45deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+        }
+
+            .product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
+                max-width: 100%;
+                height: auto !important;
+                text-align: center;
+            }
+
+        .product_inner {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+        }
+
+            .product_inner p {
+                color: black;
+            }
+
+            .product_inner button {
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                color: #FFF;
+                border-radius: 3px;
+                padding: 1em 3em;
+                margin: 1em 0 0 0;
+                background: none;
+                cursor: pointer;
+                -webkit-transition: background ease-in .25s;
+                transition: background ease-in .25s;
+            }
+
+                .product_inner button:before {
+                    font-family: FontAwesome;
+                    content: '\f07A';
+                    color: #FFF;
+                    position: absolute;
+                    font-size: 1.5em;
+                    margin: 0 -1.5em;
+                }
+
+                .product_inner button:hover {
+                    background: white;
+                    color: #2B2D42;
+                }
+
+                    .product_inner button:hover:before {
+                        color: #2B2D42;
+                    }
+
+        .product_overlay {
+            background: rgba(255, 255, 255, 0.9);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            -webkit-transform: translateY(-500px);
+            transform: translateY(-500px);
+            opacity: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+            .product_overlay h2 {
+                color: rgba(43, 45, 66, 0.7);
+                font-size: 1.2em;
+                margin: 1em 0;
+            }
+
+            .product_overlay i {
+                color: rgba(43, 45, 66, 0.7);
+                font-size: 1.5em;
+            }
+    </style>
+
+</head>
+<body>
+
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.801" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 i class="modal-title" id="itemName">卡啦炸雞</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <img id="itemImg" class="col-sm-12" src='/photo/E1.jpg' />
+                    <br />
+                    <p id="itemDescription">炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。</p>
+                    <p id="itemId"></p>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" onclick="AddToCart($('#itemId').text())">加入購物車</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card o-hidden">
+            <div class="card-header">
+                <h5 class="card-title"><a href="#demo" data-toggle="collapse"> 麥當勞</a></h5>
+                <img class="card-header-icon" src="/picture/1602181025050000001.jpg" />
+                <div id="demo" class="collapse">
+                    <p>「麥當勞」是全世界最大的快速餐飲服務餐廳領導品牌。麥當勞在一九五五年開業之初只是伊利諾州 Des Plaines 一間街坊餐廳,但時至今日,已在全球超過一百個國家設立了超過三萬間餐廳,成為全球最大的快餐服務機構。麥當勞的新精神 i&#39;m lovin&#39; it更是盡興表現自己並享受生活在其中。</p>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+
+                        <img class="card-img-top" src="/photo/A1.jpg" onclick="modalShow('漂浮冰咖啡','將單品熱咖啡倒入鋼杯中，將鋼杯放入裝有冰塊和水的容器中，等待咖啡變涼~最後在杯口放上一球香草冰淇淋，並淋上少許巧克力醬~','A1.jpg' ,4)">
+                        <div class="card-body">
+                            <h5 class="card-title">漂浮冰咖啡</h5>
+                            <p class="card-text">價格 $ 180</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1" onclick="AddToCart(4)">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+
+                        <img class="card-img-top" src="/photo/E1.jpg" onclick="modalShow('卡啦炸雞','炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。','E1.jpg' ,6)">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text">價格 $ 75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1" onclick="AddToCart(6)">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+
+                        <img class="card-img-top" src="/photo/C5.jpg" onclick="modalShow('奶油培根義大利麵','濃郁乳香的醬汁全部緊密裹住帶有彈性的麵條，鹹香氣恰到好處的培根~','C5.jpg' ,9)">
+                        <div class="card-body">
+                            <h5 class="card-title">奶油培根義大利麵</h5>
+                            <p class="card-text">價格 $ 180</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1" onclick="AddToCart(9)">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+
+                        <img class="card-img-top" src="/photo/D7.jpg" onclick="modalShow('蛋皮海苔醋壽司','薄可透光的美味蛋皮以及海苔是壽司的絕佳搭配~','D7.jpg' ,10)">
+                        <div class="card-body">
+                            <h5 class="card-title">蛋皮海苔醋壽司</h5>
+                            <p class="card-text">價格 $ 200</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1" onclick="AddToCart(10)">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                            <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                            <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                            <p class="card-text"> text .<br />.<br />.<br />.<br />.<br />.<br /></p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-center cardMenuItem col-sm-3 product--blue">
+                        <img class="card-img-top" src="/photo/E1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">卡啦炸雞</h5>
+                            <p class="card-text"> 價格：$75</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class='product_inner'>
+                                <button id="button1">加入購物車</button>
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="page">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+
+    $(function () {
+
+        //實現分頁思路:
+        var pageSize = 8;      //每頁顯示數據條數
+        var currentPage = 1;   //當前頁數
+        var prevPage = 0;
+        var totalSize = $(".cardMenuItem").length; //獲取總數據
+        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
+        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
+
+
+        //移除原有 .pagination 裡的元素 , append "前一頁" li
+        $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
+        //依總分頁數 , append 各分頁 li
+        for (var index = currentPage; index <= totalPage; index++) {
+            $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
+        }
+        //append "後一頁" li
+        $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
+
+
+        //實現下一頁
+        $(".next").click(function () {
+            if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
+                return false;
+            } else {//不是最後一頁，顯示應該顯示的數據.
+                $(".current_page").text(++currentPage);  //當前頁數先+1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+
+            }
+        });
+
+        //實現上一頁
+        $(".prev").click(function () {
+            if (currentPage == 1) {//當前頁數==1，禁止上一頁
+                return false;
+            } else {
+                $(".current_page").text(--currentPage);  //當前頁數先-1
+                var start = pageSize * (currentPage - 1);
+                var end = pageSize * currentPage;
+                $.each($('.cardMenuItem'), function (index, item) {
+                    if (index >= start && index < end) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+
+        //選擇特定頁
+        $(".pageItems").click(function () {
+            //alert(this.innerText);
+            prevPage = currentPage;
+            currentPage = this.innerText;
+
+            //alert($(".pagination").find("li")[0].innerText);
+            //加入page-item  active
+            //$(".pagination").find("li")[currentPage].addClass('active');
+
+            var start = pageSize * (currentPage - 1);
+            var end = pageSize * currentPage;
+            $.each($('.cardMenuItem'), function (index, item) {
+                if (index >= start && index < end) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
+
+        });
+
+    });
+
+    //點選產品圖片，顯示明細在modal
+    function modalShow(itemName, itemDescription, itemPic, itemId) {
+
+        $("#itemName").text(itemName);
+        $("#itemDescription").text(itemDescription);
+        $("#itemId").text(itemId);
+        $("#itemImg").attr("src", "../photo/" + itemPic);
+        $("#Modal").modal("show");
+
+    }
+
+
+    //Add To Basket Animation
+    $("button#button1").click(function () {
+        //alert(this);
+        $(this).parent()
+            .find(".product_overlay")
+            .css({
+                transform: " translateY(0px)",
+                opacity: "1",
+                transition: "all ease-in-out .45s"
+            })
+            .delay(1500)
+            .queue(function () {
+                $(this)
+                    .css({
+                        transform: "translateY(-500px)",
+                        opacity: "0",
+                        transition: "all ease-in-out .45s"
+                    })
+                    .dequeue();
+            });
+
+    })
+    </script>
+</body>
+</html>

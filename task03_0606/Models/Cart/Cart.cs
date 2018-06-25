@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,15 +7,14 @@ using System.Web;
 namespace task03_0606.Models.Cart
 {
     [Serializable]
-    public class Cart
+    public class Cart : IEnumerable<CartItem>
     {
         
-
         public Cart() {
             this.cartItemList = new List<CartItem>();
         }
 
-        public List<CartItem> cartItemList;
+        private List<CartItem> cartItemList;
 
         public decimal TotalAmount {
             get { 
@@ -23,7 +23,139 @@ namespace task03_0606.Models.Cart
                     totalAmount += cartItem.amount;
             }
                 return totalAmount;
+            }  
+        }
+
+        public int Count {
+            get {
+                return this.cartItemList.Count;
             }
         }
+
+        public bool AddProduct(int ProductID) {
+            var findItem = this.cartItemList
+                           .Where(s => s.produtctId == ProductID)
+                           .Select(s => s)
+                           .FirstOrDefault();
+
+            if (findItem == default(Models.Cart.CartItem))
+            {
+                using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+                {
+                    var product = (from s in db.Products
+                                   where s.productID == ProductID
+                                   select s).FirstOrDefault();
+
+                    if (product != default(Models.Product))
+                    {
+                        this.AddProduct(product);
+                    }
+
+                }
+
+            }
+
+            else { findItem.quantity += 1; }
+            return true;
+        }
+
+        private bool AddProduct(Product product) {
+            var cartItem = new Models.Cart.CartItem() {
+
+                produtctId = product.productID,
+                productName = product.productName,
+                price = product.productPrice,
+                picture = product.productPicture,
+                quantity = 1,
+            };
+            this.cartItemList.Add(cartItem);
+            return true;
+        }
+
+        public bool RemoveProduct(int ProductId) {
+            var findItem = this.cartItemList
+                            .Where(s => s.produtctId == ProductId)
+                            .Select(s => s)
+                            .FirstOrDefault();
+            if (findItem == default(Models.Cart.CartItem))
+            {
+
+            }
+            else { this.cartItemList.Remove(findItem); }
+            return true;
+        }
+
+        public bool EditCartProduct(int ItemId_edit, int quantity_edit ,string ItemNoet_edit)
+        {
+            var findItem = this.cartItemList
+                          .Where(s => s.produtctId == ItemId_edit)
+                          .Select(s => s)
+                          .FirstOrDefault();
+
+            if (findItem == default(Models.Cart.CartItem))
+            {
+                using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+                {
+                    var product = (from s in db.Products
+                                   where s.productID == ItemId_edit
+                                   select s).FirstOrDefault();
+
+                    if (product != default(Models.Product))
+                    {
+                        this.AddProduct(product);
+                    }
+
+                }
+
+            }
+
+            else { findItem.quantity = quantity_edit;
+                findItem.note = ItemNoet_edit;
+            }
+            return true;
+
+        }
+
+        public List<OrderDetial>ToOrderDetail(int id) {
+            var findItem = this.cartItemList;
+
+            List<OrderDetial> newOrderDetail = new List<OrderDetial>();
+ 
+            foreach (var item in findItem) {
+                newOrderDetail.Add
+                    (new OrderDetial()
+                {
+                    orderId = id,
+                    productID = item.produtctId,
+                    productCount = item.quantity,
+                    productionStatus = 1, //訂單產品準備狀態 1-準備中 2-準備ok
+                    customerNote = "",
+                });
+                
+                    }
+
+            return newOrderDetail ;
+        }
+
+        public bool ClearCart() {
+            this.cartItemList.RemoveAll(it => true);
+            return true;
+        }
+
+
+        public IEnumerator<CartItem> GetEnumerator()
+        {
+            return ((IEnumerable<CartItem>)cartItemList).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<CartItem>)cartItemList).GetEnumerator();
+        }
+
+
+        
+
     }
+
 }

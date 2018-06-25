@@ -273,6 +273,7 @@
     <Content Include="SweetAlert2\staticMethods.js" />
     <Content Include="SweetAlert2\SweetAlert.js" />
     <Content Include="SweetAlert2\sweetalert2.js" />
+    <Content Include="test111.html" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -358,6 +359,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -400,7 +402,7 @@
     <Compile Include="Models\OrderDetial.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\orderViewModel.cs" />
+    <Compile Include="Models\OrderModels\OrderViewModel.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
@@ -557,6 +559,9 @@
     <Content Include="SweetAlert2\mixins.scss" />
     <Content Include="SweetAlert2\animations.scss" />
     <Content Include="Views\Member\EditStore.cshtml" />
+    <Content Include="Views\Shared\_CartList.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

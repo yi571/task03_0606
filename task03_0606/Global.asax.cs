@@ -16,14 +16,15 @@ namespace task03_0606
         }
 
         protected void Session_Start() {
-            Session["memberType"] = "Business";
-            // "Customer" , "Admin" ,"Guest"
-            Session["Member"] = 1;
+            //Session["memberType"] = "Business";
+            //// "Customer" , "Admin" ,"Guest"
+            //Session["Member"] = 1;
 
-            //Session["memberType"] = "Customer";
-            //Session["userID"] = "0912345655";
+            Session["memberType"] = "Customer";
+            Session["userPhone"] = "0972345678";
+            Session["seat"] = 5;
 
-
+            Session["storeId"] = 21354423;
         }
 
     }
