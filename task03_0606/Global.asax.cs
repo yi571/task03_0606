@@ -15,17 +15,16 @@ namespace task03_0606
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        protected void Session_Start() {
-            //Session["memberType"] = "Business";
-            //// "Customer" , "Admin" ,"Guest"
-            //Session["Member"] = 1;
-
-            Session["memberType"] = "Customer";
-            Session["userPhone"] = "0972345678";
-            Session["seat"] = 5;
-
-            Session["storeId"] = 21354423;
-        }
+        //protected void Session_Start() {
+        //    //Session["memberType"] = "Business";
+        //    //// "Customer" , "Admin" ,"Guest"
+        //    //Session["Member"] = 1;
+        //    Session["identity"] = "storeUser"; //storeUser  normalUser
+        //    Session["userPhone"] = "0972345678";
+        //    Session["seat"] = 5;
+        //    Session["memberType"] = "Guest";
+        //    Session["storeId"] = 21354423;
+        //}
 
     }
 }

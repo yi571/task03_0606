@@ -47,7 +47,7 @@ namespace task03_0606.Controllers
             var currentCart = task03_0606.Models.Cart.Operation.GetCurrentCart();
             currentCart.ClearCart();
             //return PartialView("_CartList");
-            return RedirectToAction("Restaurent", "Home");
+            return RedirectToAction("Order_list_costomer", "Order");
         }
     }
 }

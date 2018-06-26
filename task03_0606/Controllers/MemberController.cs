@@ -61,6 +61,7 @@ namespace task03_0606.Controllers {
                 Session["logState"] = "login";    //將登入狀態設為登入
                 Session["identity"] = "store";
                 Session["userInfoId"] = queryStoreLogin.ToArray()[0].storeId;
+                Session["storeId"] = queryStoreLogin.ToArray()[0].storeId;
                 Session["UserAllName"] = queryStoreLogin.ToArray()[0].storeName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                     Session["lastPage"] = "/Products/Index";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)

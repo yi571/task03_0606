@@ -22,7 +22,7 @@ namespace task03_0606.Controllers {
             if (Session["identity"] == null) {
                 Session["identity"] = "Guest";
             };
-            if (String.IsNullOrEmpty(TableId)) {
+            if (!String.IsNullOrEmpty(TableId)) {
                 Session["TableId"] = TableId;
             }
             var query = from o in db.Categories

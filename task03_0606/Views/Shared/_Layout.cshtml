@@ -318,6 +318,7 @@
 
     //產品加入購物車
     function AddToCart(productId) {
+        //alert(productId);
         $.ajax({
             type: "post",
             url: '@Url.Action("AddToCart","Cart")',
