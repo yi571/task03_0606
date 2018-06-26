@@ -48,7 +48,12 @@ namespace task03_0606.Controllers {
                 Session["userInfoId"] = queryLogin.ToArray()[0].UserInfoId;
                 Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    if (Session["identity"].ToString() == "superUser") {  //假如是網站管理者，則回Member，如果不是則回顧客首頁
+                        Session["lastPage"] = "/Member/StoreTable";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    } else {
+                        Session["lastPage"] = "/Products/Index";
+                    };
+                   
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
             } else if (queryStoreLogin.Count() > 0) {
@@ -57,7 +62,7 @@ namespace task03_0606.Controllers {
                 Session["userInfoId"] = queryStoreLogin.ToArray()[0].storeId;
                 Session["UserAllName"] = queryStoreLogin.ToArray()[0].storeName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
-                    Session["lastPage"] = "/Member/Member";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
+                    Session["lastPage"] = "/Products/Index";   //假如最後頁面值為空，則設為/Member/Member(此處應設為首頁)
                 }
                 return Redirect((string)Session["lastPage"]);  //重導回最後頁面
             } else {
