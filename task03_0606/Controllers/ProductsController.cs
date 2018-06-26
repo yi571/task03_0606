@@ -36,6 +36,32 @@ namespace task03_0606.Controllers
             return View(categorieslist);
         }
 
+        public ActionResult Allproducts()
+        {
+            string id = Request["storeId"].ToString();
+            if (string.IsNullOrEmpty(id) != true)
+            {
+                var query = from o in db.Products
+                            where o.categoryID == 6
+                            select new FoodProduct
+                            {
+                                productID = o.productID,
+                                productName = o.productName,
+                                productPicture = o.productPicture,
+                                productDescription = o.productDescription,
+                                productPrice = o.productPrice
+                            };
+                List<FoodProduct> foodproducts = query.ToList();
+                return View(foodproducts);
+            }
+            else {
+
+                return RedirectToAction("Index");
+            }
+
+        }
+  
+
         //管理人員-所有商品列表
         public ActionResult ManagerIndex()
         {
@@ -59,6 +85,31 @@ namespace task03_0606.Controllers
             List<FoodProduct> foodproductslist = query.ToList();
             return View(foodproductslist);
         }
+
+        [HttpPost]
+        public ActionResult ManagerIndex(string storeId)
+        {
+            int salesVolume = 0;
+            var query = from o in db.Products
+                        where o.storeId == ("54123513")
+                        select new FoodProduct
+                        {
+                            productID = o.productID,
+                            productName = o.productName,
+                            productPicture = o.productPicture,
+                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
+                            storeProductId = o.storeProductId,
+                            productDescription = o.productDescription,
+                            productPrice = o.productPrice,
+                            storeId = o.storeId,
+                            productState = o.productState,
+                            categoryID = o.categoryID
+                        };
+            List<FoodProduct> foodproductslist = query.ToList();
+            return View(foodproductslist);
+        }
+
+
 
         public ActionResult Create()
         {
@@ -203,27 +254,27 @@ namespace task03_0606.Controllers
         //}
 
             //麥當勞管理介面
-        public ActionResult storeAIndex()
-        {
-            int salesVolume = 0;
-            var query = from o in db.Products
-                        where o.storeId == ("21354423")
-                        select new FoodProduct
-                        {
-                            productID = o.productID,
-                            productName = o.productName,
-                            productPicture = o.productPicture,
-                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
-                            storeProductId = o.storeProductId,
-                            productDescription = o.productDescription,
-                            productPrice = o.productPrice,
-                            storeId = o.storeId,
-                            productState = o.productState,
-                            categoryID = o.categoryID
-                        };
-            List<FoodProduct> foodproductslist = query.ToList();
-            return View(foodproductslist);
-        }
+        //public ActionResult storeAIndex()
+        //{
+        //    int salesVolume = 0;
+        //    var query = from o in db.Products
+        //                where o.storeId == ("21354423")
+        //                select new FoodProduct
+        //                {
+        //                    productID = o.productID,
+        //                    productName = o.productName,
+        //                    productPicture = o.productPicture,
+        //                    salesVolume = o.salesVolume == null ? default(int) : salesVolume,
+        //                    storeProductId = o.storeProductId,
+        //                    productDescription = o.productDescription,
+        //                    productPrice = o.productPrice,
+        //                    storeId = o.storeId,
+        //                    productState = o.productState,
+        //                    categoryID = o.categoryID
+        //                };
+        //    List<FoodProduct> foodproductslist = query.ToList();
+        //    return View(foodproductslist);
+        //}
 
 
         //花月嵐管理介面
@@ -249,7 +300,7 @@ namespace task03_0606.Controllers
             return View(foodproductslist);
         }
 
-
+       
 
 
 
@@ -375,34 +426,35 @@ namespace task03_0606.Controllers
 
         //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
         //}
-        public class ViewModel
-        {
-            public string Name { get; set; }
-            public IEnumerable<Product> MyList { get; set; }
-        }
-        public ActionResult testIndex()
-        {
+        //下拉式2
+        //public class ViewModel
+        //{
+        //    public string Name { get; set; }
+        //    public IEnumerable<Product> MyList { get; set; }
+        //}
+        //public ActionResult testIndex()
+        //{
            
 
-            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
+        //    List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-            foreach (var item in db.Stores)
-            {
-                mySelectItemList.Add(new SelectListItem()
-                {
-                    Text = item.storeId,
-                    Value = item.storeName,
-                    Selected = false
-                });
-            }
+        //    foreach (var item in db.Stores)
+        //    {
+        //        mySelectItemList.Add(new SelectListItem()
+        //        {
+        //            Text = item.storeId,
+        //            Value = item.storeName,
+        //            Selected = false
+        //        });
+        //    }
 
-            ViewModel model = new ViewModel() //上面的 Model
-            {
-                //MyList = mySelectItemList
-            };
+        //    ViewModel model = new ViewModel() //上面的 Model
+        //    {
+        //        //MyList = mySelectItemList
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
     }
 

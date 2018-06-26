@@ -564,6 +564,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Products\storeBIndex.cshtml" />
+    <Content Include="Views\Products\Allproducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

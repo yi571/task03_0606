@@ -25,8 +25,8 @@
     @foreach(task03_0606.Models.FoodProduct db1 in Model)
     {
 
-        <div class='product--yellow  col-sm-2'>
-            <div class="row"></div>
+        <div class='product--yellow  col-sm-2' id="content">
+            <div class="row" id="list"></div>
             <!-- Button trigger modal -->
             <img src='~/photo/@db1.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productID" />
 

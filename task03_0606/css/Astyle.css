@@ -1,17 +1,31 @@
+#content {
+    border:1px solid #7e7e7e; 
+    height:300px;
+    min-width:100px;
+}
+#list div {
+    border:1px solid #7e7e7e;   
+    background:#cbe4fa;       
+    margin:0.3em;
+    text-align:center;
+    width:80px;
+    /* 最主要就下面這行 */    
+    float:right;
+}
 
-/** {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
-}*/
+}
 
-/*html, body {
+html, body {
   background: #EEE5E9;
-}*/
+}
 
-/*header {
+header {
   width: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -21,8 +35,8 @@
           justify-content: flex-end;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-}*/
-/*header ul {
+}
+header ul {
   padding: 1.2em 0 0.5em;
 }
 header span {
@@ -33,9 +47,9 @@ header span, header i {
 }
 header i:nth-of-type(2) {
   cursor: pointer;
-}*/
+}
 
-/*.row {
+.row {
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -43,10 +57,11 @@ header i:nth-of-type(2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  vertical-align:middle;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-}*/
- /*.card-header-icon {
+}
+ .card-header-icon {
             position: absolute;
             z-index: 0;
             top: -25px;
@@ -62,7 +77,7 @@ header i:nth-of-type(2) {
             border: none;
             text-shadow: 1px 1px 3px #555;
             font-weight: 700;
-        }*/
+        }
 
         .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
             box-shadow: 1px 5px 15px #CCC;
@@ -70,7 +85,7 @@ header i:nth-of-type(2) {
             height: auto;
             border-radius: 6px;
             padding:inherit;
-            /*margin: 0 auto;*/
+            /*margin:auto;*/
             overflow: hidden;
             position: fixed;
             -webkit-box-flex: 1;

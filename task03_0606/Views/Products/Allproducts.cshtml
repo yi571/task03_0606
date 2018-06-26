@@ -1,37 +1,38 @@
 ﻿@model List<task03_0606.Models.FoodProduct>
-@{
-    ViewBag.Title = "Drinkproducts";
-}
-
-<h2>飲品/湯品</h2>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-<link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
-<script src="/js/Aindex.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @{
+        ViewBag.Title = "Allproducts";
+    }
 
 
-@*<header>
-        <ul>
-            <i class='fa fa-shopping-cart'>
-                <span class='counter'></span>
-            </i>
-        </ul>
-    </header>*@
-
-
-
-<div class="row" >
-    @foreach (task03_0606.Models.FoodProduct db in Model)
-    {  
-        
-        <div class="product--red col-sm-2" id="content">
  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
+    <script src="/js/Aindex.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-                <div class="row"id="list"></div>
+
+    @*<header>
+            <ul>
+                <i class='fa fa-shopping-cart'>
+                    <span class='counter'></span>
+                </i>
+            </ul>
+        </header>*@
+
+
+
+    <div class="row">
+        @foreach (task03_0606.Models.FoodProduct db in Model)
+        {
+
+            <div class="product--red col-sm-2" id="content">
+
+
+                <div class="row" id="list"></div>
                 <!-- Button trigger modal -->
                 <img src='~/photo/@db.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productID" />
 
@@ -61,7 +62,7 @@
                 <div class='product_inner'>
                     <p>@db.productName</p>
                     <p>Price $@db.productPrice</p>
-                    <button class="button1">Add to basket</button>
+                    <button>Add to basket</button>
                 </div>
 
                 <div class='product_overlay'>
@@ -70,5 +71,5 @@
                 </div>
             </div>
 
-    }
+        }
     </div>
