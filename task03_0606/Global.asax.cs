@@ -19,10 +19,12 @@ namespace task03_0606
             //Session["memberType"] = "Business";
             //// "Customer" , "Admin" ,"Guest"
             //Session["Member"] = 1;
-            Session["identity"] = "storeUser"; //storeUser  normalUser
-            Session["userPhone"] = "0972345678";
-            Session["seat"] = 5;
-            Session["memberType"] = "Guest";
+
+            Session["identity"] = "normal"; //storeUser  normalUser
+
+            Session["userPhone"] = "0972345678"; //0972345678
+            Session["seat"] = 2;
+            Session["memberType"] = ""; //Guest
             Session["storeId"] = 21354423;
         }
 

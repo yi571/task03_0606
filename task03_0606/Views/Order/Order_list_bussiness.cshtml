@@ -44,6 +44,9 @@
                                           where o.orderId == order.orderId && o.Product.Store.storeId == stroeId
                                           select o).ToList();
 
+                        long totalProductOk = 2 * detailList.LongCount();
+                        long ProductOk = 0;
+
                         foreach (var detail in detailList)
                         {
                             <li class="list-group-item container-fluid">
@@ -51,13 +54,19 @@
                                     <div class="col-xs-3">
                                         <img style="width:50px; height:40px" src="~/photo/@detail.Product.productPicture">
                                     </div>
-                                    <div class="col-xs-9">
+                                    <div class="col-xs-8">
                                         <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
-                                        <p class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
+                                        <p class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")  @(ProductOk += detail.productionStatus)</p>
+                                        
+                                    </div>
+                                    <div class="col-xs-1">
+                                        
                                     </div>
                                 </div>
                             </li>
                         }
+
+                       
                     }
                 }
             </ul>
@@ -80,139 +89,34 @@
     </div>
 </div>
 
-<!-- Modal -->
-@*訂單明細彈跳視窗*@
-<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content modal-lg">
-            <div class="modal-header">
-
-                <div>
-                    訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-                    客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
-                    座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-                    訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
-                </div>
-
-                @*<table>
-                        <tr>
-                            <th>
-                                訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-                            </th>
-                            <th>
-                                客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
-                            </th>
-                            <th>
-                                座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-                            </th>
-                            <th>
-                                訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
-                            </th>
-                        </tr>
-                    </table>*@
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body max-height">
-                <div class="table-responsive-sm">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>項次</th>
-                                <th>廠商編號</th>
-                                <th>產品編號</th>
-                                <th>產品名稱</th>
-                                <th>數量</th>
-                                <th>單價</th>
-                                <th>小計</th>
-                                <th>訂單備註</th>
-                                <th>結單時間</th>
-                                <th>..</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detailList">
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>可樂(中)</td>
-                                <td>2</td>
-                                <td>30</td>
-                                <td>60</td>
-                                <td>去冰</td>
-
-                            </tr>
-
-
-                        </tbody>
-                        <thead id="detailSum">
-                            <tr>
-                                <th>總計</th>
-                                <th> </th>
-                                <th> </th>
-                                <th> </th>
-                                <th>3</th>
-                                <th> </th>
-                                <th>160</th>
-                                <th> </th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="orderOK" type="button" class="btn btn-primary">出餐</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
 
 
 <script>
-    //點選該筆訂單，列出訂單明細
-    //找 id=dataTable table 下的 tr class=orderListItem ==> tr[]
-    $("#dataTable").find("tr.orderListItem").click(function () {
-        //alert(this.innerText);
-        //alert(this.cells[0].innerText);
-        //$("#debug").text(this.cells[0].innerText);
-        $("#orderDetail_time").text(this.cells[0].innerText);
-        $("#orderDetail_customerPhone").text(this.cells[1].innerText);
-        $("#orderDetail_orderID").text(this.cells[2].innerText);
-        $("#orderDetail_seatID").text(this.cells[3].innerText);
 
-        $('#exampleModalCenter').modal('show');
+    $('.form_ele').attr('disabled', true);
+
+    $('.form_ele').removeAttr('disabled');
 
 
-        $.ajax({
-            method: "POST",
-            dataType: 'json',
+    $(".list-group-item.container-fluid").click(function () {
+        //if ($(this).find("p.card-text").color() ='green') { alert("ok") }
+        //else { alert("not ok")}
 
-            url: "@Url.Action("Order_list_bussiness", "Order")",
-            data: { OrderId: parseInt($("#orderDetail_orderID").text()) }
-        })
-            .done(function (dataList) {
-                //console.log(dataList)
-                $("#detailList").empty();
+        if($(this).find("div.col-xs-1").find('i') != null){alert("1111");}
+        
+        $(this)
+            .find("div.col-xs-1")
+            .append('<i class="fa fa-fw fa-check-circle"></i>');
+    })
 
-                var countSum = 0;
-                var amountSum = 0;
-                $.each(dataList, function (index, data) {
-                    $("#detailList").append('<tr><td>' + (index + 1) + '</td><td>' + data.MemberID + '</td><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note + '</td><td>' + data.FinshTime + '</td><td><input type="checkbox" />ok</td></tr >');
-                    countSum += data.OrderCount;
-                    amountSum += data.OrderCount * data.UnitPrice;
-                });
-                $("#detailSum").empty();
-                $("#detailSum").append('<tr><td>總計</td><td></td ><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td><td></td></tr >');
-            });
-    });
+    $(".list-group-item.container-fluid").dblclick(function () {
+        $(this)
+            .find("div.col-xs-1")
+            .find('i').remove();
+    })
 
 
     //訂單出餐

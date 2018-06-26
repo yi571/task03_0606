@@ -86,7 +86,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="~/Home/Index">詳細菜單</a>
+        <a href="~/Home/Index">首頁</a>
     </li>
     <li class="breadcrumb-item active">購物車明細 </li>
 </ol>
@@ -114,11 +114,11 @@
                         <tr>
                             <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/photo/@item.picture" /> </td>
                             <td data-th="產品名稱：">@item.productName</td>
-                            <td data-th="店家：">麥當勞</td>
-                            <td data-th="數量："><input size="1" id="itemCount" style="text-align:center; border:none" value="@item.quantity" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
+                            <td data-th="店家：">@item.stoteName</td>
+                            <td data-th="數量："><input size="1" id="itemCount+@item.produtctId" style="text-align:center; border:none" value="@item.quantity" onblur="itemCountEdit(@item.produtctId, $(this).val())"/></td>
                             <td data-th="單價：">@item.price</td>
                             <td data-th="小計：">@(item.price * item.quantity)</td>
-                            <td data-th="備註："><input size="5" id="itemNote"style="text-align:right; border:none;" value="@item.note" onblur="itemEdit(@item.produtctId, $('#itemCount').val(), $('#itemNote').val())"/></td>
+                            <td data-th="備註："><input size="5" id="itemNote+@item.produtctId"style="text-align:right; border:none;" value="@item.note" onblur="itemNoteEdit(@item.produtctId, $(this).val())"/></td>
                             <td>
                                 <a onclick="RemoveFromCart(@item.produtctId)" class="btn btn-sm btn-danger pull-right text-white" aria-label="Delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -127,23 +127,7 @@
                         </tr>
                     }
 
-                    @*<tr>
-                <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/picture/1610141734150000001.jpg" /> </td>
-                <td style="display:none" data-th="產品編號">1</td>
-                <td data-th="產品名稱：">可樂</td>
-                <td style="display:none" data-th="店家編號">1</td>
-                <td data-th="店家：">麥當勞</td>
-                <td data-th="數量："><input size="1" style="text-align:right;" value="2" /></td>
-                <td data-th="單價：">30</td>
-                <td data-th="小計：">60</td>
-                <td data-th="備註："><input size="5" style="text-align:right;" /></td>
-                <td>
-                    <a href="~/#/Delete?productID=1" class="btn btn-sm btn-danger pull-right" aria-label="Delete">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>*@
-
+                   
                 </table>
                 <div class="pull-right">
                     <p>  共 @cart.Count 項，總計：@cart.TotalAmount 元 </p>
@@ -156,15 +140,16 @@
 
 <script>
     //修改數量
-    function itemEdit(itemId, count, note) {
-        alert("id：" + itemId + "  count：" + count + "  note" + note);
+    function itemCountEdit(itemId, count) {
+       
+        alert("id：" + itemId + "  count：" + count );
+       
         $.ajax({
             type : "post",
-            url:"@Url.Action("EditCartItem","Cart")",
+            url:"@Url.Action("EditCartProductCount", "Cart")",
             data: {
                 ItemId_edit: itemId,
                 quantity_edit: count,
-                ItemNoet_edit: note,
             }
         })
             .done(function (msg) {
@@ -173,6 +158,28 @@
             //$("li#Cart").html(msg);
             
         })
+    }
+
+    function itemNoteEdit(itemId, note) {
+       
+        alert("id：" + itemId  + "  note" + note);
+        if (note == null) {
+            note = "";
+        }
+        $.ajax({
+            type : "post",
+            url:"@Url.Action("EditCartProductNote", "Cart")",
+            data: {
+            ItemId_edit: itemId,
+            ItemNoet_edit: note,
+            }
+    })
+    .done(function (msg) {
+        window.location.reload();
+        //alert("id：" + itemId + "  count：" + count + "  note" + note);
+        //$("li#Cart").html(msg);
+            
+    })
     }
 
 </script>
