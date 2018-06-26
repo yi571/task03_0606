@@ -93,56 +93,6 @@
     </div>
     <div class="card-body">
 
-        @*<div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>接單時間</th>
-                        <th>客戶電話</th>
-                        <th>訂單單號</th>
-                        <th>座位</th>
-                        <th style="display:none">產品編號</th>
-                        <th>產品編號</th>
-                        <th>產品名稱</th>
-                        <th>數量</th>
-                        <th>單價</th>
-                        <th>小計</th>
-                        <th>備註</th>
-                        <th>結單時間</th>
-                        <th></th>
-
-                    </tr>
-                </thead>
-
-                <tbody>
-
-
-                    @foreach (task03_0606.Models.orderDetailViewModel order in Model)
-
-                {
-                    <tr class="orderListItem">
-                        <td> @order.OrderTime </td>
-                        <td> @order.CustomerPhone </td>
-                        <td> @order.OrderId</td>
-                        <td> @order.SeatID</td>
-                        <td style="display:none"> @order.ProductID</td>
-                        <td> @order.ProductID</td>
-                        <td> @order.ProductName</td>
-                        <td> @order.OrderCount</td>
-                        <td> @order.UnitPrice</td>
-                        <td> @(@order.UnitPrice * @order.OrderCount)</td>
-                        <td> @order.Note</td>
-                        <td> @order.FinshTime </td>
-                        <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.ProductID,@order.OrderId)">出餐</button> </td>
-                    </tr>
-
-            }
-
-                </tbody>
-            </table>
-        </div>*@
-
-
         <table class="table table-hover rwd-table">
             <tr>
                 <th>接單時間</th>
@@ -177,7 +127,7 @@
             <td data-th="單價："> @order.unitPrice</td>
             <td data-th="小計："> @(order.unitPrice * order.productCount)</td>
             <td data-th="備註："> @order.customerNote</td>
-            <td data-th="產品狀態："> @order.productionStatus </td>
+            <td data-th="產品狀態："> @((order.productionStatus == 1)?"待準備": "準備完成" )</td>
             <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.productID,@order.orderId)">出餐</button> </td>
         </tr>
 
@@ -195,7 +145,7 @@
      //訂單出餐
      function foodDelivery(ProductID,OrderId) {
 
-         alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
+         //alert("訂單編號:" + OrderId + "  " + "產品編號" + ProductID)
 
          $.ajax({
              method: "post",

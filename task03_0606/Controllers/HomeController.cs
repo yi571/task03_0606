@@ -25,7 +25,9 @@ namespace task03_0606.Controllers
 
         public ActionResult RestaurentMemberPage() {
             //return Content(Request["storeId"]);
+
             string id = Request["storeId"].ToString();
+
             if (string.IsNullOrEmpty(id) != true)
             {
                 var restaurent = (from r in db.Stores
