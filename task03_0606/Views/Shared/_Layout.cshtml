@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["identity"].ToString() == "normalUser")
+                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest")
                 {
                     @*顧客專用-餐廳列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
@@ -151,7 +151,7 @@
                         </div>
                     </li>
                 }
-                @if (Session["identity"].ToString() == "normal")
+                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest")
                 {
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
