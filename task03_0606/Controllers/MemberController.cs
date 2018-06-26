@@ -38,7 +38,7 @@ namespace task03_0606.Controllers {
 
             var queryLogin = from o in db.UserInfoes  //比對手機號碼和密碼
                              where (o.phoneNum == phoneNum && o.pwd == pwd && o.userState == 1)
-                             select new { o.UserInfoId, o.lastName, o.firstName, o.userRank };
+                             select new { o.UserInfoId, o.lastName, o.firstName, o.userRank, o.phoneNum };
             var queryStoreLogin = from o in db.Stores //店家登入
                                   where (o.storeId == phoneNum && o.storePwd == pwd && o.storeState == 1)
                                   select new { o.storeId, o.storeName };
@@ -46,6 +46,7 @@ namespace task03_0606.Controllers {
                 Session["logState"] = "login";    //將登入狀態設為登入
                 Session["identity"] = queryLogin.ToArray()[0].userRank.ToString();
                 Session["userInfoId"] = queryLogin.ToArray()[0].UserInfoId;
+                Session["userPhone"] = queryLogin.ToArray()[0].phoneNum;
                 Session["UserAllName"] = queryLogin.ToArray()[0].lastName.ToString() + queryLogin.ToArray()[0].firstName.ToString();
                 if (String.IsNullOrEmpty((string)Session["lastPage"])) {
                     if (Session["identity"].ToString() == "superUser") {  //假如是網站管理者，則回Member，如果不是則回顧客首頁

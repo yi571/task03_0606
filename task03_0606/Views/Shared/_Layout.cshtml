@@ -33,8 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest")
-                {
+                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {
                     @*顧客專用-餐廳列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
                         <a class="nav-link" href="~/Home/Restaurent">
@@ -74,8 +73,7 @@
 
 
                 }
-                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser")
-                {
+                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {
                     @*商家專用-未出餐訂單-訂單別*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
                         <a class="nav-link" href="~/Order/Order_list_bussiness">
@@ -119,8 +117,7 @@
             @*上方導覽*@
             <ul class="navbar-nav ml-auto">
 
-                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser")
-                {
+                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {
                     @*商家專用-新單訊息*@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -151,8 +148,7 @@
                         </div>
                     </li>
                 }
-                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest")
-                {
+                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest") {
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
@@ -236,8 +232,7 @@
                 </li>
                 @*網站登入/登出*@
 
-                @if (Session["memberType"].ToString() == "Guest")
-                {
+                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest") {
                     <li class="nav-item">
 
                         <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -249,14 +244,16 @@
                             <i class="fa fa-fw fa-question"></i>忘記密碼
                         </a>
                     </li>
+                } else {
+                    <li class="nav-item">
+
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                            @if (Session["UserAllName"] != null) {@Session["UserAllName"].ToString()}    您好 <i class='fa fa-fw fa-sign-out'></i>登出
+
+                        </a>
+
+                    </li>
                 }
-                <li class="nav-item">
-
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
-                        店名XXX  您好 <i class="fa fa-fw fa-sign-out"></i>登出
-
-                    </a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -287,19 +284,19 @@
             </div>
         </div>
     </div>
-        <!-- /.container-fluid-->
-        <!-- /.content-wrapper-->
-        <footer class="sticky-footer">
-            <div class="container">
-                <div class="text-center">
-                    <small>Copyright © Your Website 2018</small>
-                </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Your Website 2018</small>
             </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
     </div>
 </body>
 </html>

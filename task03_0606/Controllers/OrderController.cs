@@ -14,6 +14,10 @@ namespace task03_0606.Controllers
         // 購物車清單
         public ActionResult Index()
         {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/Index";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
@@ -39,6 +43,10 @@ namespace task03_0606.Controllers
         //購物車清單 ==> 訂單
         public ActionResult OrderPayment()
         {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/OrderPayment";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
@@ -70,7 +78,7 @@ namespace task03_0606.Controllers
                  //清空購物車session   
                      
             } //return Content("訂購成功");
-                return RedirectToAction("ClearFromCart", "Cart");
+                return RedirectToAction("Index", "Products");
 
             }
             return View();
