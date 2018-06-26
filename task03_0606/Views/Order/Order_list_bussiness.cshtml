@@ -44,8 +44,7 @@
                                           where o.orderId == order.orderId && o.Product.Store.storeId == stroeId
                                           select o).ToList();
 
-                        long totalProductOk = 2 * detailList.LongCount();
-                        long ProductOk = 0;
+                        
 
                         foreach (var detail in detailList)
                         {
@@ -56,12 +55,12 @@
                                     </div>
                                     <div class="col-xs-8">
                                         <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
-                                        <p class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")  @(ProductOk += detail.productionStatus)</p>
+                                        <p class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
+                                        
                                         
                                     </div>
-                                    <div class="col-xs-1">
-                                        
-                                    </div>
+                                    <div class="col-xs-1" data-status="@detail.productionStatus"></div>
+                                       
                                 </div>
                             </li>
                         }
@@ -102,25 +101,28 @@
 
 
     $(".list-group-item.container-fluid").click(function () {
-        //if ($(this).find("p.card-text").color() ='green') { alert("ok") }
-        //else { alert("not ok")}
-
-        if($(this).find("div.col-xs-1").find('i') != null){alert("1111");}
         
-        $(this)
-            .find("div.col-xs-1")
-            .append('<i class="fa fa-fw fa-check-circle"></i>');
+        //console.log($(this).find("i").length)
+
+        if ($(this).find("i").length > 0) {
+            $(this)
+                 .find("div.col-xs-1")
+                 .find('i').remove();  
+        }
+        else {
+            $(this)
+                .find("div.col-xs-1")
+                .append('<i class="fa fa-fw fa-check-circle"></i>')
+                .css("color", "green");
+        }
     })
 
-    $(".list-group-item.container-fluid").dblclick(function () {
-        $(this)
-            .find("div.col-xs-1")
-            .find('i').remove();
-    })
+    
 
 
     //訂單出餐
     $("#orderOK").click(function () {
+
         $.ajax({
             method: "post",
             dataType: "json",
@@ -132,7 +134,7 @@
                 orderDetail_seatID_input: $("#orderDetail_seatID").text(),
             }
         })
-            .done(function (data) {
+          .done(function (data) {
                 console.log(data);
                 alert("確定出餐");
                 $('#exampleModalCenter').modal('hide');
@@ -223,6 +225,23 @@
 
         });
 
+        $("div.col-xs-1").data("status") == 2
+
+        statusCheck();
     });
+
+    //如果產品狀態==2, 加上check icon
+    function statusCheck() {
+        $("div.col-xs-1").each(function () {
+            //console.log($(this).data("status"));
+            if ($(this).data("status") == 2) {
+                $(this).append('<i class="fa fa-fw fa-check-circle"></i>')
+                    .css("color", "green");
+            }
+            else { $(this).append('');}
+        })
+      
+        
+    }
 
 </script>
