@@ -21,7 +21,13 @@ namespace task03_0606.Controllers
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
-            int tableNum = Convert.ToInt32(Session["seat"]) ;
+            int tableNum = 0;
+            if (Session["seat"] == null) {
+                tableNum = 1;
+            } else {
+                tableNum = Convert.ToInt32(Session["seat"]);
+            }
+            
             
             using (FoodCourtDBEntities db = new FoodCourtDBEntities()) {
                 //查詢用戶姓名

@@ -77,8 +77,8 @@ namespace task03_0606.Controllers {
         public ActionResult Logout() {
             Session.Clear();
             Session["logState"] = "";   //登出則將logState設為空字串
-            Session["identity"] = "";
-            return RedirectToAction("Member", "Member");  //此處應重導回首頁
+            Session["identity"] = "Guest";
+            return RedirectToAction("Index", "Products");  //此處應重導回首頁
         }
 
         public ActionResult EasyRegister() {  //只需手機號碼的註冊

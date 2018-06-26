@@ -148,7 +148,7 @@
                         </div>
                     </li>
                 }
-                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest") {
+                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
@@ -232,28 +232,30 @@
                 </li>
                 @*網站登入/登出*@
 
-                @if (Session["identity"].ToString() == "normal" || Session["identity"].ToString() == "Guest") {
-                    <li class="nav-item">
+                <li class="nav-item">
 
-                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
-                            親愛的訪客  您好<i class="fa fa-fw fa-sign-in"></i>登入
+                    @{
+                        string strUrl = "";
+                        string faStr = "out";
+                        string logStr = "登出";
+                        string toggleStr = "modal";
+                        string targetStr = "#exampleModal";
+                        if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
+                            strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
+                            faStr = "in";
+                            logStr = "登入";
+                            toggleStr = "";
+                            targetStr = "";
+                        }
+                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">
+                            @{string you = "親愛的顧客"; }
+                            @if (!String.IsNullOrEmpty((string)Session["logState"])) {@Session["UserAllName"].ToString();
+                        } else { @you}
+                            您好！<i class="fa fa-fw fa-sign-@faStr"></i>@logStr
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
-                            <i class="fa fa-fw fa-question"></i>忘記密碼
-                        </a>
-                    </li>
-                } else {
-                    <li class="nav-item">
+                    }
 
-                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
-                            @if (Session["UserAllName"] != null) {@Session["UserAllName"].ToString()}    您好 <i class='fa fa-fw fa-sign-out'></i>登出
-
-                        </a>
-
-                    </li>
-                }
+                </li>
             </ul>
         </div>
     </nav>
