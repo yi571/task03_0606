@@ -94,7 +94,9 @@
     <div class="card o-hidden h-100">
 
         <div class="card-header">
-            <h5 class="card-title"> 訂購人姓名：@(ViewBag.userLastName + ViewBag.userFirstName)    座位：@ViewBag.seatLoction</h5>
+            <h6 class="card-title"> 訂購人姓名：@(ViewBag.userLastName + ViewBag.userFirstName) <br/>
+                                    座位：@ViewBag.seatLoction  <br />
+                                    訂單單號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(ViewBag.itemOrderDate), (ViewBag.itemOrderId + 10000))</h6>
         </div>
         <div class="card-body">
             <table class="table-responsive-sm rwd-table">
@@ -118,7 +120,7 @@
                         <td data-th="單價：">@item.unitPrice</td>
                         <td class="amount" data-th="小計：">@(item.unitPrice * item.productCount)</td>
                         <td data-th="備註：">@item.customerNote</td>
-                        <td  data-th="餐點狀況：">@item.productionStatus @((item.productionStatus) == 1 ? "餐點準備中" : "完成待送餐")</td>
+                        <td  data-th="餐點狀況：">@((item.productionStatus) == 1 ? "餐點準備中" : "完成待送餐")</td>
                     </tr>
                 }
 

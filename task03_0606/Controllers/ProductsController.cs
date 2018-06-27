@@ -31,7 +31,7 @@ namespace task03_0606.Controllers {
                             categoryName = o.categoryName,
                             Description = o.Description,
                             categoryPicture = o.categoryPicture,
-                            categoryURL = o.categoryURL
+                          //  categoryURL = o.categoryURL
 
                         };
             List<FoodCategories> categorieslist = query.ToList();

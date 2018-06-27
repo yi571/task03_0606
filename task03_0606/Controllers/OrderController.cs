@@ -98,7 +98,9 @@ namespace task03_0606.Controllers
         public ActionResult Order_detail_costomer()
         {
             int itemOrderId = Convert.ToInt32(Request["itemOrderId"]);
-
+            
+            ViewBag.itemOrderId = itemOrderId;
+            ViewBag.itemOrderDate =  Request["orderDate"].ToString();
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
@@ -113,6 +115,7 @@ namespace task03_0606.Controllers
 
                 ViewBag.userFirstName = user.firstName;
                 ViewBag.userLastName = user.lastName;
+                
                 //查詢座位
                 var seat = (from o in db.TableListes
                             where o.tableId == tableNum
@@ -142,6 +145,8 @@ namespace task03_0606.Controllers
                             };
                
                 List<OrderDetailViewModel> orders = query.ToList();
+
+                
                 return View(orders);
 
             }
@@ -153,7 +158,7 @@ namespace task03_0606.Controllers
         {
             string stroeId = Session["storeId"].ToString();
 
-            //依結單時間=null &　廠商編號，篩選廠商訂單明細
+            //依訂單狀況 & 廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 var query = from o in db.Orders
@@ -182,7 +187,7 @@ namespace task03_0606.Controllers
                 return View(orderList);
             }
     }
-        //廠商未出餐點明細清單 ==>準備完成
+        //廠商未出餐點明細清單 ==> 準備完成
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
             int test = productId_ok;
@@ -194,12 +199,13 @@ namespace task03_0606.Controllers
                               orderby o.orderId
                               select o).FirstOrDefault();
 
-                if (result.productionStatus==1) {
+                if (result.productionStatus == 1)
+                {
                     result.productionStatus = 2;
                 }
-                if (result.productionStatus == 2) {
-                    result.productionStatus = 1;
-                }
+                else { result.productionStatus = 1; }
+                    
+             
                 db.SaveChanges();
                 return Json(true);
             }

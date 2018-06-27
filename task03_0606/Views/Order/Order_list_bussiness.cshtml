@@ -27,6 +27,7 @@
             <div class="card-header bg-success">
                 <p class="card-text text-white">
                     桌號：@order.tableId &nbsp 電話：@order.phoneNum <br />
+                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId+10000))
                     <small class="text-white">@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</small>
                     <button class="btn btn-sm btn-success pull-right" disabled onclick="orderComplete(@order.orderId)"><b>@order.orderId+出餐</b></button>
                 </p>

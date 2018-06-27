@@ -2,17 +2,26 @@
 @{
     ViewBag.Title = "Order_list_costomer";
 }
+<style>
+    
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+
+</style>
+
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">訂單列表--我的餐點訂單</li>
+    <li class="breadcrumb-item active">訂單列表-我的餐點訂單</li>
 </ol>
 
 <div class="row">
-    <div class="table-responsive col-12">
+    <div class="table-responsive-sm col-12">
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>單號</th>
+                    <th>訂單單號</th>
                     <th>下單時間</th>
                     <th>訂單狀況</th>
 
@@ -23,8 +32,8 @@
                 @foreach (var order in Model)
 
                 {
-                    <tr class="orderListItem" >
-                        <td><a href="~/Order/Order_detail_costomer?itemOrderId=@order.orderId">@order.orderId </a></td>
+                    <tr class="orderListItem"  >
+                        <td><a href="~/Order/Order_detail_costomer?itemOrderId=@order.orderId&orderDate=@order.orderDate">@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000)) </a></td>
                         <td>@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</td>
                         <td>@(order.orderState == 1 ? "待出餐" : "出餐完畢")</td>
                     </tr>
@@ -35,34 +44,7 @@
     </div>
 </div>
 
-<script>
 
-     function showModal (itemOrderId){
-        $('#exampleModalCenter').modal('show');
-        $.ajax({
-            method: "POST",
-            dataType: 'json',
-
-            url:"@Url.Action("Order_list_costomer", "Order")",
-            data: { OrderId: itemOrderId }
-        })
-            .done(function (dataList) {
-                console.log(dataList)
-                $("#detailList").empty();
-
-                var countSum = 0;
-                var amountSum = 0;
-                $.each(dataList, function (index, data) {
-                    $("#detailList").append('<tr><td>' + (index+1) + '</td><td>' + data.storeName + '</td><td>' + data.productID + '</td><td>' + data.productName + '</td><td>' + data.productCount + '</td><td>' + data.unitPrice + '</td><td>' + data.productCount * data.unitPrice + '</td><td>' + data.customerNote + '</td><td>' + (data.productionStatus==1?'餐點準備中':'餐點完成') + '</td></tr>');
-                    countSum += data.productCount;
-                    amountSum += data.productCount * data.unitPrice;
-                });
-                $("#detailSum").empty();
-                $("#detailSum").append('<tr><td>總計</td><td></td><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td><td></td><</tr>');
-            });
-    }
-
-    </script>
 
 
 
