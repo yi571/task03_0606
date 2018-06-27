@@ -17,7 +17,7 @@ namespace task03_0606.Controllers
 
         /*AP0010_ConitionModel condition = new AP0010_ConitionModel();*/ //下拉式選單
          FoodCourtDBEntities db = new FoodCourtDBEntities();
-
+        
 
         // GET: Products
         public ActionResult Index()
@@ -36,11 +36,49 @@ namespace task03_0606.Controllers
             return View(categorieslist);
         }
 
+        //public ActionResult BindWithViewBag()
+        //{
+        //    List<SelectListItem> items = new List<SelectListItem>();
+
+        //    items.Add(new SelectListItem
+        //    {
+        //        Text = "Select Category",
+        //        Value = "0",
+        //        Selected = true
+        //    });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "麥當勞", Value = "21354423" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Condiments", Value = "2" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Confections", Value = "3" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Dairy Products", Value = "4" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Grains/Cereals", Value = "5" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Meat/Poultry", Value = "6" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Produce", Value = "7" });
+
+        //    items.Add(new SelectListItem
+        //    { Text = "Seafood", Value = "8" });
+
+        //    ViewBag.CategoryType = items;
+
+        //    return View();
+        //}
+
         //管理人員-所有商品列表
         public ActionResult ManagerIndex()
         {
-
-
             int salesVolume = 0;
             var query = from o in db.Products
                         select new FoodProduct
@@ -59,6 +97,31 @@ namespace task03_0606.Controllers
             List<FoodProduct> foodproductslist = query.ToList();
             return View(foodproductslist);
         }
+
+        [HttpPost]
+        public ActionResult ManagerIndex(string storeId)
+        {
+            int salesVolume = 0;
+            var query = from o in db.Products
+                        where o.storeId == ("54123513")
+                        select new FoodProduct
+                        {
+                            productID = o.productID,
+                            productName = o.productName,
+                            productPicture = o.productPicture,
+                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
+                            storeProductId = o.storeProductId,
+                            productDescription = o.productDescription,
+                            productPrice = o.productPrice,
+                            storeId = o.storeId,
+                            productState = o.productState,
+                            categoryID = o.categoryID
+                        };
+            List<FoodProduct> foodproductslist = query.ToList();
+            return View(foodproductslist);
+        }
+
+
 
         public ActionResult Create()
         {
@@ -146,7 +209,7 @@ namespace task03_0606.Controllers
                 return View(postback);
             }
         }
-        // GET: Products/Delete/5
+        // GET: Products/Delete
         public ActionResult Delete(int? productID)
         {
             if (productID == null)
@@ -161,7 +224,7 @@ namespace task03_0606.Controllers
             return View(pd);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Employees/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int productID)
@@ -202,7 +265,11 @@ namespace task03_0606.Controllers
         //    }
         //}
 
-            //麥當勞管理介面
+
+
+
+
+        //麥當勞管理介面
         public ActionResult storeAIndex()
         {
             int salesVolume = 0;
@@ -249,7 +316,7 @@ namespace task03_0606.Controllers
             return View(foodproductslist);
         }
 
-
+       
 
 
 
@@ -375,34 +442,35 @@ namespace task03_0606.Controllers
 
         //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
         //}
-        public class ViewModel
-        {
-            public string Name { get; set; }
-            public IEnumerable<Product> MyList { get; set; }
-        }
-        public ActionResult testIndex()
-        {
+        //下拉式2
+        //public class ViewModel
+        //{
+        //    public string Name { get; set; }
+        //    public IEnumerable<Product> MyList { get; set; }
+        //}
+        //public ActionResult testIndex()
+        //{
            
 
-            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
+        //    List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-            foreach (var item in db.Stores)
-            {
-                mySelectItemList.Add(new SelectListItem()
-                {
-                    Text = item.storeId,
-                    Value = item.storeName,
-                    Selected = false
-                });
-            }
+        //    foreach (var item in db.Stores)
+        //    {
+        //        mySelectItemList.Add(new SelectListItem()
+        //        {
+        //            Text = item.storeId,
+        //            Value = item.storeName,
+        //            Selected = false
+        //        });
+        //    }
 
-            ViewModel model = new ViewModel() //上面的 Model
-            {
-                //MyList = mySelectItemList
-            };
+        //    ViewModel model = new ViewModel() //上面的 Model
+        //    {
+        //        //MyList = mySelectItemList
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
     }
 

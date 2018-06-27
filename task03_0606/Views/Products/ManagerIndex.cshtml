@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "ManagerIndex";
 }
+
 <link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet/scss" type="text/css" href="~/scss/Astyle.scss">
 <link rel="stylesheet" href="responsive-tables.css">
+
 
 <div class="container-fluid" >
 
@@ -14,13 +16,41 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
+                <h1><i class="fa fa-table"></i><a href="" class="white-text mx-3">商品列表</a></h1></i>
                 <button class="pull-right btn btn-warning" id="create">
                     <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
                 </button>
             </div>
-            <div class="card-body"><label>店家名稱<select name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm"><option value="所有產品">所有產品</option><option value="麥當勞">麥當勞</option><option value="八坂丼飯">八坂丼飯</option><option value="亞頓鐵板燒">亞頓鐵板燒</option><option value="壽賀喜屋">壽賀喜屋</option>
-    <option value="花月嵐拉麵">花月嵐拉麵</option><option value="燒丼株式會社">燒丼株式會社</option><option value="湄南河料理">湄南河料理</option><option value="三田製麵所">三田製麵所</option></select></label></div>
+            
+               <div class="card-body">
+                    <label>
+                        店家名稱
+                        <select onChange="MM_o(this)" style="background:#3399FF; color:#ffffff" name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm">
+                            <option value=""selected>所有產品</option>
+                            <option value='~/Products/storeAIndex'>麥當勞</option>
+                            <option value="~/Products/storeBIndex">花月嵐拉麵</option>
+                            <option value="八坂丼飯">八坂丼飯</option>
+                            <option value="亞頓鐵板燒">亞頓鐵板燒</option>
+                            <option value="壽賀喜屋">壽賀喜屋</option>
+                            
+                            <option value="燒丼株式會社">燒丼株式會社</option>
+                            <option value="湄南河料理">湄南河料理</option>
+                            <option value="三田製麵所">三田製麵所</option>
+                        </select>
+                    </label>
+                   @*@Html.DropDownList("Category", new List<SelectListItem>()
+{
+    new SelectListItem(){ Text= "麥當勞", Value = "21354423"},
+    new SelectListItem(){ Text= "Condiments", Value = "2"},
+    new SelectListItem(){ Text= "Confections", Value = "3"},
+    new SelectListItem(){ Text= "Dairy Products", Value = "4"},
+    new SelectListItem(){ Text= "Grains/Cereals", Value = "5"},
+    new SelectListItem(){ Text= "Meat/Poultry", Value = "6"},
+    new SelectListItem(){ Text= "Produce", Value = "7"},
+    new SelectListItem(){ Text= "Seafood", Value = "8"}
+}, "Select Category")*@
+
+                </div>
 
                 @*@Html.DropDownListFor(c => c , new { @class = "form-control ", id = "PageSize" })*@
                 <div class="table-responsive">
@@ -38,32 +68,32 @@
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="店家代號: activate to sort column descending" aria-sort="ascending">店家代號</th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="目前狀態: activate to sort column descending" aria-sort="ascending">目前狀態</th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品類別: activate to sort column descending" aria-sort="ascending">商品類別</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td >@Html.DisplayFor(modelItem => item.productID)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.productID)</td>
                                     @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
                                     <td>
-                                    @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
+                                        @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
                                     </td>
-                                    <td >@Html.DisplayFor(modelItem => item.productName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.productName)</td>
                                     <td class="ProfileImg">
                                         <img id="img1" src="~/photo/@item.productPicture" height="40" width="55" />
                                         @*<a title="Click to see the product detail" href="/admin/ProductDetail?productId=@item.productId">
-                                                @{
-                                                    if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId)))
-                                                    {
-                                                        <img src="@(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId) " />
-                                                    }
-                                                    else
-                                                    { <img src="~/photo/" alt="" />}
-                                                }
-                                            </a>*@
+                                        @{
+                                            if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId)))
+                                            {
+                                                <img src="@(System.Configuration.ConfigurationManager.AppSettings["picture"] + "Small/" + item.productId + "" + item.productId) " />
+                                            }
+                                            else
+                                            { <img src="~/photo/" alt="" />}
+                                        }
+                                    </a>*@
                                     </td>
                                     <td>@Html.DisplayFor(modelItem => item.salesVolume)</td>
                                     <td>@Html.DisplayFor(modelItem => item.storeProductId)</td>
@@ -75,13 +105,13 @@
                                     <td>@Html.DisplayFor(modelItem => item.productState)</td>
                                     <td>@Html.DisplayFor(modelItem => item.categoryID)</td>
 
-                                   
+
                                 </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-            </div>
+</div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
     </div>
@@ -103,3 +133,8 @@
 
     
 </div>
+
+<script language="JavaScript">
+function MM_o(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>

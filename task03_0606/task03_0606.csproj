@@ -226,13 +226,13 @@
     <Content Include="photo\C14.jpg" />
     <Content Include="photo\C15.jpg" />
     <Content Include="photo\C16.jpg" />
-    <Content Include="photo\NewFolder1\6\first\C18.jpg" />
-    <Content Include="photo\NewFolder1\6\first\C19.jpg" />
-    <Content Include="photo\NewFolder1\6\first\C20.jpg" />
-    <Content Include="photo\NewFolder1\6\first\C21.jpg" />
+    <Content Include="photo\C18.jpg" />
+    <Content Include="photo\C19.jpg" />
+    <Content Include="photo\C20.jpg" />
+    <Content Include="photo\C21.jpg" />
     <Content Include="photo\D13.jpg" />
-    <Content Include="photo\NewFolder1\6\first\D10.jpg" />
-    <Content Include="photo\NewFolder1\6\first\D11.jpg" />
+    <Content Include="photo\D10.jpg" />
+    <Content Include="photo\D11.jpg" />
     <Content Include="photo\NewFolder1\6\first\D12.jpg" />
     <Content Include="photo\D2.jpg" />
     <Content Include="photo\D3.jpg" />
@@ -240,7 +240,7 @@
     <Content Include="photo\D5.jpg" />
     <Content Include="photo\D6.jpg" />
     <Content Include="photo\D8.jpg" />
-    <Content Include="photo\NewFolder1\6\first\D9.jpg" />
+    <Content Include="photo\D9.jpg" />
     <Content Include="photo\NewFolder1\6\first\E15.jpg" />
     <Content Include="photo\NewFolder1\6\first\E16.jpg" />
     <Content Include="photo\NewFolder1\6\first\E17.jpg" />
@@ -362,6 +362,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />

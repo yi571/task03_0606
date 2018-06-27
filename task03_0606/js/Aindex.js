@@ -5,12 +5,12 @@
     var counter = 0;
 
     // Initial Cart
-    $(".counter").html(init);
+    $(".indicator").html(init);
 
     // Add Items To Basket
     function addToBasket() {
         counter++;
-        $(".counter")
+        $(".indicator")
           .html(counter)
           .animate(
             {
@@ -18,7 +18,7 @@
             },
             300,
             function () {
-                $(".counter")
+                $(".indicator")
                   .delay(300)
                   .animate({
                       opacity: "1"
@@ -28,8 +28,8 @@
     }
 
      //Add To Basket Animation
-    $("#button1").click( function () {
-        addToBasket();
+    $(".btn").click(function () {
+        //addToBasket();
         $(this)
           .parent()
           .parent()
@@ -52,7 +52,7 @@
     });
 });
 
-$("button").on("click", function () {
+$("#button").on("click", function () {
     addToBasket();
     $(this)
       .parent()
