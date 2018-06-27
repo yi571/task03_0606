@@ -28,8 +28,8 @@
     }
 
      //Add To Basket Animation
-    $("#button").click(function () {
-        addToBasket();
+    $(".btn").click(function () {
+        //addToBasket();
         $(this)
           .parent()
           .parent()
