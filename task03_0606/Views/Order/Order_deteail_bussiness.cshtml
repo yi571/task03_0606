@@ -172,14 +172,18 @@
          alert("1 OK")
          var chat = $.connection.storeHub;
          alert("2 OK")
-         chat.client.addNewMessageToPage = function (test) {
-             alert(test);
+         chat.client.addNewMessageToPage = function (test, orderId, orderTime, customerPhone, seatID, productID, productName, productCount, unitPrice, customerNote, productionStatus) {
+             //alert(test);
+             //$("#storeTable tbody").append('<tr>' + '<td data-th="接單時間：">' + orderTime + '</td>'
+             //    + '</td><td data-th="客戶電話：">' + customerPhone + '</td>');
+             window.location.reload();
          };
 
          $.connection.hub.start().done(function () {
-             alert('start');
+             //alert('start');
              var x = "test1";
-             chat.server.Send(x);
+             var storeId = Session["storeId"];
+             chat.server.Send(storeId);
          });
      });
 

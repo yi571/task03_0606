@@ -88,6 +88,7 @@ namespace task03_0606.Controllers
                      
             } //return Content("訂購成功");
                 var context = GlobalHost.ConnectionManager.GetHubContext<StoreHub>();
+
                 context.Clients.All.addNewMessageToPage("新訂單");
                 return RedirectToAction("ClearFromCart", "Cart");
 
@@ -108,7 +109,7 @@ namespace task03_0606.Controllers
                 var query = from o in db.Orders
                                  join c in db.OrderDetials on o.orderId equals c.orderId into ps
                                  from c in ps.DefaultIfEmpty()
-                                 where c.productionStatus == 1  && c.Product.Store.storeId == stroeId
+                                 where c.productionStatus == 1  && c.Product.Store.storeId == stroeId && o.orderState == 1
                                  select new OrderDetailViewModel
                                  {
                                      orderId = o.orderId,
