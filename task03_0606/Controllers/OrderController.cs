@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
 using System.Data.SqlClient;
+using task03_0606.Hubs;
+using Microsoft.AspNet.SignalR;
 
 namespace task03_0606.Controllers
 {
@@ -85,6 +87,8 @@ namespace task03_0606.Controllers
                  //清空購物車session   
                      
             } //return Content("訂購成功");
+                var context = GlobalHost.ConnectionManager.GetHubContext<StoreHub>();
+                context.Clients.All.addNewMessageToPage("新訂單");
                 return RedirectToAction("ClearFromCart", "Cart");
 
             }

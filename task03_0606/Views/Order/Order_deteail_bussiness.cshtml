@@ -93,7 +93,7 @@
     </div>
     <div class="card-body">
 
-        <table class="table table-hover rwd-table">
+        <table class="table table-hover rwd-table" id="storeTable">
             <tr>
                 <th>接單時間</th>
                 <th>客戶電話</th>
@@ -110,37 +110,38 @@
                 <th></th>
             </tr>
 
-            
 
-                @foreach (task03_0606.Models.OrderDetailViewModel order in Model)
 
-        {
-        <tr>
-            <td data-th="接單時間："> @order.orderTime </td>
-            <td data-th="客戶電話："> @order.customerPhone </td>
-            <td data-th="訂單單號："> @order.orderId</td>
-            <td data-th="座位："> @order.seatID</td>
-            <td data-th="產品編號：" style="display:none"> @order.productID</td>
-            <td data-th="產品編號："> @order.productID</td>
-            <td data-th="產品名稱："> @order.productName</td>
-            <td data-th="數量："> @order.productCount</td>
-            <td data-th="單價："> @order.unitPrice</td>
-            <td data-th="小計："> @(order.unitPrice * order.productCount)</td>
-            <td data-th="備註："> @order.customerNote</td>
-            <td data-th="產品狀態："> @((order.productionStatus == 1)?"待準備": "準備完成" )</td>
-            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.productID,@order.orderId)">出餐</button> </td>
-        </tr>
+            @foreach (task03_0606.Models.OrderDetailViewModel order in Model) {
+                <tr>
+                    <td data-th="接單時間："> @order.orderTime </td>
+                    <td data-th="客戶電話："> @order.customerPhone </td>
+                    <td data-th="訂單單號："> @order.orderId</td>
+                    <td data-th="座位："> @order.seatID</td>
+                    <td data-th="產品編號：" style="display:none"> @order.productID</td>
+                    <td data-th="產品編號："> @order.productID</td>
+                    <td data-th="產品名稱："> @order.productName</td>
+                    <td data-th="數量："> @order.productCount</td>
+                    <td data-th="單價："> @order.unitPrice</td>
+                    <td data-th="小計："> @(order.unitPrice * order.productCount)</td>
+                    <td data-th="備註："> @order.customerNote</td>
+                    <td data-th="產品狀態："> @((order.productionStatus == 1) ? "待準備" : "準備完成" )</td>
+                    <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.productID,@order.orderId)">出餐</button> </td>
+                </tr>
 
-}
-               
-                
+            }
 
-            </table>
+
+
+        </table>
 
     </div>
-</div>
 
- <script>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
 
      //訂單出餐
      function foodDelivery(ProductID,OrderId) {
@@ -153,7 +154,7 @@
              url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
              data: {
 
-                 productId_ok: parseInt(ProductID), 
+                 productId_ok: parseInt(ProductID),
                  orderId_ok: parseInt(OrderId),
              }
      })
@@ -161,42 +162,33 @@
                 alert("確定出餐 訂單編號:" + OrderId + "的" + "產品編號" + ProductID)
                 window.location.reload();
                 //console.log(data);
-                
-                
+
+
             })
 
      }
 
-     
+     $(function () {
+         alert("1 OK")
+         var chat = $.connection.storeHub;
+         alert("2 OK")
+         chat.client.addNewMessageToPage = function (test) {
+             alert(test);
+         };
 
-
-     @*$("#dataTable").find("tr.orderListItem").find("button").click(function () {
-         //alert(this.closest("tr").cells[4].innerText);
-         var productId = this.closest("tr").cells[4];
-         var orderId = this.closest("tr").cells[2];
-
-         alert("訂單編號:" + orderId + "  " + "產品編號" + productId)
-
-         $.ajax({
-             method: "post",
-             dataType: "json",
-             url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
-             data: {
-                 productId_ok: parseInt(productId),
-                 orderId_ok: parseInt(orderId),
-             }
-     })
-            //.done(function (data) {
-            //    console.log(data);
-            //    alert("確定出餐");
-            //    $('#exampleModalCenter').modal('hide');
-
-            //})
-
-     });*@
+         $.connection.hub.start().done(function () {
+             alert('start');
+             var x = "test1";
+             chat.server.Send(x);
+         });
+     });
 
 
 
 
-            </script>
+
+
+
+
+</script>
 
