@@ -88,22 +88,42 @@ namespace task03_0606.Controllers
             {
                 var orders = (from o in db.Orders
                               where o.phoneNum == phoneString
-                              orderby o.orderId
+                              orderby o.orderId descending
                               select o).ToList();
-
                 return View(orders);
             }
         }
+        
         //客戶訂單 ==>訂單明細
-        [HttpPost]
-        public ActionResult Order_list_costomer(int OrderId)
+        public ActionResult Order_detail_costomer()
         {
+            int itemOrderId = Convert.ToInt32(Request["itemOrderId"]);
+
+            //將存在session中的 電話取出
+            string phonString = Session["userPhone"].ToString();
+            //將存在session中的 桌號取出
+            int tableNum = Convert.ToInt32(Session["seat"]);
+
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
+                //查詢用戶姓名
+                var user = (from o in db.UserInfoes
+                            where o.phoneNum == phonString
+                            select o).FirstOrDefault();
+
+                ViewBag.userFirstName = user.firstName;
+                ViewBag.userLastName = user.lastName;
+                //查詢座位
+                var seat = (from o in db.TableListes
+                            where o.tableId == tableNum
+                            select o).FirstOrDefault();
+                ViewBag.seatLoction = seat.tableLocation;
+
+
                 var query = from o in db.Orders
                             join c in db.OrderDetials on o.orderId equals c.orderId into ps
                             from c in ps.DefaultIfEmpty()
-                            where o.orderId == OrderId
+                            where o.orderId == itemOrderId
                             select new OrderDetailViewModel
                             {
                                 orderId = o.orderId,
@@ -118,10 +138,11 @@ namespace task03_0606.Controllers
                                 unitPrice = c.Product.productPrice,
                                 customerNote = c.customerNote,
                                 productionStatus = c.productionStatus,
+                                productPicture = c.Product.productPicture,
                             };
-
+               
                 List<OrderDetailViewModel> orders = query.ToList();
-                return Json(orders, JsonRequestBehavior.AllowGet);
+                return View(orders);
 
             }
         }

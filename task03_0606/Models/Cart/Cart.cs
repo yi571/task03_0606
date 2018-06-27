@@ -28,7 +28,12 @@ namespace task03_0606.Models.Cart
 
         public int Count {
             get {
-                return this.cartItemList.Count;
+                int totalQuantity = 0;
+                foreach (var cartItem in cartItemList)
+                {
+                    totalQuantity += cartItem.quantity;
+                }
+                return totalQuantity;  
             }
         }
         //加入購物車

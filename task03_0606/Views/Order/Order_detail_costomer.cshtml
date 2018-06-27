@@ -1,0 +1,148 @@
+﻿@model List<task03_0606.Models.OrderDetailViewModel>
+@{
+    ViewBag.Title = "Order_detail_costomer";
+}
+
+<style>
+    /*.table td, .table th {
+        padding: 0rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }*/
+
+    .rwd-table {
+        background: #fff;
+        overflow: hidden;
+    }
+
+        .rwd-table tr:nth-of-type(2n) {
+            background: #eee;
+        }
+
+        .rwd-table th,
+        .rwd-table td {
+            margin: 0.5em 1em;
+        }
+
+    .rwd-table {
+        min-width: 100%;
+    }
+
+        .rwd-table th {
+            display: none;
+        }
+
+        .rwd-table td {
+            display: block;
+        }
+
+            .rwd-table td:before {
+                content: attr(data-th);
+                font-weight: bold;
+                width: 6.5em;
+                display: inline-block;
+            }
+
+        .rwd-table th,
+        .rwd-table td {
+            text-align: left;
+        }
+
+            .rwd-table th,
+            .rwd-table td:before {
+                /*color: #D20B2A;*/
+                font-weight: bold;
+            }
+
+    @@media (min-width: 480px) {
+
+        .rwd-table td:before {
+            display: none;
+        }
+
+        .rwd-table th, .rwd-table td {
+            display: table-cell;
+            padding: 0.25em 0.5em;
+        }
+
+            .rwd-table th:first-child,
+            .rwd-table td:first-child {
+                padding-left: 0;
+            }
+
+            .rwd-table th:last-child,
+            .rwd-table td:last-child {
+                padding-right: 0;
+            }
+
+        .rwd-table th,
+        .rwd-table td {
+            padding: 1em !important;
+        }
+    }
+</style>
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Home/Index">首頁</a>
+    </li>
+    <li class="breadcrumb-item active">購物車明細 </li>
+</ol>
+
+<div class="col-xl-12 col-sm-12 mb-12">
+    <div class="card o-hidden h-100">
+
+        <div class="card-header">
+            <h5 class="card-title"> 訂購人姓名：@(ViewBag.userLastName + ViewBag.userFirstName)    座位：@ViewBag.seatLoction</h5>
+        </div>
+        <div class="card-body">
+            <table class="table-responsive-sm rwd-table">
+                <tr>
+                    <th>產品圖片</th>
+                    <th>產品名稱</th>
+                    <th>店家</th>
+                    <th>數量</th>
+                    <th>單價</th>
+                    <th>小計</th>
+                    <th>備註</th>
+                    <th>餐點狀況</th>
+                </tr>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td data-th="產品圖片："> <img class="img-fluid" width="200" height="120" src="~/photo/@item.productPicture" /> </td>
+                        <td data-th="產品名稱：">@item.productName</td>
+                        <td data-th="店家：">@item.storeName</td>
+                        <td class="count" data-th="數量：">@item.productCount</td>
+                        <td data-th="單價：">@item.unitPrice</td>
+                        <td class="amount" data-th="小計：">@(item.unitPrice * item.productCount)</td>
+                        <td data-th="備註：">@item.customerNote</td>
+                        <td  data-th="餐點狀況：">@((item.productionStatus) == 1 ? "餐點準備中" : "完成待送餐")</td>
+                    </tr>
+                }
+
+
+            </table>
+            <div class="pull-right">
+                <p>  共 5項，總計：10000 元 </p>
+                <a href="~/Order/Order_list_costomer" class="btn btn-sm btn-success"><i class="fa fa-fw fa-undo"></i>回訂單明細</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var totalCount = 0;
+        var tatalAmount = 0;
+        $(".count").each(function () {
+            totalCount += parseInt($(this).text())
+        })
+        $(".amount").each(function () {
+            tatalAmount += parseInt($(this).text())
+        })
+        $("div.pull-right").empty().append('<p>  共' + totalCount + '項，總計：' + tatalAmount + '元 </p><a href="./Order_list_costomer" class="btn btn-sm btn-success"><i class="fa fa-fw fa-undo"></i>回訂單明細</a>')
+    })
+
+</script>
