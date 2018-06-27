@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "MyAction";
+}
+
+<h2>MyAction</h2>
+
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
+</script>
+<meta charset=utf-8 />
+<title>KO範例25 - 狀態切換鈕</title>
+<style>
+    .on {
+        background-color: blue;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <input type="button" value="依編號" data-mode="N"
+               data-bind="css: { on: mode()=='N' }, click: chgMode" />
+        <input type="button" value="依名稱" data-mode="M"
+               data-bind="css: { on: mode()=='M' }, click: chgMode" />
+        <input type="button" value="依類別" data-mode="T"
+               data-bind="css: { on: mode()=='T' }, click: chgMode" />
+        <input type="button" value="依廠牌" data-mode="B"
+               data-bind="css: { on: mode()=='B' }, click: chgMode" />
+    </div>
+    <div>
+        Mode = <span data-bind="text: mode"></span>
+    </div>
+    <script>
+    function myViewModel() {
+      var self = this;
+      self.mode = ko.observable("N");
+      self.chgMode = function(data, event) {
+        //可由event.target取得觸發事件的來源元素
+        self.mode(event.target.getAttribute("data-mode"));
+      };
+    }
+    ko.applyBindings(new myViewModel());
+    </script>
