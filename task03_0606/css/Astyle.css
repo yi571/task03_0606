@@ -1,3 +1,5 @@
+
+
 #content {
     border:1px solid #7e7e7e; 
     height:300px;
@@ -142,7 +144,9 @@ header i:nth-of-type(2) {
                 border: 1px solid rgba(255, 255, 255, 0.5);
                 color: #FFF;
                 border-radius: 3px;
-                padding: 1em 3em;
+                padding: 0em 0em;
+                white-space: nowrap;
+                padding-left: 10px;
                 margin: 1em 0 0 0;
                 background: none;
                 cursor: pointer;
@@ -153,9 +157,9 @@ header i:nth-of-type(2) {
                 .product_inner button:before {
                     font-family: FontAwesome;
                     content: '\f07A';
-                    color: #FFF;
+                    color: #2B2D42;
                     position: absolute;
-                    font-size: 1.5em;
+                    /*font-size: 1.5em;*/
                     margin: 0 -1.5em;
                 }
 

@@ -3,9 +3,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>美食分類</h2>
 
-<div class="container">
+<h2 style="color:green " ><b>美食分類</b></h2>
+
+
+
+<div class="container" style="background-color:#FFA07A">
       
 
    
@@ -15,7 +18,7 @@
            <div class="card" style="width:200px">
             <img class="card-img-top" src="~/photo/productsindex/@db.categoryPicture" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@db.categoryName</h5>
+                <h5 class="card-title"><i style="color:red" class="fa fa-heart"></i>@db.categoryName</h5>
                 <p class="card-text">@db.Description</p>
                 <div>
                     <a href="~/Products/@db.categoryURL" class="btn btn-primary">進入挑選</a>

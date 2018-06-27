@@ -1,4 +1,6 @@
-﻿$(function () {
+﻿
+
+$(function () {
     "use strict";
 
     var init = "";
@@ -28,7 +30,7 @@
     }
 
      //Add To Basket Animation
-    $("#button").click(function () {
+    $(".btn").click(function () {
         addToBasket();
         $(this)
           .parent()
