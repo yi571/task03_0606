@@ -105,7 +105,7 @@ namespace task03_0606.Controllers
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
             int tableNum = Convert.ToInt32(Session["seat"]);
-
+            ViewBag.tableNum = tableNum;
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 //查詢用戶姓名
@@ -116,12 +116,6 @@ namespace task03_0606.Controllers
                 ViewBag.userFirstName = user.firstName;
                 ViewBag.userLastName = user.lastName;
                 
-                //查詢座位
-                var seat = (from o in db.TableListes
-                            where o.tableId == tableNum
-                            select o).FirstOrDefault();
-                ViewBag.seatLoction = seat.tableLocation;
-
 
                 var query = from o in db.Orders
                             join c in db.OrderDetials on o.orderId equals c.orderId into ps

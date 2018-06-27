@@ -12,8 +12,8 @@
 
 <ol class="breadcrumb">
     @*<li class="breadcrumb-item">
-        <a href="~/Home/Index"></a>
-    </li>*@
+            <a href="~/Home/Index"></a>
+        </li>*@
     <li class="breadcrumb-item active">未出餐清單 </li>
     @*<small class="pull-right text-muted">Updated yesterday at 11:59 PM</small>*@
 </ol>
@@ -22,18 +22,18 @@
 
 <div class="row">
     @foreach (var order in Model)
-            {
-        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3" >
-            <div class="card-header bg-success">
-                <p class="card-text text-white">
+    {
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header ">
+                <p class="card-text ">
                     桌號：@order.tableId &nbsp 電話：@order.phoneNum <br />
-                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId+10000))
-                    <small class="text-white">@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</small>
-                    <button class="btn btn-sm btn-success pull-right" disabled onclick="orderComplete(@order.orderId)"><b>@order.orderId+出餐</b></button>
+                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))
+                    <small class="text-muted">@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled onclick="orderComplete(@order.orderId)"><b>出餐</b></button>
                 </p>
 
             </div>
-            <ul class="list-group list-group-flush" >
+            <ul class="list-group list-group-flush">
                 @{
 
                     using (task03_0606.Models.FoodCourtDBEntities db = new task03_0606.Models.FoodCourtDBEntities())
@@ -45,11 +45,11 @@
                                           where o.orderId == order.orderId && o.Product.Store.storeId == stroeId
                                           select o).ToList();
 
-                        
+
 
                         foreach (var detail in detailList)
                         {
-                            <li class="list-group-item container-fluid" data-orderid="@order.orderId"  data-productid="@detail.productID">
+                            <li class="list-group-item container-fluid" data-orderid="@order.orderId" data-productid="@detail.productID">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <img style="width:50px; height:40px" src="~/photo/@detail.Product.productPicture">
@@ -57,8 +57,8 @@
                                     <div class="col-xs-8">
                                         <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
                                         <p style="display:none" class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="col-xs-1" data-status="@detail.productionStatus"></div>
                                 </div>
@@ -67,15 +67,15 @@
                     }
                 }
             </ul>
-          
+
         </div>
-                    }       
+    }
 
 
 </div>
 
 <div class="row">
-    <div id="pageList" class="col-sm-12 col-md-12">  </div>
+    <div id="pageList" class="col-sm-12 col-md-12"></div>
     <div id="page" class="col-sm-12 col-md-12">
         <ul class="pagination pagination-sm">
             <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
@@ -99,23 +99,33 @@
         //console.log($(this).find("i").length);
         //console.log(this);
         //console.log($(this).data("orderid"));
+
+        //如果產品明細中有找到<i>元素,則移除<i>
         if ($(this).find("i").length > 0) {
             $(this)
                  .find("div.col-xs-1")
                  .find('i').remove();
+            //將<p>顏色改成黑色
+            $(this).find("p").css("color", "black");
+            //修改 div.col-xs-1 中的 data-status值為1
             $(this).find("div.col-xs-1").data("status", "1");
         }
         else {
+            //於 div.col-xs-1 中加上<i>元素 顏色綠色
             $(this)
                 .find("div.col-xs-1")
                 .append('<i class="fa fa-fw fa-check-circle"></i>')
                 .css("color", "green");
+            //將<p>顏色改成綠色
+            $(this).find("p").css("color", "green");
+            //修改 div.col-xs-1 中的 data-status值為2
             $(this).find("div.col-xs-1").data("status", "2");
         }
         productId = $(this).data("productid");
         orderId = $(this).data("orderid");
-        console.log("productId：" + productId + "   orderId：" + orderId);
+        //console.log("productId：" + productId + "   orderId：" + orderId);
 
+        //修改產品狀態到資料庫
      $.ajax({
              method: "post",
              dataType: "json",
@@ -133,6 +143,7 @@
     $(".card.cardMenuItem").click(function () {
         //console.log($(this).find("li").length);
         //console.log($(this).find(".col-xs-1"));
+
         var orderOk = $(this).find("li").length * 2;
         var totalCount = 0;
         //alert("orderok：" + orderOk + "  totalCount：" + totalCount);
@@ -168,7 +179,7 @@
 
     }
 
-   
+
 
     $(function () {
         //if ($ === jQuery) alert("true");
@@ -184,7 +195,7 @@
         $(".card.cardMenuItem:gt(" + (pageSize - 1) + ")").hide(); //設置首頁顯示8 (8-1) 條數據
 
         //增加項目列表
-        $("div#pageList").append('<p>  第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第 ' + (pageSize * currentPage) + '筆, 共 ' + totalSize + '筆 </p>');
+        $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage-1)) + (totalSize % pageSize))+ '筆, 共' + totalSize + '筆 </p>');
 
         //移除原有 .pagination 裡的元素 , append "前一頁" li
         $(".pagination").empty().append('</p><li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
@@ -214,7 +225,7 @@
                 });
 
                 //增加項目列表
-                $("div#pageList").empty().append('<p>  第' + (start + 1) + '筆 到 第 ' + end + '筆, 共 ' + totalSize + '筆 </p>');
+                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆, 共' + totalSize + '筆</p>');
 
             }
         });
@@ -236,7 +247,7 @@
                     }
                 });
                 //增加項目列表
-                $("div#pageList").empty().append('<p>  第' + (start + 1) + '筆 到 第 ' + end + '筆, 共 ' + totalSize + '筆 </p>');
+                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
 
             }
         });
@@ -262,7 +273,7 @@
                 }
             });
             //增加項目列表
-            $("div#pageList").empty().append('<p>  第' + (start + 1) + '筆 到 第 ' + end + '筆, 共 ' + totalSize + '筆 </p>');
+            $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
 
 
         });

@@ -91,12 +91,15 @@
 </ol>
 
 <div class="col-xl-12 col-sm-12 mb-12">
-    <div class="card o-hidden h-100">
+    <div class="card h-100">
 
         <div class="card-header">
-            <h6 class="card-title"> 訂購人姓名：@(ViewBag.userLastName + ViewBag.userFirstName) <br/>
-                                    座位：@ViewBag.seatLoction  <br />
-                                    訂單單號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(ViewBag.itemOrderDate), (ViewBag.itemOrderId + 10000))</h6>
+            <b><p class="card-title">
+                    訂購人姓名：@(ViewBag.userLastName + ViewBag.userFirstName) <br />
+                    座位：@ViewBag.tableNum <br />
+                    訂單單號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(ViewBag.itemOrderDate), (ViewBag.itemOrderId + 10000))
+        </p>
+        </b>
         </div>
         <div class="card-body">
             <table class="table-responsive-sm rwd-table">
