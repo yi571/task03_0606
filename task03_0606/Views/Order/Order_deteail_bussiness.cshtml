@@ -116,7 +116,7 @@
 
         {
         <tr>
-            <td data-th="接單時間："> @order.orderTime </td>
+            <td data-th="接單時間："> @string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderTime))</td>
             <td data-th="客戶電話："> @order.customerPhone </td>
             <td data-th="訂單單號："> @order.orderId</td>
             <td data-th="座位："> @order.seatID</td>

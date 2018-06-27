@@ -194,13 +194,18 @@ namespace task03_0606.Controllers
                               orderby o.orderId
                               select o).FirstOrDefault();
 
-                result.productionStatus = 2;
+                if (result.productionStatus==1) {
+                    result.productionStatus = 2;
+                }
+                if (result.productionStatus == 2) {
+                    result.productionStatus = 1;
+                }
                 db.SaveChanges();
                 return Json(true);
             }
         }
 
-        //廠商未出餐點訂單
+        //廠商未出餐點訂單列表
         public ActionResult Order_list_bussiness()
         {
             string stroeId = Session["storeId"].ToString();
@@ -237,9 +242,21 @@ namespace task03_0606.Controllers
                 return View(orders);
             }
         }
-       
+        //廠商未出餐點訂單列表 ==>準備完成,出餐
+        [HttpPost]
+        public ActionResult Order_list_bussiness(int orderId_ok)
+        {
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var order = (from o in db.Orders
+                             where o.orderId == orderId_ok
+                             select o).FirstOrDefault();
+                order.orderState = 2;
+                db.SaveChanges();
+                return Json(true);
+            }
+        }
 
-        
 
         public ActionResult Order_list_history_bussiness()
         {
