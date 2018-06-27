@@ -6,42 +6,6 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item active">訂單列表--我的餐點訂單</li>
 </ol>
-@*<div class="col-xl-12 col-sm-12 mb-12">
-    <div class="card-header">
-        <i class="fa fa-table"></i> 我的餐點訂單<div class="pull-right text-muted">Updated yesterday at 11:59 PM</div>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>訂單單號</th>
-                        <th>下單時間</th>
-                        <th>座位</th>
-                        <th>訂單狀況</th>
-
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    @foreach(var order in Model)
-
-                    {
-                        <tr class="orderListItem">
-                            <td>@order.orderId</td>
-                            <td>@string.Format("{0:T}", Convert.ToDateTime(order.orderDate))</td>
-                            <td>@order.tableId</td>
-                            <td>@(order.orderState == 1 ? "待出餐" : "出餐完畢")</td>
-                        </tr>
-                    }
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>*@
 
 <div class="row">
     <div class="table-responsive col-12">
@@ -71,101 +35,7 @@
     </div>
 </div>
 
-
-
-
-<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content modal-lg">
-            <div class="modal-header">
-
-                <table>
-                    <tr>
-                        <th>
-                            訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-                        </th>
-                        
-                        <th>
-                            座位：
-                            <label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-                        </th>
-                        <th>
-                            訂餐時間：
-                            <label id="orderDetail_time" name="orderDetail_time"></label>
-                        </th>
-                    </tr>
-                </table>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body max-height">
-                <div class="table-responsive-sm">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>項次</th>
-                                <th>廠商</th>
-                                <th>產品編號</th>
-                                <th>產品名稱</th>
-                                <th>數量</th>
-                                <th>單價</th>
-                                <th>小計</th>
-                                <th>備註</th>
-                                <th>餐點狀態</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detailList">
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>可樂(中)</td>
-                                <td>2</td>
-                                <td>30</td>
-                                <td>60</td>
-                                <td>去冰</td>
-                                <td>去冰</td>
-                            </tr>
-
-
-                        </tbody>
-                        <thead id="detailSum">
-                            <tr>
-                                <th>總計</th>
-                                <th> </th>
-                                <th> </th>
-                                <th>3</th>
-                                <th> </th>
-                                <th>160</th>
-                                <th> </th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-
-    ////找 id=dataTable table 下的 tr class=orderListItem ==> tr[]
-    //$("#dataTable").find("tr.orderListItem").click(function () {
-    //    //alert(this.innerText);
-    //    //alert(this.cells[0].innerText);
-    //    //$("#debug").text(this.cells[0].innerText);
-    //    $("#orderDetail_time").text(this.cells[0].innerText);
-    //    $("#orderDetail_orderID").text(this.cells[1].innerText);
-    //    $("#orderDetail_seatID").text(this.cells[2].innerText);
-
-    //    $('#exampleModalCenter').modal('show');
 
      function showModal (itemOrderId){
         $('#exampleModalCenter').modal('show');
