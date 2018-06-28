@@ -485,7 +485,7 @@ namespace task03_0606.Controllers {
                         select g.Key;
 
             var queryRoad = from o in db.streetNames //路
-                            where (o.city == cityStr & o.district == districtStr)
+                            where (o.city == cityStr && o.district == districtStr)
                             group o by o.road into g
                             select g.Key;
 
@@ -500,7 +500,7 @@ namespace task03_0606.Controllers {
             ViewBag.addressNum = userInfoEdit[0].addressNum;
             ViewBag.addressF = userInfoEdit[0].addressF;
 
-
+            ViewBag.sweetAlert = 0;
 
             return View();
         }
@@ -636,7 +636,7 @@ namespace task03_0606.Controllers {
 
             db.SaveChanges();
 
-            ViewBag.sweetAlert = 1;
+            ViewBag.sweetAlert = "swal({type: 'success', title: '個人資料已修改！', showConfirmButton: false, timer: 1500});";
             return View();
         }
 

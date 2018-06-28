@@ -196,7 +196,8 @@
             </div>
 }
 
-                <div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
+
+                @*<div class="card text-center cardMenuItem col-sm-12 col-md-4 col-xl-3 product--blue">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -293,18 +294,29 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
+
+
+
            </div>
 
-            <div id="page" class="card-footer">
-                <ul class="pagination pagination-sm">
-                    <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
-                </ul>
-            </div>
+            
+
+        </div>
+
+        <div class="card-footer">
+           
+                <div id="pageList" class="col-sm-12 col-md-12"></div>
+                <div id="page" class="col-sm-12 col-md-12">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item next"><a class="page-link" href="#">下一頁</a></li>
+                    </ul>
+                </div>
+            
 
         </div>
     </div>
@@ -316,18 +328,28 @@
 <script type="text/javascript">
 
     $(function () {
-
+        //if ($ === jQuery) alert("true");
         //實現分頁思路:
         var pageSize = 8;      //每頁顯示數據條數
         var currentPage = 1;   //當前頁數
         var prevPage = 0;
-        var totalSize = $(".cardMenuItem").length; //獲取總數據
-        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
-        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
+        var totalSize = $(".card.cardMenuItem").length; //獲取總數據
 
+        //alert(totalSize);
+
+        var totalPage = Math.ceil(totalSize / pageSize); //計算總頁數
+        $(".card.cardMenuItem:gt(" + (pageSize - 1) + ")").hide(); //設置首頁顯示  pageSize-1 條數據
+
+        //增加分頁比數標示
+        if (currentPage == totalPage) {
+            $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+        }
+        else {
+            $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage ) + '筆, 共' + totalSize + '筆 </p>');
+        }
 
         //移除原有 .pagination 裡的元素 , append "前一頁" li
-        $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
+        $(".pagination").empty().append('</p><li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
         //依總分頁數 , append 各分頁 li
         for (var index = currentPage; index <= totalPage; index++) {
             $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
@@ -338,13 +360,24 @@
 
         //實現下一頁
         $(".next").click(function () {
+            //alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
             if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
                 return false;
-            } else {//不是最後一頁，顯示應該顯示的數據.
+            }
+
+            else {//不是最後一頁，顯示應該顯示的數據.
                 $(".current_page").text(++currentPage);  //當前頁數先+1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('.cardMenuItem'), function (index, item) {
+
+                //增加分頁筆數標示
+                if (currentPage == totalPage) {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                }
+                else {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                }
+                $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -352,19 +385,29 @@
                         $(this).hide();
                     }
                 });
-
             }
+
         });
 
         //實現上一頁
         $(".prev").click(function () {
+            //alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
             if (currentPage == 1) {//當前頁數==1，禁止上一頁
                 return false;
             } else {
                 $(".current_page").text(--currentPage);  //當前頁數先-1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('.cardMenuItem'), function (index, item) {
+
+                //增加分頁筆數標示
+                if (currentPage == totalPage) {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                }
+                else {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                }
+
+                $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -372,6 +415,7 @@
                         $(this).hide();
                     }
                 });
+                
             }
         });
 
@@ -387,7 +431,16 @@
 
             var start = pageSize * (currentPage - 1);
             var end = pageSize * currentPage;
-            $.each($('.cardMenuItem'), function (index, item) {
+
+            //增加分頁筆數標示
+            if (currentPage == totalPage) {
+                $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+            }
+            else {
+                $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+            }
+
+            $.each($('.card.cardMenuItem'), function (index, item) {
                 if (index >= start && index < end) {
                     $(this).show();
                 }
@@ -395,6 +448,8 @@
                     $(this).hide();
                 }
             });
+         
+
 
         });
 
