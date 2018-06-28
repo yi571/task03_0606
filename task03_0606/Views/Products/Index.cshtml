@@ -3,16 +3,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>美食分類</h2>
+<br />
+<br />
 
-<div class="container-fluid">
-      
+<div class="row col-12" style="margin-left:0px; margin-right:0px">
+    
 
    
-     <div class="card-group">
+     <div class="card-group container-fluid">
+
         @foreach(task03_0606.Models.FoodCategories db in Model)
        {
-           <div class="card" style="width:200px">
+           <div class="card" >
             <img class="card-img-top" src="~/photo/productsindex/@db.categoryPicture" alt="Card image cap">
             <div class="card-body  d-flex flex-column">
                 <h5 class="card-title text-center">@db.categoryName</h5>

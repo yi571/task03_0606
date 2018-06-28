@@ -136,7 +136,7 @@ namespace task03_0606.Controllers {
                     //} catch (Exception ex) {
                     //    throw;
                     //}
-                    return RedirectToAction("Member", "Member");
+                    return RedirectToAction("Login", "Member");
                 }
             }
 
