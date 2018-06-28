@@ -50,16 +50,19 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                             <li>
-                                <a href="login.html"> <i class="fa fa-glass"></i> 湯品/飲料</a>
+                                <a href="/Products/Drinkproducts"> <i class="fa fa-glass"></i> 湯品/飲料</a>
                             </li>
                             <li>
-                                <a href="register.html">速食</a>
+                                <a href="/Products/Fastfoodproducts">速食</a>
                             </li>
                             <li>
-                                <a href="forgot-password.html">飯</a>
+                                <a href="/Products/Riceproducts">飯</a>
                             </li>
                             <li>
-                                <a href="blank.html">麵</a>
+                                <a href="/Products/Noodleproducts">麵</a>
+                            </li>
+                            <li>
+                                <a href="/Products/Dessertproducts">甜點</a>
                             </li>
                         </ul>
                     </li>
@@ -154,14 +157,14 @@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
                     </li>
-                    
+
 
                 }
                 @*搜尋列*@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
+                            <input class="form-control" type="text" placeholder="搜尋...">
                             <span class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
@@ -170,32 +173,42 @@
                         </div>
                     </form>
                 </li>
+
+
                 @*網站登入/登出*@
 
-                <li class="nav-item">
 
-                    @{
-                        string strUrl = "";
-                        string faStr = "out";
-                        string logStr = "登出";
-                        string toggleStr = "modal";
-                        string targetStr = "#exampleModal";
-                        if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
-                            strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
-                            faStr = "in";
-                            logStr = "登入";
-                            toggleStr = "";
-                            targetStr = "";
-                        }
-                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">
-                            @{string you = "親愛的顧客"; }
-                            @if (!String.IsNullOrEmpty((string)Session["logState"])) {@Session["UserAllName"].ToString();
-                        } else { @you}
-                            您好！<i class="fa fa-fw fa-sign-@faStr"></i>@logStr
-                        </a>
+
+                @{
+                    string strUrl = "";
+                    string faStr = "out";
+                    string logStr = "登出";
+                    string toggleStr = "modal";
+                    string targetStr = "#exampleModal";
+                    if (String.IsNullOrEmpty((string)Session["logState"])) {  //假如狀態為未登入
+                        strUrl = "/Member/Login";  //連結設為登入頁，圖示、文字設為登入，data-toggle和data-target內容清空
+                        faStr = "in";
+                        logStr = "登入";
+                        toggleStr = "";
+                        targetStr = "";
                     }
-
-                </li>
+                    <li class="nav-item">
+                        @if (!String.IsNullOrEmpty((string)Session["logState"])) {
+                        <a class="nav-link" href="/Member/EditPersonalData">
+                            <i class="fa fa-fw fa-pencil"></i> @Session["UserAllName"].ToString()您好！
+                        </a>
+                        } else {
+                        <a class="nav-link" href="">
+                            親愛的顧客 您好！
+                        </a>
+                        }
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@strUrl" data-toggle="@toggleStr" data-target="@targetStr">
+                            <i class="fa fa-fw fa-sign-@faStr"></i>@logStr
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </nav>

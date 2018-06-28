@@ -1,6 +1,6 @@
 ﻿
 @{
-    string LayoutUrl = "~/Views/_Normal_Member_Home_LayoutPage1.cshtml";
+    string LayoutUrl = "~/Views/Shared/_Layout.cshtml";
     if ((string)Session["identity"] == "storeUser") {
         LayoutUrl = "~/Views/_Member_Home_LayoutPage1.cshtml";
     }
@@ -11,7 +11,7 @@
     Layout = LayoutUrl;
 }
 
-<h2>編輯個人資料</h2>
+@*<h2>編輯個人資料</h2>*@
 <div class="container custom-container-width">
     <div class="card card-register mx-auto mt-5">
         <div class="card-header"><i class="fa fa-fw fa-pencil"></i>修改個人資料</div>
