@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "test0628";
+}
+
+<h2>test0628</h2>
+
+<meta charset="UTF-8">
+
+
+
+@*<meta name="robots" content="noindex" />
+
+<title>Expanding card page transition effect</title>
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Expanding card page transition effect">
+<meta name="twitter:description" content="That thing where the card expands into the background,  no libraries, commented.  Please note: this code is in no way ready to be used as is in product...">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/m.cdpn.io/screenshot-coming-soon-large.png">
+
+<meta property="og:image" content="https://codepen.io/anon/pen/JZepYb/image/large.png" itemprop="thumbnailUrl">
+<meta property="og:title" content="Expanding card page transition effect">
+<meta property="og:url" content="https://codepen.io/anon/details/JZepYb">
+<meta property="og:site_name" content="CodePen">
+<meta property="og:description" content="That thing where the card expands into the background,  no libraries, commented.  Please note: this code is in no way ready to be used as is in product...">
+
+<link rel="alternate" type="application/json+oembed"
+      href="https://codepen.io/api/oembed?url=https://codepen.io/anon/pen/JZepYb&format=json"
+      title="Expanding card page transition effect" />*@
+
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,900,400italic,700italic' rel='stylesheet'>
+
+<link rel="stylesheet" media="all" href="https://static.codepen.io/assets/global/global-NoMQ-fc03d2a5d549f1718841147a76074233befd2c75efc5dd03da86465b7473ed4b.css" />
+<link rel="stylesheet" media="all" href="https://static.codepen.io/assets/editor/editor-74edf12c8b05f107c811c82040bf5349e484cb40c3f47234a4cfbc3d4d1fd7c8.css" />
+
+
+<meta name="description" content="That thing where the card expands into the background,  no libraries, commented.  Please note: this code is in no way ready to be used as is in product...">
+
+
+
+
+
+<link rel="stylesheet" media="screen" href="https://static.codepen.io/assets/editor/themes/twilight-806f33f2be80aeca6de9c2b2a8ef642d0eb4840b5d6f1787f28f61430c0a3af2.css" id="cm-theme" />
+
+<style id="cm-font-family" class="cm-font-family">
+    .CodeMirror,
+    .console-logs .console-line,
+    .console-command-line-input,
+    .console-message,
+    .CodeMirror-hint {
+        font-family: Monaco, MonoSpace;
+    }
+</style>
+
+<style id="cm-font-size">
+    .CodeMirror,
+    .console-logs .console-line,
+    .console-command-line-input,
+    .console-message,
+    .CodeMirror-hint {
+        font-size: 14px;
+    }
+</style>
+
+
+
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="wMV3Ewt7mTEuesYtuhz531uCVW4Vb6XQtwHnq18v6P9P1IAEUdBe58G5ocrqfR1bq7Al8EwhxBv05lBfGZq0Zg==" />
+
+<script async src="//www.google-analytics.com/analytics.js"></script>
+
+
+<!--
+  Please note: this code is in no way ready to be used as is in production on your website. It will need to be adapted to be cross browser compliant & accessible. I just wanted to share how one might go about this effect with CSS & JS and no other dependencies
+-->
+<div class="container">
+  <div class="card-column column-0">
+    <div class="card card-color-0">
+      <div class="border"></div>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-00.jpg" />
+      <h1>Hey now, you're an allstar</h1>
+    </div>
+    <div class="card card-color-2">
+      <div class="border"></div>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-02.jpg" />
+      <h1>Hey now, you're a rock star</h1>
+    </div>
+  </div>
+  <div class="card-column column-1">
+    <div class="card card-color-1">
+      <div class="border"></div>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-01.jpg" />
+      <h1>Get your game on, go play</h1>
+    </div>
+    <div class="card card-color-3">
+      <div class="border"></div>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-03.jpg" />
+      <h1>Get the show on, get paid</h1>
+    </div>
+  </div>
+</div>
+
+<div id="cover" class="cover"></div>
+
+<div id="open-content" class="open-content">
+  <a href="#" id="close-content" class="close-content"><span class="x-1"></span><span class="x-2"></span></a>
+  <img id="open-content-image" src="" />
+  <div class="text" id="open-content-text">
+  </div>
+</div>
+
+<script src="https://static.codepen.io/assets/common/everypage-ba697022c227afb09a0f7146354b1b2bfc1b6ac19b68bffa774f60a89209904e.js"></script>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
+<script src="https://static.codepen.io/assets/editor/global/commonLibs-4e35d846a47bcee0def824c5008644047faa10b6f736314b450d05828b375b7d.js"></script>
+<script src="https://static.codepen.io/assets/editor/global/codemirror-68d53d96c385d2c4b1f04e91d431f25e723a8efb71256a00c213dd20fe7f08cb.js"></script>
+
+
+
+<script src="https://static.codepen.io/assets/editor/pen/index-36b6a67bb9b02afac4c2cd42fcfedb7c7a087ad0ba4d67f7d0bb830c7cc2601c.js"></script>

@@ -1,5 +1,40 @@
+html,
+body {
+  color: white;
+  background-color: #26bfdd;
+}
+
+.hills {
+  position: fixed;
+  bottom: 0;
+}
+
+/*styles for car*/
+.truck {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  animation: drive 30s infinite;
+}
+
+@keyframes drive {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 200%;
+  }
+
+  /* Finish changes by here */
+  20% {
+    transform: translate(200px, 0);
+  }
+}
 
 
+
+
+/*-------------*/
 #content {
     border:1px solid #7e7e7e; 
     height:300px;
