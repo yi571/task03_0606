@@ -299,17 +299,29 @@ namespace task03_0606.Controllers
 
         }
 
-        //廠商歷史訂單
+        //廠商歷史訂單 ==>明細
         [HttpPost]
         public ActionResult Order_list_history_bussiness(int orderId)
         {
+            int test = orderId;
             string stroeId = Session["storeId"].ToString();
             //依廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
-                var orderDetail = (from o in db.OrderDetials
+                var query = from o in db.OrderDetials
                                    where o.orderId == orderId && o.Product.storeId == stroeId
-                                   select o).ToList();
+                                   select new OrderDetailViewModel {
+                                       orderId = o.orderId,
+                                       orderTime = o.Order.orderDate,
+                                       productID = o.productID,
+                                       productName = o.Product.productName,
+                                       unitPrice = o.Product.productPrice,
+                                       productCount = o.productCount,
+                                       productionStatus = o.productionStatus,
+                                       customerNote = o.customerNote,
+                                   };
+
+              List<OrderDetailViewModel> orderDetail = query.ToList();
 
                 return Json(orderDetail,JsonRequestBehavior.AllowGet);
             }

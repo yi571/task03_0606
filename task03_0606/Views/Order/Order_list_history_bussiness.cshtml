@@ -18,7 +18,7 @@
         <i class="fa fa-table"></i>&nbsp; 訂單明細 <small class="pull-right text-muted">更新於 @string.Format("{0:yyyy/MM/dd/ HH:mm}", DateTime.Now.ToString())</small>
     </div>
     <div class="card-body">
-        接單起始日期：<input id="beginDate" type="date"/>   接單截止日期：<input id="endDate" type="date" /> <button class="btn btn-success" onclick="queryBydate()">確認</button>
+        接單起始日期：<input id="beginDate" type="date" />   接單截止日期：<input id="endDate" type="date" /> <button class="btn btn-success" onclick="queryBydate()">確認</button>
         <div class="table-responsive-sm　table-sm">
             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -35,7 +35,7 @@
                 <tbody>
 
 
-                    @foreach(var order in Model)
+                    @foreach (var order in Model)
 
                     {
                         <tr class="orderListItem" data-orderid="@order.orderId">
@@ -44,7 +44,7 @@
                             @*<td> @string.Format("{0:dd HH:mm}", (DateTime.Now-Convert.ToDateTime(order.orderDate))) </td>*@
                             <td> @order.phoneNum</td>
                             <td> @order.tableId</td>
-                            <td> @(order.orderState == 2 ? "訂單完成":"待出餐") </td>
+                            <td> @(order.orderState == 2 ? "訂單完成" : "待出餐") </td>
                         </tr>
                     }
 
@@ -55,21 +55,108 @@
     </div>
 </div>
 
+<!-- Modal -->
+@*訂單明細彈跳視窗*@
+<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+
+                <div>
+                    訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
+                    客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
+                    座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
+                    訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body max-height">
+                <div class="table-responsive-sm">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>項次</th>
+                                <th>廠商編號</th>
+                                <th>產品編號</th>
+                                <th>產品名稱</th>
+                                <th>數量</th>
+                                <th>單價</th>
+                                <th>小計</th>
+                                <th>訂單備註</th>
+                                <th>結單時間</th>
+                                <th>..</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailList">
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>可樂(中)</td>
+                                <td>2</td>
+                                <td>30</td>
+                                <td>60</td>
+                                <td>去冰</td>
+
+                            </tr>
+
+
+                        </tbody>
+                        <thead id="detailSum">
+                            <tr>
+                                <th>總計</th>
+                                <th> </th>
+                                <th> </th>
+                                <th> </th>
+                                <th>3</th>
+                                <th> </th>
+                                <th>160</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="orderOK" type="button" class="btn btn-primary">出餐</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     function queryBydate() {
         alert("開始日期: "+ $("#beginDate").val() + "  結束日期: " + $("#endDate").val());
     }
 
     $(".orderListItem").click(function () {
-        alert($(this).data("orderid"));
-        
+        //alert($(this).data("orderid"));
+        $('#exampleModalCenter').modal('show');
+        var orderId = $(this).data("orderid")
         $.ajax({
             method: "post",
             url: '@Url.Action("Order_list_history_bussiness", "Order")',
             data:{
-                orderId:$(this).data("orderid"),
+                orderId: parseInt(orderId),
             },
-        })
+        }).done(function (dataList) {
+            //console.log(dataList)
+            $("#detailList").empty();
+
+            var countSum = 0;
+            var amountSum = 0;
+            $.each(dataList, function (index, data) {
+                $("#detailList").append('<tr><td>' + (index + 1) + '</td><td>' + data.productID + '</td><td>' + data.productName + '</td><td>' + data.unitPrice + '</td><td>' + data.productCount + '</td><td>' + data.unitPrice * data.productCount + '</td><td>' + data.unitPrice * data.productCount + '</td><td>' + data.customerNote + '</td><td>' + data.productionStatus + '</td><td><input type="checkbox" />ok</td></tr >');
+                countSum += data.productCount;
+                amountSum += data.productCount * data.unitPrice;
+            });
+            $("#detailSum").empty();
+            $("#detailSum").append('<tr><td>總計</td><td></td ><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td><td></td></tr >');
+           
+        });
 
 
     })
