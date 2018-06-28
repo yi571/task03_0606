@@ -13,7 +13,7 @@ namespace task03_0606.Controllers
     public class OrderController : Controller
     {
 
-        // 購物車清單
+        //客戶購物車清單
         public ActionResult Index()
         {
             if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
@@ -47,7 +47,7 @@ namespace task03_0606.Controllers
                 return View();
         }
 
-        //購物車清單 ==> 訂單
+        //客戶購物車清單 ==> 訂單
         public ActionResult OrderPayment()
         {
             if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
@@ -84,7 +84,8 @@ namespace task03_0606.Controllers
                var newOrderDetail = currentCart.ToOrderDetail(newOrder.orderId);
                db.OrderDetials.AddRange(newOrderDetail);
                db.SaveChanges();      
-                 //清空購物車session   
+                
+
                      
             } //return Content("訂購成功");
                 var context = GlobalHost.ConnectionManager.GetHubContext<StoreHub>();
@@ -98,12 +99,92 @@ namespace task03_0606.Controllers
 
         }
 
-        //廠商未出餐清單
+        //客戶訂單
+        public ActionResult Order_list_costomer()
+        {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/Order_list_costomer";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+            string phoneString = Session["userPhone"].ToString();
+
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var orders = (from o in db.Orders
+                              where o.phoneNum == phoneString
+                              orderby o.orderId descending
+                              select o).ToList();
+                return View(orders);
+            }
+        }
+        
+        //客戶訂單 ==>訂單明細
+        public ActionResult Order_detail_costomer()
+        {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/Order_detail_costomer";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+            int itemOrderId = Convert.ToInt32(Request["itemOrderId"]);
+            
+            ViewBag.itemOrderId = itemOrderId;
+            ViewBag.itemOrderDate =  Request["orderDate"].ToString();
+            //將存在session中的 電話取出
+            string phonString = Session["userPhone"].ToString();
+            //將存在session中的 桌號取出
+            int tableNum = Convert.ToInt32(Session["seat"]);
+            ViewBag.tableNum = tableNum;
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                //查詢用戶姓名
+                var user = (from o in db.UserInfoes
+                            where o.phoneNum == phonString
+                            select o).FirstOrDefault();
+
+                ViewBag.userFirstName = user.firstName;
+                ViewBag.userLastName = user.lastName;
+                
+
+                var query = from o in db.Orders
+                            join c in db.OrderDetials on o.orderId equals c.orderId into ps
+                            from c in ps.DefaultIfEmpty()
+                            where o.orderId == itemOrderId
+                            select new OrderDetailViewModel
+                            {
+                                orderId = o.orderId,
+                                orderTime = o.orderDate,
+                                seatID = o.tableId,
+                                customerPhone = o.phoneNum,
+                                storeID = c.Product.Store.storeId,
+                                storeName = c.Product.Store.storeName,
+                                productID = c.productID,
+                                productName = c.Product.productName,
+                                productCount = c.productCount,
+                                unitPrice = c.Product.productPrice,
+                                customerNote = c.customerNote,
+                                productionStatus = c.productionStatus,
+                                productPicture = c.Product.productPicture,
+                            };
+               
+                List<OrderDetailViewModel> orders = query.ToList();
+
+                
+                return View(orders);
+
+            }
+        }
+
+
+        //廠商未出餐點明細清單
         public ActionResult Order_deteail_bussiness()
         {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/Order_deteail_bussiness";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
             string stroeId = Session["storeId"].ToString();
 
-            //依結單時間=null &　廠商編號，篩選廠商訂單明細
+            //依訂單狀況 & 廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 var query = from o in db.Orders
@@ -131,10 +212,37 @@ namespace task03_0606.Controllers
                 return View(orderList);
             }
     }
+        //廠商未出餐點明細清單 ==> 準備完成
+        public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
+        {
+            int test = productId_ok;
 
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var result = (from o in db.OrderDetials
+                              where o.productID == productId_ok && o.orderId == orderId_ok
+                              orderby o.orderId
+                              select o).FirstOrDefault();
 
+                if (result.productionStatus == 1)
+                {
+                    result.productionStatus = 2;
+                }
+                else { result.productionStatus = 1; }
+                    
+             
+                db.SaveChanges();
+                return Json(true);
+            }
+        }
+
+        //廠商未出餐點訂單列表
         public ActionResult Order_list_bussiness()
         {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Order/Order_list_bussiness";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
             string stroeId = Session["storeId"].ToString();
 
             //依結單時間=null &　廠商編號，篩選廠商訂單明細
@@ -146,6 +254,7 @@ namespace task03_0606.Controllers
                                new { OrderId = c.orderId } into temp
                             from ds in temp.DefaultIfEmpty()
                             where o.Product.storeId == stroeId && o.Order.orderState == 1
+                            orderby o.orderId
                             select ds;
 
                 List<Order> orderDetailList = query.ToList();
@@ -168,30 +277,21 @@ namespace task03_0606.Controllers
                 return View(orders);
             }
         }
+        //廠商未出餐點訂單列表 ==>準備完成,出餐
         [HttpPost]
-        public ActionResult Order_list_bussiness(int OrderId)
+        public ActionResult Order_list_bussiness(int orderId_ok)
         {
-
-
-
-            return View();
-        }
-
-        //
-        public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
-        {
-            int test = productId_ok;
-
-            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities()) {
-                var result = (from o in db.OrderDetials
-                          where o.productID == productId_ok && o.orderId == orderId_ok
-                          select o).FirstOrDefault();
-
-                result.productionStatus= 2 ; 
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var order = (from o in db.Orders
+                             where o.orderId == orderId_ok
+                             select o).FirstOrDefault();
+                order.orderState = 2;
                 db.SaveChanges();
                 return Json(true);
             }
         }
+
 
         public ActionResult Order_list_history_bussiness()
         {
@@ -201,47 +301,6 @@ namespace task03_0606.Controllers
         }
 
 
-
-        public ActionResult Order_list_costomer() {
-            string phoneString = Session["userPhone"].ToString();
-
-            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities() ) { 
-                var orders = (from o in db.Orders
-                            where o.phoneNum == phoneString
-                            select o).ToList();
-           
-            return View(orders);
-            }
-        }
-        [HttpPost]
-        public ActionResult Order_list_costomer(int OrderId)
-        {
-            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
-            {
-                var query = from o in db.Orders
-                            join c in db.OrderDetials on o.orderId equals c.orderId into ps
-                            from c in ps.DefaultIfEmpty()
-                            where o.orderId == OrderId
-                            select new OrderDetailViewModel
-                            {
-                                orderId = o.orderId,
-                                orderTime = o.orderDate,
-                                seatID = o.tableId,
-                                customerPhone = o.phoneNum,
-                                storeID = c.Product.Store.storeId,
-                                storeName = c.Product.Store.storeName,
-                                productID = c.productID,
-                                productName = c.Product.productName,
-                                productCount = c.productCount,
-                                unitPrice = c.Product.productPrice,
-                                customerNote = c.customerNote,
-                                productionStatus = c.productionStatus,
-                            };
-
-                List<OrderDetailViewModel> orders = query.ToList();
-                return Json(orders, JsonRequestBehavior.AllowGet);
-                
-            }
-        }
+        
     }
 }

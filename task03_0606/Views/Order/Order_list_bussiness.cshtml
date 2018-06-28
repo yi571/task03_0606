@@ -12,8 +12,8 @@
 
 <ol class="breadcrumb">
     @*<li class="breadcrumb-item">
-        <a href="~/Home/Index"></a>
-    </li>*@
+            <a href="~/Home/Index"></a>
+        </li>*@
     <li class="breadcrumb-item active">未出餐清單 </li>
     @*<small class="pull-right text-muted">Updated yesterday at 11:59 PM</small>*@
 </ol>
@@ -21,22 +21,21 @@
 
 
 <div class="row">
-    @foreach (var order in Model)
-            {
-        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
-            <div class="card-header bg-success">
-                <p class="card-text text-white">
+    @foreach (var order in Model) {
+        <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
+            <div class="card-header ">
+                <p class="card-text ">
                     桌號：@order.tableId &nbsp 電話：@order.phoneNum <br />
-                    <small class="text-white">@string.Format("{0:T}", Convert.ToDateTime(order.orderDate))</small>
-                    <button class="btn btn-sm btn-success pull-right" disabled>@order.orderId+出餐</button>
+                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))
+                    <small class="text-muted">@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</small>
+                    <button class="btn btn-sm btn-success pull-right" disabled onclick="orderComplete(@order.orderId)"><b>出餐</b></button>
                 </p>
 
             </div>
             <ul class="list-group list-group-flush" id="storeUl">
                 @{
 
-                    using (task03_0606.Models.FoodCourtDBEntities db = new task03_0606.Models.FoodCourtDBEntities())
-                    {
+                    using (task03_0606.Models.FoodCourtDBEntities db = new task03_0606.Models.FoodCourtDBEntities()) {
 
                         string stroeId = Session["storeId"].ToString();
 
@@ -44,32 +43,37 @@
                                           where o.orderId == order.orderId && o.Product.Store.storeId == stroeId
                                           select o).ToList();
 
-                        foreach (var detail in detailList)
-                        {
-                            <li class="list-group-item container-fluid">
+
+
+                        foreach (var detail in detailList) {
+                            <li class="list-group-item container-fluid" data-orderid="@order.orderId" data-productid="@detail.productID">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <img style="width:50px; height:40px" src="~/photo/@detail.Product.productPicture">
                                     </div>
-                                    <div class="col-xs-9">
+                                    <div class="col-xs-8">
                                         <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
-                                        <p class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
+                                        <p style="display:none" class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
+
+
                                     </div>
+                                    <div class="col-xs-1" data-status="@detail.productionStatus"></div>
                                 </div>
                             </li>
                         }
                     }
                 }
             </ul>
-          
+
         </div>
-                    }       
+    }
 
 
 </div>
 
 <div class="row">
-    <div id="page">
+    <div id="pageList" class="col-sm-12 col-md-12"></div>
+    <div id="page" class="col-sm-12 col-md-12">
         <ul class="pagination pagination-sm">
             <li class="page-item prev"><a class="page-link" href="#">上一頁</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -80,175 +84,120 @@
     </div>
 </div>
 
-<!-- Modal -->
-@*訂單明細彈跳視窗*@
-<div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content modal-lg">
-            <div class="modal-header">
-
-                <div>
-                    訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-                    客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
-                    座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-                    訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
-                </div>
-
-                @*<table>
-                        <tr>
-                            <th>
-                                訂單編號：<label id="orderDetail_orderID" name="orderDetail_orderID"></label>
-                            </th>
-                            <th>
-                                客戶電話：<label id="orderDetail_customerPhone" name="orderDetail_customerPhone"></label>
-                            </th>
-                            <th>
-                                座位：<label id="orderDetail_seatID" name="orderDetail_seatID"></label>
-                            </th>
-                            <th>
-                                訂餐時間：<label id="orderDetail_time" name="orderDetail_time"></label>
-                            </th>
-                        </tr>
-                    </table>*@
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body max-height">
-                <div class="table-responsive-sm">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>項次</th>
-                                <th>廠商編號</th>
-                                <th>產品編號</th>
-                                <th>產品名稱</th>
-                                <th>數量</th>
-                                <th>單價</th>
-                                <th>小計</th>
-                                <th>訂單備註</th>
-                                <th>結單時間</th>
-                                <th>..</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detailList">
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>可樂(中)</td>
-                                <td>2</td>
-                                <td>30</td>
-                                <td>60</td>
-                                <td>去冰</td>
-
-                            </tr>
-
-
-                        </tbody>
-                        <thead id="detailSum">
-                            <tr>
-                                <th>總計</th>
-                                <th> </th>
-                                <th> </th>
-                                <th> </th>
-                                <th>3</th>
-                                <th> </th>
-                                <th>160</th>
-                                <th> </th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="orderOK" type="button" class="btn btn-primary">出餐</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+<script src="~/signalr/hubs"></script>
 
 <script>
-    //點選該筆訂單，列出訂單明細
-    //找 id=dataTable table 下的 tr class=orderListItem ==> tr[]
-    $("#dataTable").find("tr.orderListItem").click(function () {
-        //alert(this.innerText);
-        //alert(this.cells[0].innerText);
-        //$("#debug").text(this.cells[0].innerText);
-        $("#orderDetail_time").text(this.cells[0].innerText);
-        $("#orderDetail_customerPhone").text(this.cells[1].innerText);
-        $("#orderDetail_orderID").text(this.cells[2].innerText);
-        $("#orderDetail_seatID").text(this.cells[3].innerText);
 
-        $('#exampleModalCenter').modal('show');
+    //點選明細 標示產品準備狀況
+    $(".list-group-item.container-fluid").click(function () {
+        //console.log($(this).find("i").length);
+        //console.log(this);
+        //console.log($(this).data("orderid"));
 
+        //如果產品明細中有找到<i>元素,則移除<i>
+        if ($(this).find("i").length > 0) {
+            $(this)
+                 .find("div.col-xs-1")
+                 .find('i').remove();
+            //將<p>顏色改成黑色
+            $(this).find("p").css("color", "black");
+            //修改 div.col-xs-1 中的 data-status值為1
+            $(this).find("div.col-xs-1").data("status", "1");
+        }
+        else {
+            //於 div.col-xs-1 中加上<i>元素 顏色綠色
+            $(this)
+                .find("div.col-xs-1")
+                .append('<i class="fa fa-fw fa-check-circle"></i>')
+                .css("color", "green");
+            //將<p>顏色改成綠色
+            $(this).find("p").css("color", "green");
+            //修改 div.col-xs-1 中的 data-status值為2
+            $(this).find("div.col-xs-1").data("status", "2");
+        }
+        productId = $(this).data("productid");
+        orderId = $(this).data("orderid");
+        //console.log("productId：" + productId + "   orderId：" + orderId);
 
-        $.ajax({
-            method: "POST",
-            dataType: 'json',
+        //修改產品狀態到資料庫
+     $.ajax({
+             method: "post",
+             dataType: "json",
+             url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
+             data: {
 
-            url: "@Url.Action("Order_list_bussiness", "Order")",
-            data: { OrderId: parseInt($("#orderDetail_orderID").text()) }
-        })
-            .done(function (dataList) {
-                //console.log(dataList)
-                $("#detailList").empty();
+                 productId_ok: parseInt(productId),
+                 orderId_ok: parseInt(orderId),
+             }
+     })
 
-                var countSum = 0;
-                var amountSum = 0;
-                $.each(dataList, function (index, data) {
-                    $("#detailList").append('<tr><td>' + (index + 1) + '</td><td>' + data.MemberID + '</td><td>' + data.ProductID + '</td><td>' + data.ProductName + '</td><td>' + data.OrderCount + '</td><td>' + data.UnitPrice + '</td><td>' + data.OrderCount * data.UnitPrice + '</td><td>' + data.Note + '</td><td>' + data.FinshTime + '</td><td><input type="checkbox" />ok</td></tr >');
-                    countSum += data.OrderCount;
-                    amountSum += data.OrderCount * data.UnitPrice;
-                });
-                $("#detailSum").empty();
-                $("#detailSum").append('<tr><td>總計</td><td></td ><td></td><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td><td></td></tr >');
-            });
-    });
+    })
 
+    //餐點都準備Ok, 訂單按鈕可點選
+    $(".card.cardMenuItem").click(function () {
+        //console.log($(this).find("li").length);
+        //console.log($(this).find(".col-xs-1"));
+
+        var orderOk = $(this).find("li").length * 2;
+        var totalCount = 0;
+        //alert("orderok：" + orderOk + "  totalCount：" + totalCount);
+
+        $(this).find(".col-xs-1").each(function () {
+            //console.log($(this).data("status"));
+            totalCount += parseInt($(this).data("status"));
+        });
+        //console.log(totalCount);
+        // alert("orderok：" + orderOk + "  totalCount：" + totalCount);
+        if (totalCount == orderOk) {
+            $(this).find(".btn.btn-sm").removeAttr('disabled');
+        }
+        if (totalCount < orderOk) {
+            $(this).find(".btn.btn-sm").attr('disabled', true);
+        }
+    })
 
     //訂單出餐
-    $("#orderOK").click(function () {
+    function orderComplete(orderId) {
         $.ajax({
             method: "post",
             dataType: "json",
-            url: "@Url.Action("Order_list_chickToDatabase_bussiness", "Order")",
+            url: "@Url.Action("Order_list_bussiness", "Order")",
             data: {
-                orderDetail_time_input: $("#orderDetail_time").text(),
-                orderDetail_customerPhone_input: $("#orderDetail_customerPhone").text(),
-                orderDetail_orderID_input: $("#orderDetail_orderID").text(),
-                orderDetail_seatID_input: $("#orderDetail_seatID").text(),
+                orderId_ok: parseInt(orderId),
             }
         })
-            .done(function (data) {
-                console.log(data);
-                alert("確定出餐");
-                $('#exampleModalCenter').modal('hide');
-
-            })
+    .done(function (data) {
+        alert("確定訂單編號: " + orderId + " 出餐")
+        window.location.reload();
     })
 
-    $(function () {
+    }
 
+
+
+    $(function () {
+        //if ($ === jQuery) alert("true");
         //實現分頁思路:
-        var pageSize = 8;      //每頁顯示數據條數
+        var pageSize = 4;      //每頁顯示數據條數
         var currentPage = 1;   //當前頁數
         var prevPage = 0;
-        var totalSize = $(".cardMenuItem").length; //獲取總數據
-        var totalPage = Math.round(totalSize / pageSize); //計算總頁數
-        $(".cardMenuItem:gt(7)").hide(); //設置首頁顯示8 (8-1) 條數據
+        var totalSize = $(".card.cardMenuItem").length; //獲取總數據
 
+        //alert(totalSize);
+
+        var totalPage = Math.ceil(totalSize / pageSize); //計算總頁數
+        $(".card.cardMenuItem:gt(" + (pageSize - 1) + ")").hide(); //設置首頁顯示8 (8-1) 條數據
+
+        //增加項目列表
+        $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage-1)) + (totalSize % pageSize))+ '筆, 共' + totalSize + '筆 </p>');
 
         //移除原有 .pagination 裡的元素 , append "前一頁" li
-        $(".pagination").empty().append('<li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
+        $(".pagination").empty().append('</p><li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
         //依總分頁數 , append 各分頁 li
         for (var index = currentPage; index <= totalPage; index++) {
             $(".pagination").append('<li class="page-item pageItems"><a class="page-link" href="#">' + index + '</a></li>');
@@ -265,7 +214,7 @@
                 $(".current_page").text(++currentPage);  //當前頁數先+1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('.cardMenuItem'), function (index, item) {
+                $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -273,6 +222,9 @@
                         $(this).hide();
                     }
                 });
+
+                //增加項目列表
+                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆, 共' + totalSize + '筆</p>');
 
             }
         });
@@ -285,7 +237,7 @@
                 $(".current_page").text(--currentPage);  //當前頁數先-1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
-                $.each($('.cardMenuItem'), function (index, item) {
+                $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
                     }
@@ -293,6 +245,9 @@
                         $(this).hide();
                     }
                 });
+                //增加項目列表
+                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
+
             }
         });
 
@@ -308,7 +263,7 @@
 
             var start = pageSize * (currentPage - 1);
             var end = pageSize * currentPage;
-            $.each($('.cardMenuItem'), function (index, item) {
+            $.each($('.card.cardMenuItem'), function (index, item) {
                 if (index >= start && index < end) {
                     $(this).show();
                 }
@@ -316,9 +271,65 @@
                     $(this).hide();
                 }
             });
+            //增加項目列表
+            $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
+
 
         });
 
+        $("div.col-xs-1").data("status") == 2
+
+        statusCheck();
+    });
+
+    //確認訂單狀況， 所有產品狀態為 2 ==>出餐按鈕可點選
+    function statusCheck() {
+        //計算單張訂單產品狀態總和 = 產品項目*2
+        $(".card.cardMenuItem").each(function () {
+            //console.log($(this).find(".col-xs-1"));
+            var orderOk = $(this).find("li").length * 2;
+            var totalCount = 0;
+            $(this).find(".col-xs-1").each(function () {
+                //console.log($(this).data("status"));
+                totalCount += parseInt($(this).data("status"));
+            });
+
+            //console.log("orderok：" + orderOk + "  totalCount：" + totalCount);
+            if (totalCount == orderOk) {
+                $(this).find(".btn.btn-sm").removeAttr('disabled');
+            }
+            if (totalCount < orderOk) {
+                $(this).find(".btn.btn-sm").attr('disabled', true);
+            }
+        });
+        //如果產品狀態==2, 加上check icon
+        $("div.col-xs-1").each(function () {
+            //console.log($(this).data("status"));
+            if ($(this).data("status") == 2) {
+                $(this).append('<i class="fa fa-fw fa-check-circle"></i>')
+                    .css("color", "green");
+            }
+            else { $(this).append(''); }
+        })
+    }
+
+    $(function () {
+        //alert("1 OK")
+        var chat = $.connection.storeHub;
+        //alert("2 OK")
+        chat.client.addNewMessageToPage = function (newOrderData) {
+            //alert(test);
+            //alert(newOrderData);
+            //$("#storeTable tbody").append('<tr>' + newOrderData.orderTime + '</tr>');
+            window.location.reload();
+        };
+
+        $.connection.hub.start().done(function () {
+            //alert('start');
+            var x = "test1";
+            var storeId = Session["storeId"];
+            chat.server.Send(storeId);
+        });
     });
 
 </script>

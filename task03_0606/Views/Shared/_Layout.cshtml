@@ -66,14 +66,16 @@
                             </li>
                         </ul>
                     </li>
+                    if (Session["identity"].ToString() == "normalUser") {
+                        @*顧客專用-訂單列表*@
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
+                            <a class="nav-link" href="~/Order/Order_list_costomer">
+                                <i class="fa fa-fw fa-sticky-note"></i>
+                                <span class="nav-link-text">訂單列表</span>
+                            </a>
+                        </li>
+                    }
 
-                    @*顧客專用-訂單列表*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
-                        <a class="nav-link" href="~/Order/Order_list_costomer">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">訂單列表</span>
-                        </a>
-                    </li>
 
 
                 }
@@ -194,13 +196,13 @@
                     }
                     <li class="nav-item">
                         @if (!String.IsNullOrEmpty((string)Session["logState"])) {
-                        <a class="nav-link" href="/Member/EditPersonalData">
-                            <i class="fa fa-fw fa-pencil"></i> @Session["UserAllName"].ToString()您好！
-                        </a>
+                            <a class="nav-link" href="/Member/EditPersonalData">
+                                <i class="fa fa-fw fa-pencil"></i> @Session["UserAllName"].ToString()您好！
+                            </a>
                         } else {
-                        <a class="nav-link" href="">
-                            親愛的顧客 您好！
-                        </a>
+                            <a class="nav-link" href="">
+                                親愛的顧客 您好！
+                            </a>
                         }
                     </li>
                     <li class="nav-item">

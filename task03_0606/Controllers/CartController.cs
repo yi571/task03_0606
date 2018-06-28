@@ -27,10 +27,18 @@ namespace task03_0606.Controllers
             return PartialView("_CartList");
         }
 
-        public ActionResult EditCartItem(int ItemId_edit, int quantity_edit, string ItemNoet_edit)
+        public ActionResult EditCartProductCount(int ItemId_edit, int quantity_edit)
         {
             var currentCart = task03_0606.Models.Cart.Operation.GetCurrentCart();
-            currentCart.EditCartProduct(ItemId_edit, quantity_edit , ItemNoet_edit);
+            currentCart.EditCartProductCount(ItemId_edit, quantity_edit );
+            return PartialView("_CartList");
+            //return RedirectToAction("Index", "Order");
+        }
+
+        public ActionResult EditCartProductNote(int ItemId_edit, string ItemNoet_edit)
+        {
+            var currentCart = task03_0606.Models.Cart.Operation.GetCurrentCart();
+            currentCart.EditCartProductNote(ItemId_edit, ItemNoet_edit);
             return PartialView("_CartList");
             //return RedirectToAction("Index", "Order");
         }
