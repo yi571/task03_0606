@@ -26,8 +26,9 @@
         <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
             <div class="card-header ">
                 <p class="card-text ">
-                    桌號：@order.tableId &nbsp 電話：@order.phoneNum <br />
-                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))
+                    訂單編號：@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))<br />
+                    桌號：@order.tableId &nbsp 電話：@order.phoneNum 
+                    
                     <small class="text-muted">@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</small>
                     <button class="btn btn-sm btn-success pull-right" disabled onclick="orderComplete(@order.orderId)"><b>出餐</b></button>
                 </p>
@@ -55,7 +56,7 @@
                                         <img style="width:50px; height:40px" src="~/photo/@detail.Product.productPicture">
                                     </div>
                                     <div class="col-xs-8">
-                                        <p class="card-text">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
+                                        <p class="card-text ">&nbsp @detail.Product.productName <br /> &nbsp @detail.productCount 份 &nbsp 備註：@detail.customerNote</p>
                                         <p style="display:none" class="card-text">@((detail.productionStatus) == 1 ? "準備中" : "OK")</p>
 
 
@@ -143,17 +144,22 @@
     $(".card.cardMenuItem").click(function () {
         //console.log($(this).find("li").length);
         //console.log($(this).find(".col-xs-1"));
-
+     
+        //全部餐點都ok的數值 (li 數量 * 完成數值 2)
         var orderOk = $(this).find("li").length * 2;
+        //設定計算完成項目數值
         var totalCount = 0;
         //alert("orderok：" + orderOk + "  totalCount：" + totalCount);
 
+        //對每個li的產品狀態數值做加總
         $(this).find(".col-xs-1").each(function () {
             //console.log($(this).data("status"));
             totalCount += parseInt($(this).data("status"));
         });
         //console.log(totalCount);
         // alert("orderok：" + orderOk + "  totalCount：" + totalCount);
+
+        //如果數值相符，出餐按鈕可點選
         if (totalCount == orderOk) {
             $(this).find(".btn.btn-sm").removeAttr('disabled');
         }
@@ -173,18 +179,18 @@
             }
         })
     .done(function (data) {
-        alert("確定訂單編號: " + orderId + " 出餐")
+        alert("確定出餐")
         window.location.reload();
     })
 
     }
 
 
-
+    //分頁
     $(function () {
         //if ($ === jQuery) alert("true");
         //實現分頁思路:
-        var pageSize = 4;      //每頁顯示數據條數
+        var pageSize = 8;      //每頁顯示數據條數
         var currentPage = 1;   //當前頁數
         var prevPage = 0;
         var totalSize = $(".card.cardMenuItem").length; //獲取總數據
@@ -192,10 +198,26 @@
         //alert(totalSize);
 
         var totalPage = Math.ceil(totalSize / pageSize); //計算總頁數
-        $(".card.cardMenuItem:gt(" + (pageSize - 1) + ")").hide(); //設置首頁顯示8 (8-1) 條數據
+        $(".card.cardMenuItem:gt(" + (pageSize - 1) + ")").hide(); //設置首頁顯示  pageSize-1 條數據
 
-        //增加項目列表
-        $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage-1)) + (totalSize % pageSize))+ '筆, 共' + totalSize + '筆 </p>');
+        if (totalSize == 0) {
+            $(".pagination").empty().append('<h3 class="text-danger">目前並無訂單</h3>');
+        }
+            //增加分頁筆數標示
+        else { 
+        if (currentPage == totalPage) {
+            if ((totalSize % pageSize) == 0)
+            {
+                $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+            }
+            else {
+                $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+            }
+            
+        }
+        else {
+            $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage ) + '筆, 共' + totalSize + '筆 </p>');
+        }
 
         //移除原有 .pagination 裡的元素 , append "前一頁" li
         $(".pagination").empty().append('</p><li class="page-item prev"><a class="page-link" href="#">❮</a></li>');
@@ -205,16 +227,32 @@
         }
         //append "後一頁" li
         $(".pagination").append('<li class="page-item next"><a class="page-link" href="#">❯</a></li>');
-
+        }
 
         //實現下一頁
         $(".next").click(function () {
+            //alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
             if (currentPage == totalPage) { //當前頁數==最後一頁，禁止下一頁
-                return false;
-            } else {//不是最後一頁，顯示應該顯示的數據.
+                  return false;
+            }
+
+            else {//不是最後一頁，顯示應該顯示的數據.
                 $(".current_page").text(++currentPage);  //當前頁數先+1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
+
+                //增加分頁筆數標示
+                if (currentPage == totalPage) {
+                    if ((totalSize % pageSize) == 0) {
+                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                    }
+                    else {
+                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                    }
+                }
+                else {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                }
                 $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
@@ -223,21 +261,33 @@
                         $(this).hide();
                     }
                 });
-
-                //增加項目列表
-                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆, 共' + totalSize + '筆</p>');
-
             }
+
         });
 
         //實現上一頁
         $(".prev").click(function () {
+            alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
             if (currentPage == 1) {//當前頁數==1，禁止上一頁
-                return false;
+                 return false;
             } else {
                 $(".current_page").text(--currentPage);  //當前頁數先-1
                 var start = pageSize * (currentPage - 1);
                 var end = pageSize * currentPage;
+
+                //增加分頁筆數標示
+                if (currentPage == totalPage) {
+                    if ((totalSize % pageSize) == 0) {
+                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                    }
+                    else {
+                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                    }
+                }
+                else {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                }
+
                 $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
                         $(this).show();
@@ -246,9 +296,7 @@
                         $(this).hide();
                     }
                 });
-                //增加項目列表
-                $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
-
+                
             }
         });
 
@@ -264,6 +312,20 @@
 
             var start = pageSize * (currentPage - 1);
             var end = pageSize * currentPage;
+
+            //增加分頁筆數標示
+            if (currentPage == totalPage) {
+                if ((totalSize % pageSize) == 0) {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                }
+                else {
+                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                }
+            }
+            else {
+                $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+            }
+
             $.each($('.card.cardMenuItem'), function (index, item) {
                 if (index >= start && index < end) {
                     $(this).show();
@@ -272,15 +334,14 @@
                     $(this).hide();
                 }
             });
-            //增加項目列表
-            $("div#pageList").empty().append('<p>第' + (start + 1) + '筆 到 第' + end + '筆，共' + totalSize + '筆</p>');
+         
 
 
         });
 
-        $("div.col-xs-1").data("status") == 2
+        //$("div.col-xs-1").data("status") == 2
 
-        statusCheck();
+         statusCheck();
     });
 
     //確認訂單狀況， 所有產品狀態為 2 ==>出餐按鈕可點選
@@ -309,6 +370,8 @@
             if ($(this).data("status") == 2) {
                 $(this).append('<i class="fa fa-fw fa-check-circle"></i>')
                     .css("color", "green");
+                $(this).parent()
+                    .find("p").css("color", "green");
             }
             else { $(this).append(''); }
         })
