@@ -263,6 +263,7 @@ namespace task03_0606.Controllers
         {
             string stroeId = Session["storeId"].ToString();
 
+
             //依廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
@@ -271,7 +272,7 @@ namespace task03_0606.Controllers
                             on new { OrderId = o.orderId } equals
                                new { OrderId = c.orderId } into temp
                             from ds in temp.DefaultIfEmpty()
-                            where o.Product.storeId == stroeId 
+                            where o.Product.storeId == stroeId
                             orderby o.orderId
                             select ds;
 
@@ -287,7 +288,7 @@ namespace task03_0606.Controllers
                                     tableId = g.Key.tableId,
                                     orderDate = g.Key.orderDate,
                                 };
-                
+
                 List<Order> orders = queryByID.ToList();
                 
                 return View(orders);
@@ -297,5 +298,25 @@ namespace task03_0606.Controllers
 
 
         }
+
+        //廠商歷史訂單
+        [HttpPost]
+        public ActionResult Order_list_history_bussiness(int orderId)
+        {
+            string stroeId = Session["storeId"].ToString();
+            //依廠商編號，篩選廠商訂單明細
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var orderDetail = (from o in db.OrderDetials
+                                   where o.orderId == orderId && o.Product.storeId == stroeId
+                                   select o).ToList();
+
+                return Json(orderDetail,JsonRequestBehavior.AllowGet);
+            }
+
+
+
+        }
+
     }
 }
