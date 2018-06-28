@@ -402,6 +402,7 @@
     <Compile Include="Models\OrderDetial.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModels\OrderForView.cs" />
     <Compile Include="Models\OrderModels\OrderViewModel.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>

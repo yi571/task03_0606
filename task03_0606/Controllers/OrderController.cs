@@ -17,13 +17,14 @@ namespace task03_0606.Controllers
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
-            int tableNum = Convert.ToInt32(Session["seat"]) ;
-            
-            using (FoodCourtDBEntities db = new FoodCourtDBEntities()) {
+            int tableNum = Convert.ToInt32(Session["seat"]);
+
+            using (FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
                 //查詢用戶姓名
                 var user = (from o in db.UserInfoes
-                                where o.phoneNum == phonString
-                                select o).FirstOrDefault();
+                            where o.phoneNum == phonString
+                            select o).FirstOrDefault();
 
                 ViewBag.userFirstName = user.firstName;
                 ViewBag.userLastName = user.lastName;
@@ -33,7 +34,7 @@ namespace task03_0606.Controllers
                             select o).FirstOrDefault();
                 ViewBag.seatLoction = seat.tableLocation;
             }
-                return View();
+            return View();
         }
 
         //客戶購物車清單 ==> 訂單
@@ -46,31 +47,33 @@ namespace task03_0606.Controllers
             //現在時間字串
             string dateString = DateTime.Now.ToString();
 
-            if (this.ModelState.IsValid) {
+            if (this.ModelState.IsValid)
+            {
                 //取得購物車
-            var currentCart = Models.Cart.Operation.GetCurrentCart();
+                var currentCart = Models.Cart.Operation.GetCurrentCart();
 
-            using (FoodCourtDBEntities db = new FoodCourtDBEntities()) {
-               
-                //新增訂單，存入database
-                Models.Order newOrder = new Order()
+                using (FoodCourtDBEntities db = new FoodCourtDBEntities())
                 {
-                    orderDate = dateString,
-                    phoneNum = phonString,
-                    tableId = tableNum,
-                    orderState = 1, //訂單狀態：1-未結單 2-結單
-                };
-                db.Orders.Add(newOrder);
-                db.SaveChanges();
 
-               //傳入訂單編號，取得訂單明細，存入database 
-               var newOrderDetail = currentCart.ToOrderDetail(newOrder.orderId);
-               db.OrderDetials.AddRange(newOrderDetail);
-               db.SaveChanges();      
-                
+                    //新增訂單，存入database
+                    Models.Order newOrder = new Order()
+                    {
+                        orderDate = dateString,
+                        phoneNum = phonString,
+                        tableId = tableNum,
+                        orderState = 1, //訂單狀態：1-未結單 2-結單
+                    };
+                    db.Orders.Add(newOrder);
+                    db.SaveChanges();
 
-                     
-            } //return Content("訂購成功");
+                    //傳入訂單編號，取得訂單明細，存入database 
+                    var newOrderDetail = currentCart.ToOrderDetail(newOrder.orderId);
+                    db.OrderDetials.AddRange(newOrderDetail);
+                    db.SaveChanges();
+
+
+
+                } //return Content("訂購成功");
                 return RedirectToAction("ClearFromCart", "Cart");
 
             }
@@ -93,14 +96,14 @@ namespace task03_0606.Controllers
                 return View(orders);
             }
         }
-        
+
         //客戶訂單 ==>訂單明細
         public ActionResult Order_detail_costomer()
         {
             int itemOrderId = Convert.ToInt32(Request["itemOrderId"]);
-            
+
             ViewBag.itemOrderId = itemOrderId;
-            ViewBag.itemOrderDate =  Request["orderDate"].ToString();
+            ViewBag.itemOrderDate = Request["orderDate"].ToString();
             //將存在session中的 電話取出
             string phonString = Session["userPhone"].ToString();
             //將存在session中的 桌號取出
@@ -115,7 +118,7 @@ namespace task03_0606.Controllers
 
                 ViewBag.userFirstName = user.firstName;
                 ViewBag.userLastName = user.lastName;
-                
+
 
                 var query = from o in db.Orders
                             join c in db.OrderDetials on o.orderId equals c.orderId into ps
@@ -137,10 +140,10 @@ namespace task03_0606.Controllers
                                 productionStatus = c.productionStatus,
                                 productPicture = c.Product.productPicture,
                             };
-               
+
                 List<OrderDetailViewModel> orders = query.ToList();
 
-                
+
                 return View(orders);
 
             }
@@ -156,31 +159,31 @@ namespace task03_0606.Controllers
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 var query = from o in db.Orders
-                                 join c in db.OrderDetials on o.orderId equals c.orderId into ps
-                                 from c in ps.DefaultIfEmpty()
-                                 where c.productionStatus == 1  && c.Product.Store.storeId == stroeId
-                                 orderby o.orderId
-                                 select new OrderDetailViewModel
-                                 {
-                                     orderId = o.orderId,
-                                     orderTime = o.orderDate,
-                                     seatID = o.tableId,
-                                     customerPhone = o.phoneNum,
-                                     storeID = c.Product.Store.storeId,
-                                     storeName = c.Product.Store.storeName,
-                                     productID = c.productID,
-                                     productName = c.Product.productName,
-                                     productCount = c.productCount,
-                                     unitPrice = c.Product.productPrice,
-                                     customerNote = c.customerNote,
-                                     productionStatus = c.productionStatus,
-                                 };
+                            join c in db.OrderDetials on o.orderId equals c.orderId into ps
+                            from c in ps.DefaultIfEmpty()
+                            where c.productionStatus == 1 && c.Product.Store.storeId == stroeId
+                            orderby o.orderId
+                            select new OrderDetailViewModel
+                            {
+                                orderId = o.orderId,
+                                orderTime = o.orderDate,
+                                seatID = o.tableId,
+                                customerPhone = o.phoneNum,
+                                storeID = c.Product.Store.storeId,
+                                storeName = c.Product.Store.storeName,
+                                productID = c.productID,
+                                productName = c.Product.productName,
+                                productCount = c.productCount,
+                                unitPrice = c.Product.productPrice,
+                                customerNote = c.customerNote,
+                                productionStatus = c.productionStatus,
+                            };
 
-                List<OrderDetailViewModel>  orderList  = query.ToList();
+                List<OrderDetailViewModel> orderList = query.ToList();
 
                 return View(orderList);
             }
-    }
+        }
         //廠商未出餐點明細清單 ==> 準備完成
         public ActionResult Order_list_chickToDatabase_bussiness(int productId_ok, int orderId_ok)
         {
@@ -198,8 +201,8 @@ namespace task03_0606.Controllers
                     result.productionStatus = 2;
                 }
                 else { result.productionStatus = 1; }
-                    
-             
+
+
                 db.SaveChanges();
                 return Json(true);
             }
@@ -210,7 +213,7 @@ namespace task03_0606.Controllers
         {
             string stroeId = Session["storeId"].ToString();
 
-            //依結單時間=null &　廠商編號，篩選廠商訂單明細
+            //依訂單狀況=l &　廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 var query = from o in db.OrderDetials
@@ -232,10 +235,8 @@ namespace task03_0606.Controllers
                                     orderId = g.Key.orderId,
                                     phoneNum = g.Key.phoneNum,
                                     tableId = g.Key.tableId,
-                                    //OrderTime =string.Format("{0:T}", Convert.ToDateTime( g.Key.OrderTime))
                                     orderDate = g.Key.orderDate,
                                 };
-
 
                 List<Order> orders = queryByID.ToList();
 
@@ -257,15 +258,44 @@ namespace task03_0606.Controllers
             }
         }
 
-
+        //廠商歷史訂單
         public ActionResult Order_list_history_bussiness()
         {
+            string stroeId = Session["storeId"].ToString();
+
+            //依廠商編號，篩選廠商訂單明細
+            using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
+            {
+                var query = from o in db.OrderDetials
+                            join c in db.Orders
+                            on new { OrderId = o.orderId } equals
+                               new { OrderId = c.orderId } into temp
+                            from ds in temp.DefaultIfEmpty()
+                            where o.Product.storeId == stroeId 
+                            orderby o.orderId
+                            select ds;
+
+                List<Order> orderDetailList = query.ToList();
 
 
-            return View();
+                var queryByID = from o in orderDetailList
+                                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate } into g
+                                select new Order
+                                {
+                                    orderId = g.Key.orderId,
+                                    phoneNum = g.Key.phoneNum,
+                                    tableId = g.Key.tableId,
+                                    orderDate = g.Key.orderDate,
+                                };
+                
+                List<Order> orders = queryByID.ToList();
+                
+                return View(orders);
+
+            }
+
+
+
         }
-
-
-        
     }
 }
