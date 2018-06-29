@@ -26,4 +26,21 @@ $(document).ready(function () {
         }
 
     });
+
+    $("#button1").click(function () {
+        swal({
+            type: 'success',
+            title: '成功放入購物車',
+            showConfirmButton: false,
+            timer: 1000
+        })
+    });
+    $("#button2").click(function () {
+        swal({
+            type: 'success',
+            title: '成功放入購物車',
+            showConfirmButton: false,
+            timer: 1000
+        })
+    });
 });
