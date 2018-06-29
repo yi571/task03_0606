@@ -4,21 +4,38 @@
 }
 
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+<link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
+<script src="/js/Aindex.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 <h2 style="color:green " ><b>美食分類</b></h2>
 
 
-
 <div class="container" style="background-color:#FFA07A">
-      
 
+<h2>美食分類</h2>
+
+<div class="container">
+
+      
    
-     <div class="card-group">
+   
+     <div class="card-group"> 
+         <img src="http://fivethin.gs/truck.svg" width="20%" class="truck" alt=""><img src="hills-background.svg" class="hills" width="100%" alt="">
+    <img src="http://fivethin.gs/hills-background.svg" class="hills" width="100%" alt="">
+
         @foreach(task03_0606.Models.FoodCategories db in Model)
        {
            <div class="card" style="width:200px">
             <img class="card-img-top" src="~/photo/productsindex/@db.categoryPicture" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title"><i style="color:red" class="fa fa-heart"></i>@db.categoryName</h5>
+                <h5 class="card-title">@db.categoryName</h5>
                 <p class="card-text">@db.Description</p>
                 <div>
                     <a href="~/Products/@db.categoryURL" class="btn btn-primary">進入挑選</a>

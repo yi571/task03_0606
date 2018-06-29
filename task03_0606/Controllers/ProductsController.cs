@@ -17,7 +17,8 @@ namespace task03_0606.Controllers
 
         /*AP0010_ConitionModel condition = new AP0010_ConitionModel();*/ //下拉式選單
          FoodCourtDBEntities db = new FoodCourtDBEntities();
-        
+
+
 
         // GET: Products
         public ActionResult Index()
