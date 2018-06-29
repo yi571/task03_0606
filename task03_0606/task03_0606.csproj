@@ -362,7 +362,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -572,8 +571,6 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Products\storeBIndex.cshtml" />
-    <Content Include="Views\Products\MyAction.cshtml" />
-    <Content Include="Views\Products\BindWithViewBag.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
