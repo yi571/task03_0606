@@ -24,9 +24,10 @@
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <div>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <h2><a class="navbar-brand" href="~/Home/index"><i class="fa fa-fw fa-delicious"></i>美食廣場</a></h2>
+        <h2><a class="navbar-brand" href="~/Products/index"><i class="fa fa-fw fa-delicious"></i>美食廣場</a></h2>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -91,6 +92,15 @@
                             <span class="nav-link-text">未出餐訂單-明細別</span>
                         </a>
                     </li>
+
+                    @*商家專用-歷史訂單*@
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="歷史訂單">
+                        <a class="nav-link" href="~/Order/Order_list_history_bussiness">
+                            <i class="fa fa-fw fa-sticky-note"></i>
+                            <span class="nav-link-text">歷史訂單</span>
+                        </a>
+                    </li>
+
                     @*商家專用-產品列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品列表">
                         <a class="nav-link" href="~/#/Product?userID=1">
