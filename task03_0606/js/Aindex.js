@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿//JS
 //center .chick element around its origin
 TweenLite.set(".bird", { xPercent: -50, yPercent: -50 });
@@ -234,6 +235,9 @@ master.add(flyIn())
 
 //-------
 $(function () {
+=======
+﻿$(function () {
+>>>>>>> parent of 6ec2484... checkaddcartsucess
     "use strict";
 
     var init = "";
@@ -263,7 +267,7 @@ $(function () {
     }
 
      //Add To Basket Animation
-    $(".btn").click(function () {
+    $("#button").click(function () {
         addToBasket();
         $(this)
           .parent()

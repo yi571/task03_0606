@@ -9,9 +9,9 @@
 <link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
 <script src="/js/Aindex.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-@*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 @*<header>
@@ -22,49 +22,49 @@
         </ul>
     </header>*@
 
-<div class='row'>
-    @foreach (task03_0606.Models.FoodProduct db in Model)
-    {
+                    <div class='row'>
+                        @foreach(task03_0606.Models.FoodProduct db1 in Model)
+                        {
 
-        <div class='product--pink col-sm-2' id="content">
-            <div class="row" id="list"></div>
-            <!-- Button trigger modal -->
-            <img src='~/photo/@db.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productID" />
+                            <div class='product--pink col-sm-2'id="content">
+                                <div class="row"id="list"></div>
+                                <!-- Button trigger modal -->
+                                <img src='~/photo/@db1.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db1.productID" />
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter.@db.productID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productID" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle.@db.productID">@db.productName</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter.@db1.productID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db1.productID" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle.@db1.productID">@db1.productName</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
 
-                        <div class="modal-body">
-                            <img src='~/photo/@db.productPicture' width='500' /><br />
-                            @db.productDescription
-                        </div>
-                        <div class="modal-footer">
+                                            <div class="modal-body">
+                                                <img src='~/photo/@db1.productPicture' width='500' /><br />
+                                                @db1.productDescription
+                                            </div>
+                                            <div class="modal-footer">
 
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="AddToCart(@db.productID)">Add to basket</button>
-                        </div>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Add to basket</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='product_inner'>
+                                    <p>@db1.productName</p>
+                                    <p>Price $@db1.productPrice</p>
+                                    <button>Add to basket</button>
+                                </div>
+
+                                <div class='product_overlay'>
+                                    <h2>Added to basket</h2>
+                                    <i class='fa fa-check'></i>
+                                </div>
+                            </div>
+                        }
+
                     </div>
-                </div>
-            </div>
-            <div class='product_inner'>
-                <p>@db.productName</p>
-                <p>Price $@db.productPrice</p>
-                <button id="button" class="btn" type="button" onclick="AddToCart(@db.productID)">Add to basket</button>
-            </div>
-
-            <div class='product_overlay'>
-                <h2>Added to basket</h2>
-                <i class='fa fa-check'></i>
-            </div>
-        </div>
-
-    }
-</div>
