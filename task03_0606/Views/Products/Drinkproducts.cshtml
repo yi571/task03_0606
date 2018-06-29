@@ -62,7 +62,7 @@
                             <div class="modal-footer">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Add to basket</button>
+                                <button type="button" class="btn btn-primary" onclick="AddToCart(@db.productID)">Add to basket</button>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,8 @@
                 <div class='product_inner'>
                     <p>@db.productName</p>
                     <p>Price $@db.productPrice</p>
-                    <button id="button" type="button">Add to basket</button>
+                   <button id="button" class="btn" type="button" onclick="AddToCart(@db.productID)">Add to basket</button>
+             
                 </div>
 
                 <div class='product_overlay'>

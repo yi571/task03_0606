@@ -58,7 +58,7 @@ $(function () {
         });
     });
 
-    $("#button").on("click", function () {
+    $(".btn").on("click", function () {
         addToBasket();
         $(this)
           .parent()
