@@ -24,6 +24,19 @@ https://codepen.io/ssbalakumar/pen/uzDIA?editors=0100
 CSS CODE
 https://codepen.io/burkeholland/pen/mKjNyB
 
+youtube-search name↓
+Online Shopping Store with ASP.NET MVC
+Abdo Arwish
+1 / 23
+Asp.Net Core MVC - Complete APPLICATION
+Ervis Trupja
+20 / 39
+
+Online Restaurant / Food Ordering Project - Responsive Website in ASP.Net with SQL Server
+introduction of shopping cart project in asp.net
+https://books.google.com.tw/books?id=DdtvCQAAQBAJ&pg=PA209&lpg=PA209&dq=mvc+5+shopping+cart+sample&source=bl&ots=9vHj_1baJu&sig=Vr-xEhxsxd_wcQ1B8BEEKlG48rM&hl=zh-TW&sa=X&ved=0ahUKEwjw94u57ffbAhUXUt4KHXuiCBk4KBDoAQhlMAg#v=onepage&q=mvc%205%20shopping%20cart%20sample&f=false
+
+
 
 <add name="FoodCourtDBEntities" connectionString="metadata=res://*/Models.FoodStreetModel.csdl|res://*/Models.FoodStreetModel.ssdl|res://*/Models.FoodStreetModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=10.1.6.73;initial catalog=FoodCourtDB;user id=foodAdmin;password=food123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
 

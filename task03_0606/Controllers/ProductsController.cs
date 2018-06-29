@@ -19,10 +19,6 @@ namespace task03_0606.Controllers
          FoodCourtDBEntities db = new FoodCourtDBEntities();
 
 
-        public ActionResult test0628()
-        {
-            return View();
-        }
 
         // GET: Products
         public ActionResult Index()
