@@ -278,15 +278,17 @@ namespace task03_0606.Controllers
 
                 List<Order> orderDetailList = query.ToList();
 
+               
 
                 var queryByID = from o in orderDetailList
-                                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate } into g
+                                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate ,o.orderState} into g
                                 select new Order
                                 {
                                     orderId = g.Key.orderId,
                                     phoneNum = g.Key.phoneNum,
                                     tableId = g.Key.tableId,
                                     orderDate = g.Key.orderDate,
+                                    orderState = g.Key.orderState,
                                 };
 
                 List<Order> orders = queryByID.ToList();
