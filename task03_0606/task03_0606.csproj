@@ -571,7 +571,10 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Products\storeBIndex.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Shared\_LayoutManagerIndex.cshtml" />
+=======
+>>>>>>> f545e5ac1c10675244979b836cc9781ebe2c6022
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
