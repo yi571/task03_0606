@@ -1,6 +1,7 @@
 ﻿@model  List<task03_0606.Models.FoodProduct>
 @{
     ViewBag.Title = "ManagerIndex";
+    Layout = "~/Views/Shared/_LayoutManagerIndex.cshtml";
 }
 
 <link href="~/css/Astyle.css" rel="stylesheet" type="text/css" />
@@ -60,7 +61,7 @@
                                 <th style="width: 80px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="activate to sort column descending" aria-sort="ascending"></th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品名稱: activate to sort column descending" aria-sort="ascending">商品名稱</th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品圖片: activate to sort column descending" aria-sort="ascending">商品圖片</th>
-                                <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="銷售數量: activate to sort column descending" aria-sort="ascending">銷售數量</th>
+                                @*<th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="銷售數量: activate to sort column descending" aria-sort="ascending">銷售數量</th>*@
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品代號: activate to sort column descending" aria-sort="ascending">商品代號</th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品介紹: activate to sort column descending" aria-sort="ascending">商品介紹</th>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品價錢: activate to sort column descending" aria-sort="ascending">商品價錢</th>
@@ -94,7 +95,7 @@
                                         }
                                     </a>*@
                                     </td>
-                                    <td>@Html.DisplayFor(modelItem => item.salesVolume)</td>
+                                    @*<td>@Html.DisplayFor(modelItem => item.salesVolume)</td>*@
                                     <td>@Html.DisplayFor(modelItem => item.storeProductId)</td>
                                     <td id="productDescription" name="productDescription" class="alert-danger" width="200">
                                         @Html.DisplayFor(modelItem => item.productDescription)

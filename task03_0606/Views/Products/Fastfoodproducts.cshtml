@@ -1,11 +1,20 @@
 ﻿@model List<task03_0606.Models.FoodProduct>
-    @{
-        ViewBag.Title = "Fastfoodproducts";
+@{
+    ViewBag.Title = "Fastfoodproducts";
+}
+<style>
+    div.row {
+        margin: 0;
+        padding: 0;
     }
 
-    <h2>速食類</h2>
+    div.row {
+        background-color: black;
+    }
+</style>
+<h2>速食類</h2>
 
-    @*<header>
+@*<header>
         <ul>
             <i class='fa fa-shopping-cart'>
                 <span class='counter'></span>
@@ -17,18 +26,19 @@
 <link href="/css/Astyle.css" rel="stylesheet" type="text/css" />
 <script src="/js/Aindex.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+@*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
 
 <div class='row'>
-    @foreach(task03_0606.Models.FoodProduct db in Model)
+    @foreach (task03_0606.Models.FoodProduct db in Model)
     {
 
-        <div class="product--green col-sm-2"id="content">
+        <div class="product--green col-sm-2" id="content">
+
             <div class="row" id="list"></div>
             <!-- Button trigger modal -->
-            <img src='~/photo/@db.productPicture' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productID" />
+            <img src='~/photo/@db.productPicture' width='300' type="img" class="btn" data-toggle="modal" data-target="#exampleModalCenter.@db.productID" />
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter.@db.productID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.@db.productID" aria-hidden="true">
@@ -48,7 +58,7 @@
                         <div class="modal-footer">
 
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-primary" onclick="AddToCart(@db.productID)">Add to basket</button>
                         </div>
                     </div>
                 </div>
@@ -56,6 +66,54 @@
             <div class='product_inner'>
                 <p>@db.productName</p>
                 <p>Price $@db.productPrice</p>
+                <button id="button" class="btn" type="button" onclick="AddToCart(@db.productID)">Add to basket</button>
+
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+@*----------------------------靜態畫面*@
+
+@*<div class='row'>
+        <div class='product--green col-sm-2'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.801" />
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.801" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.801" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.801">卡啦炸雞</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src='/photo/E1.jpg' width='500' /><br />
+                            炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='product_inner'>
+                <p>卡啦炸雞</p>
+                <p>Price $75</p>
                 <button>Add to basket</button>
             </div>
 
@@ -64,442 +122,438 @@
                 <i class='fa fa-check'></i>
             </div>
         </div>
-    }
-</div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.802" />
 
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.802" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.802" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.802">香脆薯條</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-@*----------------------------靜態畫面*@
+                        <div class="modal-body">
+                            <img src='/photo/E2.jpg' width='500' /><br />
+                            馬鈴薯切成條狀後油炸而成的食品，一根接著一根~好吃的讓你停步下手！
+                        </div>
+                        <div class="modal-footer">
 
-@*<div class='row'>
-    <div class='product--green col-sm-2'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E1.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.801" />
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.801" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.801" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.801">卡啦炸雞</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src='/photo/E1.jpg' width='500' /><br />
-                        炸雞外皮脆薄、雞肉多汁，與其說是美式炸雞，更像古早味街邊巷口賣的薄皮炸雞。
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>香脆薯條</p>
+                <p>Price $60</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>卡啦炸雞</p>
-            <p>Price $75</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.803" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E2.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.802" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.803" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.803" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.803">炸天婦羅</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.802" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.802" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.802">香脆薯條</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E3.jpg' width='500' /><br />
+                            質地較堅硬的蔬菜都很適合油炸，例如青椒、茄子、洋蔥、菇類、四季豆、蘆筍、南瓜、牛蒡和地瓜等~酥脆的口感就連挑食的小孩也會忍不住多吃幾口~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E2.jpg' width='500' /><br />
-                        馬鈴薯切成條狀後油炸而成的食品，一根接著一根~好吃的讓你停步下手！
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>炸天婦羅</p>
+                <p>Price $120</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>香脆薯條</p>
-            <p>Price $60</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.804" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E3.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.803" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.804" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.804" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.804">炸洋蔥圈</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.803" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.803" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.803">炸天婦羅</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E4.jpg' width='500' /><br />
+                            將洋蔥切成一圈圈，加上些麵糊再炸熟~香脆可口~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E3.jpg' width='500' /><br />
-                        質地較堅硬的蔬菜都很適合油炸，例如青椒、茄子、洋蔥、菇類、四季豆、蘆筍、南瓜、牛蒡和地瓜等~酥脆的口感就連挑食的小孩也會忍不住多吃幾口~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>炸洋蔥圈</p>
+                <p>Price $50</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>炸天婦羅</p>
-            <p>Price $120</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.805" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E4.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.804" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.805" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.805" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.805">酥炸魷魚腳</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.804" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.804" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.804">炸洋蔥圈</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E5.jpg' width='500' /><br />
+                            高溫快速油炸~重複兩次就能鎖住鮮味~又酥又juicy喔~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E4.jpg' width='500' /><br />
-                        將洋蔥切成一圈圈，加上些麵糊再炸熟~香脆可口~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>酥炸魷魚腳</p>
+                <p>Price $100</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>炸洋蔥圈</p>
-            <p>Price $50</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.806" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E5.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.805" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.806" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.806" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.806">黃金銀絲卷</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.805" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.805" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.805">酥炸魷魚腳</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E6.jpg' width='500' /><br />
+                            這款千層小麵包，一直都很受歡迎，外表酥脆，內裡柔軟，好吃到停不下來呀~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E5.jpg' width='500' /><br />
-                        高溫快速油炸~重複兩次就能鎖住鮮味~又酥又juicy喔~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>黃金銀絲卷</p>
+                <p>Price $80</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>酥炸魷魚腳</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.807" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E6.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.806" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.807" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.807" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.807">酥炸香菇</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.806" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.806" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.806">黃金銀絲卷</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E7.jpg' width='500' /><br />
+                            香香酥酥的.當配菜也不錯吃.剛炸起來更好吃~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E6.jpg' width='500' /><br />
-                        這款千層小麵包，一直都很受歡迎，外表酥脆，內裡柔軟，好吃到停不下來呀~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner '>
+                <p>酥炸香菇</p>
+                <p>Price $80</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>黃金銀絲卷</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.808" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E7.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.807" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.808" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.808" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.808">黃金鱈魚條</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.807" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.807" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.807">酥炸香菇</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E8.jpg' width='500' /><br />
+                            鱈魚香嫩且微微帶鹹又爽口，再稍加變化，同樣可以嚐到鱈魚原有的香嫩清甜，且更不油膩！
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E7.jpg' width='500' /><br />
-                        香香酥酥的.當配菜也不錯吃.剛炸起來更好吃~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>黃金鱈魚條</p>
+                <p>Price $120</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner '>
-            <p>酥炸香菇</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.809" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E8.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.808" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.809" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.809" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.809">香炸鹽酥雞</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.808" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.808" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.808">黃金鱈魚條</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E9.jpg' width='500' /><br />
+                            雞肉切成小塊，先以醬料醃漬入味，再裹上油炸粉或調味過後的麵粉漿，再油炸~香味十足呀~
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E8.jpg' width='500' /><br />
-                        鱈魚香嫩且微微帶鹹又爽口，再稍加變化，同樣可以嚐到鱈魚原有的香嫩清甜，且更不油膩！
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>香炸鹽酥雞</p>
+                <p>Price $100</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>黃金鱈魚條</p>
-            <p>Price $120</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.810" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E9.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.809" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.810" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.810" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.810">牛肉大炸丸</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.809" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.809" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.809">香炸鹽酥雞</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E10.jpg' width='500' /><br />
+                            一顆大大地肉丸，裡頭有滿滿的松版牛肉和洋蔥。
+                        </div>
+                        <div class="modal-footer">
 
-                    <div class="modal-body">
-                        <img src='/photo/E9.jpg' width='500' /><br />
-                        雞肉切成小塊，先以醬料醃漬入味，再裹上油炸粉或調味過後的麵粉漿，再油炸~香味十足呀~
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>牛肉大炸丸</p>
+                <p>Price $100</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>香炸鹽酥雞</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.811" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E10.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.810" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.811" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.811" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.811">美味炸蝦捲</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.810" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.810" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.810">牛肉大炸丸</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E11.jpg' width='500' /><br />
+                            以新鮮蝦仁為主做成的蝦捲深受消費者的喜愛~
 
-                    <div class="modal-body">
-                        <img src='/photo/E10.jpg' width='500' /><br />
-                        一顆大大地肉丸，裡頭有滿滿的松版牛肉和洋蔥。
-                    </div>
-                    <div class="modal-footer">
+                        </div>
+                        <div class="modal-footer">
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class='product_inner'>
+                <p>美味炸蝦捲</p>
+                <p>Price $80</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
-        <div class='product_inner'>
-            <p>牛肉大炸丸</p>
-            <p>Price $100</p>
-            <button>Add to basket</button>
-        </div>
+        <div class='product--green col-sm-2 flex-start'>
+            <div class="row"></div>
+            <!-- Button trigger modal -->
+            <img src='/photo/E12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.812" />
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
-    </div>
-    <div class='product--green col-sm-2 flex-start'>
-        <div class="row"></div>
-        <!-- Button trigger modal -->
-        <img src='/photo/E11.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.811" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter.812" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.812" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle.812">豆腐炸雞丁</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter.811" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.811" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle.811">美味炸蝦捲</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="modal-body">
+                            <img src='/photo/E12.jpg' width='500' /><br />
+                            這是一道你不能錯過的庶民美食~豆腐的香氣加上嫩質雞丁~絕配~
 
-                    <div class="modal-body">
-                        <img src='/photo/E11.jpg' width='500' /><br />
-                        以新鮮蝦仁為主做成的蝦捲深受消費者的喜愛~
+                        </div>
+                        <div class="modal-footer">
 
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to basket</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to basket</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class='product_inner'>
-            <p>美味炸蝦捲</p>
-            <p>Price $80</p>
-            <button>Add to basket</button>
+            <div class='product_inner'>
+                <p>豆腐炸雞丁</p>
+                <p>Price $120</p>
+                <button>Add to basket</button>
+            </div>
+
+            <div class='product_overlay'>
+                <h2>Added to basket</h2>
+                <i class='fa fa-check'></i>
+            </div>
         </div>
 
-        <div class='product_overlay'>
-            <h2>Added to basket</h2>
-            <i class='fa fa-check'></i>
-        </div>
     </div>
     <div class='product--green col-sm-2 flex-start'>
         <div class="row"></div>
@@ -540,46 +594,4 @@
             <h2>Added to basket</h2>
             <i class='fa fa-check'></i>
         </div>
-    </div>
-
-</div>
-<div class='product--green col-sm-2 flex-start'>
-    <div class="row"></div>
-    <!-- Button trigger modal -->
-    <img src='/photo/E12.jpg' width='300' type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter.812" />
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter.812" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle.812" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle.812">豆腐炸雞丁</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <img src='/photo/E12.jpg' width='500' /><br />
-                    這是一道你不能錯過的庶民美食~豆腐的香氣加上嫩質雞丁~絕配~
-
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add to basket</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='product_inner'>
-        <p>豆腐炸雞丁</p>
-        <p>Price $120</p>
-        <button>Add to basket</button>
-    </div>
-
-    <div class='product_overlay'>
-        <h2>Added to basket</h2>
-        <i class='fa fa-check'></i>
-    </div>
-</div>*@
+    </div>*@

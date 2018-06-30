@@ -16,13 +16,20 @@ namespace task03_0606.Controllers
     {
 
         /*AP0010_ConitionModel condition = new AP0010_ConitionModel();*/ //下拉式選單
-         FoodCourtDBEntities db = new FoodCourtDBEntities();
-
+        FoodCourtDBEntities db = new FoodCourtDBEntities();
 
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string TableId)
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
+            if (!String.IsNullOrEmpty(TableId))
+            {
+                Session["TableId"] = TableId;
+            }
             var query = from o in db.Categories
                         select new FoodCategories
                         {
@@ -30,81 +37,30 @@ namespace task03_0606.Controllers
                             categoryName = o.categoryName,
                             Description = o.Description,
                             categoryPicture = o.categoryPicture,
-                            categoryURL=o.categoryURL
+                            categoryURL = o.categoryURL
 
-    };
+                        };
             List<FoodCategories> categorieslist = query.ToList();
             return View(categorieslist);
         }
 
-        //public ActionResult BindWithViewBag()
-        //{
-        //    List<SelectListItem> items = new List<SelectListItem>();
-
-        //    items.Add(new SelectListItem
-        //    {
-        //        Text = "Select Category",
-        //        Value = "0",
-        //        Selected = true
-        //    });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "麥當勞", Value = "21354423" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Condiments", Value = "2" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Confections", Value = "3" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Dairy Products", Value = "4" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Grains/Cereals", Value = "5" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Meat/Poultry", Value = "6" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Produce", Value = "7" });
-
-        //    items.Add(new SelectListItem
-        //    { Text = "Seafood", Value = "8" });
-
-        //    ViewBag.CategoryType = items;
-
-        //    return View();
-        //}
-
         //管理人員-所有商品列表
         public ActionResult ManagerIndex()
         {
-            int salesVolume = 0;
-            var query = from o in db.Products
-                        select new FoodProduct
-                        {
-                            productID = o.productID,
-                            productName = o.productName,
-                            productPicture = o.productPicture,
-                            salesVolume = o.salesVolume == null ? default(int) : salesVolume,
-                            storeProductId = o.storeProductId,
-                            productDescription = o.productDescription,
-                            productPrice = o.productPrice,
-                            storeId = o.storeId,
-                            productState =o.productState,
-                            categoryID = o.categoryID
-                        };
-            List<FoodProduct> foodproductslist = query.ToList();
-            return View(foodproductslist);
-        }
 
-        [HttpPost]
-        public ActionResult ManagerIndex(string storeId)
-        {
+            //if (String.IsNullOrEmpty((string)Session["logState"]))
+            //{  //如未登入，則重導到登入頁面
+            //    Session["lastPage"] = "/Products/ManagerIndex";      //儲存最後頁面
+            //    return RedirectToAction("Login", "Member");  //重導到登入頁面
+            //}
+
+            //// 假如不是商店管理者，則重導回首頁
+            //if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser")
+            //{
+            //    return RedirectToAction("Index", "Products");
+            //}
             int salesVolume = 0;
             var query = from o in db.Products
-                        where o.storeId == ("54123513")
                         select new FoodProduct
                         {
                             productID = o.productID,
@@ -122,10 +78,19 @@ namespace task03_0606.Controllers
             return View(foodproductslist);
         }
 
-
-
         public ActionResult Create()
         {
+            if (String.IsNullOrEmpty((string)Session["logState"]))
+            {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Create/ManagerIndex";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+
+            //如果不是商店管理者，則重導回首頁
+            if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser")
+            {
+                return RedirectToAction("Index", "Products");
+            }
             return View();
         }
 
@@ -164,6 +129,19 @@ namespace task03_0606.Controllers
 
         public ActionResult Edit(int? productID)
         {
+
+            if (String.IsNullOrEmpty((string)Session["logState"]))
+            {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Edit/ManagerIndex";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+
+            //如果不是商店管理者，則重導回首頁
+            if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser")
+            {
+                return RedirectToAction("Index", "Products");
+            }
+
             using (Models.FoodCourtDBEntities db = new Models.FoodCourtDBEntities())
             {
                 //抓取Product.Id等於輸入id的資料
@@ -210,7 +188,7 @@ namespace task03_0606.Controllers
                 return View(postback);
             }
         }
-        // GET: Products/Delete
+        // GET: Products/Delete/5
         public ActionResult Delete(int? productID)
         {
             if (productID == null)
@@ -225,7 +203,7 @@ namespace task03_0606.Controllers
             return View(pd);
         }
 
-        // POST: Employees/Delete
+        // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int productID)
@@ -266,10 +244,6 @@ namespace task03_0606.Controllers
         //    }
         //}
 
-
-
-
-
         //麥當勞管理介面
         public ActionResult storeAIndex()
         {
@@ -292,7 +266,6 @@ namespace task03_0606.Controllers
             List<FoodProduct> foodproductslist = query.ToList();
             return View(foodproductslist);
         }
-
 
         //花月嵐管理介面
         public ActionResult storeBIndex()
@@ -317,14 +290,14 @@ namespace task03_0606.Controllers
             return View(foodproductslist);
         }
 
-       
-
-
-
 
         //商品頁面 - 飲品&湯品-類別代號2
         public ActionResult Drinkproducts()
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
             var query = from o in db.Products
                         where o.categoryID == 2
                         select new FoodProduct
@@ -343,6 +316,10 @@ namespace task03_0606.Controllers
         //商品頁面 - 甜點類-類別代號3
         public ActionResult Dessertproducts()
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
             var query = from o in db.Products
                         where o.categoryID == 3
                         select new FoodProduct
@@ -361,6 +338,10 @@ namespace task03_0606.Controllers
         //商品頁面 - 麵食類-類別代號4
         public ActionResult Noodleproducts()
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
             var query = from o in db.Products
                         where o.categoryID == 4
                         select new FoodProduct
@@ -378,6 +359,10 @@ namespace task03_0606.Controllers
         //商品頁面 - 米飯類-類別代號5
         public ActionResult Riceproducts()
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
             var query = from o in db.Products
                         where o.categoryID == 5
                         select new FoodProduct
@@ -395,6 +380,10 @@ namespace task03_0606.Controllers
         //商品頁面 - 速食類-類別代號6
         public ActionResult Fastfoodproducts()
         {
+            if (Session["identity"] == null)
+            {
+                Session["identity"] = "Guest";
+            };
             var query = from o in db.Products
                         where o.categoryID == 6
                         select new FoodProduct
@@ -443,35 +432,34 @@ namespace task03_0606.Controllers
 
         //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
         //}
-        //下拉式2
-        //public class ViewModel
-        //{
-        //    public string Name { get; set; }
-        //    public IEnumerable<Product> MyList { get; set; }
-        //}
-        //public ActionResult testIndex()
-        //{
-           
+        public class ViewModel
+        {
+            public string Name { get; set; }
+            public IEnumerable<Product> MyList { get; set; }
+        }
+        public ActionResult testIndex()
+        {
 
-        //    List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-        //    foreach (var item in db.Stores)
-        //    {
-        //        mySelectItemList.Add(new SelectListItem()
-        //        {
-        //            Text = item.storeId,
-        //            Value = item.storeName,
-        //            Selected = false
-        //        });
-        //    }
+            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-        //    ViewModel model = new ViewModel() //上面的 Model
-        //    {
-        //        //MyList = mySelectItemList
-        //    };
+            foreach (var item in db.Stores)
+            {
+                mySelectItemList.Add(new SelectListItem()
+                {
+                    Text = item.storeId,
+                    Value = item.storeName,
+                    Selected = false
+                });
+            }
 
-        //    return View(model);
-        //}
+            ViewModel model = new ViewModel() //上面的 Model
+            {
+                //MyList = mySelectItemList
+            };
+
+            return View(model);
+        }
 
     }
 

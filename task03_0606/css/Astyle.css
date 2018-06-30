@@ -1,7 +1,7 @@
 
 #content {
     border:1px solid #7e7e7e; 
-    height:300px;
+    height:auto;
     min-width:100px;
 }
 #list div {
@@ -140,10 +140,12 @@ header i:nth-of-type(2) {
             }
 
             .product_inner button {
-                border: 1px solid rgba(255, 255, 255, 0.5);
-                color: #FFF;
-                border-radius: 3px;
-                padding: 1em 3em;
+                border: 3px solid rgba(255, 255, 255, 0.5);
+                color: gray;
+                border-radius: 6px;
+                /*padding: 1em 3em;*/
+                padding-left:0;
+                padding-right:0;
                 margin: 1em 0 0 0;
                 background: none;
                 cursor: pointer;
@@ -155,9 +157,9 @@ header i:nth-of-type(2) {
                     font-family: FontAwesome;
                     content: '\f07A';
                     color: #FFF;
-                    position: absolute;
+                    position: inherit;
                     font-size: 1.5em;
-                    margin: 0 -1.5em;
+                    margin: 0 0;
                 }
 
                 .product_inner button:hover {

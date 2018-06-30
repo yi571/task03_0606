@@ -35,7 +35,7 @@ $(function () {
 
         //Add To Basket Animation
         $("#button").click(function () {
-            addToBasket();
+            //addToBasket();
             $(this)
               .parent()
               .parent()
@@ -59,7 +59,7 @@ $(function () {
     });
 
     $(".btn").on("click", function () {
-        addToBasket();
+        //addToBasket();
         $(this)
           .parent()
           .parent()
@@ -81,7 +81,7 @@ $(function () {
           });
     });
 
-
+    //--------------------------
     var $table = $('#table'),
             $remove = $('#remove'),
             selections = [];
