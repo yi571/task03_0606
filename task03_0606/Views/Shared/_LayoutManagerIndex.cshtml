@@ -33,20 +33,30 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["memberType"].ToString() == "Customer")
+                @if (Session["memberType"].ToString() == "Superuser")
                 {
-                    @*顧客專用-餐廳列表*@
+                    @*管理者專用-餐廳列表*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
                         <a class="nav-link" href="~/Home/Restaurent">
                             <i class="fa fa-fw fa-cutlery"></i>
                             <span class="nav-link-text">餐廳列表</span>
                         </a>
                     </li>
-                    @*顧客專用-美食分類*@
+
+                    @*管理者專用-美食分類預覽*@
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="~/Products/ManagerIndex" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-cutlery"></i>
+                            <span class="nav-link-text">美食分類預覽</span>
+                        </a>
+                        </li>
+
+
+                        @*管理者專用-美食分類預覽*@
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-cutlery"></i>
-                            <span class="nav-link-text">美食分類</span>
+                            <span class="nav-link-text">美食分類預覽</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                             <li>
@@ -259,7 +269,7 @@
                 <li class="nav-item">
 
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
-                        店名麥當勞 您好 <i class="fa fa-fw fa-sign-out"></i>登出
+                        網站管理員 您好 <i class="fa fa-fw fa-sign-out"></i>登出
 
                     </a>
                 </li>
