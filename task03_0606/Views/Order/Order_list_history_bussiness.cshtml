@@ -49,6 +49,7 @@
                             <th>座位</th>
                             <th>訂單小計</th>
                             <th>訂單狀況</th>
+                            <th>修改狀況</th>
                         </tr>
                     </thead>
 
@@ -69,27 +70,25 @@
                                     {
                                         orderTotalAmount += (orderDetail.productCount * orderDetail.Product.productPrice);
                                     }
-
-
-
-                            <tr class="orderListItem" data-orderid="@order.orderId" data-orderiddate="@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))">
-                                <td> @string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000)) </td>
-                                <td> @string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate)) </td>
-                                @*<td> @string.Format("{0:dd HH:mm}", (DateTime.Now-Convert.ToDateTime(order.orderDate))) </td>*@
-                                <td> @order.phoneNum</td>
-                                <td> @order.tableId</td>
-                                <td> @orderTotalAmount</td>
-                                <td>@(order.orderState == 2 ? "訂單完成" : "待出餐") </td>
-                            </tr>
+                                    
+                        <tr >
+                            <td><a href="#" class="orderListItem" data-orderid="@order.orderId" data-orderiddate="@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))">
+                                @string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000))
+                                </a></td>
+                            <td> @string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate)) </td>
+                            @*<td> @string.Format("{0:dd HH:mm}", (DateTime.Now-Convert.ToDateTime(order.orderDate))) </td>*@
+                            <td> @order.phoneNum</td>
+                            <td> @order.tableId</td>
+                            <td> @orderTotalAmount</td>
+                            <td>@(order.orderState == 2 ? "訂單完成" : "待出餐") </td>
+                            <td> <button class="btn btn-warning" onclick="changeState()" >未出餐</button> </td>
+                        </tr>
                                 }
                             }
                     </tbody>
                 </table>
             </div>
-
         </div>
-
-        
     </div>
 </div>
 
@@ -173,9 +172,12 @@
         let today = new Date().toISOString().substr(0, 10);
         document.querySelector("#beginDate").value = today;
         document.querySelector("#endDate").value = today;
-       
     })
 
+    function changeState() {
+        $('#exampleModalCenter').modal('hide');
+        alert("test");
+    }
 
 
     //點選訂單，浮出Modal訂單明細
@@ -203,12 +205,12 @@
             var countSum = 0;
             var amountSum = 0;
             $.each(dataList, function (index, data) {
-                $("#detailList").append('<tr><td>' + (index + 1) + '</td><td>' + data.productID + '</td><td>' + data.productName + '</td><td>' + data.unitPrice + '</td><td>' + data.productCount + '</td><td>' + data.unitPrice * data.productCount + '</td><td>' + data.customerNote + '</td><td>' + (data.productionStatus == 1 ? "待準備" : "準備完成") + '</td></tr >');
+                $("#detailList").append('<tr><td>' + (index + 1) + '</td><td>' + data.storeName + '</td><td>' + data.productName + '</td><td>' + data.productCount + '</td><td>' + data.unitPrice + '</td><td>' + data.unitPrice * data.productCount + '</td><td>' + data.customerNote + '</td><td>' + (data.productionStatus == 1 ? "待準備" : "準備完成") + '</td></tr >');
                 countSum += data.productCount;
                 amountSum += data.productCount * data.unitPrice;
             });
             $("#detailSum").empty();
-            $("#detailSum").append('<tr><td>總計</td><td></td ><td></td><td></td><td>' + countSum + '</td><td>' + amountSum + '</td><td></td><td></td></tr >');
+            $("#detailSum").append('<tr><td>總計</td><td></td ><td></td><td>' + countSum + '</td><td></td><td>' + amountSum + '</td><td></td><td></td></tr >');
         });
     })
 

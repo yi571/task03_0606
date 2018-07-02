@@ -170,7 +170,7 @@ namespace task03_0606.Controllers
                                 seatID = o.tableId,
                                 customerPhone = o.phoneNum,
                                 storeID = c.Product.Store.storeId,
-                                storeName = c.Product.Store.storeName,
+                                storeName = c.Product.storeProductId,
                                 productID = c.productID,
                                 productName = c.Product.productName,
                                 productCount = c.productCount,
@@ -321,6 +321,7 @@ namespace task03_0606.Controllers
                                        productCount = o.productCount,
                                        productionStatus = o.productionStatus,
                                        customerNote = o.customerNote,
+                                       storeName = o.Product.storeProductId
                                    };
 
               List<OrderDetailViewModel> orderDetail = query.ToList();

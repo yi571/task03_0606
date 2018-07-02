@@ -17,6 +17,7 @@
         <a href="~/Order/Order_deteail_bussiness">未出餐訂單-明細別</a>
     </li>
     <li class="breadcrumb-item active">未出餐訂單-訂單別</li>
+
 </ol>
 
 <div class="row">
@@ -205,17 +206,17 @@
             //增加分頁筆數標示
         else { 
         if (currentPage == totalPage) {
-            if ((totalSize % pageSize) == 0)
+            if ((totalSize % pageSize) == 0) 
             {
-                $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                $("div#pageList").append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>')
             }
             else {
-                $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                $("div#pageList").append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + ', 總筆數：' + totalSize + '筆 </p>');
             }
             
         }
         else {
-            $("div#pageList").append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage ) + '筆, 共' + totalSize + '筆 </p>');
+            $("div#pageList").append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ',總筆數：' + totalSize + '筆 </p>');
         }
 
         //移除原有 .pagination 裡的元素 , append "前一頁" li
@@ -243,14 +244,15 @@
                 //增加分頁筆數標示
                 if (currentPage == totalPage) {
                     if ((totalSize % pageSize) == 0) {
-                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                        
+                        $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>')
                     }
                     else {
-                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                        $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + ', 總筆數：' + totalSize + '筆 </p>');
                     }
                 }
                 else {
-                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                    $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>');
                 }
                 $.each($('.card.cardMenuItem'), function (index, item) {
                     if (index >= start && index < end) {
@@ -266,7 +268,7 @@
 
         //實現上一頁
         $(".prev").click(function () {
-            alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
+            //alert("currentPage:" + currentPage + "  totalPage:" + totalPage);
             if (currentPage == 1) {//當前頁數==1，禁止上一頁
                  return false;
             } else {
@@ -277,14 +279,15 @@
                 //增加分頁筆數標示
                 if (currentPage == totalPage) {
                     if ((totalSize % pageSize) == 0) {
-                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                        
+                        $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>')
                     }
                     else {
-                        $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                        $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + ', 總筆數：' + totalSize + '筆 </p>');
                     }
                 }
                 else {
-                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                    $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>');
                 }
 
                 $.each($('.card.cardMenuItem'), function (index, item) {
@@ -295,7 +298,6 @@
                         $(this).hide();
                     }
                 });
-                
             }
         });
 
@@ -315,14 +317,15 @@
             //增加分頁筆數標示
             if (currentPage == totalPage) {
                 if ((totalSize % pageSize) == 0) {
-                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>')
+                    
+                    $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>')
                 }
                 else {
-                    $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + '筆, 共' + totalSize + '筆 </p>');
+                    $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + ((pageSize * (currentPage - 1)) + (totalSize % pageSize)) + ', 總筆數：' + totalSize + '筆 </p>');
                 }
             }
             else {
-                $("div#pageList").empty().append('<p>第' + ((pageSize * currentPage) - (pageSize - 1)) + '筆 到 第' + (pageSize * currentPage) + '筆, 共' + totalSize + '筆 </p>');
+                $("div#pageList").empty().append('<p>目前記錄：' + ((pageSize * currentPage) - (pageSize - 1)) + ' 至 ' + (pageSize * currentPage) + ', 總筆數：' + totalSize + '筆 </p>');
             }
 
             $.each($('.card.cardMenuItem'), function (index, item) {
@@ -333,9 +336,6 @@
                     $(this).hide();
                 }
             });
-         
-
-
         });
 
         //$("div.col-xs-1").data("status") == 2

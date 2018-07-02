@@ -52,8 +52,8 @@
                             <td data-th="客戶電話："> @order.customerPhone </td>
                             <td data-th="訂單單號："> @string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderTime), (order.orderId + 10000))</td>
                             <td data-th="座位："> @order.seatID</td>
-                            <td data-th="產品編號：" style="display:none"> @order.productID</td>
-                            <td data-th="產品編號："> @order.productID</td>
+                            <td data-th="產品編號：" style="display:none"> @order.storeName</td>
+                            <td data-th="產品編號："> @order.storeName</td>
                             <td data-th="產品名稱："> @order.productName</td>
                             <td data-th="數量："> @order.productCount</td>
                             <td data-th="單價："> @order.unitPrice</td>
@@ -95,7 +95,6 @@
                 alert("確定出餐 訂單編號:" + OrderId + "的" + "產品編號" + ProductID)
                 window.location.reload();
                 //console.log(data);
-                
                 
             })
 
