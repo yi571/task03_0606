@@ -60,7 +60,7 @@
                             <td data-th="小計："> @(order.unitPrice * order.productCount)</td>
                             <td data-th="備註："> @order.customerNote</td>
                             <td data-th="產品狀態："> @((order.productionStatus == 1) ? "待準備" : "準備完成" )</td>
-                            <td> <button id="orderOk" type="button" class="btn btn-primary" onclick="foodDelivery(@order.productID,@order.orderId)">出餐</button> </td>
+                            <td> <button id="orderOk" type="button" class="btn btn-success" onclick="foodDelivery(@order.productID,@order.orderId)">準備完成</button> </td>
                         </tr>
 
                     }

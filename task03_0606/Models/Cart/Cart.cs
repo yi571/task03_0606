@@ -171,7 +171,7 @@ namespace task03_0606.Models.Cart
                     orderId = id,
                     productID = item.produtctId,
                     productCount = item.quantity,
-                    productionStatus =0, //訂單產品準備狀態 1-準備中 2-準備ok
+                    productionStatus =1 , //訂單產品準備狀態 1-準備中 2-準備ok
                     customerNote = item.note,
                 });
                 
