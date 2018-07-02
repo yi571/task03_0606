@@ -51,7 +51,9 @@ namespace task03_0606.Controllers {
                 return RedirectToAction("Index", "Products");
             }
             int salesVolume = 0;
+            string storeId = (string)Session["storeId"];
             var query = from o in db.Products
+                        where o.storeId == storeId
                         select new FoodProduct {
                             productID = o.productID,
                             productName = o.productName,

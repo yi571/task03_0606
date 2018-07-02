@@ -14,15 +14,14 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
-                <button class="pull-right btn btn-warning" id="create">
-                    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("新增產品", "Create")
-                </button>
+                <h1><i class="fa fa-table"></i><a href="" class="white-text mx-3">產品列表</a><a class="pull-right btn btn-warning text-primary" id="create" href="/Products/Create">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    新增產品
+</a></h1>
+                
             </div>
             <div class="card-body">
                 @*@Html.DropDownListFor(c => c , new { @class = "form-control ", id = "PageSize" })*@
-                <div class="table-responsive"><label>店家名稱<select name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm"><option value="所有產品">所有產品</option><option value="麥當勞">麥當勞</option><option value="八坂丼飯">八坂丼飯</option><option value="亞頓鐵板燒">亞頓鐵板燒</option><option value="壽賀喜屋">壽賀喜屋</option>
-                                                             <option value="花月嵐拉麵">花月嵐拉麵</option><option value="燒丼株式會社">燒丼株式會社</option><option value="湄南河料理">湄南河料理</option><option value="三田製麵所">三田製麵所</option></select></label></div>
 
                     <table class="table table-bordered" id="dataTable" width="140" cellspacing="0">
                         <thead>
@@ -48,8 +47,9 @@
                                     <td >@Html.DisplayFor(modelItem => item.productID)</td>
                                     @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
                                     <td>
-                                    @Html.ActionLink("編輯", "Edit", new { productID = item.productID }) |
-                                    @Html.ActionLink("刪除", "Delete", new { productID = item.productID })
+                                        @Html.ActionLink("編輯", "Edit", new { productID = item.productID }) <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
+                                        |
+                                        @Html.ActionLink("刪除", "Delete", new { productID = item.productID }) <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                     </td>
                                     <td >@Html.DisplayFor(modelItem => item.productName)</td>
                                     <td class="ProfileImg">
@@ -82,7 +82,7 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">更新時間 @DateTime.Today.ToString("yyyy-MM-dd")</div>
+            <div class="card-footer small text-muted">更新時間 @DateTime.Now.ToString()</div>
         </div>
     </div>
     <!-- /.container-fluid-->
@@ -103,3 +103,25 @@
 
     
 </div>
+<script>
+    $(document).ready(function () {
+        var opt = {
+            "oLanguage": {
+                "sProcessing": "處理中...",
+                "sLengthMenu": "顯示 _MENU_ 項結果",
+                "sZeroRecords": "沒有匹配結果",
+                "sInfo": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                "sInfoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+                "sInfoFiltered": "(從 _MAX_ 項結果過濾)",
+                "sSearch": "搜尋：",
+                "oPaginate": {
+                    "sFirst": "首頁",
+                    "sPrevious": "上一頁",
+                    "sNext": "下一頁",
+                    "sLast": "尾頁"
+                }
+            }
+        };
+        $("#dataTable").dataTable(opt);
+    })
+</script>
