@@ -47,7 +47,7 @@ namespace task03_0606.Controllers {
             }
 
             // 假如不是商店管理者，則重導回首頁
-            if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser") {
+            if (Session["identity"].ToString() != "store" && Session["identity"].ToString() != "storeUser") {
                 return RedirectToAction("Index", "Products");
             }
             int salesVolume = 0;
@@ -75,7 +75,7 @@ namespace task03_0606.Controllers {
             }
 
             //如果不是商店管理者，則重導回首頁
-            if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser") {
+            if (Session["identity"].ToString() != "store" && Session["identity"].ToString() != "storeUser") {
                 return RedirectToAction("Index", "Products");
             }
             return View();
@@ -120,7 +120,7 @@ namespace task03_0606.Controllers {
             }
 
             //如果不是商店管理者，則重導回首頁
-            if (Session["identity"].ToString() != "store" || Session["identity"].ToString() != "storeUser") {
+            if (Session["identity"].ToString() != "store" && Session["identity"].ToString() != "storeUser") {
                 return RedirectToAction("Index", "Products");
             }
 

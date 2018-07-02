@@ -290,6 +290,7 @@
     <Content Include="photo\NewFolder1\6\new\E35.jpg" />
     <Content Include="Scripts\jquery.signalR-2.3.0.js" />
     <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
+    <Content Include="startbootstrap-sb-admin-gh-pages\sb-admin.min.css" />
     <Content Include="SweetAlert2\enhancers.js" />
     <Content Include="SweetAlert2\globalState.js" />
     <Content Include="SweetAlert2\instanceMethods.js" />
@@ -600,7 +601,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="scss\" />
-    <Folder Include="startbootstrap-sb-admin-gh-pages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

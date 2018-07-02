@@ -16,7 +16,7 @@
             <div class="card-header">
                 <h1><i class="fa fa-table"><a href="" class="white-text mx-3">商品列表</a></h1></i>
                 <button class="pull-right btn btn-warning" id="create">
-                    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("Create New", "Create")
+                    <i class="glyphicon glyphicon-remove"></i>@Html.ActionLink("新增產品", "Create")
                 </button>
             </div>
             <div class="card-body">
@@ -24,7 +24,7 @@
                 <div class="table-responsive"><label>店家名稱<select name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm"><option value="所有產品">所有產品</option><option value="麥當勞">麥當勞</option><option value="八坂丼飯">八坂丼飯</option><option value="亞頓鐵板燒">亞頓鐵板燒</option><option value="壽賀喜屋">壽賀喜屋</option>
                                                              <option value="花月嵐拉麵">花月嵐拉麵</option><option value="燒丼株式會社">燒丼株式會社</option><option value="湄南河料理">湄南河料理</option><option value="三田製麵所">三田製麵所</option></select></label></div>
 
-                    <table class="table table-bordered" id="dataTable" width="140%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" width="140" cellspacing="0">
                         <thead>
                             <tr>
                                 <th style="width: 50px;" class="list-unstyled" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="商品編號: activate to sort column descending" aria-sort="ascending">商品編號</th>
@@ -48,8 +48,8 @@
                                     <td >@Html.DisplayFor(modelItem => item.productID)</td>
                                     @*<td>@Html.DisplayFor(modelItem => item.picture)</td>*@
                                     <td>
-                                    @Html.ActionLink("Edit", "Edit", new { productID = item.productID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { productID = item.productID })
+                                    @Html.ActionLink("編輯", "Edit", new { productID = item.productID }) |
+                                    @Html.ActionLink("刪除", "Delete", new { productID = item.productID })
                                     </td>
                                     <td >@Html.DisplayFor(modelItem => item.productName)</td>
                                     <td class="ProfileImg">
@@ -82,7 +82,7 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">更新時間 @DateTime.Today.ToString("yyyy-MM-dd")</div>
         </div>
     </div>
     <!-- /.container-fluid-->
