@@ -35,78 +35,87 @@
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {
-                    @*顧客專用-餐廳列表*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
-                        <a class="nav-link" href="~/Home/Restaurent">
-                            <i class="fa fa-fw fa-cutlery"></i>
-                            <span class="nav-link-text">餐廳列表</span>
-                        </a>
+            @*顧客專用-餐廳列表*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
+                <a class="nav-link" href="~/Home/Restaurent">
+                    <i class="fa fa-fw fa-home"></i>
+                    <span class="nav-link-text">餐廳列表</span>
+                </a>
+            </li>
+            @*顧客專用-美食分類*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-cutlery"></i>
+                    <span class="nav-link-text">美食分類</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="/Products/Drinkproducts"> <i class="fa fa-hand-o-right"></i> 湯品/飲料</a>
                     </li>
-                    @*顧客專用-美食分類*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-cutlery"></i>
-                            <span class="nav-link-text">美食分類</span>
-                        </a>
-                        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-                            <li>
-                                <a href="/Products/Drinkproducts"> <i class="fa fa-glass"></i> 湯品/飲料</a>
-                            </li>
-                            <li>
-                                <a href="/Products/Fastfoodproducts">速食</a>
-                            </li>
-                            <li>
-                                <a href="/Products/Riceproducts">飯</a>
-                            </li>
-                            <li>
-                                <a href="/Products/Noodleproducts">麵</a>
-                            </li>
-                            <li>
-                                <a href="/Products/Dessertproducts">甜點</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <a href="/Products/Fastfoodproducts"> <i class="fa fa-hand-o-right"></i> 速食</a>
                     </li>
-                    if (Session["identity"].ToString() == "normalUser") {
-                        @*顧客專用-訂單列表*@
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
-                            <a class="nav-link" href="~/Order/Order_list_costomer">
-                                <i class="fa fa-fw fa-sticky-note"></i>
-                                <span class="nav-link-text">訂單列表</span>
-                            </a>
-                        </li>
-                    }
+                    <li>
+                        <a href="/Products/Riceproducts"> <i class="fa fa-hand-o-right"></i> 飯</a>
+                    </li>
+                    <li>
+                        <a href="/Products/Noodleproducts"> <i class="fa fa-hand-o-right"></i> 麵</a>
+                    </li>
+                    <li>
+                        <a href="/Products/Dessertproducts"> <i class="fa fa-hand-o-right"></i> 甜點</a>
+                    </li>
+                </ul>
+            </li>
+if (Session["identity"].ToString() == "normalUser") {
+            @*顧客專用-訂單列表*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="訂單列表">
+                <a class="nav-link" href="~/Order/Order_list_costomer">
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="nav-link-text">訂單列表</span>
+                </a>
+            </li>
+}
 
 
 
-                }
+}
                 @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {
-                    @*商家專用-未出餐訂單-訂單別*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
-                        <a class="nav-link" href="~/Order/Order_list_bussiness">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">未出餐訂單-訂單別</span>
-                        </a>
-                    </li>
+            @*商家專用-未出餐訂單-訂單別*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
+                <a class="nav-link" href="~/Order/Order_list_bussiness">
+                    <i class="fa fa-fw fa-sticky-note"></i>
+                    <span class="nav-link-text">未出餐訂單-訂單別</span>
+                </a>
+            </li>
 
-                    @*商家專用-未出餐訂單-明細別*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-明細別">
-                        <a class="nav-link" href="~/Order/Order_deteail_bussiness">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">未出餐訂單-明細別</span>
-                        </a>
-                    </li>
-                    @*商家專用-產品列表*@
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品列表">
-                        <a class="nav-link" href="~/#/Product?userID=1">
-                            <i class="fa fa-fw fa-sticky-note"></i>
-                            <span class="nav-link-text">產品列表</span>
-                        </a>
-                    </li>
-                }
-                @*網站意見反應*@
+            @*商家專用-未出餐訂單-明細別*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-明細別">
+                <a class="nav-link" href="~/Order/Order_deteail_bussiness">
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="nav-link-text">未出餐訂單-明細別</span>
+                </a>
+            </li>
+
+            @*商家專用-chart*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品銷售統計">
+                <a class="nav-link" href="~/Member/StoreChart">
+                    <i class="fa fa-fw fa-bar-chart"></i>
+                    <span class="nav-link-text">產品銷售統計</span>
+                </a>
+            </li>
+
+            @*商家專用-產品列表*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="產品列表">
+                <a class="nav-link" href="~/#/Product?userID=1">
+                    <i class="fa fa-fw fa-th-list"></i>
+                    <span class="nav-link-text">產品列表</span>
+                </a>
+            </li>
+}
+            @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
                     <a class="nav-link" href="~/Home/Respone">
-                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <i class="fa fa-fw fa-bullhorn"></i>
                         <span class="nav-link-text">意見反應</span>
                     </a>
                 </li>

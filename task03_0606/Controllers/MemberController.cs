@@ -643,5 +643,45 @@ namespace task03_0606.Controllers {
         public ActionResult Detail() {
             return View();
         }
+
+        public ActionResult StoreChart(string polit1) {
+            ViewBag.today = DateTime.Today.ToString("yyyy-MM-dd");
+            string getDate = polit1;
+            if (!string.IsNullOrEmpty(polit1)) {
+
+                ViewBag.today = getDate;
+                polit1 = polit1.Replace("-0", "/").Replace("-", "/");
+
+            };
+
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Member/StoreChart";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+            if ((string)Session["identity"] != "store") {
+                return Content("您沒有權限瀏覽此頁");
+            }
+
+            if (string.IsNullOrEmpty(polit1)) {
+                polit1 = DateTime.Today.ToString("YYYY/MM/DD");
+            }
+            string storeId = (string)Session["storeId"];
+            var queryEdit = from o in db.Orders
+                            join p in db.OrderDetials on o.orderId equals p.orderId into r //left join
+                            from p in r.DefaultIfEmpty()  //如果右邊沒資料則傳出null
+                            join q in db.Products on p.productID equals q.productID into s
+                            from q in s.DefaultIfEmpty()
+                            where o.orderDate.StartsWith(polit1) && q.storeId == storeId
+                            group q by q.productName into g
+                            select new CDaySell { Name = g.Key, DayCount = g.Count() };
+            var userInfoEdit = queryEdit.ToList();
+
+            ViewBag.test = userInfoEdit;
+
+
+
+            //return Content(DateTime.Today.ToString("yyyy-MM-dd"));
+            return View();
+        }
     }
 }

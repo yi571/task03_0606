@@ -395,6 +395,7 @@
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CCity.cs" />
+    <Compile Include="Models\CDaySell.cs" />
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
     <Compile Include="Models\CUserList.cs" />
@@ -588,6 +589,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Order\Order_detail_costomer.cshtml" />
+    <Content Include="Views\Member\StoreChart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
