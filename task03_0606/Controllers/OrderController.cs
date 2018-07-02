@@ -253,7 +253,7 @@ namespace task03_0606.Controllers
                 //List<Order> orders = queryByID.ToList();
 
                 var query = from o in db.OrderDetials
-                            where o.Product.storeId == stroeId && o.productionStatus == 1
+                            where o.Product.storeId == stroeId && o.productionStatus == 1 && o.Order.orderState==1
                             group o by new { o.orderId, o.Order.phoneNum, o.Order.tableId, o.Order.orderDate } into g
                             select new Models.OrderModels.Orderlist
                             {
@@ -277,8 +277,7 @@ namespace task03_0606.Controllers
                 var order = (from o in db.Orders
                              where o.orderId == orderId_ok
                              select o).FirstOrDefault();
-
-                ////bug --> 若有兩間廠商 只有一間先出，訂單結單
+                
                 int orderComplete = order.OrderDetials.Count * 2;
                 int TotalProductionStatus = 0;
                 foreach (var o in order.OrderDetials)
@@ -305,33 +304,49 @@ namespace task03_0606.Controllers
             //依廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
-                var query = from o in db.OrderDetials
-                            join c in db.Orders
-                            on new { OrderId = o.orderId } equals
-                               new { OrderId = c.orderId } into temp
-                            from ds in temp.DefaultIfEmpty()
-                            where o.Product.storeId == stroeId
-                            orderby o.orderId
-                            select ds;
 
-                List<Order> orderDetailList = query.ToList();
+                var query = from o in db.OrderDetials
+                            where o.Product.storeId == stroeId 
+                            group o by new { o.orderId, o.Order.phoneNum, o.Order.tableId, o.Order.orderDate } into g
+                            select new Models.OrderModels.Orderlist
+                            {
+                                orderId = g.Key.orderId,
+                                phoneNum = g.Key.phoneNum,
+                                tableId = g.Key.tableId,
+                                orderDate = g.Key.orderDate,
+                            };
+
+                List<Models.OrderModels.Orderlist> orders = query.ToList();
+
+                return View(orders);
+
+                //var query = from o in db.OrderDetials
+                //            join c in db.Orders
+                //            on new { OrderId = o.orderId } equals
+                //               new { OrderId = c.orderId } into temp
+                //            from ds in temp.DefaultIfEmpty()
+                //            where o.Product.storeId == stroeId
+                //            orderby o.orderId
+                //            select ds;
+
+                //List<Order> orderDetailList = query.ToList();
 
                
 
-                var queryByID = from o in orderDetailList
-                                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate ,o.orderState} into g
-                                select new Order
-                                {
-                                    orderId = g.Key.orderId,
-                                    phoneNum = g.Key.phoneNum,
-                                    tableId = g.Key.tableId,
-                                    orderDate = g.Key.orderDate,
-                                    orderState = g.Key.orderState,
-                                };
+                //var queryByID = from o in orderDetailList
+                //                group o by new { o.orderId, o.phoneNum, o.tableId, o.orderDate ,o.orderState} into g
+                //                select new Order
+                //                {
+                //                    orderId = g.Key.orderId,
+                //                    phoneNum = g.Key.phoneNum,
+                //                    tableId = g.Key.tableId,
+                //                    orderDate = g.Key.orderDate,
+                //                    orderState = g.Key.orderState,
+                //                };
 
-                List<Order> orders = queryByID.ToList();
+                //List<Order> orders = queryByID.ToList();
                 
-                return View(orders);
+                //return View(orders);
 
             }
 
@@ -375,29 +390,38 @@ namespace task03_0606.Controllers
         [HttpPost]
         public ActionResult Order_list_history_edit_bussiness(int orderId, string action)
         {
-            int test = orderId;
+           
             string stroeId = Session["storeId"].ToString();
             //依廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
-                var query = from o in db.OrderDetials
-                            where o.orderId == orderId && o.Product.storeId == stroeId
-                            select new OrderDetailViewModel
-                            {
-                                orderId = o.orderId,
-                                orderTime = o.Order.orderDate,
-                                productID = o.productID,
-                                productName = o.Product.productName,
-                                unitPrice = o.Product.productPrice,
-                                productCount = o.productCount,
-                                productionStatus = o.productionStatus,
-                                customerNote = o.customerNote,
-                                storeName = o.Product.storeProductId
-                            };
+                if (action == "changeState") {
+                    var changeOrder = (from o in db.Orders
+                                       where o.orderId == orderId
+                                       select o).FirstOrDefault();
 
-                List<OrderDetailViewModel> orderDetail = query.ToList();
+                    changeOrder.orderState = 1;
 
-                return Json(orderDetail, JsonRequestBehavior.AllowGet);
+                    var changeList = (from o in db.OrderDetials
+                                   where o.orderId == orderId && o.Product.storeId == stroeId
+                                      select o).ToList();
+
+                    foreach (var item in changeList) {
+                        item.productionStatus = 1;
+                    }
+                    db.SaveChanges();
+                }
+                if (action == "cancelOrder") {
+                    var cancelOrder = (from o in db.Orders
+                                       where o.orderId == orderId
+                                       select o).FirstOrDefault();
+
+                    cancelOrder.orderState = 3;
+                    db.SaveChanges(); 
+                }
+               
+
+                return Json(true);
             }
 
 
