@@ -367,31 +367,54 @@ namespace task03_0606.Controllers {
 
         //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
         //}
-        public class ViewModel {
-            public string Name { get; set; }
-            public IEnumerable<Product> MyList { get; set; }
+        //public class ViewModel {
+        //    public string Name { get; set; }
+        //    public IEnumerable<Product> MyList { get; set; }
+        //}
+        //public ActionResult testIndex() {
+
+
+        //    List<SelectListItem> mySelectItemList = new List<SelectListItem>();
+
+        //    foreach (var item in db.Stores) {
+        //        mySelectItemList.Add(new SelectListItem() {
+        //            Text = item.storeId,
+        //            Value = item.storeName,
+        //            Selected = false
+        //        });
+        //    }
+
+        //    ViewModel model = new ViewModel() //上面的 Model
+        //    {
+        //        //MyList = mySelectItemList
+        //    };
+
+        //    return View(model);
+        //}
+
+
+
+        public ActionResult createfeedback()
+        {
+            Feedback d = new Feedback();
+           
+            return View(d);
         }
-        public ActionResult testIndex() {
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult createfeedback(Feedback m)
+        {
 
-            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
-
-            foreach (var item in db.Stores) {
-                mySelectItemList.Add(new SelectListItem() {
-                    Text = item.storeId,
-                    Value = item.storeName,
-                    Selected = false
-                });
-            }
-
-            ViewModel model = new ViewModel() //上面的 Model
+            if (ModelState.IsValid)
             {
-                //MyList = mySelectItemList
-            };
 
-            return View(model);
+                //its valid, update your database or do soemthing useful here
+                return RedirectToAction("Index");
+            }
+            //its not valid reload the page and let data annotations show the error
+            db.SaveChanges();
+            return View(m);
         }
-
     }
-
 }

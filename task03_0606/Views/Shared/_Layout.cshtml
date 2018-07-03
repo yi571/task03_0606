@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             @*側邊導覽*@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {
+                @*@if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {*@
             @*顧客專用-餐廳列表*@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="餐廳列表">
                 <a class="nav-link" href="~/Home/Restaurent">
@@ -79,7 +79,7 @@ if (Session["identity"].ToString() == "normalUser") {
 
 
 }
-                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {
+                @*@if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {*@
             @*商家專用-未出餐訂單-訂單別*@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="未出餐訂單-訂單別">
                 <a class="nav-link" href="~/Order/Order_list_bussiness">
@@ -114,7 +114,7 @@ if (Session["identity"].ToString() == "normalUser") {
 }
             @*網站意見反應*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="意見反應">
-                    <a class="nav-link" href="~/Home/Respone">
+                    <a class="nav-link" href="~/Products/createfeedback">
                         <i class="fa fa-fw fa-bullhorn"></i>
                         <span class="nav-link-text">意見反應</span>
                     </a>
@@ -132,7 +132,7 @@ if (Session["identity"].ToString() == "normalUser") {
             @*上方導覽*@
             <ul class="navbar-nav ml-auto">
 
-                @if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {
+                @*@if (Session["identity"].ToString() == "store" || Session["identity"].ToString() == "storeUser") {*@
                     @*商家專用-新單訊息*@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -163,7 +163,7 @@ if (Session["identity"].ToString() == "normalUser") {
                         </div>
                     </li>
                 }
-                @if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {
+                @*@if (Session["identity"].ToString() == "normalUser" || Session["identity"].ToString() == "Guest") {*@
                     @*顧客專用-購物車訊息*@
                     <li id="Cart" class="nav-item dropdown">
                         @Html.Partial("_CartList")
