@@ -109,7 +109,7 @@
             //將<p>顏色改成黑色
             $(this).find("p").css("color", "black");
             //修改 div.col-xs-1 中的 data-status值為1
-            $(this).find("div.col-xs-1").data("status", "1");
+            $(this).find("div.col-xs-1").data("status", "0");
         }
         else {
             //於 div.col-xs-1 中加上<i>元素 顏色綠色
@@ -120,7 +120,7 @@
             //將<p>顏色改成綠色
             $(this).find("p").css("color", "green");
             //修改 div.col-xs-1 中的 data-status值為2
-            $(this).find("div.col-xs-1").data("status", "2");
+            $(this).find("div.col-xs-1").data("status", "1");
         }
         productId = $(this).data("productid");
         orderId = $(this).data("orderid");
@@ -146,7 +146,7 @@
         //console.log($(this).find(".col-xs-1"));
      
         //全部餐點都ok的數值 (li 數量 * 完成數值 2)
-        var orderOk = $(this).find("li").length * 2;
+        var orderOk = $(this).find("li").length ;
         //設定計算完成項目數值
         var totalCount = 0;
         //alert("orderok：" + orderOk + "  totalCount：" + totalCount);
@@ -345,10 +345,10 @@
 
     //確認訂單狀況， 所有產品狀態為 2 ==>出餐按鈕可點選
     function statusCheck() {
-        //計算單張訂單產品狀態總和 = 產品項目*2
+        
         $(".card.cardMenuItem").each(function () {
             //console.log($(this).find(".col-xs-1"));
-            var orderOk = $(this).find("li").length * 2;
+            var orderOk = $(this).find("li").length; //計算單張訂單產品狀態總和 = 產品項目*2
             var totalCount = 0;
             $(this).find(".col-xs-1").each(function () {
                 //console.log($(this).data("status"));
@@ -363,10 +363,11 @@
                 $(this).find(".btn.btn-sm").attr('disabled', true);
             }
         });
-        //如果產品狀態==2, 加上check icon
+       
         $("div.col-xs-1").each(function () {
             //console.log($(this).data("status"));
-            if ($(this).data("status") == 2) {
+            //如果產品狀態==2, 加上check icon
+            if ($(this).data("status") == 1) {  
                 $(this).append('<i class="fa fa-fw fa-check-circle"></i>')
                     .css("color", "green");
                 $(this).parent()

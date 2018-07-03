@@ -84,7 +84,7 @@
                             <td> @order.phoneNum</td>
                             <td> @order.tableId</td>
                             <td> @orderTotalAmount</td>
-                            <td>@(totalProductState == orderComplete ? "訂單完成" : "待出餐") </td>
+                            <td> @(totalProductState == orderComplete ? "訂單完成" : "待出餐")</td>
                             <td> 
                                 @if (totalProductState == orderComplete)
                                 {<button class="btn btn-md btn-warning" data-action="changeState" data-orderid="@order.orderId">未出餐</button> }
@@ -190,18 +190,18 @@
         console.log($(this).data("action") + $(this).data("orderid"));
         console.log(this);
         $.ajax({
-            method:"post",
+            method: "post",
             url: '@Url.Action("Order_list_history_edit_bussiness","Order")',
             data: {
                 orderId: $(this).data("orderid"),
                 action: $(this).data("action")
             }
-        }).done(function () {
-            if ($(this).data("action") == "changeState") { alert("已修改訂單產品狀態") }
-            if ($(this).data("action") == "cancelOrder") { alert("訂單刪除") }
-           
-            $(this).attr('disabled', true);
-        })
+        });
+       
+
+        if ($(this).data("action") == "changeState") { alert("已修改訂單產品狀態") }
+        else {alert("訂單刪除") }
+        $(this).attr('disabled', true);
     })
 
    

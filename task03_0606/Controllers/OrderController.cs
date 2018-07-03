@@ -61,7 +61,7 @@ namespace task03_0606.Controllers
                         orderDate = dateString,
                         phoneNum = phonString,
                         tableId = tableNum,
-                        orderState = 1, //訂單狀態：1-未結單 2-結單
+                        orderState = 0, //0:新單未處理 1:訂單出一半 2:結單
                     };
                     db.Orders.Add(newOrder);
                     db.SaveChanges();
@@ -161,7 +161,7 @@ namespace task03_0606.Controllers
                 var query = from o in db.Orders
                             join c in db.OrderDetials on o.orderId equals c.orderId into ps
                             from c in ps.DefaultIfEmpty()
-                            where c.productionStatus == 1 && c.Product.Store.storeId == stroeId
+                            where c.productionStatus == 0 && c.Product.Store.storeId == stroeId && o.orderState < 3
                             orderby o.orderId
                             select new OrderDetailViewModel
                             {
@@ -196,11 +196,11 @@ namespace task03_0606.Controllers
                               orderby o.orderId
                               select o).FirstOrDefault();
 
-                if (result.productionStatus == 1)
+                if (result.productionStatus == 0)
                 {
-                    result.productionStatus = 2;
+                    result.productionStatus = 1;
                 }
-                else { result.productionStatus = 1; }
+                else { result.productionStatus = 0; }
 
 
                 db.SaveChanges();
@@ -253,7 +253,7 @@ namespace task03_0606.Controllers
                 //List<Order> orders = queryByID.ToList();
 
                 var query = from o in db.OrderDetials
-                            where o.Product.storeId == stroeId && o.productionStatus == 1 && o.Order.orderState==1
+                            where o.Product.storeId == stroeId  && o.Order.orderState < 2 && o.productionStatus <=1
                             group o by new { o.orderId, o.Order.phoneNum, o.Order.tableId, o.Order.orderDate } into g
                             select new Models.OrderModels.Orderlist
                             {
@@ -272,8 +272,19 @@ namespace task03_0606.Controllers
         [HttpPost]
         public ActionResult Order_list_bussiness(int orderId_ok)
         {
+            string stroeId = Session["storeId"].ToString();
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
+                //完成出餐，將產品狀態 1-->2   //0: 未準備 1:準備完成 2:完成送餐
+                var detailList = (from o in db.OrderDetials
+                                   where o.orderId == orderId_ok && o.Product.storeId == stroeId
+                                   select o).ToList();
+
+                foreach (var detailitem in detailList) {
+                    detailitem.productionStatus = 2;
+                }
+
+                //確認訂單所有產品狀況，全部完成
                 var order = (from o in db.Orders
                              where o.orderId == orderId_ok
                              select o).FirstOrDefault();
@@ -282,12 +293,18 @@ namespace task03_0606.Controllers
                 int TotalProductionStatus = 0;
                 foreach (var o in order.OrderDetials)
                 {
+                   
                     TotalProductionStatus += o.productionStatus;
                 }
 
-                if (TotalProductionStatus == orderComplete)
+                if (TotalProductionStatus >= orderComplete)
                 {
-                    order.orderState = 2;
+                    order.orderState = 2; // 0:新單未處理 1:訂單出一半 2:結單
+                    db.SaveChanges();
+                }
+
+                else {
+                    order.orderState = 1;  // 0:新單未處理 1:訂單出一半 2:結單
                     db.SaveChanges();
                 }
                 
@@ -306,7 +323,7 @@ namespace task03_0606.Controllers
             {
 
                 var query = from o in db.OrderDetials
-                            where o.Product.storeId == stroeId 
+                            where o.Product.storeId == stroeId && o.Order.orderState < 3  //0:新單未處理 1:訂單出一半 2:結單 3:訂單作廢
                             group o by new { o.orderId, o.Order.phoneNum, o.Order.tableId, o.Order.orderDate } into g
                             select new Models.OrderModels.Orderlist
                             {
@@ -364,7 +381,7 @@ namespace task03_0606.Controllers
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
                 var query = from o in db.OrderDetials
-                                   where o.orderId == orderId && o.Product.storeId == stroeId
+                                   where o.orderId == orderId && o.Product.storeId == stroeId 
                                    select new OrderDetailViewModel {
                                        orderId = o.orderId,
                                        orderTime = o.Order.orderDate,
@@ -395,29 +412,50 @@ namespace task03_0606.Controllers
             //依廠商編號，篩選廠商訂單明細
             using (Models.FoodCourtDBEntities db = new FoodCourtDBEntities())
             {
+                var editOrder = (from o in db.Orders
+                                   where o.orderId == orderId
+                                   select o).FirstOrDefault();
+
+                var editList = (from o in db.OrderDetials
+                                  where o.orderId == orderId && o.Product.storeId == stroeId
+                                  select o).ToList();
+
                 if (action == "changeState") {
-                    var changeOrder = (from o in db.Orders
-                                       where o.orderId == orderId
-                                       select o).FirstOrDefault();
 
-                    changeOrder.orderState = 1;
+                    editOrder.orderState = 1; // 訂單狀態 0:未準備 1:準備中 2:結單 3:訂單取消
 
-                    var changeList = (from o in db.OrderDetials
-                                   where o.orderId == orderId && o.Product.storeId == stroeId
-                                      select o).ToList();
-
-                    foreach (var item in changeList) {
-                        item.productionStatus = 1;
+                    foreach (var item in editList) {
+                        item.productionStatus = 1;  // 產品狀態 0: 未準備 1:準備完成 2:完成送餐 3:訂單取消
                     }
                     db.SaveChanges();
                 }
-                if (action == "cancelOrder") {
-                    var cancelOrder = (from o in db.Orders
-                                       where o.orderId == orderId
-                                       select o).FirstOrDefault();
 
-                    cancelOrder.orderState = 3;
-                    db.SaveChanges(); 
+                if (action == "cancelOrder") {
+
+                    foreach (var item in editList)
+                    {
+                        item.productionStatus = 3;  //0: 未準備 1:準備完成 2:完成送餐 3:訂單取消
+                    }
+                    db.SaveChanges();
+                    
+                    var detailList = (from o in db.OrderDetials
+                                    where o.orderId == orderId 
+                                    select o).ToList();
+
+                    int orderCancel = detailList.Count * 3;
+                    int totalProductState = 0;
+                    foreach (var detailitem in detailList) {
+                        totalProductState += detailitem.productionStatus;
+                    }
+
+                    if (totalProductState == orderCancel)
+                    {
+                        editOrder.orderState = 3; // 訂單狀態 0:未準備 1:準備中 2:結單 3:訂單取消
+                    }
+                    else {
+                        editOrder.orderState = 1; // 訂單狀態 0:未準備 1:準備中 2:結單 3:訂單取消
+                    }
+
                 }
                
 

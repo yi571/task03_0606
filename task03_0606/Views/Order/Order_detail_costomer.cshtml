@@ -123,7 +123,9 @@
                         <td data-th="單價：">@item.unitPrice</td>
                         <td class="amount" data-th="小計：">@(item.unitPrice * item.productCount)</td>
                         <td data-th="備註：">@item.customerNote</td>
-                        <td  data-th="餐點狀況：">@((item.productionStatus) == 1 ? "餐點準備中" : "完成待送餐")</td>
+                        <td  data-th="餐點狀況：">@((item.productionStatus) < 2 ? "餐點準備中" : ((item.productionStatus) == 2 ? "餐點完成" : "餐點取消"))
+                        
+                        </td>
                     </tr>
                 }
 

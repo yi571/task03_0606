@@ -25,7 +25,7 @@ namespace task03_0606
             Session["userPhone"] = "0972345678"; //0972345678
             Session["seat"] = 2;
             Session["memberType"] = ""; //Guest
-            Session["storeId"] = 21354423;
+            Session["storeId"] = 70425874;
         }
 
     }

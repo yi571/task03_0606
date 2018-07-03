@@ -39,10 +39,9 @@
                     <tr class="orderListItem"  >
                         <td><a href="~/Order/Order_detail_costomer?itemOrderId=@order.orderId&orderDate=@order.orderDate">@string.Format("{0:yyyyMMdd}{1}", Convert.ToDateTime(order.orderDate), (order.orderId + 10000)) </a></td>
                         <td>@string.Format("{0:yyyy/MM/dd/ HH:mm}", Convert.ToDateTime(order.orderDate))</td>
-                        <td>@(order.orderState == 1 ? "待出餐" : "出餐完畢")</td>
+                        <td>@(order.orderState == 2 ? "出餐完畢" : "待出餐")</td>
                     </tr>
                 }
-
             </tbody>
         </table>
     </div>
