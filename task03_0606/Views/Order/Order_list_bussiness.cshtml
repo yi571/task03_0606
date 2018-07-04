@@ -376,23 +376,29 @@
         })
     }
 
+    
+
+</script>
+<script>
     $(function () {
-        //alert("1 OK")
+        alert("1 OK")
         var chat = $.connection.storeHub;
-        //alert("2 OK")
-        chat.client.addNewMessageToPage = function (newOrderData) {
+        alert("2 OK")
+        chat.client.addNewMessageToPage = function (test, storeId) {
             //alert(test);
-            //alert(newOrderData);
+            //alert(storeId);
+            //alert(test);
             //$("#storeTable tbody").append('<tr>' + newOrderData.orderTime + '</tr>');
             window.location.reload();
         };
 
         $.connection.hub.start().done(function () {
-            //alert('start');
+            alert('start');
             var x = "test1";
-            var storeId = Session["storeId"];
-            chat.server.Send(storeId);
+            var storeId = @Session["storeId"];
+
+            chat.server.send("123", storeId);
+            alert('end');
         });
     });
-
 </script>
