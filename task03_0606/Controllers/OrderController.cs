@@ -84,10 +84,10 @@ namespace task03_0606.Controllers {
                     var querySignalr = from o in newOrderDetail
                                        join p in db.Products on o.productID equals p.productID into r
                                        from p in r.DefaultIfEmpty()
-                                       join q in db.Stores on p.storeId equals q.storeId into s
+                                       join q in task03_0606.Hubs.StoreHub.signalrsList on p.storeId equals q.StoreId into s
                                        from q in s.DefaultIfEmpty()
-                                       group p by new { p.storeId, q.storeSignalR } into g
-                                       select g.Key.storeSignalR;
+                                       group p by new { p.storeId, q.ContextID } into g
+                                       select g.Key.ContextID;
                     var context = GlobalHost.ConnectionManager.GetHubContext<StoreHub>();
                     foreach (var item in querySignalr) {
                         context.Clients.Client(item).addNewMessageToPage("新訂單");

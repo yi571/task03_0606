@@ -400,6 +400,7 @@
     <Compile Include="Models\CDaySell.cs" />
     <Compile Include="Models\CEasyRegistrt.cs" />
     <Compile Include="Models\CLayoutChoose.cs" />
+    <Compile Include="Models\CStoreSingalr.cs" />
     <Compile Include="Models\CUserList.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
