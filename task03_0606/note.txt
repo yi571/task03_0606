@@ -10,3 +10,15 @@ Bootstrap教學－實現Table表格也支援RWD自適應效果
 https://www.minwt.com/webdesign-dev/html/14066.html
 
 https://ithelp.ithome.com.tw/articles/10161501
+
+Repository(處理資料庫操作)或Service(處理商業邏輯)
+
+https://ithelp.ithome.com.tw/users/20091522/ironman/871
+
+https://ithelp.ithome.com.tw/users/20045817/ironman/529
+
+https://dotblogs.com.tw/hatelove/2016/04/29/asp-net-mvc-using-viewmodel-childaction
+
+https://blog.miniasp.com/category/ASPNET-MVC.aspx
+
+http://kevintsengtw.blogspot.com/2012/10/aspnet-mvc-part1.html

@@ -1,6 +1,12 @@
-﻿
+﻿@model task03_0606.Models.OrderModels.OrderViewModel2
+
+
 @{
     ViewBag.Title = "Index";
+    var itemlist =( List <task03_0606.Models.OrderDetial> )ViewBag.ItemList;
+    
+    
+
 }
 <style>
 
@@ -24,6 +30,9 @@
 </ol>
 
 
+
+
+
 <div class="col-12">
 
     <div class="row">
@@ -31,32 +40,32 @@
         <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3 ">
             <div class="card-header bg-success">
                 <p class="card-text text-white">
-                    桌號：1 &nbsp 電話：0988222111 <br />
-                    <small class="text-white">Last updated 3 mins ago</small>
+                    訂單單號：@Html.DisplayFor( model => model.OrderView.orderId)<br />
+                    桌號：@Model.OrderView.tableId 電話：@Model.OrderView.phoneNum <br />
+                    <small class="text-white">@Model.OrderView.orderDate</small>
                     <button class="btn btn-sm btn-success pull-right" disabled>出餐</button>
                 </p>
-
             </div>
             <ul class="list-group list-group-flush">
-
+               @foreach (var item in Model.OrderDetailView) { 
                 <li class="list-group-item container-fluid">
                     <div class="row">
                         <div class="col-xs-3">
-                            <img style="width:50px; height:40px" src="~/photo/E1.jpg">
+                            <img style="width:50px; height:40px" src="~/photo/@item.Product.productPicture">
                         </div>
                         <div class="col-xs-9">
-                            <p class="card-text">&nbsp 卡啦炸雞 <br /> &nbsp 2 份 &nbsp 備註：</p>
+                            <p class="card-text">&nbsp @item.Product.productName <br /> &nbsp @item.productCount 份 &nbsp 備註：</p>
                         </div>
                     </div>
                 </li>
-
+               }
                 <li class="list-group-item container-fluid">
                     <div class="row">
                         <div class="col-xs-3">
                             <img style="width:50px; height:40px" src="~/photo/A1.jpg">
                         </div>
                         <div class="col-xs-9">
-                            <p class="card-text">&nbsp 漂浮冰咖啡 <br /> &nbsp 1 份 &nbsp 備註：去冰,無糖</p>
+                            <p class="card-text">&nbsp 漂浮冰咖啡11 <br /> &nbsp 1 份 &nbsp 備註：去冰,無糖</p>
                         </div>
                     </div>
                 </li>
@@ -73,6 +82,9 @@
                 </li>
             </ul>
         </div>
+
+
+
 
         <div class="card cardMenuItem col-sm-12 col-md-4 col-xl-3">
             <div class="card-header bg-success">

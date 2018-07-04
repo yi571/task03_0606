@@ -325,6 +325,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderTestController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -365,18 +366,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FoodStreetModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Interface\IOrderDetailRepository.cs" />
+    <Compile Include="Models\Interface\IOrderRepository.cs" />
     <Compile Include="Models\Order.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetial.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OrderModels\OrderForView.cs" />
     <Compile Include="Models\OrderModels\Orderlist.cs" />
     <Compile Include="Models\OrderModels\OrderViewModel.cs" />
+    <Compile Include="Models\OrderModels\OrderViewModel2.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repositiry\OrderDetailRepository.cs" />
+    <Compile Include="Models\Repositiry\OrderRepository.cs" />
     <Compile Include="Models\Store.cs">
       <DependentUpon>FoodStreetModel.tt</DependentUpon>
     </Compile>
@@ -492,6 +497,11 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Order\Order_detail_costomer.cshtml" />
+    <Content Include="Views\OrderTest\Create.cshtml" />
+    <Content Include="Views\OrderTest\Delete.cshtml" />
+    <Content Include="Views\OrderTest\Details.cshtml" />
+    <Content Include="Views\OrderTest\Edit.cshtml" />
+    <Content Include="Views\OrderTest\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
