@@ -381,9 +381,9 @@
 </script>
 <script>
     $(function () {
-        alert("1 OK")
+        //alert("1 OK")
         var chat = $.connection.storeHub;
-        alert("2 OK")
+        //alert("2 OK")
         chat.client.addNewMessageToPage = function (test, storeId) {
             //alert(test);
             //alert(storeId);
@@ -393,12 +393,12 @@
         };
 
         $.connection.hub.start().done(function () {
-            alert('start');
+            //alert('start');
             var x = "test1";
             var storeId = @Session["storeId"];
 
             chat.server.send("123", storeId);
-            alert('end');
+            //alert('end');
         });
     });
 </script>
