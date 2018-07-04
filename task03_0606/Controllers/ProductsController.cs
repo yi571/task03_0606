@@ -115,7 +115,7 @@ namespace task03_0606.Controllers {
 
 
         public ActionResult Edit(int? productID) {
-
+            
             if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
                 Session["lastPage"] = "/Edit/ManagerIndex";      //儲存最後頁面
                 return RedirectToAction("Login", "Member");  //重導到登入頁面
@@ -131,6 +131,7 @@ namespace task03_0606.Controllers {
                 var result = (from s in db.Products where s.productID == productID select s).FirstOrDefault();
                 if (result != default(Models.Product)) //判斷此id是否有資料
                 {
+                    ViewBag.result = result;
                     return View(result); //如果有回傳編輯商品頁面
                 } else {   //如果沒有資料則顯示錯誤訊息並導回Index頁面
                     TempData["resultMessage"] = "資料有誤，請重新操作";
