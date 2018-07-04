@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using task03_0606.Models;
 using System.Linq.Expressions;
-
+using System.IO;
 
 namespace task03_0606.Controllers {
     public class MemberController : Controller {
@@ -681,6 +681,48 @@ namespace task03_0606.Controllers {
 
 
             //return Content(DateTime.Today.ToString("yyyy-MM-dd"));
+            return View();
+        }
+
+        public ActionResult AddNewProduct() {
+            if (String.IsNullOrEmpty((string)Session["logState"])) {  //如未登入，則重導到登入頁面
+                Session["lastPage"] = "/Member/AddNewProduct";      //儲存最後頁面
+                return RedirectToAction("Login", "Member");  //重導到登入頁面
+            }
+            var query = from o in db.Categories
+                        select o;
+            
+            ViewBag.kind = query;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewProduct(HttpPostedFileBase file, string productName, string productKind, string productDescription, string productPrice, string productIdSelf) {
+            if (file.ContentLength > 0) {
+
+                var fileName = Path.GetFileName(file.FileName);
+                string fileName2 = DateTime.Now.ToString("yyyyMMddhhmmss") + fileName;
+                var path = Path.Combine(Server.MapPath("~/photo"), fileName2);
+
+                file.SaveAs(path);
+
+                Product product = new Product {
+                    productName = productName,
+                    productPicture = fileName2,
+                    storeId = Session["storeId"].ToString(),
+                    storeProductId = productKind,
+                    productDescription = productDescription,
+                    categoryID = Convert.ToInt32(productKind),
+                    productState = 1,
+                    productPrice = Convert.ToInt32(productPrice)
+
+                };
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("ManagerIndex", "Products");
+            }
+
+            
             return View();
         }
     }
