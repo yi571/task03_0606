@@ -727,15 +727,20 @@ namespace task03_0606.Controllers {
             return View();
         }
 
-        public ActionResult RTest() {
+        public ActionResult RTest(string test) {
 
             //R語言
+            REngine.SetEnvironmentVariables();
             REngine engine = REngine.GetInstance();
-            CharacterVector charVec = engine.CreateCharacterVector(new[] { "Hello, R world!, .NET speaking" });
-            engine.SetSymbol("greetings", charVec);
-            engine.Evaluate("str(greetings)"); // print out in the console
+            //CharacterVector charVec = engine.CreateCharacterVector(new[] { "Hello, R world!, .NET speaking" });
+            //engine.SetSymbol("greetings", charVec);
+            //engine.Evaluate("str(greetings)"); // print out in the console
             string[] a = engine.Evaluate("'Hi there .NET, from the R engine'").AsCharacter().ToArray();
-            return Content(a[0]);
+            engine.Evaluate("y <- 3");
+            string z = engine.Evaluate("y").AsNumeric().ToString();
+            //return Content(a[0]);
+            //string x = a[0];
+            ViewBag.test = z;
             return View();
         }
     }
