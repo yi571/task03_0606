@@ -737,7 +737,7 @@ namespace task03_0606.Controllers {
             //engine.Evaluate("str(greetings)"); // print out in the console
             string[] a = engine.Evaluate("'Hi there .NET, from the R engine'").AsCharacter().ToArray();
             engine.Evaluate("y <- 3");
-            string z = engine.Evaluate("y").AsNumeric().ToString();
+            string z = engine.Evaluate("y").AsNumeric().ToArray()[0].ToString();
             //return Content(a[0]);
             //string x = a[0];
             ViewBag.test = z;
