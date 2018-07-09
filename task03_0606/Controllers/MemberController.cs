@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using task03_0606.Models;
 using System.Linq.Expressions;
 using System.IO;
+using RDotNet;
 
 namespace task03_0606.Controllers {
     public class MemberController : Controller {
@@ -723,6 +724,18 @@ namespace task03_0606.Controllers {
             }
 
             
+            return View();
+        }
+
+        public ActionResult RTest() {
+
+            //R語言
+            REngine engine = REngine.GetInstance();
+            CharacterVector charVec = engine.CreateCharacterVector(new[] { "Hello, R world!, .NET speaking" });
+            engine.SetSymbol("greetings", charVec);
+            engine.Evaluate("str(greetings)"); // print out in the console
+            string[] a = engine.Evaluate("'Hi there .NET, from the R engine'").AsCharacter().ToArray();
+            return Content(a[0]);
             return View();
         }
     }
