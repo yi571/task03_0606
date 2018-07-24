@@ -334,62 +334,62 @@ namespace task03_0606.Controllers {
 
         }
 
-        // 下拉式選單ManagerIndex
-        //    public class AP0010_ConitionModel
-        //{
-        //    //我要選取的預設值
-        //    public string storeId { get; set; }
-        //    //資料來源
-        //    public List<FoodProduct> State_ListItem { get; set; }
-        //}
+         下拉式選單ManagerIndex
+            public class AP0010_ConitionModel
+        {
+            //我要選取的預設值
+            public string storeId { get; set; }
+            //資料來源
+            public List<FoodProduct> State_ListItem { get; set; }
+        }
 
-        //public class AP0010ViewModel
-        //{
-        //    public AP0010_ConitionModel condition { get; set; }
-        //    //以下可以放其他條件
-        //}
+        public class AP0010ViewModel
+        {
+            public AP0010_ConitionModel condition { get; set; }
+            //以下可以放其他條件
+        }
 
-        //public SelectList GetEMP_CATEGORY()
-        //{
+        public SelectList GetEMP_CATEGORY()
+        {
 
-        //    List<FoodProduct> Category = new List<FoodProduct>()
-        //{
-        //    new FoodProduct() {storeId = "21354423", storeProductId = ""},
-        //    new FoodProduct() {storeId = "20035001", storeProductId = ""},
-        //    new FoodProduct() {storeId = "15498527", storeProductId = ""},
-        //    new FoodProduct() {storeId = "00543689", storeProductId = ""},
-        //    new FoodProduct() {storeId = "54123513", storeProductId = ""},
-        //    new FoodProduct() {storeId = "68999999", storeProductId = ""},
-        //    new FoodProduct() {storeId = "70425874", storeProductId = ""},
-        //    new FoodProduct() {storeId = "90856422", storeProductId = ""},
+            List<FoodProduct> Category = new List<FoodProduct>()
+        {
+            new FoodProduct() {storeId = "21354423", storeProductId = ""},
+            new FoodProduct() {storeId = "20035001", storeProductId = ""},
+            new FoodProduct() {storeId = "15498527", storeProductId = ""},
+            new FoodProduct() {storeId = "00543689", storeProductId = ""},
+            new FoodProduct() {storeId = "54123513", storeProductId = ""},
+            new FoodProduct() {storeId = "68999999", storeProductId = ""},
+            new FoodProduct() {storeId = "70425874", storeProductId = ""},
+            new FoodProduct() {storeId = "90856422", storeProductId = ""},
 
-        //};
+        };
 
-        //    return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
-        //}
-        //public class ViewModel {
-        //    public string Name { get; set; }
-        //    public IEnumerable<Product> MyList { get; set; }
-        //}
-        //public ActionResult testIndex() {
+            return new SelectList(Category, dataTextField: "Text", dataValueField: "Value");
+        }
+        public class ViewModel {
+            public string Name { get; set; }
+            public IEnumerable<Product> MyList { get; set; }
+        }
+        public ActionResult testIndex() {
 
 
-        //    List<SelectListItem> mySelectItemList = new List<SelectListItem>();
+            List<SelectListItem> mySelectItemList = new List<SelectListItem>();
 
-        //    foreach (var item in db.Stores) {
-        //        mySelectItemList.Add(new SelectListItem() {
-        //            Text = item.storeId,
-        //            Value = item.storeName,
-        //            Selected = false
-        //        });
-        //    }
+            foreach (var item in db.Stores) {
+                mySelectItemList.Add(new SelectListItem() {
+                    Text = item.storeId,
+                    Value = item.storeName,
+                    Selected = false
+                });
+            }
 
-        //    ViewModel model = new ViewModel() //上面的 Model
-        //    {
-        //        //MyList = mySelectItemList
-        //    };
+            ViewModel model = new ViewModel() //上面的 Model
+            {
+                //MyList = mySelectItemList
+            };
 
-        //    return View(model);
+            return View(model);
         //}
 
 
